@@ -15,6 +15,10 @@
   <body>
     <div class="page-group">
         <div class="page page-current">
+        	<header class="bar bar-nav">
+			  <a href="<%=request.getContextPath()%>/home" class="icon icon-left pull-left"></a>
+			  <h1 class="title">好店推荐</h1>
+			</header>
 			<div class="content">
 			
         	</div>

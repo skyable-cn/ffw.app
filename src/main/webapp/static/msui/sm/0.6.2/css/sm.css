@@ -3348,6 +3348,8 @@ html.with-statusbar-overlay .popup.tablet-fullscreen {
   position: relative;
   border-radius: 0.1rem;
   font-size: 0.7rem;
+  margin-top:0.25rem;
+  margin-bottom:0.5rem;
 }
 .card .list-block,
 .card .content-block {
@@ -4758,4 +4760,25 @@ html:not(.watch-active-state) .theme-white label.label-radio:active,
 }
 .position img{
 	width:30px;
+}
+.discount div select{
+	border: none;
+	background:#eee;
+	width:100%;
+	height:40px;
+}
+.item-subtitle span{
+	float:right;
+}
+.item-subtitle span.quan{
+	color: white;
+    background-color: #f60;
+    border: none;
+    border-radius: 0.25rem;
+    float: left;
+    font-size:14px;
+    padding:3px;
+}
+.p_border{
+	border-bottom:1px #aaaaaa solid;
 }

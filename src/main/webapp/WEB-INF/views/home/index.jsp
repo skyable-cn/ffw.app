@@ -51,7 +51,7 @@
 			</div>
 		    <div class="tabs">
 		      <div id="tab1" class="tab active">
-		          <div class="card demo-card-header-pic" style="position:relative;margin-bottom:10px;">
+		          <div class="card demo-card-header-pic" style="position:relative;">
 				    <div valign="bottom" class="card-header color-white no-border no-padding">
 				      <img class='card-cover' src="<%=request.getContextPath()%>/static/image/demo/demo1.jpg" alt="">
 				      <div class="suspend left">抢购中</div>
@@ -69,29 +69,11 @@
 				      <span>已抢: 1234</span>
 				    </div>
 				  </div>
-				  <div class="card demo-card-header-pic" style="position:relative;margin-bottom:10px;">
-				    <div valign="bottom" class="card-header color-white no-border no-padding">
-				      <img class='card-cover' src="<%=request.getContextPath()%>/static/image/demo/demo3.jpg" alt="">
-				      <div class="suspend left">抢购中</div>
-				      <div class="suspend right">活动倒计时<br/>17天22:12:34</div>
-				    </div>
-				    <div class="card-content">
-				      <div class="card-content-inner">
-				        <p>特别好吃，吃了忘不了，一辈子都喜吃</p>
-				      </div>
-				    </div>
-				    <div class="card-footer">
-				      <span>体验价: 68.00</span>
-				      <span class="delete">¥ 98.00</span>
-				      <span class="return">返 7.9</span>
-				      <span>已抢: 1234</span>
-				    </div>
-				  </div>
 		      </div>
 		      <div id="tab2" class="tab">
-		        <div class="card demo-card-header-pic" style="position:relative;margin-bottom:10px;">
+		        <div class="card demo-card-header-pic" style="position:relative;">
 				    <div valign="bottom" class="card-header color-white no-border no-padding">
-				      <img class='card-cover' src="<%=request.getContextPath()%>/static/image/demo/demo2.jpg" alt="">
+				      <img class='card-cover' src="<%=request.getContextPath()%>/static/image/demo/demo3.jpg" alt="">
 				      <div class="suspend left">抢购中</div>
 				      <div class="suspend right">活动倒计时<br/>17天22:12:34</div>
 				    </div>

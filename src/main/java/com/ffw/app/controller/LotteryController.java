@@ -7,11 +7,19 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LotteryController {
 
-	@RequestMapping(value = { "/shop" })
+	@RequestMapping(value = { "/lottery" })
 	public ModelAndView index() {
 
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("shop/index");
+		mv.setViewName("lottery/index");
+		return mv;
+	}
+
+	@RequestMapping(value = { "/lottery/info" })
+	public ModelAndView info() {
+
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("lottery/info");
 		return mv;
 	}
 
