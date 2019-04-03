@@ -23,4 +23,12 @@ public class LotteryController {
 		return mv;
 	}
 
+	@RequestMapping(value = { "/lottery/member" })
+	public ModelAndView member() {
+
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("lottery/member");
+		return mv;
+	}
+
 }

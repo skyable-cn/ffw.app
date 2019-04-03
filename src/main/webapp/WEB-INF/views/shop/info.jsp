@@ -20,25 +20,33 @@
 			  <h1 class="title">商家信息</h1>
 			</header>
 			<div class="content">
-				<p class="p_border">
-					<span><img align="middle" style="margin:10px; width:80px;border-radius:50%;" src="<%=request.getContextPath()%>/static/image/shop.jpg"/></span>
-					<span>重庆鸡公煲</span>
-				</p>
-				<p class="p_border" style="height:50px;">
-				<span>陕西省西安市长安区王寺街道</span> <span style="float:right;"><img width="30" style="margin-right:15px;" src="<%=request.getContextPath()%>/static/icon/phone.png"/> | <img  style="margin-left:15px;" width="30" src="<%=request.getContextPath()%>/static/icon/send.png"/></span>
-				</p>
-				<p style="border-bottom:5px #fff solid;padding-bottom:20px;">
-					<span style="margin-left:10px;background:#cccccc;padding:5px;">优惠券1</span>
-					<span style="margin-left:10px;background:#cccccc;padding:5px;">优惠券2</span>
-					<span style="margin-left:10px;background:#cccccc;padding:5px;">优惠券3</span>
-					<span style="text-align:center;width:100px;margin-right:10px;background:#cccccc;padding:5px;float:right;">抢购</span>
-				</p>
-				<h4 style="text-align: center;">购买须知</h4>
-				<div class="row">
-					<div class="col-100" style="word-wrap: break-word;word-break: break-all;overflow: hidden;">1111111111111111111111111111fffffffffffffffffffffffffvvvvvvvvvvvvv1111111111111111111111111111fffffffffffffffffffffffffvvvvvvvvvvvvv1111111111111111111111111111fffffffffffffffffffffffffvvvvvvvvvvvvv1111111111111111111111111111fffffffffffffffffffffffffvvvvvvvvvvvvv</div>
+			<div class="row" style="padding:5px;">
+				<div class="col-40"><img style="margin-left:20px; width:100px;border-radius:50%;" src="<%=request.getContextPath()%>/static/image/shop.jpg"/></div>
+		        <div class="col-60" style="line-height:100px;">重庆鸡公煲火锅</div>
+			</div>
+			<div style="width:100%;height:1px;background:#aaaaaa;">&nbsp;</div>
+			<div class="row" style="padding:10px;">
+				<div class="col-50">西安市长安区王寺街道</div>
+		        <div class="col-50" style="text-align:right;"><img width="20" style="margin-right:15px;" src="<%=request.getContextPath()%>/static/icon/phone.png"/> | <img  style="margin-left:15px;" width="20" src="<%=request.getContextPath()%>/static/icon/send.png"/></div>
+			</div>
+			<div style="width:100%;height:1px;background:#aaaaaa;">&nbsp;</div>
+			<div class="row" style="padding:5px;">
+				<div class="col-50" style="padding:5px;">
+					<span style="color:#fff;background-color:#F40A0B;padding:5px;border-radius:5px;padding-left:10px;padding-right:10px;">优惠券1</span>
+					<span style="color:#fff;background-color:#F40A0B;padding:5px;border-radius:5px;padding-left:10px;padding-right:10px;">优惠券2</span>
 				</div>
+		        <div class="col-50"><button class="button button-fill button-warning pull-right" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</button></div>
+			</div>
+			<div style="width:100%;height:8px;background:#dddddd;">&nbsp;</div>
+			<h4 style="text-align: center;">购买须知</h4>
+			<div class="row" style="padding:5px;">
+				<div class="col-100">
+					<div style="min-height:180px;padding:10px;border:1px #dddddd solid;word-wrap: break-word;word-break: break-all;overflow: hidden;">产品展示包括产品介绍、体验价、原价、返利价（普通用户和会员用户的返利价不同，做的时候要区分显示）、用户购买总量，如该产品属于产品抢购活动，还需在页面标明抢购二字以及产品抢购活动倒计时</div>
+				</div>
+			</div>
         	</div>
-        	</div>
+        	<%@ include file="../common/service.jsp"%>
+        </div>
     </div>
   </body>
 </html>

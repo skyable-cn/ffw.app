@@ -20,7 +20,7 @@
 			  <h1 class="title">周四五折</h1>
 			</header>
 			<div class="content">
-				<div class="row discount">
+				<div class="row discount" style="padding:5px;">
 			      <div class="col-25">
 			      	<select>
 				      	<option>分类</option>
@@ -52,26 +52,28 @@
 		              </select>
 			      </div>
 			    </div>
+			    <div class="row" style="padding:5px;padding-top:0px;">
+			      <div class="col-100">
 			    <div class="card">
 			    <div class="card-content">
 			      <div class="list-block media-list">
 			        <ul>
 			          <li class="item-content">
 			            <div class="item-media">
-			              <a href="<%=request.getContextPath()%>/shop/info"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" width="120"></a>
+			              <a href="<%=request.getContextPath()%>/shop/info"><img src="<%=request.getContextPath()%>/static/image/shop.jpg" width="150"></a>
 			            </div>
 			            <div class="item-inner">
 			              <div class="item-title-row">
-			                <div class="item-title">重庆鸡公煲</div>
+			                <div class="item-title" style="font-weight:bold;">高新路海底捞火锅</div>
 			              </div>
-			              <div class="item-subtitle">
+			              <div class="item-subtitle" style="font-weight:bold;">
 			              	¥ 35 / 人<span><1000m</span>
 			              </div>
-			              <div class="item-subtitle">
+			              <div class="item-subtitle" style="font-weight:bold;">
 			              	重庆火锅
 			              </div>
-			              <div class="item-subtitle">
-			              	<span class="quan">券</span> 83 代 100
+			              <div class="item-subtitle" style="color:#F40A0B;">
+			              	<span class="quan">券</span>83代100元
 			              </div>
 			            </div>
 			          </li>
@@ -79,9 +81,11 @@
 			      </div>
 			    </div>
 			    <div class="card-footer">
-			      <span>西安市 高新路 </span>
-			      <span><button class="button button-fill button-warning">抢购</button></span>
+			      <span style="font-weight:bold;">西安市 高新路 33号</span>
+			      <span><button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</button></span>
 			    </div>
+			  </div>
+			  </div>
 			  </div>  
         	</div>
     	</div>

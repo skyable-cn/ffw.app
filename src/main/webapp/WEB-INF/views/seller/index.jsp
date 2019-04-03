@@ -27,13 +27,33 @@
         <div class="item-content">
           <div class="item-media"><i class="icon icon-form-name"></i></div>
           <div class="item-inner">
-            <div class="item-title label">驻店名称</div>
+            <div class="item-title label">商家名称</div>
             <div class="item-input">
               <input id="SHOPNAME" type="text" placeholder="您的店名称" value="${pd.SHOPNAME}">
             </div>
           </div>
         </div>
       </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-gender"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">所属行业</div>
+            <div class="item-input">
+              <select>
+              	<option>请选择</option>
+                <option>餐饮</option>
+                <option>外卖</option>
+                <option>盒饭</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </li>
+      </ul>
+      </div>
+   <div class="list-block">
+    <ul>
      <li>
         <div class="item-content">
           <div class="item-media"><i class="icon icon-form-name"></i></div>
@@ -60,7 +80,7 @@
         <div class="item-content">
           <div class="item-media"><i class="icon icon-form-name"></i></div>
           <div class="item-inner">
-            <div class="item-title label">驻店位置</div>
+            <div class="item-title label">商家位置</div>
             <div class="item-input position">
 			<a class="external" onclick="position()" href="javascript:;"><img alt="" src="<%=request.getContextPath()%>/static/icon/position.png"/>${pd.addr}</a>
             </div>
@@ -82,8 +102,7 @@
   </div>
   <div class="content-block">
     <div class="row">
-      	<div class="col-50"><a href="#" class="button button-big button-fill button-success">提交</a></div>
-    	<div class="col-50"><a href="#" class="button button-big button-fill button-danger">取消</a></div>
+      	<div class="col-100"><a href="#" class="button button-big button-fill button-success" style="background:#FFCC01;">入驻</a></div>
     </div>
   </div>
         	</div>

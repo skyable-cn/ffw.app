@@ -15,9 +15,23 @@
   <body>
     <div class="page-group">
         <div class="page page-current">
+        	<header class="bar bar-nav">
+			  <h1 class="title" style="margin-left:0px;">饭饭精选&nbsp;&nbsp;靠谱还实惠</h1>
+			</header>
 			<div class="content">
-			<div class="row">
-				<div class="col-100"><img class="top" src="<%=request.getContextPath()%>/static/image/top.jpg"/></div>
+			<div class="row" style="background-color:#FFCC01;height:150px;">
+				<div class="col-50" style="padding:20px;">
+					<div class="row">
+						<div class="col-100" style="font-weight:bold;">张三丰</div>
+					</div>
+					<div class="row">
+						<div class="col-50" style="font-weight:bold;">1<br/>订单</div>
+						<div class="col-50" style="font-weight:bold;">1<br/>卡券</div>
+					</div>
+				</div>
+				<div class="col-50" style="padding:20px;">
+					<img align="middle" style="margin:10px; width:80px;border-radius:50%;margin-left:50px;" src="<%=request.getContextPath()%>/static/image/head.jpg"/>
+				</div>
 			</div>
 			<div class="row module2">
 				<div class="col-25"><a class="" href="<%=request.getContextPath()%>/discount"><img src="<%=request.getContextPath()%>/static/icon/home/wz.png"/><p>周四五折</p></a></div>
@@ -25,27 +39,29 @@
 		        <div class="col-25"><a class="" href="<%=request.getContextPath()%>/shop"><img src="<%=request.getContextPath()%>/static/icon/home/tj.png"/><p>好店推荐</p></a></div>
 		        <div class="col-25"><a class="" href="<%=request.getContextPath()%>/seller"><img src="<%=request.getContextPath()%>/static/icon/home/rz.png"/><p>商家入驻</p></a></div>
 			</div>
-			<div class="row">
-				<div class="col-50">优惠活动</div>
-				<div class="col-50 more_activity"><a href="">查看更多</a></div>
+			<div style="width:100%;height:10px;background:#dddddd;">&nbsp;</div>
+			<div class="row" style="padding:5px;">
+				<div class="col-50" style="font-weight:bold;">优惠活动</div>
+				<div class="col-50 more_activity"><a href="" style="color:#FFCC01;">查看更多</a></div>
 			</div>
-			<div class="row">
+			<div class="row" style="padding:5px;padding-top:0px;">
 				<div class="col-100">
 					<div class="swiper-container">
 					    <div class="swiper-wrapper">
-					        <div class="swiper-slide"><img width="100%" src="<%=request.getContextPath()%>/static/plugin/swiper/image/swiper1.jpg"/></div>
-					        <div class="swiper-slide"><img width="100%" src="<%=request.getContextPath()%>/static/plugin/swiper/image/swiper2.jpg"/></div>
-					        <div class="swiper-slide"><img width="100%" src="<%=request.getContextPath()%>/static/plugin/swiper/image/swiper3.jpg"/></div>
+					        <div class="swiper-slide"><img height="200" width="100%" src="<%=request.getContextPath()%>/static/plugin/swiper/image/swiper1.jpg"/></div>
+					        <div class="swiper-slide"><img height="200" width="100%" src="<%=request.getContextPath()%>/static/plugin/swiper/image/swiper2.jpg"/></div>
+					        <div class="swiper-slide"><img height="200" width="100%" src="<%=request.getContextPath()%>/static/plugin/swiper/image/swiper3.jpg"/></div>
 					    </div>
 					    <div class="swiper-pagination"></div>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-100">热卖区</div>
+			<div class="row" style="padding:5px;">
+				<div class="col-100" style="font-weight:bold;">热卖区</div>
 			</div>
-
-			<div class="buttons-tab">
+			<div class="row" style="padding:5px;">
+				<div class="col-100">
+				<div class="buttons-tab">
 			    <a href="#tab1" class="tab-link active button">推荐</a>
 			    <a href="#tab2" class="tab-link button">最热</a>
 			</div>
@@ -53,17 +69,17 @@
 		      <div id="tab1" class="tab active">
 		          <div class="card demo-card-header-pic" style="position:relative;">
 				    <div valign="bottom" class="card-header color-white no-border no-padding">
-				      <img class='card-cover' src="<%=request.getContextPath()%>/static/image/demo/demo1.jpg" alt="">
+				      <a class="external" href="<%=request.getContextPath()%>/goods/info"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/static/image/demo/demo1.jpg" alt=""></a>
 				      <div class="suspend left">抢购中</div>
-				      <div class="suspend right">活动倒计时<br/>17天22:12:34</div>
+				      <div class="suspend right">活动倒计时<br/><span>17</span>天<span>22</span> <span>12</span> <span>34</span></div>
 				    </div>
 				    <div class="card-content">
 				      <div class="card-content-inner">
-				        <p>特别好吃，吃了忘不了，一辈子都喜吃</p>
+				        <p><span style="color:#fff;background-color:#F40A0B;padding:3px;border-radius:5px;">爆</span>特别好吃，吃了忘不了，一辈子都喜吃</p>
 				      </div>
 				    </div>
 				    <div class="card-footer">
-				      <span>体验价: 68.00</span>
+				      <span>体验价: <strong style="color:#F40A0B;font-size:16px;">68.00</strong></span>
 				      <span class="delete">¥ 98.00</span>
 				      <span class="return">返 7.9</span>
 				      <span>已抢: 1234</span>
@@ -73,17 +89,17 @@
 		      <div id="tab2" class="tab">
 		        <div class="card demo-card-header-pic" style="position:relative;">
 				    <div valign="bottom" class="card-header color-white no-border no-padding">
-				      <img class='card-cover' src="<%=request.getContextPath()%>/static/image/demo/demo3.jpg" alt="">
+				      <a class="external" href="<%=request.getContextPath()%>/goods/info"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/static/image/demo/demo2.jpg" alt=""></a>
 				      <div class="suspend left">抢购中</div>
-				      <div class="suspend right">活动倒计时<br/>17天22:12:34</div>
+				      <div class="suspend right">活动倒计时<br/><span>17</span>天<span>22</span> <span>12</span> <span>34</span></div>
 				    </div>
 				    <div class="card-content">
 				      <div class="card-content-inner">
-				        <p>特别好吃，吃了忘不了，一辈子都喜吃</p>
+				        <p><span style="color:#fff;background-color:#F40A0B;padding:3px;border-radius:5px;">爆</span>特别好吃，吃了忘不了，一辈子都喜吃</p>
 				      </div>
 				    </div>
 				    <div class="card-footer">
-				      <span>体验价: 68.00</span>
+				      <span>体验价: <strong style="color:#F40A0B;font-size:16px;">68.00</strong></span>
 				      <span class="delete">¥ 98.00</span>
 				      <span class="return">返 7.9</span>
 				      <span>已抢: 1234</span>
@@ -91,6 +107,8 @@
 				  </div>
 		      </div>
 		    </div>
+				</div>
+			</div>
 		    <h5>&nbsp;</h5>
 			</div>
 			<%@ include file="../common/nav.jsp"%>
