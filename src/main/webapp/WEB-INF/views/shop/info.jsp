@@ -26,16 +26,16 @@
 			</div>
 			<div style="width:100%;height:1px;background:#aaaaaa;">&nbsp;</div>
 			<div class="row" style="padding:10px;">
-				<div class="col-50">西安市长安区王寺街道</div>
-		        <div class="col-50" style="text-align:right;"><img width="20" style="margin-right:15px;" src="<%=request.getContextPath()%>/static/icon/phone.png"/> | <img  style="margin-left:15px;" width="20" src="<%=request.getContextPath()%>/static/icon/send.png"/></div>
+				<div class="col-60">西安市长安区王寺街道</div>
+		        <div class="col-40" style="text-align:right;"><img width="20" style="margin-right:15px;" src="<%=request.getContextPath()%>/static/icon/phone.png"/> | <img  style="margin-left:15px;" width="20" src="<%=request.getContextPath()%>/static/icon/send.png"/></div>
 			</div>
 			<div style="width:100%;height:1px;background:#aaaaaa;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
-				<div class="col-50" style="padding:5px;">
+				<div class="col-60" style="padding:5px;">
 					<span style="color:#fff;background-color:#F40A0B;padding:5px;border-radius:5px;padding-left:10px;padding-right:10px;">优惠券1</span>
 					<span style="color:#fff;background-color:#F40A0B;padding:5px;border-radius:5px;padding-left:10px;padding-right:10px;">优惠券2</span>
 				</div>
-		        <div class="col-50"><button class="button button-fill button-warning pull-right" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</button></div>
+		        <div class="col-40"><button class="button button-fill button-warning pull-right" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</button></div>
 			</div>
 			<div style="width:100%;height:8px;background:#dddddd;">&nbsp;</div>
 			<h4 style="text-align: center;">购买须知</h4>

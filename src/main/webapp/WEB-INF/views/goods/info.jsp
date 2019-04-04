@@ -66,8 +66,8 @@
 				</div>
 							<div style="width:100%;height:1px;background:#aaaaaa;">&nbsp;</div>
 			<div class="row" style="padding:10px;">
-				<div class="col-50">西安市长安区王寺街道</div>
-		        <div class="col-50" style="text-align:right;"><img width="20" style="margin-right:15px;" src="<%=request.getContextPath()%>/static/icon/phone.png"/> | <img  style="margin-left:15px;" width="20" src="<%=request.getContextPath()%>/static/icon/send.png"/></div>
+				<div class="col-60">西安市长安区王寺街道</div>
+		        <div class="col-40" style="text-align:right;"><img width="20" style="margin-right:15px;" src="<%=request.getContextPath()%>/static/icon/phone.png"/> | <img  style="margin-left:15px;" width="20" src="<%=request.getContextPath()%>/static/icon/send.png"/></div>
 			</div>
 			<div style="width:100%;height:1px;background:#aaaaaa;">&nbsp;</div>
 			<div class="row" style="padding:5px;">

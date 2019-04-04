@@ -102,7 +102,7 @@
   </div>
   <div class="content-block">
     <div class="row">
-      	<div class="col-100"><a href="#" class="button button-big button-fill button-success" style="background:#FFCC01;">入驻</a></div>
+      	<div class="col-100"><a href="#" class="button button-big button-fill button-success" style="background:#FFCC01;color:#000000;">入驻</a></div>
     </div>
   </div>
         	</div>
