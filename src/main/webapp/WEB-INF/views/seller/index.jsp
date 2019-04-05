@@ -37,11 +37,11 @@
           <div class="item-inner">
             <div class="item-title label">所属行业</div>
             <div class="item-input">
-              <select>
-              	<option>请选择</option>
-                <option>餐饮</option>
-                <option>外卖</option>
-                <option>盒饭</option>
+              <select name="SHOPTYPE">
+              	<option value="">请选择</option>
+                <option value="1">餐饮</option>
+                <option value="2">外卖</option>
+                <option value="3">盒饭</option>
               </select>
             </div>
           </div>
@@ -113,7 +113,7 @@
 	   //location.href='https://apis.map.qq.com/tools/locpicker?search=1&type=0&backurl=http://192.168.0.4:8081/app/sellerInit?'+encodeURIComponent(data)+'&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp';
 	   
 	   wx.miniProgram.navigateTo({
-            url: '/pages/address/address?backUrl=htpps://fanfan.skyable.cn/app/sellerInit'
+            url: '/pages/address/address?SHOPNAME='+encodeURI($("#SHOPNAME").val())+'&SHOPTYPE='+$("#SHOPTYPE").val()
        })
    }
 </script>
