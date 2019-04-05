@@ -16,7 +16,7 @@
     <div class="page-group">
         <div class="page page-current">
 			<div class="content">
-			<div class="row" style="padding:5px;">
+			<div class="row">
 				<div class="col-100" style="position:relative;">
 				 <div><img class='card-cover' height="160" width="100%" src="<%=request.getContextPath()%>/static/icon/me.png" alt=""></div>
 				 <div style="background:#ffffff;height:100px;position:absolute;top:60px;z-index:999;left:5%;right:5%;-webkit-box-shadow: 3px 3px 12px #666;-moz-box-shadow: 3px 3px 12px #666;box-shadow: 3px 3px 12px #666; -moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;">
