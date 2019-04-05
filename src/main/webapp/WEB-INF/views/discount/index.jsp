@@ -56,7 +56,7 @@
 			        <ul>
 			          <li class="item-content">
 			            <div class="item-media">
-			              <a href="<%=request.getContextPath()%>/shop/info"><img src="<%=request.getContextPath()%>/static/image/shop.jpg" width="150"></a>
+			              <a class="external" href="<%=request.getContextPath()%>/shop/info"><img src="<%=request.getContextPath()%>/static/image/shop.jpg" width="150"></a>
 			            </div>
 			            <div class="item-inner">
 			              <div class="item-title-row">
