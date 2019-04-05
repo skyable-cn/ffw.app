@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>饭饭网小程序</title>
+    <title>周四五折</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" href="/favicon.ico">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,10 +15,6 @@
   <body>
     <div class="page-group">
         <div class="page page-current">
-        	<header class="bar bar-nav">
-			  <a href="<%=request.getContextPath()%>/home" class="icon icon-left pull-left"></a>
-			  <h1 class="title">周四五折</h1>
-			</header>
 			<div class="content">
 				<div class="row discount" style="padding:5px;">
 			      <div class="col-25">

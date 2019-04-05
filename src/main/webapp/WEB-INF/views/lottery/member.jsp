@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>饭饭网小程序</title>
+    <title>参与人员</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" href="/favicon.ico">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,10 +15,6 @@
   <body>
     <div class="page-group">
         <div class="page page-current">
-        	<header class="bar bar-nav">
-			  <a href="<%=request.getContextPath()%>/lottery/info" class="icon icon-left pull-left"></a>
-			  <h1 class="title">参与人员</h1>
-			</header>
 			<div class="content">
 			<div class="row" style="padding:5px;border-bottom:1px #cccccc solid;">
 				<div class="col-50">

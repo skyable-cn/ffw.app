@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>饭饭网小程序</title>
+    <title>饭饭精选&nbsp;&nbsp;靠谱还实惠</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" href="/favicon.ico">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,9 +15,6 @@
   <body>
     <div class="page-group">
         <div class="page page-current">
-        	<header class="bar bar-nav">
-			  <h1 class="title" style="margin-left:0px;">饭饭精选&nbsp;&nbsp;靠谱还实惠</h1>
-			</header>
 			<div class="content">
 			<div class="row" style="background-color:#FFCC01;height:150px;">
 				<div class="col-50" style="padding:20px;">
@@ -42,7 +39,7 @@
 			<div style="width:100%;height:10px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-50" style="font-weight:bold;">优惠活动</div>
-				<div class="col-50 more_activity"><a href="" style="color:#FFCC01;">查看更多</a></div>
+				<div class="col-50 more_activity"><a href="<%=request.getContextPath()%>/stand" style="color:#FFCC01;">查看更多</a></div>
 			</div>
 			<div class="row" style="padding:5px;padding-top:0px;">
 				<div class="col-100">
