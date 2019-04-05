@@ -113,7 +113,7 @@
 	   //location.href='https://apis.map.qq.com/tools/locpicker?search=1&type=0&backurl=http://192.168.0.4:8081/app/sellerInit?'+encodeURIComponent(data)+'&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp';
 	   
 	   wx.miniProgram.navigateTo({
-            url: 'pages/address/address?backUrl=htpps://fanfan.skyable.cn/app/sellerInit'
+            url: '/pages/address/address?backUrl=htpps://fanfan.skyable.cn/app/sellerInit'
        })
    }
 </script>
