@@ -46,6 +46,17 @@
           </div>
         </div>
       </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-name"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">商家位置</div>
+            <div class="item-input position">
+			<a class="external" onclick="position()" href="javascript:;"><img alt="" src="<%=request.getContextPath()%>/static/icon/position.png"/>${pd.addr}</a>
+            </div>
+          </div>
+        </div>
+      </li>
       </ul>
       </div>
    <div class="list-block">
@@ -71,18 +82,7 @@
             </div>
           </div>
         </div>
-      </li>
-      <li>
-        <div class="item-content">
-          <div class="item-media"><i class="icon icon-form-name"></i></div>
-          <div class="item-inner">
-            <div class="item-title label">商家位置</div>
-            <div class="item-input position">
-			<a class="external" onclick="position()" href="javascript:;"><img alt="" src="<%=request.getContextPath()%>/static/icon/position.png"/>${pd.addr}</a>
-            </div>
-          </div>
-        </div>
-      </li>
+      </li> 
       <li class="align-top">
         <div class="item-content">
           <div class="item-media"><i class="icon icon-form-comment"></i></div>
