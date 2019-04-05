@@ -37,7 +37,7 @@
           <div class="item-inner">
             <div class="item-title label">所属行业</div>
             <div class="item-input">
-              <select name="SHOPTYPE">
+              <select name="SHOPTYPE" id="SHOPTYPE">
               	<option value="">请选择</option>
                 <option value="1">餐饮</option>
                 <option value="2">外卖</option>
