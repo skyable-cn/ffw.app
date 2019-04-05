@@ -30,11 +30,11 @@
 					<img align="middle" style="margin:10px; width:80px;border-radius:50%;margin-left:50px;" src="<%=request.getContextPath()%>/static/image/head.jpg"/>
 				</div>
 			</div>
-			<div class="row module2">
-				<div class="col-25"><a class="external" href="<%=request.getContextPath()%>/discount"><img src="<%=request.getContextPath()%>/static/icon/home/wz.png"/><p>周四五折</p></a></div>
-		        <div class="col-25"><a class="external" href="<%=request.getContextPath()%>/lottery"><img src="<%=request.getContextPath()%>/static/icon/home/cj.png"/><p>免费抽奖</p></a></div>
-		        <div class="col-25"><a class="external" href="<%=request.getContextPath()%>/shop"><img src="<%=request.getContextPath()%>/static/icon/home/tj.png"/><p>好店推荐</p></a></div>
-		        <div class="col-25"><a class="external" href="<%=request.getContextPath()%>/seller"><img src="<%=request.getContextPath()%>/static/icon/home/rz.png"/><p>商家入驻</p></a></div>
+			<div class="row module2" style="margin-top:10px;">
+				<div class="col-25"><a class="external" href="<%=request.getContextPath()%>/discount"><img src="<%=request.getContextPath()%>/static/icon/home/wz.png"/><p style="font-size:0.75rem;">周四五折</p></a></div>
+		        <div class="col-25"><a class="external" href="<%=request.getContextPath()%>/lottery"><img src="<%=request.getContextPath()%>/static/icon/home/cj.png"/><p style="font-size:0.75rem;">免费抽奖</p></a></div>
+		        <div class="col-25"><a class="external" href="<%=request.getContextPath()%>/shop"><img src="<%=request.getContextPath()%>/static/icon/home/tj.png"/><p style="font-size:0.75rem;">好店推荐</p></a></div>
+		        <div class="col-25"><a class="external" href="<%=request.getContextPath()%>/seller"><img src="<%=request.getContextPath()%>/static/icon/home/rz.png"/><p style="font-size:0.75rem;">商家入驻</p></a></div>
 			</div>
 			<div style="width:100%;height:10px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
