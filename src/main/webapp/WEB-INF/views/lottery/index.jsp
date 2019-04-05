@@ -19,7 +19,7 @@
 			<div class="row" style="padding:5px;">
 				<div class="col-100">
 			<div class="card demo-card-header-pic">
-			    <a href="<%=request.getContextPath()%>/lottery/info"><div valign="bottom" class="card-header color-white no-border no-padding">
+			    <a class="external" href="<%=request.getContextPath()%>/lottery/info"><div valign="bottom" class="card-header color-white no-border no-padding">
 			      <img class='card-cover' style="width:100%;" height="150" src="<%=request.getContextPath()%>/static/image/goods.jpg" alt="">
 			    </div></a>
 			    <div class="card-content">

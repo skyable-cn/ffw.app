@@ -58,7 +58,7 @@
 		      <div id="tab1" class="tab active">
 		          <div class="row" style="padding:5px;">
 					<div class="col-60"><img align="middle" style="margin:10px;width:50px;border-radius:80%;" src="<%=request.getContextPath()%>/static/image/shop.jpg"/>重庆鸡公煲火锅</div>
-					<div class="col-40" style="line-height:80px;"><a href="<%=request.getContextPath()%>/shop/info">进店逛逛 ></a></div>
+					<div class="col-40" style="line-height:80px;"><a class="external" href="<%=request.getContextPath()%>/shop/info">进店逛逛 ></a></div>
 				</div>
 							<div style="width:100%;height:1px;background:#aaaaaa;">&nbsp;</div>
 			<div class="row" style="padding:10px;">

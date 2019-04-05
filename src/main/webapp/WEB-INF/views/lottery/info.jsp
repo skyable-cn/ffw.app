@@ -29,7 +29,7 @@
         <div class="content-block">
           <div style="margin:0 auto;background:#FFCC01;width:150px;height:150px;border:1px solid #dddddd;border-radius:75px;text-align: center;line-height:150px;color:#000000;font-weight:bold;">参与抽奖</div>
           <div style="margin:0 auto;width:300px;text-align: center;padding-top:15px;">2019-12-20 21:00开奖</div>
-          <div style="margin:0 auto;width:300px;text-align: center;padding-top:5px;"><a href="<%=request.getContextPath()%>/lottery/member">已有1234人参与抽奖,查看全部 ></a></div>
+          <div style="margin:0 auto;width:300px;text-align: center;padding-top:5px;"><a class="external" href="<%=request.getContextPath()%>/lottery/member">已有1234人参与抽奖,查看全部 ></a></div>
         <div class="row" style="padding:5px;">
 			<div class="col-100"><img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="<%=request.getContextPath()%>/static/image/head.jpg"/><img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="<%=request.getContextPath()%>/static/image/head.jpg"/><img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="<%=request.getContextPath()%>/static/image/head.jpg"/></div>
 		</div>

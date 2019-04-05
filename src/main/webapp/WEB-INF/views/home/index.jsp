@@ -31,15 +31,15 @@
 				</div>
 			</div>
 			<div class="row module2">
-				<div class="col-25"><a class="" href="<%=request.getContextPath()%>/discount"><img src="<%=request.getContextPath()%>/static/icon/home/wz.png"/><p>周四五折</p></a></div>
-		        <div class="col-25"><a class="" href="<%=request.getContextPath()%>/lottery"><img src="<%=request.getContextPath()%>/static/icon/home/cj.png"/><p>免费抽奖</p></a></div>
-		        <div class="col-25"><a class="" href="<%=request.getContextPath()%>/shop"><img src="<%=request.getContextPath()%>/static/icon/home/tj.png"/><p>好店推荐</p></a></div>
-		        <div class="col-25"><a class="" href="<%=request.getContextPath()%>/seller"><img src="<%=request.getContextPath()%>/static/icon/home/rz.png"/><p>商家入驻</p></a></div>
+				<div class="col-25"><a class="external" href="<%=request.getContextPath()%>/discount"><img src="<%=request.getContextPath()%>/static/icon/home/wz.png"/><p>周四五折</p></a></div>
+		        <div class="col-25"><a class="external" href="<%=request.getContextPath()%>/lottery"><img src="<%=request.getContextPath()%>/static/icon/home/cj.png"/><p>免费抽奖</p></a></div>
+		        <div class="col-25"><a class="external" href="<%=request.getContextPath()%>/shop"><img src="<%=request.getContextPath()%>/static/icon/home/tj.png"/><p>好店推荐</p></a></div>
+		        <div class="col-25"><a class="external" href="<%=request.getContextPath()%>/seller"><img src="<%=request.getContextPath()%>/static/icon/home/rz.png"/><p>商家入驻</p></a></div>
 			</div>
 			<div style="width:100%;height:10px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-50" style="font-weight:bold;">优惠活动</div>
-				<div class="col-50 more_activity"><a href="<%=request.getContextPath()%>/stand" style="color:#FFCC01;">查看更多</a></div>
+				<div class="col-50 more_activity"><a class="external" href="<%=request.getContextPath()%>/stand" style="color:#FFCC01;">查看更多</a></div>
 			</div>
 			<div class="row" style="padding:5px;padding-top:0px;">
 				<div class="col-100">
