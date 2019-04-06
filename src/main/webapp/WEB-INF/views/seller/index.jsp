@@ -17,6 +17,9 @@
     <div class="page-group">
         <div class="page page-current"  id="route1">
 			<div class="content">
+			<form method="post" action="<%=request.getContextPath()%>/seller/save">
+			<input name="LATITUDE" value="${pd.LATITUDE}"/>
+			<input name="LONGITUDE" value="${pd.LONGITUDE}"/>
 				<div class="list-block">
     <ul>
       <!-- Text inputs -->
@@ -53,7 +56,7 @@
           <div class="item-inner">
             <div class="item-title label">商家位置</div>
             <div class="item-input position">
-			<a class="external" onclick="position()" href="javascript:;"><img alt="" src="<%=request.getContextPath()%>/static/icon/position.png"/>${pd.addr}</a>
+			<a class="external" onclick="position()" href="javascript:;"><img alt="" src="<%=request.getContextPath()%>/static/icon/position.png"/><input name="SHOPADDRESS" readonly="readonly" value="${pd.ADDRESS}"/></a>
             </div>
           </div>
         </div>
@@ -99,9 +102,10 @@
   </div>
   <div class="content-block">
     <div class="row">
-      	<div class="col-100"><a href="#" class="button button-big button-fill button-success" style="background:#FFCC01;color:#000000;">入驻</a></div>
+      	<div class="col-100"><button type="submit" class="button button-big button-fill button-success" style="background:#FFCC01;color:#000000;">入驻</button></div>
     </div>
   </div>
+  </form>
         	</div>
     	</div>
     </div>
@@ -115,6 +119,10 @@
 	   wx.miniProgram.navigateTo({
             url: '/pages/address/address?SHOPNAME='+encodeURI($("#SHOPNAME").val())+'&SHOPTYPE='+$("#SHOPTYPE").val()
        })
+   }
+   
+   if('${pd.msg}'){
+	  alert('${pd.msg}') 
    }
 </script>
 </html>
