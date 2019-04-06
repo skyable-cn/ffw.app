@@ -10,17 +10,16 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <%@ include file="../common/head.jsp"%>
+    <%@ include file="../common/headcss.jsp"%>
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
   </head>
   <body>
     <div class="page-group">
         <div class="page page-current"  id="route1">
 			<div class="content">
-			<form method="post" action="<%=request.getContextPath()%>/seller/save">
-			<input name="LATITUDE" type="hidden" value="${pd.LATITUDE}"/>
-			<input name="LONGITUDE" type="hidden" value="${pd.LONGITUDE}"/>
-			<input name="SHOPADDRESS" type="hidden" value="${pd.ADDRESS}"/>
+			<input id="LATITUDE" name="LATITUDE" type="hidden" value="${pd.LATITUDE}"/>
+			<input id="LONGITUDE" name="LONGITUDE" type="hidden" value="${pd.LONGITUDE}"/>
+			<input id="SHOPADDRESS" name="SHOPADDRESS" type="hidden" value="${pd.ADDRESS}"/>
 				<div class="list-block">
     <ul>
       <!-- Text inputs -->
@@ -30,7 +29,7 @@
           <div class="item-inner">
             <div class="item-title label">商家名称</div>
             <div class="item-input">
-              <input id="SHOPNAME" type="text" placeholder="您的店名称" value="${pd.SHOPNAME}">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${pd.SHOPNAME}">
             </div>
           </div>
         </div>
@@ -42,10 +41,9 @@
             <div class="item-title label">所属行业</div>
             <div class="item-input">
               <select name="SHOPTYPE" id="SHOPTYPE">
-              	<option value="">请选择</option>
-                <option value="1">餐饮</option>
-                <option value="2">外卖</option>
-                <option value="3">盒饭</option>
+              	<c:forEach var="var" items="${typeData}">
+                	<option value="${var.SHOPTYPE_ID}"  <c:if test="${var.SHOPTYPE_ID eq pd.SHOPTYPE_ID}">selected="selected"</c:if>>${var.SHOPTYPENAME}</option>
+                </c:forEach>
               </select>
             </div>
           </div>
@@ -72,7 +70,7 @@
           <div class="item-inner">
             <div class="item-title label">联系人</div>
             <div class="item-input">
-              <input id="CONTRACTPEOPLE" type="text" placeholder="联系人" value="${pd.CONTRACTPEOPLE}">
+              <input id="CONTRACTPERSON" name="CONTRACTPERSON" type="text" placeholder="联系人" value="${pd.CONTRACTPEOPLE}">
             </div>
           </div>
         </div>
@@ -83,7 +81,7 @@
           <div class="item-inner">
             <div class="item-title label">联系电话</div>
             <div class="item-input">
-              <input id="CONTRACTPHONE" type="text" placeholder="联系电话" value="${pd.CONTRACTPHONE}">
+              <input id="CONTRACTPHONE" name="CONTRACTPHONE" type="text" placeholder="联系电话" value="${pd.CONTRACTPHONE}">
             </div>
           </div>
         </div>
@@ -94,7 +92,7 @@
           <div class="item-inner">
             <div class="item-title label">商家详细介绍</div>
             <div class="item-input">
-              <textarea id="SHOPDESC" placeholder="商家详细介绍 . . .">${pd.SHOPDESC}</textarea>
+              <textarea id="SHOPDESC" name="SHOPDESC" placeholder="商家详细介绍 . . .">${pd.SHOPDESC}</textarea>
             </div>
           </div>
         </div>
@@ -103,15 +101,14 @@
   </div>
   <div class="content-block">
     <div class="row">
-      	<div class="col-100"><button type="submit" class="button button-big button-fill button-success" style="background:#FFCC01;color:#000000;">入驻</button></div>
+      	<div class="col-100"><a href="javascript:;" onclick="save()" class="button button-big button-fill button-success" style="background:#FFCC01;color:#000000;">入驻</a></div>
     </div>
   </div>
-  </form>
         	</div>
     	</div>
     </div>
   </body>
-
+  <%@ include file="../common/headjs.jsp"%>
   <script>
    function position(){
 	   //var data = "SHOPNAME="+$("#SHOPNAME").val()+"&CONTRACTPEOPLE="+$("#CONTRACTPEOPLE").val()+"&CONTRACTPHONE="+$("#CONTRACTPHONE").val()+"&SHOPDESC="+$("#SHOPDESC").val();
@@ -122,8 +119,38 @@
        })
    }
    
-   if('${pd.msg}'){
-	  alert('${pd.msg}') 
+   function save(){
+	   $.ajax({
+			type: "POST",
+			url: '<%=request.getContextPath()%>/seller/save',
+	    	data:{
+	    		"LATITUDE":$("#LATITUDE").val(),
+	    		"LONGITUDE":$("#LONGITUDE").val(),
+	    		"SHOPADDRESS":$("#SHOPADDRESS").val(),
+	    		"SHOPNAME":$("#SHOPNAME").val(),
+	    		"SHOPTYPE":$("#SHOPTYPE").val(),
+	    		"CONTRACTPERSON":$("#CONTRACTPERSON").val(),
+	    		"CONTRACTPHONE":$("#CONTRACTPHONE").val(),
+	    		"SHOPDESC":$("#SHOPDESC").val()
+	    	},
+	    	async: false,
+			dataType:'json',
+			cache: false,
+			beforeSend:function(){
+				
+			},
+			success: function(data){
+				if(data.flag ){
+					$.alert(data.message,function(){
+						location.href='<%=request.getContextPath()%>/seller/list?openid=${pd.openid}'
+					})
+					
+				}
+			},
+			error:function(){
+				
+			}
+		});
    }
 </script>
 </html>

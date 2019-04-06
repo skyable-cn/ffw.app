@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <%@ include file="../common/head.jsp"%>
+    <%@ include file="../common/headcss.jsp"%>
   </head>
   <body>
     <div class="page-group">
@@ -112,6 +112,7 @@
         </div>
     </div>
   </body>
+  <%@ include file="../common/headjs.jsp"%>
   <script type="text/javascript">
   	var swiper = new Swiper('.swiper-container', {
       pagination: {
@@ -119,6 +120,6 @@
         dynamicBullets: true,
       },
       autoplay:true
-    });
+    });	
   </script>
 </html>
