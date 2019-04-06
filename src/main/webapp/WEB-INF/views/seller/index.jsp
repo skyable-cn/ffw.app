@@ -40,7 +40,7 @@
           <div class="item-inner">
             <div class="item-title label">所属行业</div>
             <div class="item-input">
-              <select name="SHOPTYPE" id="SHOPTYPE">
+              <select name="SHOPTYPE_ID" id="SHOPTYPE_ID">
               	<c:forEach var="var" items="${typeData}">
                 	<option value="${var.SHOPTYPE_ID}"  <c:if test="${var.SHOPTYPE_ID eq pd.SHOPTYPE_ID}">selected="selected"</c:if>>${var.SHOPTYPENAME}</option>
                 </c:forEach>
@@ -128,7 +128,7 @@
 	    		"LONGITUDE":$("#LONGITUDE").val(),
 	    		"SHOPADDRESS":$("#SHOPADDRESS").val(),
 	    		"SHOPNAME":$("#SHOPNAME").val(),
-	    		"SHOPTYPE":$("#SHOPTYPE").val(),
+	    		"SHOPTYPE_ID":$("#SHOPTYPE_ID").val(),
 	    		"CONTRACTPERSON":$("#CONTRACTPERSON").val(),
 	    		"CONTRACTPHONE":$("#CONTRACTPHONE").val(),
 	    		"SHOPDESC":$("#SHOPDESC").val()
