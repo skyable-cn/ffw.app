@@ -18,8 +18,9 @@
         <div class="page page-current"  id="route1">
 			<div class="content">
 			<form method="post" action="<%=request.getContextPath()%>/seller/save">
-			<input name="LATITUDE" value="${pd.LATITUDE}"/>
-			<input name="LONGITUDE" value="${pd.LONGITUDE}"/>
+			<input name="LATITUDE" type="hidden" value="${pd.LATITUDE}"/>
+			<input name="LONGITUDE" type="hidden" value="${pd.LONGITUDE}"/>
+			<input name="SHOPADDRESS" type="hidden" value="${pd.ADDRESS}"/>
 				<div class="list-block">
     <ul>
       <!-- Text inputs -->
@@ -56,7 +57,7 @@
           <div class="item-inner">
             <div class="item-title label">商家位置</div>
             <div class="item-input position">
-			<a class="external" onclick="position()" href="javascript:;"><img alt="" src="<%=request.getContextPath()%>/static/icon/position.png"/><input name="SHOPADDRESS" readonly="readonly" value="${pd.ADDRESS}"/></a>
+			<a class="external" onclick="position()" href="javascript:;"><img alt="" src="<%=request.getContextPath()%>/static/icon/position.png"/>${pd.ADDRESS}</a>
             </div>
           </div>
         </div>
