@@ -9,18 +9,17 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-import com.ffw.api.model.PageData;
-import com.ffw.app.constant.IConstant;
 import com.ffw.app.util.RestTemplateUtil;
 
-@Component
 public class CommonFilter implements Filter {
+
+	private Logger logger = LoggerFactory.getLogger(CommonFilter.class);
 
 	@Autowired
 	RestTemplateUtil rest;
@@ -34,22 +33,13 @@ public class CommonFilter implements Filter {
 	public void doFilter(ServletRequest arg0, ServletResponse arg1,
 			FilterChain arg2) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) arg0;
-		HttpServletResponse response = (HttpServletResponse) arg1;
 		String openID = request.getParameter("openid");
 		if (StringUtils.isNotEmpty(openID)) {
-			PageData pdm = new PageData();
-			pdm.put("WXOPEN_ID", openID);
-			pdm = rest.post(IConstant.FFW_SERVICE_KEY, "member/findBy", pdm,
-					PageData.class);
-			request.getSession().setAttribute(IConstant.USER_SESSION, pdm);
+			logger.info("=========>> openid:" + openID);
+			request.getSession().setAttribute("openid", openID);
 		}
 
-		if (null == request.getSession().getAttribute(IConstant.USER_SESSION)) {
-			response.sendRedirect(request.getContextPath() + "/error/param");
-		} else {
-			arg2.doFilter(arg0, arg1);
-		}
-
+		arg2.doFilter(arg0, arg1);
 	}
 
 	@Override
