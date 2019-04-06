@@ -44,9 +44,10 @@ public class CommonFilter implements Filter {
 
 		if (null == request.getSession().getAttribute(IConstant.USER_SESSION)) {
 			response.sendRedirect(request.getContextPath() + "/error/param");
+		} else {
+			arg2.doFilter(arg0, arg1);
 		}
 
-		arg2.doFilter(arg0, arg1);
 	}
 
 	@Override
