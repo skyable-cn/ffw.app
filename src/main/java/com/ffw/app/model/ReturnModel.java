@@ -1,8 +1,8 @@
 package com.ffw.app.model;
 
 public class ReturnModel {
-	private boolean flag;
-	private String message;
+	private boolean flag = true;
+	private String message = "OK";
 	private Object data;
 
 	public boolean isFlag() {
