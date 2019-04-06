@@ -13,11 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.ffw.api.model.PageData;
 import com.ffw.app.constant.IConstant;
 import com.ffw.app.util.RestTemplateUtil;
 
+@Component
 public class CommonFilter implements Filter {
 
 	@Autowired
