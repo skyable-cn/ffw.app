@@ -53,6 +53,7 @@ public class WeChatController extends BaseController {
 		pdm = rest.post(IConstant.FFW_SERVICE_KEY, "member/findBy", pdm,
 				PageData.class);
 		if (null == pdm) {
+			pd.put("MEMBERTYPE_ID", IConstant.STRING_1);
 			rest.post(IConstant.FFW_SERVICE_KEY, "member/save", pd,
 					PageData.class);
 		} else {
