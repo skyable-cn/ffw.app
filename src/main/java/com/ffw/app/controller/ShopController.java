@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class ShopController {
+public class ShopController extends BaseController {
 
 	@RequestMapping(value = { "/shop" })
 	public ModelAndView index() {

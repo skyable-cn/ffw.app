@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ffw.api.model.Page;
 import com.ffw.api.model.PageData;
+import com.ffw.app.constant.IConstant;
 
 @Component
 public class BaseController {
@@ -147,5 +148,13 @@ public class BaseController {
 			e.printStackTrace();
 		}
 		return msg;
+	}
+
+	public PageData userSession() {
+		return (PageData) getSession().getAttribute(IConstant.USER_SESSION);
+	}
+
+	public String memberId() {
+		return userSession().getString("MEMBER_ID");
 	}
 }

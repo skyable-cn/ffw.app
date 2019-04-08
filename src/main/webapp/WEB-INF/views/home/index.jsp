@@ -11,6 +11,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <%@ include file="../common/headcss.jsp"%>
+    <%@ include file="../common/utiljs.jsp"%>
   </head>
   <body>
     <div class="page-group">
@@ -19,15 +20,15 @@
 			<div class="row" style="background-color:#FFCC01;height:150px;">
 				<div class="col-50" style="padding:20px;">
 					<div class="row">
-						<div class="col-100" style="font-weight:bold;">张三丰</div>
+						<div class="col-100" style="font-weight:bold;">${USER_SESSION.NICKNAME}</div>
 					</div>
 					<div class="row">
-						<div class="col-50" style="font-weight:bold;">1<br/>订单</div>
-						<div class="col-50" style="font-weight:bold;">1<br/>卡券</div>
+						<div class="col-50" style="font-weight:bold;">${cardsNum}<br/>订单</div>
+						<div class="col-50" style="font-weight:bold;">${ordersNum}<br/>卡券</div>
 					</div>
 				</div>
 				<div class="col-50" style="padding:20px;">
-					<img align="middle" style="margin:10px; width:80px;border-radius:50%;margin-left:50px;" src="<%=request.getContextPath()%>/static/image/head.jpg"/>
+					<img align="middle" style="margin:10px; width:80px;border-radius:50%;margin-left:50px;" src="${USER_SESSION.PHOTO}"/>
 				</div>
 			</div>
 			<div class="row module2" style="margin-top:10px;">
@@ -45,9 +46,9 @@
 				<div class="col-100">
 					<div class="swiper-container">
 					    <div class="swiper-wrapper">
-					        <div class="swiper-slide"><img height="200" width="100%" src="<%=request.getContextPath()%>/static/plugin/swiper/image/swiper1.jpg"/></div>
-					        <div class="swiper-slide"><img height="200" width="100%" src="<%=request.getContextPath()%>/static/plugin/swiper/image/swiper2.jpg"/></div>
-					        <div class="swiper-slide"><img height="200" width="100%" src="<%=request.getContextPath()%>/static/plugin/swiper/image/swiper3.jpg"/></div>
+						    <c:forEach var="var" items="${standData}">
+						    	<div class="swiper-slide"><a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=${var.GOODS_ID}"><img height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}';"/></a></div>
+						    </c:forEach>
 					    </div>
 					    <div class="swiper-pagination"></div>
 					</div>
@@ -64,44 +65,50 @@
 			</div>
 		    <div class="tabs">
 		      <div id="tab1" class="tab active">
+		      	<c:forEach var="var" items="${goodsDatatj}">
 		          <div class="card demo-card-header-pic" style="position:relative;">
 				    <div valign="bottom" class="card-header color-white no-border no-padding">
-				      <a class="external" href="<%=request.getContextPath()%>/goods/info"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/static/image/demo/demo1.jpg" alt=""></a>
-				      <div class="suspend left">抢购中</div>
-				      <div class="suspend right">活动倒计时<br/><span>17</span>天<span>22</span> <span>12</span> <span>34</span></div>
+				      <a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=${var.GOODS_ID}"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}';"></a>
+				      <div id="goods_time_id_${var.GOODS_ID}_tj_left" class="suspend left">抢购中</div>
+				      <div id="goods_time_id_${var.GOODS_ID}_tj_right" class="suspend right">活动倒计时<div id="goods_time_id_${var.GOODS_ID}_tj"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
 				    </div>
 				    <div class="card-content">
 				      <div class="card-content-inner">
-				        <p><span style="color:#fff;background-color:#F40A0B;padding:3px;border-radius:5px;">爆</span>特别好吃，吃了忘不了，一辈子都喜吃</p>
+				        <p><span style="color:#fff;background-color:#F40A0B;padding:3px;border-radius:5px;">爆</span>${var.GOODSDESC}</p>
 				      </div>
 				    </div>
 				    <div class="card-footer">
-				      <span>体验价: <strong style="color:#F40A0B;font-size:16px;">68.00</strong></span>
-				      <span class="delete">¥ 98.00</span>
+				      <span>体验价: <strong style="color:#F40A0B;font-size:16px;">${var.SELLMONEY}</strong></span>
+				      <span class="delete">¥ ${var.ORIGINALMONEY}</span>
 				      <span class="return">返 7.9</span>
-				      <span>已抢: 1234</span>
+				      <span>已抢: ${var.BUYNUMBER}</span>
 				    </div>
 				  </div>
+				  <script type="text/javascript">TimeDown("goods_time_id_${var.GOODS_ID}_tj","${var.ENDTIME} 23:59:59")</script>
+				  </c:forEach>
 		      </div>
 		      <div id="tab2" class="tab">
-		        <div class="card demo-card-header-pic" style="position:relative;">
+		        <c:forEach var="var" items="${goodsDatazr}">
+		          <div class="card demo-card-header-pic" style="position:relative;">
 				    <div valign="bottom" class="card-header color-white no-border no-padding">
-				      <a class="external" href="<%=request.getContextPath()%>/goods/info"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/static/image/demo/demo2.jpg" alt=""></a>
-				      <div class="suspend left">抢购中</div>
-				      <div class="suspend right">活动倒计时<br/><span>17</span>天<span>22</span> <span>12</span> <span>34</span></div>
+				      <a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=${var.GOODS_ID}"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}';"></a>
+				      <div id="goods_time_id_${var.GOODS_ID}_zr_left" class="suspend left">抢购中</div>
+				      <div id="goods_time_id_${var.GOODS_ID}_zr_right" class="suspend right">活动倒计时<div id="goods_time_id_${var.GOODS_ID}_zr"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
 				    </div>
 				    <div class="card-content">
 				      <div class="card-content-inner">
-				        <p><span style="color:#fff;background-color:#F40A0B;padding:3px;border-radius:5px;">爆</span>特别好吃，吃了忘不了，一辈子都喜吃</p>
+				        <p><span style="color:#fff;background-color:#F40A0B;padding:3px;border-radius:5px;">爆</span>${var.GOODSDESC}</p>
 				      </div>
 				    </div>
 				    <div class="card-footer">
-				      <span>体验价: <strong style="color:#F40A0B;font-size:16px;">68.00</strong></span>
-				      <span class="delete">¥ 98.00</span>
+				      <span>体验价: <strong style="color:#F40A0B;font-size:16px;">${var.SELLMONEY}</strong></span>
+				      <span class="delete">¥ ${var.ORIGINALMONEY}</span>
 				      <span class="return">返 7.9</span>
-				      <span>已抢: 1234</span>
+				      <span>已抢: ${var.BUYNUMBER}</span>
 				    </div>
 				  </div>
+				  <script type="text/javascript">TimeDown("goods_time_id_${var.GOODS_ID}_zr","${var.ENDTIME} 23:59:59")</script>
+				  </c:forEach>
 		      </div>
 		    </div>
 				</div>

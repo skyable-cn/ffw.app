@@ -23,7 +23,7 @@ public class SellerController extends BaseController {
 
 	@RequestMapping(value = { "/seller" })
 	public ModelAndView index() {
-
+		logger.info("进入商家入驻");
 		ModelAndView mv = new ModelAndView();
 
 		PageData pdm = new PageData();
@@ -39,6 +39,7 @@ public class SellerController extends BaseController {
 
 	@RequestMapping(value = { "/sellerInit" })
 	public ModelAndView sellerInit() throws Exception {
+		logger.info("初始化商家入驻");
 		ModelAndView mv = new ModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
@@ -58,6 +59,7 @@ public class SellerController extends BaseController {
 	@RequestMapping(value = { "/seller/save" })
 	@ResponseBody
 	public ReturnModel sellerSave() throws Exception {
+		logger.info("商家入驻保存");
 		PageData pd = new PageData();
 		pd = this.getPageData();
 
@@ -74,7 +76,7 @@ public class SellerController extends BaseController {
 
 	@RequestMapping(value = { "/seller/list" })
 	public ModelAndView list() {
-
+		logger.info("商家后台分店列表");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("seller/list");
 		return mv;

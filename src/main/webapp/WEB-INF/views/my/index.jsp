@@ -18,10 +18,10 @@
 			<div class="content">
 			<div class="row" style="background-color:#FFCC01;height:150px;">
 				<div class="col-40" style="padding:20px;">
-					<img align="middle" style="margin:10px; width:80px;border-radius:50%;" src="<%=request.getContextPath()%>/static/image/head.jpg"/>
+					<img align="middle" style="margin:10px; width:80px;border-radius:50%;" src="${USER_SESSION.PHOTO}"/>
 				</div>
 				<div class="col-60" style="padding-top:30px;">
-					<h5 style="margin:0px;font-weight:bold;font-size:0.85rem;padding-bottom:5px;">张三丰</h5>
+					<h5 style="margin:0px;font-weight:bold;font-size:0.85rem;padding-bottom:5px;">${USER_SESSION.NICKNAME}</h5>
 					<h5 style="margin:0px;font-weight:bold;font-size:0.65rem;padding-bottom:2px;">个人资料</h5>
 					<h5 style="margin:0px;font-weight:bold;font-size:0.65rem;padding-bottom:2px;">普通用户</h5>
 				</div>

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class DiscountController {
+public class DiscountController extends BaseController {
 
 	@RequestMapping(value = { "/discount" })
 	public ModelAndView index() {

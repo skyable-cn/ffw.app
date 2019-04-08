@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class MyController {
+public class MyController extends BaseController {
 
 	@RequestMapping(value = { "/my" })
 	public ModelAndView index() {

@@ -16,28 +16,27 @@
     <div class="page-group">
         <div class="page page-current">
 			<div class="content">
+				<c:forEach var="var" items="${lotteryData}">
 			<div class="row" style="padding:5px;">
 				<div class="col-100">
 			<div class="card demo-card-header-pic">
-			    <a class="external" href="<%=request.getContextPath()%>/lottery/info"><div valign="bottom" class="card-header color-white no-border no-padding">
-			      <img class='card-cover' style="width:100%;" height="150" src="<%=request.getContextPath()%>/static/image/goods.jpg" alt="">
+			    <a class="external" href="<%=request.getContextPath()%>/lottery/info?LOTTERY_ID=${var.LOTTERY_ID}"><div valign="bottom" class="card-header color-white no-border no-padding">
+			      <img class='card-cover' style="width:100%;" height="200" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" alt="">
 			    </div></a>
 			    <div class="card-content">
 			      <div class="card-content-inner">
-			        <p>阿里赞助</p>
-			        <p>
-			        1、一等奖什么<br/>
-			        2、二等奖什么
-			        </p>
+			        <p>${var.SPONSORNAME}</p>
+			        <p>${var.LOTTERYRULE}</p>
 			      </div>
 			    </div>
 			    <div class="card-footer">
-			      <span>抽奖 2018-12-12 12:00-20:00</span>
-			      <span>开奖 2018-12-12 21:00</span>
+			      <span>抽奖${var.STARTTIME}</span>
+			      <span>开奖${var.ENDTIME}</span>
 			    </div>
 			  </div>
 			  </div>
 			  </div>
+			  </c:forEach>
         	</div>
     	</div>
     </div>

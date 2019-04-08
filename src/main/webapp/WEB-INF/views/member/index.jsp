@@ -23,8 +23,8 @@
 					 <div class="row">
 					 	<div class="col-60">
 					 		<div class="row">
-							 	<div class="col-40"><img align="middle" style="margin:10px; width:60px;border-radius:50%;" src="<%=request.getContextPath()%>/static/image/head.jpg"/></div>
-							 	<div class="col-60" style="line-height:80px;">张三丰</div>
+							 	<div class="col-40"><img align="middle" style="margin:10px; width:60px;border-radius:50%;" src="${USER_SESSION.PHOTO}"/></div>
+							 	<div class="col-60" style="line-height:80px;">${USER_SESSION.NICKNAME}</div>
 							 </div>
 					 	</div>
 					 	<div class="col-40" style="padding-top:40px;padding-right:10px;"><button class="button button-fill button-warning pull-right" style="background:#FFCC01;color:#000000;font-weight:bold;">立即加入</button></div>

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class SearchController {
+public class SearchController extends BaseController {
 
 	@RequestMapping(value = { "/search" })
 	public ModelAndView index() {

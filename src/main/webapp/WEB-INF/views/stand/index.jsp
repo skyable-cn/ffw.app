@@ -16,21 +16,13 @@
     <div class="page-group">
         <div class="page page-current">
 			<div class="content">
+			<c:forEach var="var" items="${standData}">
 			<div class="row" style="padding:5px;">
 				<div class="col-100">
-					<img height="200" width="100%" src="<%=request.getContextPath()%>/static/plugin/swiper/image/swiper1.jpg"/>
+					<a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=${var.GOODS_ID}"><img height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}"/></a>
 				</div>
 			</div>
-			<div class="row" style="padding:5px;">
-				<div class="col-100">
-					<img height="200" width="100%" src="<%=request.getContextPath()%>/static/plugin/swiper/image/swiper2.jpg"/>
-				</div>
-			</div>
-			<div class="row" style="padding:5px;">
-				<div class="col-100">
-					<img height="200" width="100%" src="<%=request.getContextPath()%>/static/plugin/swiper/image/swiper3.jpg"/>
-				</div>
-			</div>
+			</c:forEach>
 			
 			<h5>&nbsp;</h5>
         	</div>

@@ -26,6 +26,7 @@ public class WeChatController extends BaseController {
 	@RequestMapping(value = { "/wechat/user" })
 	@ResponseBody
 	public JSONObject index() {
+		logger.info("获取用户信息");
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		String str = null;
@@ -46,6 +47,7 @@ public class WeChatController extends BaseController {
 	@RequestMapping(value = { "/system/init" })
 	@ResponseBody
 	public ReturnModel init() {
+		logger.info("系统信息初始化");
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		PageData pdm = new PageData();
@@ -64,7 +66,6 @@ public class WeChatController extends BaseController {
 			rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pdm,
 					PageData.class);
 		}
-
 		return new ReturnModel();
 	}
 }

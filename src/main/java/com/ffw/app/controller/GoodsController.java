@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class GoodsController {
+public class GoodsController extends BaseController {
 
 	@RequestMapping(value = { "/goods/info" })
 	public ModelAndView info() {

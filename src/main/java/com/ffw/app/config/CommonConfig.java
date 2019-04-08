@@ -4,6 +4,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.web.filter.DelegatingFilterProxy;
 
 import com.ffw.app.filter.CommonFilter;
 
@@ -20,10 +21,15 @@ public class CommonConfig {
 	}
 
 	@Bean
+	public CommonFilter commonFilter() {
+		return new CommonFilter();
+	}
+
+	@Bean
 	public FilterRegistrationBean testFilterRegistration() {
 
 		FilterRegistrationBean registration = new FilterRegistrationBean();
-		registration.setFilter(new CommonFilter());
+		registration.setFilter(new DelegatingFilterProxy("commonFilter"));
 		registration.addUrlPatterns("/*");
 		registration.setName("commonFilter");
 		registration.setOrder(1);

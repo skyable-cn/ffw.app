@@ -9,4 +9,6 @@ public interface IConstant {
 	String STRING_0 = "0";
 
 	String STRING_1 = "1";
+
+	String STRING_2 = "2";
 }

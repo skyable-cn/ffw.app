@@ -15,6 +15,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.ffw.api.model.PageData;
+import com.ffw.app.constant.IConstant;
 import com.ffw.app.util.RestTemplateUtil;
 
 public class CommonFilter implements Filter {
@@ -35,8 +37,13 @@ public class CommonFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) arg0;
 		String openID = request.getParameter("openid");
 		if (StringUtils.isNotEmpty(openID)) {
-			logger.info("=========>> openid:" + openID);
-			request.getSession().setAttribute("openid", openID);
+
+			PageData pdm = new PageData();
+			pdm.put("WXOPEN_ID", openID);
+			pdm = rest.post(IConstant.FFW_SERVICE_KEY, "member/findBy", pdm,
+					PageData.class);
+			request.getSession().setAttribute(IConstant.USER_SESSION, pdm);
+
 		}
 
 		arg2.doFilter(arg0, arg1);
