@@ -11,6 +11,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <%@ include file="../common/headcss.jsp"%>
+     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
   </head>
   <body>
     <div class="page-group">
@@ -34,18 +35,18 @@
 			<div class="col-100"><img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="<%=request.getContextPath()%>/static/image/head.jpg"/><img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="<%=request.getContextPath()%>/static/image/head.jpg"/><img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="<%=request.getContextPath()%>/static/image/head.jpg"/></div>
 		</div>
         <div class="row">
-      	<div class="col-100"><a href="#" class="button button-big button-fill button-success" style="background:#FFCC01;color:#000000;">分享给朋友</a></div>
+      	<div class="col-100"><a href="javascript:;" onclick="goShare()" class="button button-big button-fill button-success" style="background:#FFCC01;color:#000000;">分享给朋友</a></div>
       	</div>
         </div>
       </div>
       <div id="tab2" class="tab">
         <div class="content-block">
-          <p>抽奖规则</p>
+          <p>${lottery.LOTTERYRULE}</p>
         </div>
       </div>
       <div id="tab3" class="tab">
         <div class="content-block">
-          <p>抽奖介绍</p>
+          <p>${lottery.LOTTERYDESC}</p>
         </div>
       </div>
     </div>
@@ -55,4 +56,11 @@
     </div>
   </body>
   <%@ include file="../common/headjs.jsp"%>
+  <script type="text/javascript">
+  	function goShare(){
+  		 wx.miniProgram.navigateTo({
+             url: '/pages/share/share?image=${lottery.FILEPATH}'
+        })
+  	}
+  </script>
 </html>

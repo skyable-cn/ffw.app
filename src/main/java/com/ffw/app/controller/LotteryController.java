@@ -22,22 +22,28 @@ public class LotteryController extends BaseController {
 	public ModelAndView index() {
 		logger.info("进入免费抽奖");
 		ModelAndView mv = new ModelAndView();
-		
+
 		PageData pd1 = new PageData();
-		List<PageData> lotteryData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"lottery/listAll", pd1,
+		List<PageData> lotteryData = rest.postForList(
+				IConstant.FFW_SERVICE_KEY, "lottery/listAll", pd1,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("lotteryData", lotteryData);
-		
+
 		mv.setViewName("lottery/index");
 		return mv;
 	}
 
 	@RequestMapping(value = { "/lottery/info" })
 	public ModelAndView info() {
-
+		logger.info("进入抽奖详情");
 		ModelAndView mv = new ModelAndView();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		PageData lottery = rest.post(IConstant.FFW_SERVICE_KEY, "lottery/find",
+				pd, PageData.class);
+		mv.addObject("lottery", lottery);
+
 		mv.setViewName("lottery/info");
 		return mv;
 	}
