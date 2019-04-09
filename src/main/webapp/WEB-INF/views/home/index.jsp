@@ -23,8 +23,8 @@
 						<div class="col-100" style="font-weight:bold;">${USER_SESSION.NICKNAME}</div>
 					</div>
 					<div class="row">
-						<div class="col-50" style="font-weight:bold;">${cardsNum}<br/>订单</div>
-						<div class="col-50" style="font-weight:bold;">${ordersNum}<br/>卡券</div>
+						<div class="col-50" style="font-weight:bold;">${ordersNum}<br/>订单</div>
+						<div class="col-50" style="font-weight:bold;">${cardsNum}<br/>卡券</div>
 					</div>
 				</div>
 				<div class="col-50" style="padding:20px;">
