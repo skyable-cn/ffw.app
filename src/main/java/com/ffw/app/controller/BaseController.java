@@ -157,4 +157,9 @@ public class BaseController {
 	public String memberId() {
 		return userSession().getString("MEMBER_ID");
 	}
+
+	public String openId() {
+		return userSession().getString("WXOPEN_ID");
+	}
+
 }
