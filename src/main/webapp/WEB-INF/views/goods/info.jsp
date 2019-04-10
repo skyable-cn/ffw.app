@@ -63,8 +63,6 @@
 			</div>
 		    <div class="tabs">
 		      <div id="tab1" class="tab active">
-		      <h4 style="text-align: center;font-size: 16px;">商家信息</h4>
-		      <div style="width:100%;height:5px;background:#dddddd;">&nbsp;</div>
 		          <div class="row" style="padding:5px;margin-top:5px;margin-bottom:5px;">
 					<div class="col-60"><c:choose>
 	              	<c:when test="${shop.FILEPATH eq null}">
@@ -76,33 +74,29 @@
 	              </c:choose>${shop.SHOPNAME}</div>
 					<div class="col-40" style="line-height:80px;"><a class="external" href="<%=request.getContextPath()%>/shop/info?SHOP_ID=${shop.SHOP_ID}">进店逛逛 ></a></div>
 				</div>
-			<div style="width:100%;height:5px;background:#dddddd;">&nbsp;</div>
+			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:10px;">
 				<div class="col-60">${shop.SHOPADDRESS}</div>
 		        <div class="col-40" style="text-align:right;"><img onclick="phone()" width="20" style="margin-right:15px;" src="<%=request.getContextPath()%>/static/icon/phone.png"/> | <img  onclick="position()" style="margin-left:15px;" width="20" src="<%=request.getContextPath()%>/static/icon/send.png"/></div>
 			</div>
-			<div style="width:100%;height:5px;background:#dddddd;">&nbsp;</div>
+			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-60" style="padding:5px;">
 					<span style="color:#fff;background-color:#F40A0B;padding:5px;border-radius:5px;padding-left:10px;padding-right:10px;">优惠券1</span>
 				</div>
 		        <div class="col-40"><button class="button button-fill button-warning pull-right" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</button></div>
 			</div>
-			<div style="width:100%;height:5px;background:#dddddd;">&nbsp;</div>
+			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 			<h5>&nbsp;</h5>
 		      </div>
 		      <div id="tab2" class="tab">
-		        <h4 style="text-align: center;font-size: 16px;">购买须知</h4>
-		        <div style="width:100%;height:1px;background:#aaaaaa;">&nbsp;</div>
-			<div class="row" style="padding:5px;">
+		        <div class="row" style="padding:5px;">
 				<div class="col-100">
 					<div style="min-height:180px;padding:10px;border:1px #dddddd solid;word-wrap: break-word;word-break: break-all;overflow: hidden;">${pd.BUYNOTICE}</div>
 				</div>
 			</div>
 		      </div>
 		      <div id="tab3" class="tab">
-		        <h4 style="text-align: center;font-size: 16px;">商品详情</h4>
-		        <div style="width:100%;height:1px;background:#aaaaaa;">&nbsp;</div>
 		        <c:forEach var="var" items="${fileDataList}" varStatus="index">
 		        <h5 style="text-align: center;font-size:14px;color:#888888;">${index.index+1}产品图片</h5>
 			<div class="row" style="padding:5px;">
