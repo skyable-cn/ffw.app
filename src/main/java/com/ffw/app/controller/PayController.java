@@ -61,6 +61,11 @@ public class PayController extends BaseController {
 		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd,
 				PageData.class);
 
+		PageData pdg = new PageData();
+		pdg.put("GOODS_ID", pd.getString("GOODS_ID"));
+		pdg = rest.post(IConstant.FFW_SERVICE_KEY, "goods/find", pdg,
+				PageData.class);
+
 		// 生成的随机字符串
 		String nonce_str = WXPayUtil.generateNonceStr();
 		// 获取客户端的ip地址
@@ -72,7 +77,7 @@ public class PayController extends BaseController {
 		data.put("appid", wechatMiniConfig.getAppid());
 		data.put("mch_id", wechatMiniConfig.getMchid());
 		data.put("nonce_str", nonce_str);
-		data.put("body", pd.getString("GOODSNAME")); // 商品描述
+		data.put("body", pdg.getString("GOODSNAME")); // 商品描述
 		data.put("out_trade_no", pd.getString("ORDER_ID"));// 商户订单号
 		data.put("total_fee",
 				String.valueOf(Float.parseFloat(pd.getString("MONEY")) * 100));// 支付金额，这边需要转成字符串类型，否则后面的签名会失败
