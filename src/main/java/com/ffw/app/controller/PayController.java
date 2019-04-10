@@ -76,7 +76,7 @@ public class PayController extends BaseController {
 		data.put("body", "美食"); // 商品描述
 		data.put("out_trade_no", pd.getString("ORDER_ID"));// 商户订单号
 		data.put("total_fee",
-				String.valueOf(Float.parseFloat(pd.getString("MONEY")) * 100));// 支付金额，这边需要转成字符串类型，否则后面的签名会失败
+				String.valueOf((Float.parseFloat(pd.getString("MONEY")) * 100)));// 支付金额，这边需要转成字符串类型，否则后面的签名会失败
 		data.put("spbill_create_ip", spbill_create_ip);
 		data.put("notify_url", wechatMiniConfig.getNoticeurl());// 支付成功后的回调地址
 		data.put("trade_type", "JSAPI");// 支付方式
