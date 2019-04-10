@@ -39,9 +39,9 @@
 				<c:if test="${fn:length(cardsData) > 0}">
 				<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 				<div class="row" style="padding:10px;padding-top:15px;padding-bottom:15px;">
-					<div class="col-50" style="font-weight:bold;">卡券抵扣</div>
-					<div class="col-50"><div style="margin-right:20px;float:right;">
-						<a href="#page2">${fn:length(cardsData)}个卡券可用</a>
+					<div class="col-40" style="font-weight:bold;">卡券抵扣</div>
+					<div class="col-60"><div style="margin-right:20px;float:right;">
+						<font id="JMTS" style="color:red;">(抵消0.00元)</font><a href="#page2" style="color:#3d4145;font-size:0.85rem;font-weight:normal;text-decoration:underline;">${fn:length(cardsData)}个卡券</a>
 						<!-- <select onchange="changeMoney()" id="KQID" style="border:none;background:#eee;">
 							<option value="">${fn:length(cardsData)}个卡券可用</option>
 							<c:forEach var="var" items="${cardsData}">
@@ -105,6 +105,11 @@
   		$("#XJ").html(lastNum * parseFloat('${pd.SELLMONEY}'));
   		$("#SF").html(lastNum * parseFloat('${pd.SELLMONEY}') - parseFloat(MONEY));
   		$("#SFC").html(lastNum * parseFloat('${pd.SELLMONEY}') - parseFloat(MONEY));
+  		
+  		if(parseFloat($("#SF").text()) < 0){
+  			$("#SF").html("0.00");
+  			$("#SFC").html("0.00");
+  		}
   	}
   	
   	var CARD_ID = '0';
@@ -112,6 +117,9 @@
   	var MONEY = '0';
   	
   	function changeMoney(id,money){
+  		
+  		$("#JMTS").html("(抵消"+money+")");
+  		
   		CARD_ID = id;
   		MONEY = money;
   		
@@ -119,6 +127,11 @@
   		$("#XJ").html(count * parseFloat('${pd.SELLMONEY}'));
   		$("#SF").html(count * parseFloat('${pd.SELLMONEY}') - parseFloat(MONEY));
   		$("#SFC").html(count * parseFloat('${pd.SELLMONEY}') - parseFloat(MONEY));
+  		
+  		if(parseFloat($("#SF").text()) < 0){
+  			$("#SF").html("0.00");
+  			$("#SFC").html("0.00");
+  		}
   	}
   	
   	function orderSave(){
@@ -126,9 +139,12 @@
 			type: "POST",
 			url: '<%=request.getContextPath()%>/orders/save',
 	    	data:{
+	    		"ORIGINAL":$("#XJ").text(),
 	    		"MONEY":$("#SF").text(),
 	    		"DERATE":MONEY,
-	    		"CARD_ID":CARD_ID
+	    		"CARD_ID":CARD_ID,
+	    		"GOODS_ID":'${pd.GOODS_ID}',
+	    		"NUMBER":$("#numberButton").text()
 	    	},
 	    	async: false,
 			dataType:'json',

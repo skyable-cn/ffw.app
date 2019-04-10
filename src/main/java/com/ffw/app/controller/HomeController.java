@@ -33,6 +33,7 @@ public class HomeController extends BaseController {
 
 		PageData pd2 = new PageData();
 		pd2.put("MEMBER_ID", memberId());
+		pd2.put("STATE", IConstant.STRING_0);
 		List<PageData> cardsData = rest.postForList(IConstant.FFW_SERVICE_KEY,
 				"cards/listAll", pd2,
 				new ParameterizedTypeReference<List<PageData>>() {

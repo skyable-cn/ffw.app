@@ -30,7 +30,7 @@ public class GoodsController extends BaseController {
 		PageData pdp = new PageData();
 		pdp.put("GOODS_ID", pd.getString("GOODS_ID"));
 		List<PageData> peopleDataList = rest.postForList(
-				IConstant.FFW_SERVICE_KEY, "orders/listAllPeople", pdp,
+				IConstant.FFW_SERVICE_KEY, "ordersitem/listAllPeople", pdp,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("peopleDataList", peopleDataList);

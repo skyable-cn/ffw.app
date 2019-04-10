@@ -33,6 +33,7 @@ public class OrdersController extends BaseController {
 
 		PageData pd2 = new PageData();
 		pd2.put("MEMBER_ID", memberId());
+		pd2.put("STATE", IConstant.STRING_0);
 		List<PageData> cardsData = rest.postForList(IConstant.FFW_SERVICE_KEY,
 				"cards/listAll", pd2,
 				new ParameterizedTypeReference<List<PageData>>() {
@@ -50,6 +51,8 @@ public class OrdersController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		String CARD_ID = pd.getString("CARD_ID");
+		String GOODS_ID = pd.getString("GOODS_ID");
+		String NUMBER = pd.getString("NUMBER");
 
 		pd.put("MEMBER_ID", memberId());
 		pd.put("CDT", DateUtil.getTime());
@@ -65,7 +68,22 @@ public class OrdersController extends BaseController {
 		PageData pdc = new PageData();
 		pdc.put("CARD_ID", CARD_ID);
 		pdc.put("STATE", IConstant.STRING_1);
+		pdc.put("ORDER_ID", pd.getString("ORDER_ID"));
 		rest.post(IConstant.FFW_SERVICE_KEY, "cards/edit", pdc, PageData.class);
+
+		PageData pdg = new PageData();
+		pdg.put("GOODS_ID", GOODS_ID);
+		pdg = rest.post(IConstant.FFW_SERVICE_KEY, "goods/find", pdg,
+				PageData.class);
+
+		PageData pdoi = new PageData();
+		pdoi.put("ORDER_ID", pd.getString("ORDER_ID"));
+		pdoi.put("GOODS_ID", GOODS_ID);
+		pdoi.put("MONEY", pdg.getString("SELLMONEY"));
+		pdoi.put("NUMBER", NUMBER);
+		rest.post(IConstant.FFW_SERVICE_KEY, "ordersitem/save", pdoi,
+				PageData.class);
+
 		return rm;
 	}
 }

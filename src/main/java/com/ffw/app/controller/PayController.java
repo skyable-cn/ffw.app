@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,8 +13,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ffw.api.model.PageData;
 import com.ffw.app.config.WXPayConfigImpl;
 import com.ffw.app.config.WechatMiniConfig;
+import com.ffw.app.constant.IConstant;
+import com.ffw.app.util.RestTemplateUtil;
 import com.github.wxpay.sdk.WXPay;
 import com.github.wxpay.sdk.WXPayConstants.SignType;
 import com.github.wxpay.sdk.WXPayUtil;
@@ -28,6 +30,9 @@ public class PayController extends BaseController {
 
 	@Autowired
 	WXPayConfigImpl config;
+
+	@Autowired
+	RestTemplateUtil rest;
 
 	private String getIpAddr(HttpServletRequest request) {
 		String ip = request.getHeader("X-Forwarded-For");
@@ -50,6 +55,12 @@ public class PayController extends BaseController {
 	@ResponseBody
 	public Map<String, String> wxPay() {
 
+		logger.info("进入下单处理");
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd,
+				PageData.class);
+
 		// 生成的随机字符串
 		String nonce_str = WXPayUtil.generateNonceStr();
 		// 获取客户端的ip地址
@@ -61,9 +72,10 @@ public class PayController extends BaseController {
 		data.put("appid", wechatMiniConfig.getAppid());
 		data.put("mch_id", wechatMiniConfig.getMchid());
 		data.put("nonce_str", nonce_str);
-		data.put("body", "测试商品"); // 商品描述
-		data.put("out_trade_no", "order-" + new Random().nextLong());// 商户订单号
-		data.put("total_fee", String.valueOf(price));// 支付金额，这边需要转成字符串类型，否则后面的签名会失败
+		data.put("body", pd.getString("GOODSNAME")); // 商品描述
+		data.put("out_trade_no", pd.getString("ORDER_ID"));// 商户订单号
+		data.put("total_fee",
+				String.valueOf(Float.parseFloat(pd.getString("MONEY")) * 100));// 支付金额，这边需要转成字符串类型，否则后面的签名会失败
 		data.put("spbill_create_ip", spbill_create_ip);
 		data.put("notify_url", wechatMiniConfig.getNoticeurl());// 支付成功后的回调地址
 		data.put("trade_type", "JSAPI");// 支付方式
