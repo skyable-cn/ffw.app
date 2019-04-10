@@ -14,7 +14,7 @@
   </head>
   <body>
     <div class="page-group">
-        <div class="page page-current">
+        <div class="page page-current" id="page1">
 			<div class="content">
 				<div class="row" style="padding:10px;">
 					<div class="col-40">
@@ -28,7 +28,7 @@
 				<div style="width:100%;height:5px;background:#dddddd;">&nbsp;</div>
 				<div class="row" style="padding:10px;padding-top:15px;padding-bottom:15px;">
 					<div class="col-50" style="font-weight:bold;">购买数量</div>
-					<div class="col-50"><div style="margin-right:20px;float:right;"><button style="width:40px;margin-right:1px;" onclick="computer('-1')">-</button><button style="width:60px;" id="numberButton">1</button><button style="width:40px;margin-left:1px;" onclick="computer('1')">+</button></div></div>
+					<div class="col-50"><div style="margin-right:20px;float:right;"><button style="width:40px;margin-right:1px;" onclick="computer('-1')">-</button><button style="width:60px;background:#FFFFFF;" id="numberButton">1</button><button style="width:40px;margin-left:1px;" onclick="computer('1')">+</button></div></div>
 				</div>
 				<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 				<div class="row" style="padding:10px;padding-top:15px;padding-bottom:15px;">
@@ -40,13 +40,15 @@
 				<div class="row" style="padding:10px;padding-top:15px;padding-bottom:15px;">
 					<div class="col-50" style="font-weight:bold;">卡券抵扣</div>
 					<div class="col-50"><div style="margin-right:20px;float:right;">
-						<select onchange="changeMoney()" id="KQID" style="border:none;background:#eee;">
+						<a href="#page2">${fn:length(cardsData)}个卡券可用</a>
+						<!-- <select onchange="changeMoney()" id="KQID" style="border:none;background:#eee;">
 							<option value="">${fn:length(cardsData)}个卡券可用</option>
 							<c:forEach var="var" items="${cardsData}">
 								<option value="${var.MONEY}">${var.DESCRIPTION}</option>
 							</c:forEach>
 							<option value="0">不使用卡券</option>
 						</select>
+						 -->
 					</div></div>
 				</div>
 				</c:if>
@@ -60,10 +62,31 @@
         	<nav class="bar bar-tab">
   <div class="row">
   	<a class="tab-item external" href="javascript:;" style="color:#000000;">实付金额: ¥ <span id="SFC">${pd.SELLMONEY}</span>元</a>
-    <a class="tab-item external" style="background:#FFCC01;color:#000000;" href="<%=request.getContextPath()%>/goBuy?GOODS_ID=${pd.GOODS_ID}">立即购买</a>
+    <a class="tab-item external" onclick="orderSave()" style="background:#FFCC01;color:#000000;" href="javascript:;">立即购买</a>
   </div>
 </nav>
     	</div>
+    	<div class="page" id="page2">
+			<div class="content">
+			<c:forEach var="var" items="${cardsData}">
+			<div class="row" style="padding:5px;">
+				<div class="col-100">
+					<a href="#page1"><div class="card" style="border-radius:10px;" onclick="changeMoney('${var.CARD_ID}','${var.MONEY}')">
+				    <div class="card-content">
+				      <div class="card-content-inner" style="height:100px;background:#FE0100;color:#FFFFFF;">${var.DESCRIPTION}</div>
+				    </div>
+				    <div class="card-footer" style="text-align:right;background:#FFCC01;"><span></span><span>有效期:2019-12-12</span></div>
+				  </div></a>
+			  	</div>
+			  </div>
+			</c:forEach>
+			<div class="row" style="padding:5px;">
+				<div class="col-100"><a class="button button-big button-fill" onclick="changeMoney('0','0')" href="#page1" style="background:#FFCC01;color:#000000;border-radius:50px;">不使用现金券</a></div>
+			</div>
+			</div>
+			
+
+		</div>
     </div>
   </body>
   <%@ include file="../common/headjs.jsp"%>
@@ -79,12 +102,54 @@
   		$("#numberButton").text(lastNum);
   		
   		$("#XJ").html(lastNum * parseFloat('${pd.SELLMONEY}'));
-  		$("#SF").html(lastNum * parseFloat('${pd.SELLMONEY}'));
-  		$("#SFC").html(lastNum * parseFloat('${pd.SELLMONEY}'));
+  		$("#SF").html(lastNum * parseFloat('${pd.SELLMONEY}') - parseFloat(MONEY));
+  		$("#SFC").html(lastNum * parseFloat('${pd.SELLMONEY}') - parseFloat(MONEY));
   	}
   	
-  	function changeMoney(){
+  	var CARD_ID = '0';
+  	
+  	var MONEY = '0';
+  	
+  	function changeMoney(id,money){
+  		CARD_ID = id;
+  		MONEY = money;
   		
+  		var count = parseInt($("#numberButton").text());
+  		$("#XJ").html(count * parseFloat('${pd.SELLMONEY}'));
+  		$("#SF").html(count * parseFloat('${pd.SELLMONEY}') - parseFloat(MONEY));
+  		$("#SFC").html(count * parseFloat('${pd.SELLMONEY}') - parseFloat(MONEY));
   	}
+  	
+  	function orderSave(){
+  		$.ajax({
+			type: "POST",
+			url: '<%=request.getContextPath()%>/orders/save',
+	    	data:{
+	    		"MONEY":$("#SF").text(),
+	    		"DERATE":MONEY,
+	    		"CARD_ID":CARD_ID
+	    	},
+	    	async: false,
+			dataType:'json',
+			cache: false,
+			beforeSend:function(){
+				
+			},
+			success: function(data){
+				if(data.flag ){
+					goPay(data.data);
+				}
+			},
+			error:function(){
+				
+			}
+		});
+  	}
+  	
+  	function goPay(id){
+ 		 wx.miniProgram.navigateTo({
+            url: '/pages/pay/pay?id='+id
+       })
+ 	}
   </script>
 </html>

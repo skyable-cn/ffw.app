@@ -8,8 +8,6 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
-import net.sf.json.JSONObject;
-
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,8 +46,7 @@ public class PayController extends BaseController {
 	}
 
 	@RequestMapping("wxPay")
-	public JSONObject wxPay() {
-		JSONObject json = new JSONObject();
+	public Map<String, String> wxPay() {
 
 		// 生成的随机字符串
 		String nonce_str = WXPayUtil.generateNonceStr();
@@ -102,7 +99,7 @@ public class PayController extends BaseController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return json;
+		return response;
 	}
 
 	@RequestMapping(value = "/wxNotify")

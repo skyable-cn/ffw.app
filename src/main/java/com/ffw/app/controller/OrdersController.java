@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ffw.api.model.PageData;
+import com.ffw.api.util.DateUtil;
 import com.ffw.app.constant.IConstant;
+import com.ffw.app.model.ReturnModel;
 import com.ffw.app.util.RestTemplateUtil;
 
 @Controller
@@ -38,5 +41,31 @@ public class OrdersController extends BaseController {
 
 		mv.setViewName("orders/index");
 		return mv;
+	}
+
+	@RequestMapping(value = { "/orders/save" })
+	@ResponseBody
+	public ReturnModel sellerSave() throws Exception {
+		logger.info("提交订单保存");
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		String CARD_ID = pd.getString("CARD_ID");
+
+		pd.put("MEMBER_ID", memberId());
+		pd.put("CDT", DateUtil.getTime());
+		pd.put("STATE", IConstant.STRING_0);
+		ReturnModel rm = new ReturnModel();
+		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/save", pd,
+				PageData.class);
+		rm.setFlag(true);
+		rm.setMessage(getMessage("MSG_CODE_ADD_SUCCESS", new Object[] { "订单" },
+				""));
+		rm.setData(pd.getString("ORDER_ID"));
+
+		PageData pdc = new PageData();
+		pdc.put("CARD_ID", CARD_ID);
+		pdc.put("STATE", IConstant.STRING_1);
+		rest.post(IConstant.FFW_SERVICE_KEY, "cards/edit", pdc, PageData.class);
+		return rm;
 	}
 }
