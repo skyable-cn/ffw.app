@@ -25,14 +25,18 @@ public class DiscountController extends BaseController {
 	@RequestMapping(value = { "/discount" })
 	public ModelAndView index() {
 
+		PageData location = location();
+
 		logger.info("进入周四五折");
 		ModelAndView mv = new ModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		pd.putAll(location());
 
 		PageData pd1 = new PageData();
-
+		if (null != location) {
+			pd1.put("LATITUDE", location.getString("LATITUDE"));
+			pd1.put("LONGITUDE", location.getString("LONGITUDE"));
+		}
 		pd1.put("SHOPSTATE_ID", IConstant.STRING_2);
 		List<PageData> shopData = rest.postForList(IConstant.FFW_SERVICE_KEY,
 				"shop/listAll", pd1,
