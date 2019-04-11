@@ -11,6 +11,39 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <%@ include file="../common/headcss.jsp"%>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+    <script type="text/javascript">
+    	wx.config({  
+    	    debug: true,
+    	    appId: "${pd.config.appId}", 
+    	    timestamp: "${pd.config.timestamp}",
+    	    nonceStr: "${pd.config.nonceStr}",
+    	    signature: "${pd.config.signature}",  
+    	    jsApiList: [  
+    	        'openLocation',
+        		'getLocation' 
+    	    ]  
+    	}); 
+    	
+    	wx.read(
+    		function(){
+    			wx.getLocation({
+    			      success: function (res) {
+    			        alert(JSON.stringify(res));
+    			      },
+    			      cancel: function (res) {
+    			        alert('用户拒绝授权获取地理位置');
+    			      }
+    			    });
+    		}
+    	);
+    	
+    	wx.error(
+    		function(res){
+    			console.log(res);
+    		}
+    	);
+    </script>
   </head>
   <body>
     <div class="page-group">
@@ -73,7 +106,7 @@
 			                <div class="item-title" style="font-weight:bold;">${var.SHOPNAME}</div>
 			              </div>
 			              <div class="item-subtitle" style="font-weight:bold;">
-			              	¥ ${var.AVGMONEY} / 人<span><1000m</span>
+			              	¥ ${var.AVGMONEY} / 人<span>${var.DISTANCE}m</span>
 			              </div>
 			              <div class="item-subtitle" style="font-weight:bold;">
 			              	${var.SHOPTYPENAME}
