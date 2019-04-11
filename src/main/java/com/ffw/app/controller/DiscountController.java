@@ -29,8 +29,10 @@ public class DiscountController extends BaseController {
 		ModelAndView mv = new ModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
+		pd.putAll(location());
 
 		PageData pd1 = new PageData();
+
 		pd1.put("SHOPSTATE_ID", IConstant.STRING_2);
 		List<PageData> shopData = rest.postForList(IConstant.FFW_SERVICE_KEY,
 				"shop/listAll", pd1,

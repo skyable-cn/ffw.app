@@ -162,4 +162,8 @@ public class BaseController {
 		return userSession().getString("WXOPEN_ID");
 	}
 
+	public PageData location() {
+		return (PageData) getSession().getAttribute(IConstant.LOCATION_SESSION);
+	}
+
 }

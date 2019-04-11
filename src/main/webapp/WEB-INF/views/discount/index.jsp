@@ -14,7 +14,7 @@
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
     <script type="text/javascript">
     	wx.config({  
-    	    debug: true,
+    	    debug: false,
     	    appId: "${pd.config.appId}", 
     	    timestamp: "${pd.config.timestamp}",
     	    nonceStr: "${pd.config.noncestr}",
@@ -27,14 +27,7 @@
     	
     	wx.ready(
     		function(){
-    			wx.getLocation({
-    			      success: function (res) {
-    			        alert(JSON.stringify(res));
-    			      },
-    			      cancel: function (res) {
-    			        alert('用户拒绝授权获取地理位置');
-    			      }
-    			    });
+    			getLocation();
     		}
     	);
     	
@@ -43,6 +36,17 @@
     			console.log(res);
     		}
     	);
+    	
+    	function getLocation(){
+    		wx.getLocation({
+		      success: function (res) {
+		        location.href='<%=request.getContextPath()%>/app/discount?latitude='+res.latitude+'&longitude='+res.longitude
+		      },
+		      cancel: function (res) {
+		        alert('用户拒绝授权获取地理位置');
+		      }
+		    });
+    	}
     </script>
   </head>
   <body>

@@ -46,6 +46,19 @@ public class CommonFilter implements Filter {
 
 		}
 
+		String latitude = request.getParameter("latitude");
+		String longitude = request.getParameter("longitude");
+		if (StringUtils.isNotEmpty(latitude)
+				&& StringUtils.isNotEmpty(longitude)) {
+
+			PageData location = new PageData();
+			location.put("LATITUDE", latitude);
+			location.put("LONGITUDE", longitude);
+			request.getSession().setAttribute(IConstant.LOCATION_SESSION,
+					location);
+
+		}
+
 		arg2.doFilter(arg0, arg1);
 	}
 
