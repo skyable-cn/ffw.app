@@ -17,7 +17,7 @@
     	    debug: true,
     	    appId: "${pd.config.appId}", 
     	    timestamp: "${pd.config.timestamp}",
-    	    nonceStr: "${pd.config.nonceStr}",
+    	    nonceStr: "${pd.config.noncestr}",
     	    signature: "${pd.config.signature}",  
     	    jsApiList: [  
     	        'openLocation',
@@ -25,7 +25,7 @@
     	    ]  
     	}); 
     	
-    	wx.read(
+    	wx.ready(
     		function(){
     			wx.getLocation({
     			      success: function (res) {
