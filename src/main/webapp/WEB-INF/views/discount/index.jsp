@@ -40,7 +40,9 @@
     	function getLocation(){
     		wx.getLocation({
 		      success: function (res) {
-		        location.href='<%=request.getContextPath()%>/discount?latitude='+res.latitude+'&longitude='+res.longitude
+		        $("#LATITUDE").val(res.latitude);
+		    	$("#LONGITUDE").val(res.longitude);
+		    	$("#form").submit();
 		      },
 		      cancel: function (res) {
 		        alert('用户拒绝授权获取地理位置');
@@ -53,6 +55,9 @@
     <div class="page-group">
         <div class="page page-current">
 			<div class="content">
+				<form id="form" method="post" action="<%=request.getContextPath()%>/discount">
+				<input id="LATITUDE" name="LATITUDE" type="hidden" value="${LOCATION_SESSION.LATITUDE}"/>
+				<input id="LONGITUDE" name="LONGITUDE" type="hidden" value="${LOCATION_SESSION.LONGITUDE}"/>
 				<div class="row discount" style="padding:5px;">
 			      <div class="col-25">
 			      	<select>
@@ -85,6 +90,7 @@
 		              </select>
 			      </div>
 			    </div>
+			    </form>
 			    <c:forEach var="var" items="${shopData}">
 			    <div class="row" style="padding:5px;padding-top:0px;">
 			      <div class="col-100">
