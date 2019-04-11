@@ -142,7 +142,7 @@
 			success: function(data){
 				if(data.flag ){
 					$.alert(data.message,function(){
-						location.href='<%=request.getContextPath()%>/seller/list?openid=${pd.openid}'
+						location.href='<%=request.getContextPath()%>/my'
 					})
 					
 				}
