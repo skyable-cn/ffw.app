@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import net.sf.json.JSONObject;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -110,6 +112,8 @@ public class PayController extends BaseController {
 						wechatMiniConfig.getMchkey());
 				response.put("paySign", sign);
 				System.out.println("生成的签名paySign : " + sign);
+
+				response.put("order", JSONObject.fromObject(pd).toString());
 
 			}
 		} catch (Exception e) {
