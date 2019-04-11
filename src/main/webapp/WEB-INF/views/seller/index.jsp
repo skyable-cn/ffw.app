@@ -120,6 +120,37 @@
    }
    
    function save(){
+	   
+	   if($("#SHOPNAME").val()==''){
+		   $.toast("商户名称不许为空");
+		   return;
+	   }
+	   
+	   if($("#SHOPTYPE_ID").val()==''){
+		   $.toast("请选择商户行业");
+		   return;
+	   }
+	   
+	   if($("#SHOPADDRESS").val()==''){
+		   $.toast("请标记商户位置");
+		   return;
+	   }
+	   
+	   if($("#CONTRACTPERSON").val()==''){
+		   $.toast("联系人不许为空");
+		   return;
+	   }
+	   
+	   if($("#CONTRACTPHONE").val()==''){
+		   $.toast("联系电话不许为空");
+		   return;
+	   }
+	   
+	   if($("#SHOPDESC").val()==''){
+		   $.toast("请简单描述商铺信息");
+		   return;
+	   }
+	   
 	   $.ajax({
 			type: "POST",
 			url: '<%=request.getContextPath()%>/seller/save',
