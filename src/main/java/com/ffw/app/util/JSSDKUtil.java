@@ -2,12 +2,11 @@ package com.ffw.app.util;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import net.sf.json.JSONObject;
 
 import org.apache.commons.codec.digest.DigestUtils;
-
-import com.github.wxpay.sdk.WXPayUtil;
 
 public class JSSDKUtil {
 
@@ -46,7 +45,7 @@ public class JSSDKUtil {
 	public static Map<String, String> config() {
 		String accessToken = AccessToken(appId, appSecret);
 		String ticket = JsapiTicket(accessToken);
-		String noncestr = WXPayUtil.generateNonceStr();
+		String noncestr = UUID.randomUUID().toString().replace("-", "");
 		String timestamp = String.valueOf(System.currentTimeMillis() / 1000);
 		String url = "https://fanfan.skyable.cn/app/discount";
 		String str = "jsapi_ticket=" + ticket + "&noncestr=" + noncestr
