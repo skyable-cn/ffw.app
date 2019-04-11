@@ -15,4 +15,8 @@ public interface IConstant {
 	String STRING_3 = "3";
 
 	String LOCATION_SESSION = "LOCATION_SESSION";
+
+	String STRING_4 = "4";
+
+	String STRING_5 = "5";
 }

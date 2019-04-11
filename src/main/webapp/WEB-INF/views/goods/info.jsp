@@ -45,9 +45,12 @@
 			<div class="row" style="padding:5px;">
 				<div class="col-100" style="font-weight:bold;">已抢购用户</div>
 			</div>
-			<div style="width:100%;height:2px;background:#dddddd;">&nbsp;</div>
+			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
         	<div class="row" style="padding:5px;">
 				<div class="col-100">
+					<c:if test="${fn:length(peopleDataList) eq 0}">
+						&nbsp;
+					</c:if>
 					<c:forEach var="var" items="${peopleDataList}">
 						<img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="${var.PHOTO}"/>
 					</c:forEach>
@@ -72,7 +75,7 @@
 	              	<img align="middle" style="margin-left:20px; width:80px; height:80px; border-radius:50%;" src="<%=request.getContextPath()%>/file/image?FILENAME=${shop.FILEPATH}"/>
 	              	</c:otherwise>
 	              </c:choose>${shop.SHOPNAME}</div>
-					<div class="col-40" style="line-height:80px;"><a class="external" href="<%=request.getContextPath()%>/shop/info?SHOP_ID=${shop.SHOP_ID}">进店逛逛 ></a></div>
+					<div class="col-40" style="line-height:80px;text-align:right;"><a class="external" href="<%=request.getContextPath()%>/shop/info?SHOP_ID=${shop.SHOP_ID}" style="font-size:16px;text-decoration:underline;">进店逛逛</a></div>
 				</div>
 			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:10px;">

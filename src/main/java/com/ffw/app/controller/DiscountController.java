@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Controller;
@@ -24,13 +25,19 @@ public class DiscountController extends BaseController {
 
 	@RequestMapping(value = { "/discount" })
 	public ModelAndView index() {
-
+		logger.info("进入周四五折");
 		PageData location = location();
 
-		logger.info("进入周四五折");
 		ModelAndView mv = new ModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
+
+		PageData pdm = new PageData();
+		List<PageData> typeData = rest.postForList(IConstant.FFW_SERVICE_KEY,
+				"shop/listAllType", pdm,
+				new ParameterizedTypeReference<List<PageData>>() {
+				});
+		mv.addObject("typeData", typeData);
 
 		PageData pd1 = new PageData();
 		if (null != location) {
@@ -38,6 +45,10 @@ public class DiscountController extends BaseController {
 			pd1.put("LONGITUDE", location.getString("LONGITUDE"));
 		}
 		pd1.put("SHOPSTATE_ID", IConstant.STRING_2);
+		pd1.put("SHOPTYPE_ID", pd.getString("SHOPTYPE_ID"));
+		pd1.put("SQLCONDITION",
+				sql(pd.getString("DISTANCE"), pd.getString("SXORDER"),
+						pd.getString("SXSELECT")));
 		List<PageData> shopData = rest.postForList(IConstant.FFW_SERVICE_KEY,
 				"shop/listAll", pd1,
 				new ParameterizedTypeReference<List<PageData>>() {
@@ -58,5 +69,36 @@ public class DiscountController extends BaseController {
 		mv.addObject("pd", pd);
 		mv.setViewName("discount/index");
 		return mv;
+	}
+
+	private String sql(String distance, String order, String selecte) {
+		StringBuilder sb = new StringBuilder();
+
+		if (StringUtils.isNotEmpty(distance)) {
+			if (IConstant.STRING_1.equals(distance)) {
+				sb.append(" order by s.DISTANCE ASC ");
+			} else {
+				sb.append(" order by s.DISTANCE DESC ");
+			}
+		}
+
+		if (StringUtils.isNotEmpty(order)) {
+
+			if (sb.length() > 0) {
+				if (IConstant.STRING_1.equals(order)) {
+					sb.append(" , s.AVGMONEY ASC ");
+				} else if (IConstant.STRING_2.equals(order)) {
+					sb.append(" , s.AVGMONEY DESC ");
+				}
+			} else {
+				if (IConstant.STRING_1.equals(order)) {
+					sb.append(" order by s.AVGMONEY ASC ");
+				} else if (IConstant.STRING_2.equals(order)) {
+					sb.append(" order by s.AVGMONEY DESC ");
+				}
+			}
+		}
+		System.err.println(sb.toString());
+		return sb.toString();
 	}
 }

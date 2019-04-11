@@ -70,33 +70,30 @@
 				<input id="LONGITUDE" name="LONGITUDE" type="hidden" value="${LOCATION_SESSION.LONGITUDE}"/>
 				<div class="row discount" style="padding:5px;">
 			      <div class="col-25">
-			      	<select>
-				      	<option>分类</option>
-		                <option>火锅</option>
-		                <option>炒菜</option>
-		                <option>甜点</option>
+			      	<select id="SHOPTYPE_ID" name="SHOPTYPE_ID" class="select_condition">
+				      	<option value="">分类</option>
+		                <c:forEach var="var" items="${typeData}">
+		                	<option value="${var.SHOPTYPE_ID}"  <c:if test="${var.SHOPTYPE_ID eq pd.SHOPTYPE_ID}">selected="selected"</c:if>>${var.SHOPTYPENAME}</option>
+		                </c:forEach>
 		              </select>
 	              </div>
 			      <div class="col-25">
-					<select>
-				      	<option>附近</option>
-		                <option>由近到远</option>
-		                <option>由远到近</option>
+					<select id="DISTANCE" name="DISTANCE" class="select_condition">
+				      	<option value="">附近</option>
+		                <option value="1" <c:if test="${pd.DISTANCE eq 1}">selected="selected"</c:if>>由近到远</option>
+		                <option value="2" <c:if test="${pd.DISTANCE eq 2}">selected="selected"</c:if>>由远到近</option>
 		              </select>
        			  </div>
 			      <div class="col-25">
-			      	<select>
-				      	<option>排序</option>
-		                <option>价格排序</option>
-		                <option>购买量</option>
-		                <option>点赞量</option>
+			      	<select id="SXORDER" name="SXORDER" class="select_condition">
+				      	<option value="">排序</option>
+		                <option value="1" <c:if test="${pd.SXORDER eq 1}">selected="selected"</c:if>>人均消费由小到大</option>
+		                <option value="2" <c:if test="${pd.SXORDER eq 2}">selected="selected"</c:if>>人均消费由大到小</option>
 		              </select>
 			      </div>
 			      <div class="col-25">
-			      	<select>
-				      	<option>筛选</option>
-		                <option>支持满减活动</option>
-		                <option>支持优惠券</option>
+			      	<select id="SXSELECT" name="SXSELECT" class="select_condition">
+				      	<option value="">筛选</option>
 		              </select>
 			      </div>
 			    </div>
@@ -126,7 +123,13 @@
 			                <div class="item-title" style="font-weight:bold;">${var.SHOPNAME}</div>
 			              </div>
 			              <div class="item-subtitle" style="font-weight:bold;">
-			              	¥ ${var.AVGMONEY} / 人<span>${var.DISTANCE}m</span>
+			              	¥ ${var.AVGMONEY} / 人
+			              	<span>
+			              	<c:choose>
+			              	<c:when test="${var.DISTANCE ne 0}">${var.DISTANCE}m</c:when>
+			              	<c:otherwise>&nbsp;</c:otherwise>
+			              	</c:choose>
+			              	</span>
 			              </div>
 			              <div class="item-subtitle" style="font-weight:bold;">
 			              	${var.SHOPTYPENAME}
@@ -161,4 +164,9 @@
     </div>
   </body>
   <%@ include file="../common/headjs.jsp"%>
+  <script type="text/javascript">
+  $("select.select_condition").change(function(){
+	  $("#form").submit();
+  })
+  </script>
 </html>
