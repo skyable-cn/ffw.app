@@ -40,7 +40,7 @@
     	function getLocation(){
     		wx.getLocation({
 		      success: function (res) {
-		        location.href='<%=request.getContextPath()%>/app/discount?latitude='+res.latitude+'&longitude='+res.longitude
+		        location.href='<%=request.getContextPath()%>/discount?latitude='+res.latitude+'&longitude='+res.longitude
 		      },
 		      cancel: function (res) {
 		        alert('用户拒绝授权获取地理位置');
