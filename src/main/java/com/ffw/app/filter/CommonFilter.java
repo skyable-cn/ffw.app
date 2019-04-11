@@ -46,8 +46,8 @@ public class CommonFilter implements Filter {
 
 		}
 
-		String latitude = request.getParameter("LATITUDE");
-		String longitude = request.getParameter("LONGITUDE");
+		String latitude = request.getParameter("latitude");
+		String longitude = request.getParameter("longitude");
 		if (StringUtils.isNotEmpty(latitude)
 				&& StringUtils.isNotEmpty(longitude)) {
 

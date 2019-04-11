@@ -50,8 +50,8 @@
     		wx.getLocation({
 		      success: function (res) {
 		    	console.log(res)
-		        $("#LATITUDE").val(res.latitude);
-		    	$("#LONGITUDE").val(res.longitude);
+		        $("#latitude").val(res.latitude);
+		    	$("#longitude").val(res.longitude);
 		    	$("#form").submit();
 		      },
 		      cancel: function (res) {
@@ -66,8 +66,8 @@
         <div class="page page-current">
 			<div class="content">
 				<form id="form" method="post" action="<%=request.getContextPath()%>/discount">
-				<input id="LATITUDE" name="LATITUDE" type="hidden" value="${LOCATION_SESSION.LATITUDE}"/>
-				<input id="LONGITUDE" name="LONGITUDE" type="hidden" value="${LOCATION_SESSION.LONGITUDE}"/>
+				<input id="latitude" name="latitude" type="hidden" value="${LOCATION_SESSION.LATITUDE}"/>
+				<input id="longitude" name="longitude" type="hidden" value="${LOCATION_SESSION.LONGITUDE}"/>
 				<div class="row discount" style="padding:5px;">
 			      <div class="col-25">
 			      	<select id="SHOPTYPE_ID" name="SHOPTYPE_ID" class="select_condition">
