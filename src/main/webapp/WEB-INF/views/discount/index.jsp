@@ -27,7 +27,9 @@
     	
     	wx.ready(
     		function(){
-    			getLocation();
+    			if(${LOCATION_SESSION.LATITUDE eq null}){
+    				getLocation();
+    			}
     		}
     	);
     	
@@ -40,6 +42,7 @@
     	function getLocation(){
     		wx.getLocation({
 		      success: function (res) {
+		    	console.log(res)
 		        $("#LATITUDE").val(res.latitude);
 		    	$("#LONGITUDE").val(res.longitude);
 		    	$("#form").submit();
