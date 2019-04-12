@@ -86,15 +86,15 @@
 		    	console.log(res)
 		        latitude=res.latitude;
 		    	longitude=res.longitude;
-		    	search(true);
 		    	$.hidePreloader();
+		    	search(true);
 		      },
 		      cancel: function (res) {
-		    	  search(true);
 		    	  $.hidePreloader();
+		    	  search(true);
 		      },
 		      complete:function(){
-		    	  alert("complete")
+		    	  console.log("complete")
 		      }
 		    });
     	}
@@ -215,7 +215,7 @@
      
   	$(document).on('infinite',function(){
   		
-  		if((page_currentPage*1+1) > parseInt(page.totalPage)){
+  		if(parseInt(page.currentPage) >= parseInt(page.totalPage)){
   			$.toast("数据已经到底了");
   			return;
   		}
