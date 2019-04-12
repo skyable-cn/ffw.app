@@ -70,16 +70,7 @@
     	
     	wx.ready(
     		function(){
-    			if(${LOCATION_SESSION.LATITUDE eq null}){
-    				getLocation();
-    				wx.navigateBack({
-    					  delta: 2
-    					})
-    			}else{
-    				wx.navigateBack({
-    					  delta: 1
-    					})
-    			}
+    			getLocation();
     		}
     	);
     	
