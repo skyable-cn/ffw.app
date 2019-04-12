@@ -15,19 +15,95 @@
   <body>
     <div class="page-group">
         <div class="page page-current">
-			<div class="content">
-			<c:forEach var="var" items="${standData}">
-			<div class="row" style="padding:5px;">
-				<div class="col-100">
-					<a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=${var.GOODS_ID}"><img height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}"/></a>
-				</div>
-			</div>
-			</c:forEach>
+			<div class="content infinite-scroll" data-distance="30">
+			<div id="stands">
 			
-			<h5>&nbsp;</h5>
+			</div>
         	</div>
     	</div>
     </div>
   </body>
   <%@ include file="../common/headjs.jsp"%>
+        <script type="text/javascript">
+
+	   	search(true);
+		     
+    	var page_currentPage = 1;
+    	
+    	function search(flag){
+    		$.ajax({
+    			type: "POST",
+    			url: '<%=request.getContextPath()%>/stand/search',
+    	    	data:{
+  					"page_currentPage":page_currentPage
+    	    	},
+    	    	async: false,
+    			dataType:'json',
+    			cache: false,
+    			beforeSend:function(){
+    				$.showPreloader();
+    				//$("#shops").html('');
+    			},
+    			success: function(data){
+    				pageData = data.page;
+    				var list = data.page.data;
+    				var html = "";
+    				$.each(list,function(index,value){ 
+    					html += `
+    					<div class="row" style="padding:5px;">
+	    					<div class="col-100">
+	    						<a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=`+value.GOODS_ID+`"><img height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`"/></a>
+	    					</div>
+    					</div>
+    					`;
+    				})
+    				if(flag){
+    					$("#stands").html(html);
+    				}else{
+    					$("#stands").append(html);
+    				}
+    				
+    				setTimeout(function(){$.hidePreloader();},1000);
+    				
+    	             loading = false;
+    			},
+    			error:function(){
+    				
+    			}
+    		});
+    	}
+    	
+    </script>
+  <script type="text/javascript">
+  
+ 	var loading = false;
+     
+     $.init();
+     
+  	$(document).on('infinite',function(){
+  		
+  		if(parseInt(pageData.currentPage) >= parseInt(pageData.totalPage)){
+  			$.toast("数据已经到底了");
+  			return;
+  		}
+  		
+  		page_currentPage++;
+
+         // 如果正在加载，则退出
+         if (loading) return;
+
+         // 设置flag
+         loading = true;
+
+         // 模拟1s的加载过程
+         setTimeout(function() {
+             // 重置加载flag
+
+             search(false);
+             
+             //容器发生改变,如果是js滚动，需要刷新滚动
+             $.refreshScroller();
+         }, 500);
+  	});
+  </script>
 </html>
