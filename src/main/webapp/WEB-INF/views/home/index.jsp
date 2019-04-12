@@ -177,7 +177,7 @@
     					$("#goods2").append(html);
     				}
     				
-    				setTimeout(function(){$.hidePreloader();},500);
+    				setTimeout(function(){$.hidePreloader();},1000);
     				
     	             loading = false;
     			},

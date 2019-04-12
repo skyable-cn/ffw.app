@@ -38,8 +38,8 @@ public class LotteryController extends BaseController {
 	@ResponseBody
 	public PageData indexSearch() {
 		logger.info("进入免费抽奖查询");
-
 		PageData pd = new PageData();
+		pd = this.getPageData();
 		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "lottery/listPage",
 				pd, Page.class);
 		pd.put("page", page);
