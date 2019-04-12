@@ -101,6 +101,9 @@
 		      cancel: function (res) {
 		    	  search(true);
 		    	  $.hidePreloader();
+		      },
+		      complete:function(){
+		    	  alert("complete")
 		      }
 		    });
     	}
