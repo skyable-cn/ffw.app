@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ffw.api.model.Page;
 import com.ffw.api.model.PageData;
 import com.ffw.app.constant.IConstant;
 import com.ffw.app.util.JSSDKUtil;
@@ -26,7 +28,7 @@ public class DiscountController extends BaseController {
 	@RequestMapping(value = { "/discount" })
 	public ModelAndView index() {
 		logger.info("进入周四五折");
-		PageData location = location();
+		// PageData location = location();
 
 		ModelAndView mv = new ModelAndView();
 		PageData pd = new PageData();
@@ -39,21 +41,26 @@ public class DiscountController extends BaseController {
 				});
 		mv.addObject("typeData", typeData);
 
-		PageData pd1 = new PageData();
-		if (null != location) {
-			pd1.put("LATITUDE", location.getString("LATITUDE"));
-			pd1.put("LONGITUDE", location.getString("LONGITUDE"));
-		}
-		pd1.put("SHOPSTATE_ID", IConstant.STRING_2);
-		pd1.put("SHOPTYPE_ID", pd.getString("SHOPTYPE_ID"));
-		pd1.put("SQLCONDITION",
-				sql(pd.getString("DISTANCE"), pd.getString("SXORDER"),
-						pd.getString("SXSELECT")));
-		List<PageData> shopData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"shop/listAll", pd1,
-				new ParameterizedTypeReference<List<PageData>>() {
-				});
-		mv.addObject("shopData", shopData);
+		// PageData pd1 = new PageData();
+		// if (null != location) {
+		// pd1.put("LATITUDE", location.getString("LATITUDE"));
+		// pd1.put("LONGITUDE", location.getString("LONGITUDE"));
+		// }
+		// pd1.put("SHOPSTATE_ID", IConstant.STRING_2);
+		// pd1.put("SHOPTYPE_ID", pd.getString("SHOPTYPE_ID"));
+		// pd1.put("SQLCONDITION",
+		// sql(pd.getString("DISTANCE"), pd.getString("SXORDER"),
+		// pd.getString("SXSELECT")));
+		// pd1.put("page_currentPage", pd.getString("page_currentPage"));
+		// List<PageData> shopData = rest.postForList(IConstant.FFW_SERVICE_KEY,
+		// "shop/listAll", pd1,
+		// new ParameterizedTypeReference<List<PageData>>() {
+		// });
+		// mv.addObject("shopData", shopData);
+
+		// Page page = rest.post(IConstant.FFW_SERVICE_KEY, "shop/listPage",
+		// pd1,
+		// Page.class);
 
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
@@ -66,9 +73,41 @@ public class DiscountController extends BaseController {
 		Map<String, String> config = JSSDKUtil.config();
 		pd.put("config", config);
 
+		// mv.addObject("page", page);
 		mv.addObject("pd", pd);
 		mv.setViewName("discount/index");
 		return mv;
+	}
+
+	@RequestMapping(value = { "/discount/search" })
+	@ResponseBody
+	public PageData indexSearch() {
+		logger.info("进入周四五折查询");
+		PageData location = location();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+
+		PageData pd1 = new PageData();
+		if (null != location) {
+			pd1.put("LATITUDE", location.getString("LATITUDE"));
+			pd1.put("LONGITUDE", location.getString("LONGITUDE"));
+		}
+		pd1.put("SHOPSTATE_ID", IConstant.STRING_2);
+		pd1.put("SHOPTYPE_ID", pd.getString("SHOPTYPE_ID"));
+		pd1.put("SQLCONDITION",
+				sql(pd.getString("DISTANCE"), pd.getString("SXORDER"),
+						pd.getString("SXSELECT")));
+		pd1.put("page_currentPage", pd.getString("page_currentPage"));
+		// List<PageData> shopData = rest.postForList(IConstant.FFW_SERVICE_KEY,
+		// "shop/listAll", pd1,
+		// new ParameterizedTypeReference<List<PageData>>() {
+		// });
+
+		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "shop/listPage", pd1,
+				Page.class);
+
+		pd.put("page", page);
+		return pd;
 	}
 
 	private String sql(String distance, String order, String selecte) {

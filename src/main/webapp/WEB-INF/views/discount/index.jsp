@@ -12,7 +12,50 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <%@ include file="../common/headcss.jsp"%>
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
-    <script type="text/javascript">
+  </head>
+  <body>
+    <div class="page-group">
+        <div class="page page-current">
+			<div class="content infinite-scroll infinite-scroll-bottom" data-distance="30">
+				<div class="row discount" style="padding:5px;">
+			      <div class="col-25">
+			      	<select id="SHOPTYPE_ID" name="SHOPTYPE_ID" class="select_condition">
+				      	<option value="">分类</option>
+		                <c:forEach var="var" items="${typeData}">
+		                	<option value="${var.SHOPTYPE_ID}"  <c:if test="${var.SHOPTYPE_ID eq pd.SHOPTYPE_ID}">selected="selected"</c:if>>${var.SHOPTYPENAME}</option>
+		                </c:forEach>
+		              </select>
+	              </div>
+			      <div class="col-25">
+					<select id="DISTANCE" name="DISTANCE" class="select_condition">
+				      	<option value="">附近</option>
+		                <option value="1" <c:if test="${pd.DISTANCE eq 1}">selected="selected"</c:if>>由近到远</option>
+		                <option value="2" <c:if test="${pd.DISTANCE eq 2}">selected="selected"</c:if>>由远到近</option>
+		              </select>
+       			  </div>
+			      <div class="col-25">
+			      	<select id="SXORDER" name="SXORDER" class="select_condition">
+				      	<option value="">排序</option>
+		                <option value="1" <c:if test="${pd.SXORDER eq 1}">selected="selected"</c:if>>人均消费由小到大</option>
+		                <option value="2" <c:if test="${pd.SXORDER eq 2}">selected="selected"</c:if>>人均消费由大到小</option>
+		              </select>
+			      </div>
+			      <div class="col-25">
+			      	<select id="SXSELECT" name="SXSELECT" class="select_condition">
+				      	<option value="">筛选</option>
+		              </select>
+			      </div>
+			    </div>
+			    <div id="shops">
+			    
+			  </div>
+        	</div>
+    	</div>
+    </div>
+  </body>
+  <%@ include file="../common/headjs.jsp"%>
+  <script type="text/javascript">
+    
     	wx.config({  
     	    debug: false,
     	    appId: "${pd.config.appId}", 
@@ -50,123 +93,160 @@
     		wx.getLocation({
 		      success: function (res) {
 		    	console.log(res)
-		        $("#latitude").val(res.latitude);
-		    	$("#longitude").val(res.longitude);
-		    	$("#form").submit();
+		        latitude=res.latitude;
+		    	longitude=res.longitude;
+		    	search(true);
+		    	$.hidePreloader();
 		      },
 		      cancel: function (res) {
-		        alert('用户拒绝授权获取地理位置');
+		    	  search(true);
+		    	  $.hidePreloader();
 		      }
 		    });
     	}
+    	
+    	var latitude = null;
+    	
+    	var longitude = null;
+    	
+    	var ZSFLAG="${pd.ZSFLAG}";
+    	
+    	var page_currentPage = 1;
+    	
+    	var page = null;
+    	
+    	function search(flag){
+    		$.ajax({
+    			type: "POST",
+    			url: '<%=request.getContextPath()%>/discount/search',
+    	    	data:{
+    	    		"latitude":latitude,
+    	    		"longitude":longitude,
+    	    		"SHOPTYPE_ID":$("#SHOPTYPE_ID").val(),
+    	    		"DISTANCE":$("#DISTANCE").val(),
+    	    		"SXORDER":$("#SXORDER").val(),
+    	    		"SXSELECT":$("#SXSELECT").val(),
+  					"page_currentPage":page_currentPage
+    	    	},
+    	    	async: false,
+    			dataType:'json',
+    			cache: false,
+    			beforeSend:function(){
+    				$.showPreloader();
+    				//$("#shops").html('');
+    			},
+    			success: function(data){
+    				page = data.page;
+    				var list = data.page.data;
+    				var html = "";
+    				$.each(list,function(index,value){ 
+    					var src="<%=request.getContextPath()%>/static/image/shop.jpg";
+    					if(value.FILEPATH){
+    						src="<%=request.getContextPath()%>/file/image?FILENAME="+value.FILEPATH;
+    					}
+    					var href='<a href="javascript:;" onclick="$.alert(\'对不起，周四才可以半价抢购哦\')" class="external button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</a>';
+    					if(value.ZSFLAG == '4'){
+    						href='<a href="<%=request.getContextPath()%>/shop/info?SHOP_ID='+value.SHOP_ID+'" class="external button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</a>';
+    					} 
+    					html += `<div class="row" style="padding:5px;padding-top:0px;">
+    				      <div class="col-100">
+    					    <div class="card">
+    					    <div class="card-content">
+    					      <div class="list-block media-list">
+    					        <ul>
+    					          <li class="item-content">
+    					            <div class="item-media">
+    					              <a class="external" href="<%=request.getContextPath()%>/shop/info?SHOP_ID=`+value.SHOP_ID+`">
+    					              <img src="`+src+`" width="150">
+    					              </a>
+    					            </div>
+    					            <div class="item-inner">
+    					              <div class="item-title-row">
+    					                <div class="item-title" style="font-weight:bold;">`+value.SHOPNAME+`</div>
+    					              </div>
+    					              <div class="item-subtitle" style="font-weight:bold;">
+    					              	¥ `+value.AVGMONEY+` / 人
+    					              	<span>
+    					              	`+value.DISTANCE+`
+    					              	</span>
+    					              </div>
+    					              <div class="item-subtitle" style="font-weight:bold;">
+    					              	`+value.SHOPTYPENAME+`
+    					              </div>
+    					              <div class="item-subtitle" style="color:#F40A0B;">
+    					              	<span class="quan">券</span>83代100元
+    					              </div>
+    					            </div>
+    					          </li>
+    					        </ul>
+    					      </div>
+    					    </div>
+    					    <div class="card-footer">
+    					      <span style="font-weight:bold;">`+value.SHOPADDRESS+`</span>
+    					      <span>
+    					      `+href+`
+    					      </span>
+    					    </div>
+    					  </div>
+    					  </div>
+    					  </div>`;
+    				})
+    				if(flag){
+    					$("#shops").html(html);
+    				}else{
+    					$("#shops").append(html);
+    				}
+    				
+    				$.hidePreloader();
+    				
+    	             loading = false;
+    			},
+    			error:function(){
+    				
+    			}
+    		});
+    	}
     </script>
-  </head>
-  <body>
-    <div class="page-group">
-        <div class="page page-current">
-			<div class="content">
-				<form id="form" method="post" action="<%=request.getContextPath()%>/discount">
-				<input id="latitude" name="latitude" type="hidden" value="${LOCATION_SESSION.LATITUDE}"/>
-				<input id="longitude" name="longitude" type="hidden" value="${LOCATION_SESSION.LONGITUDE}"/>
-				<div class="row discount" style="padding:5px;">
-			      <div class="col-25">
-			      	<select id="SHOPTYPE_ID" name="SHOPTYPE_ID" class="select_condition">
-				      	<option value="">分类</option>
-		                <c:forEach var="var" items="${typeData}">
-		                	<option value="${var.SHOPTYPE_ID}"  <c:if test="${var.SHOPTYPE_ID eq pd.SHOPTYPE_ID}">selected="selected"</c:if>>${var.SHOPTYPENAME}</option>
-		                </c:forEach>
-		              </select>
-	              </div>
-			      <div class="col-25">
-					<select id="DISTANCE" name="DISTANCE" class="select_condition">
-				      	<option value="">附近</option>
-		                <option value="1" <c:if test="${pd.DISTANCE eq 1}">selected="selected"</c:if>>由近到远</option>
-		                <option value="2" <c:if test="${pd.DISTANCE eq 2}">selected="selected"</c:if>>由远到近</option>
-		              </select>
-       			  </div>
-			      <div class="col-25">
-			      	<select id="SXORDER" name="SXORDER" class="select_condition">
-				      	<option value="">排序</option>
-		                <option value="1" <c:if test="${pd.SXORDER eq 1}">selected="selected"</c:if>>人均消费由小到大</option>
-		                <option value="2" <c:if test="${pd.SXORDER eq 2}">selected="selected"</c:if>>人均消费由大到小</option>
-		              </select>
-			      </div>
-			      <div class="col-25">
-			      	<select id="SXSELECT" name="SXSELECT" class="select_condition">
-				      	<option value="">筛选</option>
-		              </select>
-			      </div>
-			    </div>
-			    </form>
-			    <c:forEach var="var" items="${shopData}">
-			    <div class="row" style="padding:5px;padding-top:0px;">
-			      <div class="col-100">
-			    <div class="card">
-			    <div class="card-content">
-			      <div class="list-block media-list">
-			        <ul>
-			          <li class="item-content">
-			            <div class="item-media">
-			              <a class="external" href="<%=request.getContextPath()%>/shop/info?SHOP_ID=${var.SHOP_ID}">
-			              <c:choose>
-			              	<c:when test="${var.FILEPATH eq null}">
-			              	<img src="<%=request.getContextPath()%>/static/image/shop.jpg" width="150">
-			              	</c:when>
-			              	<c:otherwise>
-			              	<img src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" style="width:150px;max-height:100px;">
-			              	</c:otherwise>
-			              </c:choose>
-			              </a>
-			            </div>
-			            <div class="item-inner">
-			              <div class="item-title-row">
-			                <div class="item-title" style="font-weight:bold;">${var.SHOPNAME}</div>
-			              </div>
-			              <div class="item-subtitle" style="font-weight:bold;">
-			              	¥ ${var.AVGMONEY} / 人
-			              	<span>
-			              	<c:choose>
-			              	<c:when test="${var.DISTANCE ne 0}">${var.DISTANCE}m</c:when>
-			              	<c:otherwise>&nbsp;</c:otherwise>
-			              	</c:choose>
-			              	</span>
-			              </div>
-			              <div class="item-subtitle" style="font-weight:bold;">
-			              	${var.SHOPTYPENAME}
-			              </div>
-			              <div class="item-subtitle" style="color:#F40A0B;">
-			              	<span class="quan">券</span>83代100元
-			              </div>
-			            </div>
-			          </li>
-			        </ul>
-			      </div>
-			    </div>
-			    <div class="card-footer">
-			      <span style="font-weight:bold;">${var.SHOPADDRESS}</span>
-			      <span>
-			      <c:choose>
-			      	<c:when test="${pd.ZSFLAG eq 4 }">
-			      		<a href="<%=request.getContextPath()%>/shop/info?SHOP_ID=${var.SHOP_ID}" class="external button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</a>
-			      	</c:when>
-			      	<c:otherwise>
-			      		<a href="javascript:;" onclick="$.alert('对不起，周四才可以半价抢购哦')" class="external button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</a>
-			      	</c:otherwise>
-			      </c:choose>
-			      </span>
-			    </div>
-			  </div>
-			  </div>
-			  </div>
-			  </c:forEach> 
-        	</div>
-    	</div>
-    </div>
-  </body>
-  <%@ include file="../common/headjs.jsp"%>
   <script type="text/javascript">
+  
+  $.showPreloader('获取位置信息 . . .');	
+  
   $("select.select_condition").change(function(){
-	  $("#form").submit();
+	  search(true);
   })
+  
+  	 var loading = false;
+     
+     $.init();
+     
+  	$(document).on('infinite',function(){
+  		
+  		if((page_currentPage*1+1) > parseInt(page.totalPage)){
+  			$.toast("数据已经到底了");
+  			return;
+  		}
+  		
+  		page_currentPage++;
+
+         // 如果正在加载，则退出
+         if (loading) return;
+
+         // 设置flag
+         loading = true;
+         
+         //$.showPreloader();
+
+         // 模拟1s的加载过程
+         setTimeout(function() {
+             // 重置加载flag
+
+             search(false);
+             
+             //$.hidePreloader();
+             
+             //容器发生改变,如果是js滚动，需要刷新滚动
+             $.refreshScroller();
+         }, 500);
+     });
   </script>
 </html>
