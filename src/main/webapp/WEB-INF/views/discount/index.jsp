@@ -191,7 +191,7 @@
     					$("#shops").append(html);
     				}
     				
-    				$.hidePreloader();
+    				setTimeout(function(){$.hidePreloader();},500);
     				
     	             loading = false;
     			},
@@ -227,16 +227,12 @@
 
          // 设置flag
          loading = true;
-         
-         //$.showPreloader();
 
          // 模拟1s的加载过程
          setTimeout(function() {
              // 重置加载flag
 
              search(false);
-             
-             //$.hidePreloader();
              
              //容器发生改变,如果是js滚动，需要刷新滚动
              $.refreshScroller();
