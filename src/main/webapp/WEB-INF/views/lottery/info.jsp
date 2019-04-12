@@ -59,6 +59,8 @@
           
           <div style="margin:0 auto;width:300px;text-align: center;padding-top:15px;">${pd.SHOWTIME}开奖</div>
           <div style="margin:0 auto;width:300px;text-align: center;padding-top:5px;"><a class="external" href="<%=request.getContextPath()%>/lottery/member?LOTTERY_ID=${pd.LOTTERY_ID}">已有${fn:length(lotteryrecordData)}人参与抽奖,查看全部 ></a></div>
+        
+        </div>
         <div class="row" style="padding:5px;">
 			<div class="col-100">
 			<c:forEach var="var" items="${lotteryrecordData}">
@@ -66,10 +68,9 @@
 			</c:forEach>
 			</div>
 		</div>
-        <div class="row">
+        <div class="row" style="padding:5px;">
       	<div class="col-100"><a href="javascript:;" onclick="goShare()" class="button button-big button-fill button-success" style="background:#FFCC01;color:#000000;">分享给朋友</a></div>
       	</div>
-        </div>
       </div>
       <div id="tab2" class="tab">
         <div class="content-block">
