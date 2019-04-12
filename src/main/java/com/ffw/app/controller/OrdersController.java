@@ -1,6 +1,9 @@
 package com.ffw.app.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -54,6 +57,9 @@ public class OrdersController extends BaseController {
 		String GOODS_ID = pd.getString("GOODS_ID");
 		String NUMBER = pd.getString("NUMBER");
 
+		pd.put("ORDERSN",
+				new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())
+						+ randomNumber(5));
 		pd.put("MEMBER_ID", memberId());
 		pd.put("CDT", DateUtil.getTime());
 		pd.put("STATE", IConstant.STRING_0);
@@ -63,7 +69,7 @@ public class OrdersController extends BaseController {
 		rm.setFlag(true);
 		rm.setMessage(getMessage("MSG_CODE_ADD_SUCCESS", new Object[] { "订单" },
 				""));
-		rm.setData(pd.getString("ORDER_ID"));
+		rm.setData(pd);
 
 		PageData pdc = new PageData();
 		pdc.put("CARD_ID", CARD_ID);
@@ -85,5 +91,15 @@ public class OrdersController extends BaseController {
 				PageData.class);
 
 		return rm;
+	}
+
+	private String randomNumber(int length) {
+		StringBuilder sb = new StringBuilder();
+		Random r = new Random();
+		String s = "0123456789";
+		for (int i = 0; i < length; i++) {
+			sb.append(s.charAt(r.nextInt(s.length())));
+		}
+		return sb.toString();
 	}
 }

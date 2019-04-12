@@ -163,9 +163,9 @@
 		});
   	}
   	
-  	function goPay(id){
+  	function goPay(data){
  		 wx.miniProgram.navigateTo({
-            url: '/pages/pay/pay?id='+id
+            url: '/pages/pay/pay?id='+data.ORDER_ID+'&sn='+data.ORDERSN+'&original='+data.ORIGINAL+'&derate='+data.DERATE+'&money='+data.MONEY
        })
  	}
   </script>
