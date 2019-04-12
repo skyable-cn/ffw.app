@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ffw.api.model.Page;
 import com.ffw.api.model.PageData;
 import com.ffw.app.constant.IConstant;
 import com.ffw.app.util.RestTemplateUtil;
@@ -45,28 +47,38 @@ public class HomeController extends BaseController {
 				"stand/listAll", pd3,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
+		if (standData.size() > 3) {
+			standData = standData.subList(0, 3);
+		}
+
 		mv.addObject("standData", standData);
-
-		PageData pd4 = new PageData();
-		pd4.put("STATE", IConstant.STRING_1);
-		pd4.put("SEARCHTYPE", IConstant.STRING_1);
-		List<PageData> goodsDatatj = rest.postForList(
-				IConstant.FFW_SERVICE_KEY, "goods/listAll", pd4,
-				new ParameterizedTypeReference<List<PageData>>() {
-				});
-		mv.addObject("goodsDatatj", goodsDatatj);
-
-		PageData pd5 = new PageData();
-		pd5.put("STATE", IConstant.STRING_1);
-		pd5.put("SEARCHTYPE", IConstant.STRING_2);
-		List<PageData> goodsDatazr = rest.postForList(
-				IConstant.FFW_SERVICE_KEY, "goods/listAll", pd5,
-				new ParameterizedTypeReference<List<PageData>>() {
-				});
-		mv.addObject("goodsDatazr", goodsDatazr);
 
 		mv.setViewName("home/index");
 		mv.addObject("nav", "home");
 		return mv;
+	}
+
+	@RequestMapping(value = { "/home/search" })
+	@ResponseBody
+	public PageData indexSearch() {
+		logger.info("进入首页查询");
+		PageData pd = new PageData();
+		pd = this.getPageData();
+
+		PageData pd1 = new PageData();
+		pd1.put("STATE", IConstant.STRING_1);
+		pd1.put("SEARCHTYPE", IConstant.STRING_1);
+		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "goods/listPage", pd1,
+				Page.class);
+
+		PageData pd2 = new PageData();
+		pd2.put("STATE", IConstant.STRING_1);
+		pd2.put("SEARCHTYPE", IConstant.STRING_2);
+		Page page1 = rest.post(IConstant.FFW_SERVICE_KEY, "goods/listPage",
+				pd2, Page.class);
+
+		pd.put("page", page);
+		pd.put("page1", page1);
+		return pd;
 	}
 }

@@ -16,7 +16,7 @@
   <body>
     <div class="page-group">
         <div class="page page-current">
-			<div class="content">
+			<div class="content infinite-scroll" data-distance="30">
 			<div class="row" style="background-color:#FFCC01;height:150px;">
 				<div class="col-50" style="padding:20px;">
 					<div class="row">
@@ -65,50 +65,14 @@
 			</div>
 		    <div class="tabs">
 		      <div id="tab1" class="tab active">
-		      	<c:forEach var="var" items="${goodsDatatj}">
-		          <div class="card demo-card-header-pic" style="position:relative;">
-				    <div valign="bottom" class="card-header color-white no-border no-padding">
-				      <a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=${var.GOODS_ID}"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}';"></a>
-				      <div id="goods_time_id_${var.GOODS_ID}_tj_left" class="suspend left">抢购中</div>
-				      <div id="goods_time_id_${var.GOODS_ID}_tj_right" class="suspend right">活动倒计时<div id="goods_time_id_${var.GOODS_ID}_tj"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
-				    </div>
-				    <div class="card-content">
-				      <div class="card-content-inner">
-				        <p><span style="color:#fff;background-color:#F40A0B;padding:3px;border-radius:5px;">爆</span>${var.GOODSDESC}</p>
-				      </div>
-				    </div>
-				    <div class="card-footer">
-				      <span>体验价: <strong style="color:#F40A0B;font-size:16px;">${var.SELLMONEY}</strong></span>
-				      <span class="delete">¥ ${var.ORIGINALMONEY}</span>
-				      <span class="return">返 7.9</span>
-				      <span>已抢: ${var.BUYNUMBER}</span>
-				    </div>
+		      	<div id="goods1">
+		      	
 				  </div>
-				  <script type="text/javascript">TimeDown("goods_time_id_${var.GOODS_ID}_tj","${var.ENDTIME}")</script>
-				  </c:forEach>
 		      </div>
 		      <div id="tab2" class="tab">
-		        <c:forEach var="var" items="${goodsDatazr}">
-		          <div class="card demo-card-header-pic" style="position:relative;">
-				    <div valign="bottom" class="card-header color-white no-border no-padding">
-				      <a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=${var.GOODS_ID}"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}';"></a>
-				      <div id="goods_time_id_${var.GOODS_ID}_zr_left" class="suspend left">抢购中</div>
-				      <div id="goods_time_id_${var.GOODS_ID}_zr_right" class="suspend right">活动倒计时<div id="goods_time_id_${var.GOODS_ID}_zr"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
-				    </div>
-				    <div class="card-content">
-				      <div class="card-content-inner">
-				        <p><span style="color:#fff;background-color:#F40A0B;padding:3px;border-radius:5px;">爆</span>${var.GOODSDESC}</p>
-				      </div>
-				    </div>
-				    <div class="card-footer">
-				      <span>体验价: <strong style="color:#F40A0B;font-size:16px;">${var.SELLMONEY}</strong></span>
-				      <span class="delete">¥ ${var.ORIGINALMONEY}</span>
-				      <span class="return">返 7.9</span>
-				      <span>已抢: ${var.BUYNUMBER}</span>
-				    </div>
+		      <div id="goods2">
+		        
 				  </div>
-				  <script type="text/javascript">TimeDown("goods_time_id_${var.GOODS_ID}_zr","${var.ENDTIME}")</script>
-				  </c:forEach>
 		      </div>
 		    </div>
 				</div>
@@ -128,5 +92,132 @@
       },
       autoplay:true
     });	
+  </script>
+    <script type="text/javascript">
+
+	   	search(true);
+		     
+    	var page_currentPage = 1;
+    	
+    	function search(flag){
+    		$.ajax({
+    			type: "POST",
+    			url: '<%=request.getContextPath()%>/home/search',
+    	    	data:{
+  					"page_currentPage":page_currentPage
+    	    	},
+    	    	async: false,
+    			dataType:'json',
+    			cache: false,
+    			beforeSend:function(){
+    				$.showPreloader();
+    				//$("#shops").html('');
+    			},
+    			success: function(data){
+    				pageData = data.page;
+    				var list = data.page.data;
+    				var html = "";
+    				$.each(list,function(index,value){ 
+    					html += `
+    					<div class="card demo-card-header-pic" style="position:relative;">
+    				    <div valign="bottom" class="card-header color-white no-border no-padding">
+    				      <a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=`+value.GOODS_ID+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
+    				      <div id="goods_time_id_`+value.GOODS_ID+`_tj_left" class="suspend left">抢购中</div>
+    				      <div id="goods_time_id_`+value.GOODS_ID+`_tj_right" class="suspend right">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_tj"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
+    				    </div>
+    				    <div class="card-content">
+    				      <div class="card-content-inner">
+    				        <p><span style="color:#fff;background-color:#F40A0B;padding:3px;border-radius:5px;">爆</span>`+value.GOODSDESC+`</p>
+    				      </div>
+    				    </div>
+    				    <div class="card-footer">
+    				      <span>体验价: <strong style="color:#F40A0B;font-size:16px;">`+value.SELLMONEY+`</strong></span>
+    				      <span class="delete">¥ `+value.ORIGINALMONEY+`</span>
+    				      <span class="return">返 7.9</span>
+    				      <span>已抢:`+value.BUYNUMBER+`</span>
+    				    </div>
+    				  </div>
+    					`;
+    					TimeDown("goods_time_id_"+value.GOODS_ID+"_tj",value.ENDTIME)
+    				})
+    				if(flag){
+    					$("#goods1").html(html);
+    				}else{
+    					$("#goods1").append(html);
+    				}
+    				
+    				var list = data.page1.data;
+    				var html = "";
+    				$.each(list,function(index,value){ 
+    					html += `
+    					<div class="card demo-card-header-pic" style="position:relative;">
+    				    <div valign="bottom" class="card-header color-white no-border no-padding">
+    				      <a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=`+value.GOODS_ID+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
+    				      <div id="goods_time_id_`+value.GOODS_ID+`_zr_left" class="suspend left">抢购中</div>
+    				      <div id="goods_time_id_`+value.GOODS_ID+`_zr_right" class="suspend right">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_zr"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
+    				    </div>
+    				    <div class="card-content">
+    				      <div class="card-content-inner">
+    				        <p><span style="color:#fff;background-color:#F40A0B;padding:3px;border-radius:5px;">爆</span>`+value.GOODSDESC+`</p>
+    				      </div>
+    				    </div>
+    				    <div class="card-footer">
+    				      <span>体验价: <strong style="color:#F40A0B;font-size:16px;">`+value.SELLMONEY+`</strong></span>
+    				      <span class="delete">¥ `+value.ORIGINALMONEY+`</span>
+    				      <span class="return">返 7.9</span>
+    				      <span>已抢:`+value.BUYNUMBER+`</span>
+    				    </div>
+    				  </div>
+    					`;
+    					TimeDown("goods_time_id_"+value.GOODS_ID+"_zr",value.ENDTIME)
+    				})
+    				if(flag){
+    					$("#goods2").html(html);
+    				}else{
+    					$("#goods2").append(html);
+    				}
+    				
+    				setTimeout(function(){$.hidePreloader();},500);
+    				
+    	             loading = false;
+    			},
+    			error:function(){
+    				
+    			}
+    		});
+    	}
+    	
+    </script>
+  <script type="text/javascript">
+  
+ 	var loading = false;
+     
+     $.init();
+     
+  	$(document).on('infinite',function(){
+  		
+  		if(parseInt(pageData.currentPage) >= parseInt(pageData.totalPage)){
+  			$.toast("数据已经到底了");
+  			return;
+  		}
+  		
+  		page_currentPage++;
+
+         // 如果正在加载，则退出
+         if (loading) return;
+
+         // 设置flag
+         loading = true;
+
+         // 模拟1s的加载过程
+         setTimeout(function() {
+             // 重置加载flag
+
+             search(false);
+             
+             //容器发生改变,如果是js滚动，需要刷新滚动
+             $.refreshScroller();
+         }, 500);
+  	});
   </script>
 </html>

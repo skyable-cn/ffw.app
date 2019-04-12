@@ -18,16 +18,18 @@
 	    var minutes = Math.floor(modulo / 60);
 	    //秒
 	    var seconds = modulo % 60;
-	    //输出到页面
-	    document.getElementById(id).innerHTML = "<span>"+ days + "</span>天<span>" + hours + "</span> <span>" + minutes + "</span> <span>" + seconds +"</span>";
-	    //延迟一秒执行自己
 	    
-	    if(days<0 || hours<0 || minutes<0 || seconds <0){
-	    	document.getElementById(id+"_left").style.display = 'none';
-	    	document.getElementById(id+"_right").style.display = 'none';
-	    	return;
+	    if(document.getElementById(id) != null){
+		    //输出到页面
+		    document.getElementById(id).innerHTML = "<span>"+ days + "</span>天<span>" + hours + "</span> <span>" + minutes + "</span> <span>" + seconds +"</span>";
+		    //延迟一秒执行自己
+		    
+		    if(days<0 || hours<0 || minutes<0 || seconds <0){
+		    	document.getElementById(id+"_left").style.display = 'none';
+		    	document.getElementById(id+"_right").style.display = 'none';
+		    	return;
+		    }
 	    }
-	    
 	    setTimeout(function () {
 	        TimeDown(id, endDateStr);
 	    }, 1000)

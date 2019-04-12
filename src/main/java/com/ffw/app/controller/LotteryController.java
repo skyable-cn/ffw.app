@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ffw.api.model.Page;
 import com.ffw.api.model.PageData;
 import com.ffw.api.util.DateUtil;
 import com.ffw.app.constant.IConstant;
@@ -29,15 +30,20 @@ public class LotteryController extends BaseController {
 		logger.info("进入免费抽奖");
 		ModelAndView mv = new ModelAndView();
 
-		PageData pd1 = new PageData();
-		List<PageData> lotteryData = rest.postForList(
-				IConstant.FFW_SERVICE_KEY, "lottery/listAll", pd1,
-				new ParameterizedTypeReference<List<PageData>>() {
-				});
-		mv.addObject("lotteryData", lotteryData);
-
 		mv.setViewName("lottery/index");
 		return mv;
+	}
+
+	@RequestMapping(value = { "/lottery/search" })
+	@ResponseBody
+	public PageData indexSearch() {
+		logger.info("进入免费抽奖查询");
+
+		PageData pd = new PageData();
+		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "lottery/listPage",
+				pd, Page.class);
+		pd.put("page", page);
+		return pd;
 	}
 
 	@RequestMapping(value = { "/lottery/info" })
