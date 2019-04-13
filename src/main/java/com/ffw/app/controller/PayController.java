@@ -67,13 +67,13 @@ public class PayController extends BaseController {
 			pd.put("ORDER_ID", pd.getString("ID"));
 			pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd,
 					PageData.class);
-			SNID = pd.getString("ORDER_ID");
+			SNID = "GOODS_"+pd.getString("ORDER_ID");
 			BODYDESC = "饭饭网产品消费";
 		} else if ("product".equals(pd.getString("TYPE"))) {
 			pd.put("RECHARGE_ID", pd.getString("ID"));
 			pd = rest.post(IConstant.FFW_SERVICE_KEY, "recharge/find", pd,
 					PageData.class);
-			SNID = pd.getString("RECHARGE_ID");
+			SNID = "PRODUCT_"+pd.getString("RECHARGE_ID");
 			BODYDESC = "饭饭网会员充值";
 		} else {
 
