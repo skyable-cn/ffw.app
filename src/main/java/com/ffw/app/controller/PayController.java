@@ -61,22 +61,36 @@ public class PayController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 
-		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd,
-				PageData.class);
+		String SNID = null;
+		String BODYDESC = null;
+		if ("goods".equals(pd.getString("TYPE"))) {
+			pd.put("ORDER_ID", pd.getString("ID"));
+			pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd,
+					PageData.class);
+			SNID = pd.getString("ORDER_ID");
+			BODYDESC = "饭饭网产品消费";
+		} else if ("product".equals(pd.getString("TYPE"))) {
+			pd.put("RECHARGE_ID", pd.getString("ID"));
+			pd = rest.post(IConstant.FFW_SERVICE_KEY, "recharge/find", pd,
+					PageData.class);
+			SNID = pd.getString("RECHARGE_ID");
+			BODYDESC = "饭饭网会员充值";
+		} else {
+
+		}
 
 		// 生成的随机字符串
 		String nonce_str = WXPayUtil.generateNonceStr();
 		// 获取客户端的ip地址
 		String spbill_create_ip = getIpAddr(getRequest());
 
-		int price = 1;
 		// 统一下单接口
 		HashMap<String, String> data = new HashMap<String, String>();
 		data.put("appid", wechatMiniConfig.getAppid());
 		data.put("mch_id", wechatMiniConfig.getMchid());
 		data.put("nonce_str", nonce_str);
-		data.put("body", "美食"); // 商品描述
-		data.put("out_trade_no", pd.getString("ORDER_ID"));// 商户订单号
+		data.put("body", BODYDESC); // 商品描述
+		data.put("out_trade_no", SNID);// 商户订单号
 		String fee = String
 				.valueOf(Float.parseFloat(pd.getString("MONEY")) * 100);
 		data.put("total_fee", fee.substring(0, fee.indexOf(".")) + "");// 支付金额，这边需要转成字符串类型，否则后面的签名会失败
