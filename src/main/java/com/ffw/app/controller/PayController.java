@@ -2,6 +2,8 @@ package com.ffw.app.controller;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ffw.api.model.PageData;
+import com.ffw.api.util.DateUtil;
 import com.ffw.app.config.WXPayConfigImpl;
 import com.ffw.app.config.WechatMiniConfig;
 import com.ffw.app.constant.IConstant;
@@ -67,17 +70,34 @@ public class PayController extends BaseController {
 			pd.put("ORDER_ID", pd.getString("ID"));
 			pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd,
 					PageData.class);
-			SNID = "GOODS_"+pd.getString("ORDER_ID");
+			SNID = "GOODS_" + pd.getString("ORDER_ID");
 			BODYDESC = "饭饭网产品消费";
 		} else if ("product".equals(pd.getString("TYPE"))) {
 			pd.put("RECHARGE_ID", pd.getString("ID"));
 			pd = rest.post(IConstant.FFW_SERVICE_KEY, "recharge/find", pd,
 					PageData.class);
-			SNID = "PRODUCT_"+pd.getString("RECHARGE_ID");
+			SNID = "PRODUCT_" + pd.getString("RECHARGE_ID");
 			BODYDESC = "饭饭网会员充值";
 		} else {
 
 		}
+
+		// 返回给小程序端需要的参数
+		Map<String, String> response = new HashMap<String, String>();
+
+		if (null == pd) {
+			response.put("STATEFLAG", "NO");
+			response.put("STATEMESSAGE", "参数异常");
+			return response;
+		}
+
+		if (StringUtils.isNotEmpty(pd.getString("WEIXINSN"))) {
+			response.put("STATEFLAG", "NO");
+			response.put("STATEMESSAGE", "订单已支付");
+			return response;
+		}
+
+		response.put("STATEFLAG", "OK");
 
 		// 生成的随机字符串
 		String nonce_str = WXPayUtil.generateNonceStr();
@@ -99,8 +119,6 @@ public class PayController extends BaseController {
 		data.put("trade_type", "JSAPI");// 支付方式
 		data.put("openid", openId());
 
-		// 返回给小程序端需要的参数
-		Map<String, String> response = new HashMap<String, String>();
 		response.put("appId", wechatMiniConfig.getAppid());
 
 		WXPay wxpay = new WXPay(config, SignType.MD5);
@@ -153,7 +171,103 @@ public class PayController extends BaseController {
 
 		String returnCode = dataMap.get("return_code");
 		if ("SUCCESS".equals(returnCode)) {
+			String transaction_id = dataMap.get("transaction_id");
+			String[] out_trade_no = dataMap.get("out_trade_no").split("_");
+			String type = out_trade_no[0];
+			String id = out_trade_no[1];
+			PageData pd = new PageData();
+			if ("GOODS".equals(type)) {
+				pd.put("ORDER_ID", id);
 
+				pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd,
+						PageData.class);
+
+				if (StringUtils.isNotEmpty(pd.getString("WEIXINSN"))) {
+					return;
+				}
+
+				pd.put("WEIXINSN", transaction_id);
+				pd.put("STATE", IConstant.STRING_1);
+				rest.post(IConstant.FFW_SERVICE_KEY, "orders/edit", pd,
+						PageData.class);
+			} else if ("PRODUCT".equals(type)) {
+				pd.put("RECHARGE_ID", id);
+
+				pd = rest.post(IConstant.FFW_SERVICE_KEY, "recharge/find", pd,
+						PageData.class);
+				if (StringUtils.isNotEmpty(pd.getString("WEIXINSN"))) {
+					return;
+				}
+
+				pd.put("WEIXINSN", transaction_id);
+				pd.put("STATE", IConstant.STRING_1);
+				rest.post(IConstant.FFW_SERVICE_KEY, "recharge/edit", pd,
+						PageData.class);
+
+				pd = rest.post(IConstant.FFW_SERVICE_KEY, "recharge/find", pd,
+						PageData.class);
+
+				String WXOPEN_ID = dataMap.get("openid");
+				PageData pd1 = new PageData();
+				pd1.put("WXOPEN_ID", WXOPEN_ID);
+				pd1 = rest.post(IConstant.FFW_SERVICE_KEY, "member/findBy",
+						pd1, PageData.class);
+				if (IConstant.STRING_1.equals(pd1.getString("MEMBERTYPE_ID"))) {
+					pd1.put("MEMBERTYPE_ID", IConstant.STRING_2);
+					rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pd1,
+							PageData.class);
+				} else if (IConstant.STRING_3.equals(pd1
+						.getString("MEMBERTYPE_ID"))) {
+					pd1.put("MEMBERTYPE_ID", IConstant.STRING_4);
+					rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pd1,
+							PageData.class);
+				} else {
+
+				}
+
+				PageData pd2 = new PageData();
+				pd2.put("MEMBER_ID", pd1.getString("MEMBER_ID"));
+				pd2 = rest.post(IConstant.FFW_SERVICE_KEY, "vipinfo/findBy",
+						pd2, PageData.class);
+
+				PageData pdr = new PageData();
+				pdr.put("PRODUCT_ID", pd.getString("PRODUCT_ID"));
+				pdr = rest.post(IConstant.FFW_SERVICE_KEY, "recharge/find",
+						pdr, PageData.class);
+
+				if (pd2 != null) {
+					pd2.put("STATE", IConstant.STRING_1);
+					Date lasttime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+							.parse(pd2.getString("LASTTIME"));
+					if (lasttime.getTime() > new Date().getTime()) {
+						pd2.put("LASTTIME",
+								DateUtil.getAfterDayDateWith(lasttime,
+										pdr.getString("PRODUCTTIME")));
+					} else {
+						pd2.put("LASTTIME", DateUtil.getAfterDayDate(pdr
+								.getString("PRODUCTTIME")));
+					}
+					rest.post(IConstant.FFW_SERVICE_KEY, "vipinfo/edit", pd2,
+							PageData.class);
+
+				} else {
+
+					pd2 = new PageData();
+					pd2.put("MEMBER_ID", pd1.getString("MEMBER_ID"));
+					pd2.put("STATE", IConstant.STRING_1);
+					pd2.put("LASTTIME", DateUtil.getAfterDayDate(pdr
+							.getString("PRODUCTTIME")));
+					rest.post(IConstant.FFW_SERVICE_KEY, "vipinfo/save", pd2,
+							PageData.class);
+
+				}
+
+			} else {
+
+			}
+
+			String response = "<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[OK]]></return_msg></xml>";
+			getResponse().getOutputStream().write(response.getBytes());
 		}
 
 	}
