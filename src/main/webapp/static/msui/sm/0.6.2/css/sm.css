@@ -3351,7 +3351,7 @@ html.with-statusbar-overlay .popup.tablet-fullscreen {
   border-radius: 0.1rem;
   font-size: 0.7rem;
   margin-top:0.25rem;
-  margin-bottom:0.5rem;
+  margin-bottom:0.25rem;
 }
 .card .list-block,
 .card .content-block {

@@ -16,54 +16,24 @@
     <div class="page-group">
         <div class="page page-current">
 			<div class="content">
+			<c:forEach var="var" items="${lotteryrecordData}">
 			<div class="row" style="padding:5px;border-bottom:1px #cccccc solid;">
 				<div class="col-50">
-					<img align="middle" style="margin:10px; width:50px;border-radius:50%;margin-left:50px;" src="<%=request.getContextPath()%>/static/image/head.jpg"/>
+					<img align="middle" style="margin:10px; width:50px;border-radius:50%;margin-left:50px;" src="${var.PHOTO}"/>
 				</div>
 				<div class="col-50">
 					<div class="row">
-						<div class="col-100" style="font-weight:bold;">张三丰</div>
+						<div class="col-100" style="font-weight:bold;">${var.NICKNAME}</div>
 					</div>
 					<div class="row">
-						<div class="col-100" style="font-weight:bold;">22222222</div>
+						<div class="col-100" style="font-weight:bold;">${var.LUCKNUMBER}</div>
 					</div>
 					<div class="row">
-						<div class="col-100" style="font-weight:bold;">2019-12-12 12:12:12</div>
+						<div class="col-100" style="font-weight:bold;">${var.CDT}</div>
 					</div>
 				</div>
 			</div>
-			<div class="row" style="padding:5px;border-bottom:1px #cccccc solid;">
-				<div class="col-50">
-					<img align="middle" style="margin:10px; width:50px;border-radius:50%;margin-left:50px;" src="<%=request.getContextPath()%>/static/image/head.jpg"/>
-				</div>
-				<div class="col-50">
-					<div class="row">
-						<div class="col-100" style="font-weight:bold;">张三丰</div>
-					</div>
-					<div class="row">
-						<div class="col-100" style="font-weight:bold;">22222222</div>
-					</div>
-					<div class="row">
-						<div class="col-100" style="font-weight:bold;">2019-12-12 12:12:12</div>
-					</div>
-				</div>
-			</div>
-			<div class="row" style="padding:5px;border-bottom:1px #cccccc solid;">
-				<div class="col-50">
-					<img align="middle" style="margin:10px; width:50px;border-radius:50%;margin-left:50px;" src="<%=request.getContextPath()%>/static/image/head.jpg"/>
-				</div>
-				<div class="col-50">
-					<div class="row">
-						<div class="col-100" style="font-weight:bold;">张三丰</div>
-					</div>
-					<div class="row">
-						<div class="col-100" style="font-weight:bold;">22222222</div>
-					</div>
-					<div class="row">
-						<div class="col-100" style="font-weight:bold;">2019-12-12 12:12:12</div>
-					</div>
-				</div>
-			</div>
+			</c:forEach>
 	    	</div>
     	</div>
     </div>

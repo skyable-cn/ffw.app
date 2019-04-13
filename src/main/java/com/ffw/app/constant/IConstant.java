@@ -11,4 +11,6 @@ public interface IConstant {
 	String STRING_1 = "1";
 
 	String STRING_2 = "2";
+
+	String STRING_3 = "3";
 }

@@ -84,7 +84,7 @@
 				      <span>已抢: ${var.BUYNUMBER}</span>
 				    </div>
 				  </div>
-				  <script type="text/javascript">TimeDown("goods_time_id_${var.GOODS_ID}_tj","${var.ENDTIME} 23:59:59")</script>
+				  <script type="text/javascript">TimeDown("goods_time_id_${var.GOODS_ID}_tj","${var.ENDTIME}")</script>
 				  </c:forEach>
 		      </div>
 		      <div id="tab2" class="tab">
@@ -107,7 +107,7 @@
 				      <span>已抢: ${var.BUYNUMBER}</span>
 				    </div>
 				  </div>
-				  <script type="text/javascript">TimeDown("goods_time_id_${var.GOODS_ID}_zr","${var.ENDTIME} 23:59:59")</script>
+				  <script type="text/javascript">TimeDown("goods_time_id_${var.GOODS_ID}_zr","${var.ENDTIME}")</script>
 				  </c:forEach>
 		      </div>
 		    </div>

@@ -11,25 +11,34 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <%@ include file="../common/headcss.jsp"%>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
   </head>
   <body>
     <div class="page-group">
         <div class="page page-current">
 			<div class="content">
 			<div class="row" style="padding:5px;">
-				<div class="col-40"><img style="margin-left:20px; width:100px;border-radius:50%;" src="<%=request.getContextPath()%>/static/image/shop.jpg"/></div>
-		        <div class="col-60" style="line-height:100px;">重庆鸡公煲火锅</div>
+				<div class="col-40">
+				<c:choose>
+	              	<c:when test="${pd.FILEPATH eq null}">
+	              	<img style="margin-left:20px; width:100px; height:100px; border-radius:50%;" src="<%=request.getContextPath()%>/static/image/shop.jpg"/>
+	              	</c:when>
+	              	<c:otherwise>
+	              	<img style="margin-left:20px; width:100px; height:100px; border-radius:50%;" src="<%=request.getContextPath()%>/file/image?FILENAME=${pd.FILEPATH}"/>
+	              	</c:otherwise>
+	              </c:choose>
+				</div>
+		        <div class="col-60" style="line-height:100px;">${pd.SHOPNAME}</div>
 			</div>
 			<div style="width:100%;height:1px;background:#aaaaaa;">&nbsp;</div>
 			<div class="row" style="padding:10px;">
-				<div class="col-60">西安市长安区王寺街道</div>
-		        <div class="col-40" style="text-align:right;"><img width="20" style="margin-right:15px;" src="<%=request.getContextPath()%>/static/icon/phone.png"/> | <img  style="margin-left:15px;" width="20" src="<%=request.getContextPath()%>/static/icon/send.png"/></div>
+				<div class="col-60">${pd.SHOPADDRESS}</div>
+		        <div class="col-40" style="text-align:right;"><img onclick="phone()" width="20" style="margin-right:15px;" src="<%=request.getContextPath()%>/static/icon/phone.png"/> | <img  style="margin-left:15px;" width="20" src="<%=request.getContextPath()%>/static/icon/send.png"/></div>
 			</div>
 			<div style="width:100%;height:1px;background:#aaaaaa;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-60" style="padding:5px;">
 					<span style="color:#fff;background-color:#F40A0B;padding:5px;border-radius:5px;padding-left:10px;padding-right:10px;">优惠券1</span>
-					<span style="color:#fff;background-color:#F40A0B;padding:5px;border-radius:5px;padding-left:10px;padding-right:10px;">优惠券2</span>
 				</div>
 		        <div class="col-40"><button class="button button-fill button-warning pull-right" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</button></div>
 			</div>
@@ -46,4 +55,11 @@
     </div>
   </body>
   <%@ include file="../common/headjs.jsp"%>
+  <script type="text/javascript">
+  	function phone(){
+  		wx.miniProgram.navigateTo({
+            url: '/pages/phone/phone?phone=${pd.CONTRACTPHONE}'
+       })
+  	}
+  </script>
 </html>

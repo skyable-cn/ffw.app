@@ -28,11 +28,36 @@
     <div class="tabs">
       <div id="tab1" class="tab active">
         <div class="content-block">
-          <div style="margin:0 auto;background:#FFCC01;width:150px;height:150px;border:1px solid #dddddd;border-radius:75px;text-align: center;line-height:150px;color:#000000;font-weight:bold;">参与抽奖</div>
-          <div style="margin:0 auto;width:300px;text-align: center;padding-top:15px;">2019-12-20 21:00开奖</div>
-          <div style="margin:0 auto;width:300px;text-align: center;padding-top:5px;"><a class="external" href="<%=request.getContextPath()%>/lottery/member">已有1234人参与抽奖,查看全部 ></a></div>
+        <c:choose>
+        	<c:when test="${pd.USESTATE eq 0}">
+        		<div style="margin:0 auto;background:#CCCCCC;width:150px;height:150px;border:1px solid #dddddd;border-radius:75px;text-align: center;line-height:150px;color:#000000;font-weight:bold;" onclick="$.alert('对不起，抽奖未开始')">未开始</div>
+        	</c:when>
+        	<c:when test="${pd.USESTATE eq 1}">
+        		<c:choose>
+        			<c:when test="${pdme ne null}">
+        				<div style="margin:0 auto;background:#CCCCCC;width:150px;height:150px;border:1px solid #dddddd;border-radius:75px;text-align: center;line-height:150px;color:#000000;font-weight:bold;" onclick="$.alert('对不起，抽奖已参与')">已参与</div>
+        			</c:when>
+        			<c:otherwise>
+        				<div style="margin:0 auto;background:#FFCC01;width:150px;height:150px;border:1px solid #dddddd;border-radius:75px;text-align: center;line-height:150px;color:#000000;font-weight:bold;" onclick="lotterySave()">参与抽奖</div>
+        			</c:otherwise>
+        		</c:choose>
+        	</c:when>
+        	<c:when test="${pd.USESTATE eq 2}">
+        		<div style="margin:0 auto;background:#CCCCCC;width:150px;height:150px;border:1px solid #dddddd;border-radius:75px;text-align: center;line-height:150px;color:#000000;font-weight:bold;" onclick="$.alert('对不起，抽奖待开奖')">待开奖</div>
+        	</c:when>
+        	<c:otherwise>
+        		<div style="margin:0 auto;background:#CCCCCC;width:150px;height:150px;border:1px solid #dddddd;border-radius:75px;text-align: center;line-height:150px;color:#000000;font-weight:bold;" onclick="$.alert('对不起，抽奖已结束')">已结束</div>
+        	</c:otherwise>
+        </c:choose>
+          
+          <div style="margin:0 auto;width:300px;text-align: center;padding-top:15px;">${pd.SHOWTIME}开奖</div>
+          <div style="margin:0 auto;width:300px;text-align: center;padding-top:5px;"><a class="external" href="<%=request.getContextPath()%>/lottery/member?LOTTERY_ID=${pd.LOTTERY_ID}">已有${fn:length(lotteryrecordData)}人参与抽奖,查看全部 ></a></div>
         <div class="row" style="padding:5px;">
-			<div class="col-100"><img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="<%=request.getContextPath()%>/static/image/head.jpg"/><img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="<%=request.getContextPath()%>/static/image/head.jpg"/><img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="<%=request.getContextPath()%>/static/image/head.jpg"/></div>
+			<div class="col-100">
+			<c:forEach var="var" items="${lotteryrecordData}">
+				<img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="${var.PHOTO}"/>
+			</c:forEach>
+			</div>
 		</div>
         <div class="row">
       	<div class="col-100"><a href="javascript:;" onclick="goShare()" class="button button-big button-fill button-success" style="background:#FFCC01;color:#000000;">分享给朋友</a></div>
@@ -41,12 +66,12 @@
       </div>
       <div id="tab2" class="tab">
         <div class="content-block">
-          <p>${lottery.LOTTERYRULE}</p>
+          <p>${pd.LOTTERYRULE}</p>
         </div>
       </div>
       <div id="tab3" class="tab">
         <div class="content-block">
-          <p>${lottery.LOTTERYDESC}</p>
+          <p>${pd.LOTTERYDESC}</p>
         </div>
       </div>
     </div>
@@ -59,8 +84,35 @@
   <script type="text/javascript">
   	function goShare(){
   		 wx.miniProgram.navigateTo({
-             url: '/pages/share/share?image=${lottery.FILEPATH}'
+             url: '/pages/share/share?image=${pd.FILEPATH}'
         })
+  	}
+  	
+  	function lotterySave(){
+  		$.ajax({
+			type: "POST",
+			url: '<%=request.getContextPath()%>/lottery/save',
+	    	data:{
+	    		"LOTTERY_ID":'${pd.LOTTERY_ID}'
+	    	},
+	    	async: false,
+			dataType:'json',
+			cache: false,
+			beforeSend:function(){
+				
+			},
+			success: function(data){
+				if(data.flag){
+					$.alert(data.message+"<br/><br/>幸运码:"+data.data,function(){
+						location.href='<%=request.getContextPath()%>/lottery/info?LOTTERY_ID=${pd.LOTTERY_ID}'
+					})
+					
+				}
+			},
+			error:function(){
+				
+			}
+		});
   	}
   </script>
 </html>

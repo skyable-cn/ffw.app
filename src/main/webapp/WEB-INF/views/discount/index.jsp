@@ -48,6 +48,7 @@
 		              </select>
 			      </div>
 			    </div>
+			    <c:forEach var="var" items="${shopData}">
 			    <div class="row" style="padding:5px;padding-top:0px;">
 			      <div class="col-100">
 			    <div class="card">
@@ -56,17 +57,26 @@
 			        <ul>
 			          <li class="item-content">
 			            <div class="item-media">
-			              <a class="external" href="<%=request.getContextPath()%>/shop/info"><img src="<%=request.getContextPath()%>/static/image/shop.jpg" width="150"></a>
+			              <a class="external" href="<%=request.getContextPath()%>/shop/info?SHOP_ID=${var.SHOP_ID}">
+			              <c:choose>
+			              	<c:when test="${var.FILEPATH eq null}">
+			              	<img src="<%=request.getContextPath()%>/static/image/shop.jpg" width="150">
+			              	</c:when>
+			              	<c:otherwise>
+			              	<img src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" style="width:150px;max-height:150px;">
+			              	</c:otherwise>
+			              </c:choose>
+			              </a>
 			            </div>
 			            <div class="item-inner">
 			              <div class="item-title-row">
-			                <div class="item-title" style="font-weight:bold;">高新路海底捞火锅</div>
+			                <div class="item-title" style="font-weight:bold;">${var.SHOPNAME}</div>
 			              </div>
 			              <div class="item-subtitle" style="font-weight:bold;">
-			              	¥ 35 / 人<span><1000m</span>
+			              	¥ ${var.AVGMONEY} / 人<span><1000m</span>
 			              </div>
 			              <div class="item-subtitle" style="font-weight:bold;">
-			              	重庆火锅
+			              	${var.SHOPTYPENAME}
 			              </div>
 			              <div class="item-subtitle" style="color:#F40A0B;">
 			              	<span class="quan">券</span>83代100元
@@ -77,12 +87,22 @@
 			      </div>
 			    </div>
 			    <div class="card-footer">
-			      <span style="font-weight:bold;">西安市 高新路 33号</span>
-			      <span><button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</button></span>
+			      <span style="font-weight:bold;">${var.SHOPADDRESS}</span>
+			      <span>
+			      <c:choose>
+			      	<c:when test="${pd.ZSFLAG eq 4 }">
+			      		<a href="<%=request.getContextPath()%>/shop/info?SHOP_ID=${var.SHOP_ID}" class="external button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</a>
+			      	</c:when>
+			      	<c:otherwise>
+			      		<a href="javascript:;" onclick="$.alert('对不起，周四才可以半价抢购哦')" class="external button button-fill button-warning" style="background:#DDDDDD;color:#000000;font-weight:bold;">抢购</a>
+			      	</c:otherwise>
+			      </c:choose>
+			      </span>
 			    </div>
 			  </div>
 			  </div>
-			  </div>  
+			  </div>
+			  </c:forEach> 
         	</div>
     	</div>
     </div>
