@@ -11,10 +11,11 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <%@ include file="../common/headcss.jsp"%>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
   </head>
   <body>
     <div class="page-group">
-        <div class="page page-current">
+        <div class="page page-current" id="page1">
 			<div class="content">
 			<div class="row">
 				<div class="col-100" style="position:relative;">
@@ -27,8 +28,12 @@
 							 	<div class="col-60" style="line-height:80px;">${USER_SESSION.NICKNAME}</div>
 							 </div>
 					 	</div>
-					 	<div class="col-40" style="padding-top:40px;padding-right:10px;"><button class="button button-fill button-warning pull-right" style="background:#FFCC01;color:#000000;font-weight:bold;">立即加入</button></div>
+					 	<div class="col-40" style="padding-top:40px;padding-right:10px;"><c:if test="${USER_SESSION.MEMBERTYPE_ID eq 1 or USER_SESSION.MEMBERTYPE_ID eq 3}"><a href="#page2" class="button button-fill button-warning pull-right" style="background:#FFCC01;color:#000000;font-weight:bold;">立即加入</a></c:if></div>
 					 </div>
+					  <div class="row">
+					 	<div class="col-60">
+					 	</div>
+					  </div>
 				 </div>
 				</div>
 			</div>
@@ -55,7 +60,89 @@
 			</div>
 			<%@ include file="../common/nav.jsp"%>
         </div>
+        <div class="page" id="page2">
+			<div class="content">
+			<c:forEach var="var" items="${productData}">
+			<div class="row" style="padding:5px;">
+				<div class="col-100">
+					<div class="card" onclick="selectProduct(this)" style="font-weight:bold;" MONEY="${var.PRODUCTMONEY}" PRODUCT_ID="${var.PRODUCT_ID}">
+				    <div class="card-content">
+				      <div class="card-content-inner" style="height:100px;background:#FE0100;color:#FFFFFF;">${var.PRODUCTDESC}<span style="float:right;"><img width="30" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
+				    </div>
+				    <div class="card-footer" style="text-align:right;background:#FFCC01;"><span>¥ ${var.PRODUCTMONEY} 元</span><span>送会员: ${var.PRODUCTTIME} 天</span></div>
+				  </div>
+			  	</div>
+			  </div>
+			</c:forEach>
+			<div class="row" style="padding:5px;">
+				<div class="col-100"><button class="button button-big button-fill" onclick="buyProduct()" style="width:100%;background:#FFCC01;color:#000000;font-weight:bold;">立即购买</button></div>
+			</div>
+			</div>
+		</div>
     </div>
   </body>
   <%@ include file="../common/headjs.jsp"%>
+  <script type="text/javascript">
+  
+  var PRODUCT_ID = null;
+  
+  var MONEY = null;
+  
+  function selectProduct(obj){
+	  $(document).find("img.selectpng").css("display","none");
+	  $(obj).find("img.selectpng").css("display","");
+	  PRODUCT_ID = $(obj).attr("product_id");
+	  MONEY = $(obj).attr("money");
+  }
+  
+  function buyProduct(){
+	  
+	  if(PRODUCT_ID == null || MONEY == null){
+		  $.alert("请先选择购买的产品",function(){});
+		  return;
+	  }
+	  
+	  $.confirm('会员卡是特殊产品,不支持退款,确认购买?', '温馨提示',
+        function () {
+		  rechargeSave();
+        },
+        function () {
+
+        }
+      );
+  }
+  
+	function rechargeSave(){
+  		$.ajax({
+			type: "POST",
+			url: '<%=request.getContextPath()%>/recharge/save',
+	    	data:{
+	    		"ORIGINAL":MONEY,
+	    		"MONEY":MONEY,
+	    		"DERATE":'0',
+	    		"PRODUCT_ID":PRODUCT_ID
+	    	},
+	    	async: false,
+			dataType:'json',
+			cache: false,
+			beforeSend:function(){
+				
+			},
+			success: function(data){
+				if(data.flag ){
+					goPay(data.data);
+				}
+			},
+			error:function(){
+				
+			}
+		});
+  	}
+  	
+  	function goPay(data){
+ 		 wx.miniProgram.navigateTo({
+            url: '/pages/pay/pay?type=product&id='+data.RECHARGE_ID+'&sn='+data.RECHARGESN+'&original='+data.ORIGINAL+'&derate='+data.DERATE+'&money='+data.MONEY
+       })
+ 	}
+  </script>
 </html>

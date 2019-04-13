@@ -75,7 +75,7 @@
 	              	<img align="middle" style="margin-left:20px; width:80px; height:80px; border-radius:50%;" src="<%=request.getContextPath()%>/file/image?FILENAME=${shop.FILEPATH}"/>
 	              	</c:otherwise>
 	              </c:choose>${shop.SHOPNAME}</div>
-					<div class="col-40" style="line-height:80px;text-align:right;"><a class="external" href="<%=request.getContextPath()%>/shop/info?SHOP_ID=${shop.SHOP_ID}" style="font-size:16px;text-decoration:underline;">进店逛逛</a></div>
+					<div class="col-40" style="line-height:80px;text-align:right;"><a class="external" href="<%=request.getContextPath()%>/shop/info?SHOP_ID=${shop.SHOP_ID}" style="font-size:14px;text-decoration:underline;color:#444444;">进店逛逛</a></div>
 				</div>
 			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:10px;">

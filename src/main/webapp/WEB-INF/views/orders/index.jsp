@@ -29,7 +29,7 @@
 				<div style="width:100%;height:5px;background:#dddddd;">&nbsp;</div>
 				<div class="row" style="padding:10px;padding-top:15px;padding-bottom:15px;">
 					<div class="col-50" style="font-weight:bold;">购买数量</div>
-					<div class="col-50"><div style="margin-right:20px;float:right;"><button style="width:40px;margin-right:1px;" onclick="computer('-1')">-</button><button style="width:60px;background:#FFFFFF;" id="numberButton">1</button><button style="width:40px;margin-left:1px;" onclick="computer('1')">+</button></div></div>
+					<div class="col-50"><div style="margin-right:20px;float:right;"><button style="width:40px;margin-right:1px;" onclick="computer('-1')">-</button><button style="width:50px;background:#FFFFFF;" id="numberButton">1</button><button style="width:40px;margin-left:1px;" onclick="computer('1')">+</button></div></div>
 				</div>
 				<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 				<div class="row" style="padding:10px;padding-top:15px;padding-bottom:15px;">
@@ -72,17 +72,17 @@
 			<c:forEach var="var" items="${cardsData}">
 			<div class="row" style="padding:5px;">
 				<div class="col-100">
-					<a href="#page1"><div class="card" style="border-radius:10px;" onclick="changeMoney('${var.CARD_ID}','${var.MONEY}')">
+					<a href="#page1"><div class="card" onclick="changeMoney('${var.CARD_ID}','${var.MONEY}')">
 				    <div class="card-content">
 				      <div class="card-content-inner" style="height:100px;background:#FE0100;color:#FFFFFF;">${var.DESCRIPTION}</div>
 				    </div>
-				    <div class="card-footer" style="text-align:right;background:#FFCC01;"><span></span><span>有效期:2019-12-12</span></div>
+				    <div class="card-footer" style="text-align:right;background:#FFCC01;"><span></span><span>有效期:${var.STARTTIME} / ${var.ENDTIME}</span></div>
 				  </div></a>
 			  	</div>
 			  </div>
 			</c:forEach>
 			<div class="row" style="padding:5px;">
-				<div class="col-100"><a class="button button-big button-fill" onclick="changeMoney('0','0')" href="#page1" style="background:#FFCC01;color:#000000;border-radius:50px;">不使用现金券</a></div>
+				<div class="col-100"><a class="button button-big button-fill" onclick="changeMoney('0','0')" href="#page1" style="background:#FFCC01;color:#000000;">不使用现金券</a></div>
 			</div>
 			</div>
 			
@@ -165,7 +165,7 @@
   	
   	function goPay(data){
  		 wx.miniProgram.navigateTo({
-            url: '/pages/pay/pay?id='+data.ORDER_ID+'&sn='+data.ORDERSN+'&original='+data.ORIGINAL+'&derate='+data.DERATE+'&money='+data.MONEY
+            url: '/pages/pay/pay?type=goods&id='+data.ORDER_ID+'&sn='+data.ORDERSN+'&original='+data.ORIGINAL+'&derate='+data.DERATE+'&money='+data.MONEY
        })
  	}
   </script>
