@@ -22,13 +22,21 @@ public class MemberController extends BaseController {
 	public ModelAndView index() {
 		logger.info("进入会员页面");
 		ModelAndView mv = new ModelAndView();
-
 		PageData pd = new PageData();
+		pd = this.getPageData();
+
+		PageData pd1 = new PageData();
 		List<PageData> productData = rest.postForList(
-				IConstant.FFW_SERVICE_KEY, "product/listAll", pd,
+				IConstant.FFW_SERVICE_KEY, "product/listAll", pd1,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("productData", productData);
+
+		PageData vipinfo = new PageData();
+		vipinfo.put("MEMBER_ID", memberId());
+		vipinfo = rest.post(IConstant.FFW_SERVICE_KEY, "vipinfo/findBy",
+				vipinfo, PageData.class);
+		mv.addObject("vipinfo", vipinfo);
 
 		mv.setViewName("member/index");
 		mv.addObject("nav", "member");
