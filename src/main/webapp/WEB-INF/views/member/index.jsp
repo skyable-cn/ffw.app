@@ -154,7 +154,7 @@
        })
  	}
   	
-  	if("${USER_SESSION.MEMBERTYPE_ID}"=="1" || "${USER_SESSION.MEMBERTYPE_ID}"=="3"){
+  	if(!"${vipinfo}"){
   		$(".div_height1").attr("height",parseInt($(".div_height1").attr("height"))-100)
   		$(".div_height2").css("height",(parseInt($(".div_height2").css("height"))-100)+'px')
   	}
