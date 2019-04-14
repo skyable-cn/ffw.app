@@ -253,6 +253,7 @@ public class PayController extends BaseController {
 				} else {
 
 					pd2 = new PageData();
+					pd2.put("VIPSN", DateUtil.getNumber());
 					pd2.put("MEMBER_ID", pd1.getString("MEMBER_ID"));
 					pd2.put("STATE", IConstant.STRING_1);
 					pd2.put("LASTTIME", DateUtil.getAfterDayDate(pdr

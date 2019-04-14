@@ -25,7 +25,7 @@
 					 	<div class="col-60">
 					 		<div class="row">
 							 	<div class="col-40"><img align="middle" style="margin:10px; width:60px;border-radius:50%;" src="${USER_SESSION.PHOTO}"/></div>
-							 	<div class="col-60"><h5 style="margin-top:8px;margin-bottom:0px;">${USER_SESSION.NICKNAME}</h5><h5 style="margin-top:0px;margin-bottom:0px;font-size:14px;color:#AAAAAA;font-weight:bold;">VIP:${fn:substring(vipinfo.LASTTIME,0,10)}</h5></div>
+							 	<div class="col-60"><h5 style="margin-top:8px;margin-bottom:0px;">${USER_SESSION.NICKNAME}</h5><c:if test="${vipinfo ne null}"><h5 style="margin-top:0px;margin-bottom:0px;font-size:14px;color:#AAAAAA;font-weight:bold;">VIP:${fn:substring(vipinfo.LASTTIME,0,10)}</h5></c:if></div>
 							 </div>
 					 	</div>
 					 	<div class="col-40" style="padding-right:10px;">

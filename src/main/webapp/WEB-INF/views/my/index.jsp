@@ -17,26 +17,37 @@
         <div class="page page-current">
 			<div class="content">
 			<div class="row" style="background-color:#FFCC01;height:150px;">
-				<div class="col-40" style="padding:20px;">
+				<div class="col-33" style="padding:20px;">
 					<img align="middle" style="margin:10px; width:80px;border-radius:50%;" src="${USER_SESSION.PHOTO}"/>
 				</div>
-				<div class="col-60" style="padding-top:30px;">
-					<h5 style="margin:0px;font-weight:bold;font-size:0.85rem;padding-bottom:5px;">${USER_SESSION.NICKNAME}</h5>
-					<h5 style="margin:0px;font-weight:bold;font-size:0.65rem;padding-bottom:2px;">个人资料</h5>
-					<h5 style="margin:0px;font-weight:bold;font-size:0.65rem;padding-bottom:2px;">普通用户</h5>
+				<div class="col-33" style="padding-top:30px;">
+							<h5 style="margin:0px;font-weight:bold;font-size:0.85rem;padding-bottom:5px;">${USER_SESSION.NICKNAME}</h5>
+							<h5 style="margin:0px;font-weight:bold;font-size:14px;padding-bottom:2px;">个人资料</h5>
+							<h5 style="margin:0px;font-weight:bold;font-size:14px;padding-bottom:2px;">
+							<c:if test="${USER_SESSION.MEMBERTYPE_ID eq 1 or USER_SESSION.MEMBERTYPE_ID eq 3}">${USER_SESSION.MEMBERTYPENAME}</c:if>
+							<c:if test="${vipinfo ne null}">会员卡号:${vipinfo.VIPSN}</c:if>
+							</h5>
+						</div>
+				<div class="col-33" style="padding-top:30px;">
+					<c:if test="${vipinfo eq null}">
+					<div style="background:#FFFFFF;width:110px;height:90px;">
+						<h5 style="text-align:center;margin:0px;"><img style="margin-top:5px;width:30px;margin-right:5px;border-radius:50%;border:1px #FFCC01 solid;margin-right:5px;" src="<%=request.getContextPath()%>/static/icon/vip_sel.png"/></h5>
+						<h5 style="margin-top:5px;text-align:center;font-size:12px;padding-right:5px;">加入会员<br/>周周领卷,件件优惠</h5>
+					</div>
+					</c:if>
 				</div>
 			</div>
 			<div class="row" style="margin:10px;">
-			<div class="col-50" style="border-right:2px #cccccc solid;text-align: center;padding:5px;"><a class="external" href="">10<br/>我的卡券</a></div>
-			<div class="col-50" style="text-align: center;padding:5px;"><a class="external" href="">10<br/>我的金库</a></div>
+			<div class="col-50" style="border-right:2px #cccccc solid;text-align: center;padding:5px;"><a class="external" href="<%=request.getContextPath()%>/my/cards">${cardsNum}<br/>我的卡券</a></div>
+			<div class="col-50" style="text-align: center;padding:5px;"><a class="external" href="<%=request.getContextPath()%>/my/account">${USER_SESSION.ACCOUNTBALANCE}<br/>我的金库</a></div>
 			</div>
 			<div style="width:100%;height:7px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;padding-top:10px;">
-			<div class="col-20" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/discount"><img width="80%" src="<%=request.getContextPath()%>/static/icon/my/dfk.png"/><p style="font-size:0.65rem;">待付款</p></a></div>
-			<div class="col-20" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/discount"><img width="80%" src="<%=request.getContextPath()%>/static/icon/my/yzf.png"/><p style="font-size:0.65rem;">已支付</p></a></div>
-			<div class="col-20" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/discount"><img width="80%" src="<%=request.getContextPath()%>/static/icon/my/dsy.png"/><p style="font-size:0.65rem;">待使用</p></a></div>
-			<div class="col-20" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/discount"><img width="80%" src="<%=request.getContextPath()%>/static/icon/my/ywc.png"/><p style="font-size:0.65rem;">已完成</p></a></div>
-			<div class="col-20" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/discount"><img width="80%" src="<%=request.getContextPath()%>/static/icon/my/wddd.png"/><p style="font-size:0.65rem;">我的订单</p></a></div>
+			<div class="col-20" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/orders/waitpay"><img width="80%" src="<%=request.getContextPath()%>/static/icon/my/dfk.png"/><p style="font-size:0.65rem;">待付款</p></a></div>
+			<div class="col-20" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/orders/payed"><img width="80%" src="<%=request.getContextPath()%>/static/icon/my/yzf.png"/><p style="font-size:0.65rem;">已支付</p></a></div>
+			<div class="col-20" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/orders/waituse"><img width="80%" src="<%=request.getContextPath()%>/static/icon/my/dsy.png"/><p style="font-size:0.65rem;">待使用</p></a></div>
+			<div class="col-20" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/orders/used"><img width="80%" src="<%=request.getContextPath()%>/static/icon/my/ywc.png"/><p style="font-size:0.65rem;">已完成</p></a></div>
+			<div class="col-20" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/orders/all"><img width="80%" src="<%=request.getContextPath()%>/static/icon/my/wddd.png"/><p style="font-size:0.65rem;">我的订单</p></a></div>
 			</div>
 			<div style="width:100%;height:7px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="margin-top:10px;">

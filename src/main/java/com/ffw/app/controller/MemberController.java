@@ -22,6 +22,13 @@ public class MemberController extends BaseController {
 	public ModelAndView index() {
 		logger.info("进入会员页面");
 		ModelAndView mv = new ModelAndView();
+
+		PageData old = (PageData) getSession().getAttribute(
+				IConstant.USER_SESSION);
+		old = rest.post(IConstant.FFW_SERVICE_KEY, "member/find", old,
+				PageData.class);
+		getSession().setAttribute(IConstant.USER_SESSION, old);
+
 		PageData pd = new PageData();
 		pd = this.getPageData();
 

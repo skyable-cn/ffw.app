@@ -56,6 +56,7 @@ public class WeChatController extends BaseController {
 				PageData.class);
 		if (null == pdm) {
 			pd.put("MEMBERTYPE_ID", IConstant.STRING_1);
+			pd.put("ACCOUNTBALANCE", IConstant.STRING_0);
 			rest.post(IConstant.FFW_SERVICE_KEY, "member/save", pd,
 					PageData.class);
 		} else {

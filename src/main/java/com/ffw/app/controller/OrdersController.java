@@ -102,4 +102,24 @@ public class OrdersController extends BaseController {
 		}
 		return sb.toString();
 	}
+
+	@RequestMapping(value = { "/orders/waitpay" })
+	public ModelAndView waitPay() {
+		logger.info("进入待支付");
+		ModelAndView mv = new ModelAndView();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		mv.setViewName("orders/waitpay");
+		return mv;
+	}
+
+	@RequestMapping(value = { "/orders/payed" })
+	public ModelAndView payed() {
+		logger.info("进入已支付");
+		ModelAndView mv = new ModelAndView();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		mv.setViewName("orders/payed");
+		return mv;
+	}
 }
