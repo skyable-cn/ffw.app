@@ -63,7 +63,7 @@
 			              	<img src="<%=request.getContextPath()%>/static/image/shop.jpg" width="150">
 			              	</c:when>
 			              	<c:otherwise>
-			              	<img src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" style="width:150px;max-height:150px;">
+			              	<img src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" style="width:150px;max-height:100px;">
 			              	</c:otherwise>
 			              </c:choose>
 			              </a>
