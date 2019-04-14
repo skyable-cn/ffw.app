@@ -25,7 +25,7 @@
 					 	<div class="col-60">
 					 		<div class="row">
 							 	<div class="col-40"><img align="middle" style="margin:10px; width:60px;border-radius:50%;" src="${USER_SESSION.PHOTO}"/></div>
-							 	<div class="col-60" style="line-height:80px;">${USER_SESSION.NICKNAME}<span style="float:right;margin-right:20px;font-size:14px;color:#AAAAAA;font-weight:bold;">会员有效期:${vipinfo.LASTTIME}</span></div>
+							 	<div class="col-60"><h5 style="margin-top:8px;margin-bottom:0px;">${USER_SESSION.NICKNAME}</h5><h5 style="margin-top:0px;margin-bottom:0px;font-size:14px;color:#AAAAAA;font-weight:bold;">会员有效期:${vipinfo.LASTTIME}</h5></div>
 							 </div>
 					 	</div>
 					 	<div class="col-40" style="padding-right:10px;">
