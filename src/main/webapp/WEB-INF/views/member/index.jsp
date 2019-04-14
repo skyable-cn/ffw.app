@@ -19,21 +19,30 @@
 			<div class="content">
 			<div class="row">
 				<div class="col-100" style="position:relative;">
-				 <div><img class='card-cover' height="160" width="100%" src="<%=request.getContextPath()%>/static/icon/me.png" alt=""></div>
-				 <div style="background:#ffffff;height:100px;position:absolute;top:60px;z-index:999;left:5%;right:5%;-webkit-box-shadow: 3px 3px 12px #666;-moz-box-shadow: 3px 3px 12px #666;box-shadow: 3px 3px 12px #666; -moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;">
+				 <div><img class='card-cover div_height1' height="260" width="100%" src="<%=request.getContextPath()%>/static/icon/me.png" alt=""></div>
+				 <div class="div_height2" style="background:#ffffff;height:200px;position:absolute;top:60px;z-index:999;left:5%;right:5%;-webkit-box-shadow: 3px 3px 12px #666;-moz-box-shadow: 3px 3px 12px #666;box-shadow: 3px 3px 12px #666; -moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;">
 					 <div class="row">
 					 	<div class="col-60">
 					 		<div class="row">
 							 	<div class="col-40"><img align="middle" style="margin:10px; width:60px;border-radius:50%;" src="${USER_SESSION.PHOTO}"/></div>
-							 	<div class="col-60" style="line-height:80px;">${USER_SESSION.NICKNAME}</div>
+							 	<div class="col-60" style="line-height:80px;">${USER_SESSION.NICKNAME}<span style="float:right;margin-right:20px;font-size:14px;color:#AAAAAA;font-weight:bold;">会员有效期:${vipinfo.LASTTIME}</span></div>
 							 </div>
 					 	</div>
-					 	<div class="col-40" style="padding-top:40px;padding-right:10px;"><c:if test="${USER_SESSION.MEMBERTYPE_ID eq 1 or USER_SESSION.MEMBERTYPE_ID eq 3}"><a href="#page2" class="button button-fill button-warning pull-right" style="background:#FFCC01;color:#000000;font-weight:bold;">立即加入</a></c:if></div>
-					 </div>
-					  <div class="row">
-					 	<div class="col-60">
+					 	<div class="col-40" style="padding-right:10px;">
+					 	<c:if test="${USER_SESSION.MEMBERTYPE_ID eq 1 or USER_SESSION.MEMBERTYPE_ID eq 3}"><a href="#page2" class="button button-fill button-warning pull-right" style="background:#FFCC01;color:#000000;font-weight:bold;margin-top:30px;">立即加入</a></c:if>
+					 	<c:if test="${USER_SESSION.MEMBERTYPE_ID eq 2 or USER_SESSION.MEMBERTYPE_ID eq 4}"><img class="pull-right" style="width:40px;margin-top:10px;" src="<%=request.getContextPath()%>/static/icon/vip<c:if test="${vipinfo.STATE eq 1}">_sel</c:if>.png"/></c:if>
 					 	</div>
-					  </div>
+					 </div>
+					 <c:if test="${USER_SESSION.MEMBERTYPE_ID eq 2 or USER_SESSION.MEMBERTYPE_ID eq 4}">
+					 	<div class="row" style="padding:5px;">
+					 		<div class="col-40"><button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;margin:10px;">邀请好友</button></div>
+					 		<div class="col-60"><span><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span><span style="margin-left:30px;"><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span></div>
+					 	</div>
+					 	<div class="row" style="padding:5px;">
+					 		<div class="col-40"><button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;margin:10px;margin-top:5px;">邀请赚钱</button></div>
+					 		<div class="col-60"><button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;margin:10px;margin-top:5px;margin-left:0px;">分享</button></div>
+					 	</div>
+					 </c:if>
 				 </div>
 				</div>
 			</div>
@@ -144,5 +153,10 @@
             url: '/pages/pay/pay?type=product&id='+data.RECHARGE_ID+'&sn='+data.RECHARGESN+'&original='+data.ORIGINAL+'&derate='+data.DERATE+'&money='+data.MONEY
        })
  	}
+  	
+  	if("${USER_SESSION.MEMBERTYPE_ID}"=="1" || "${USER_SESSION.MEMBERTYPE_ID}"=="3"){
+  		$(".div_height1").attr("height",parseInt($(".div_height1").attr("height"))-100)
+  		$(".div_height2").css("height",(parseInt($(".div_height2").css("height"))-100)+'px')
+  	}
   </script>
 </html>
