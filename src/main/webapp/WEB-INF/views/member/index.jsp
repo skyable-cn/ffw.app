@@ -29,11 +29,11 @@
 							 </div>
 					 	</div>
 					 	<div class="col-40" style="padding-right:10px;">
-					 	<c:if test="${USER_SESSION.MEMBERTYPE_ID eq 1 or USER_SESSION.MEMBERTYPE_ID eq 3}"><a href="#page2" class="button button-fill button-warning pull-right" style="background:#FFCC01;color:#000000;font-weight:bold;margin-top:30px;">立即加入</a></c:if>
-					 	<c:if test="${USER_SESSION.MEMBERTYPE_ID eq 2 or USER_SESSION.MEMBERTYPE_ID eq 4}"><img class="pull-right" style="width:40px;margin-top:10px;" src="<%=request.getContextPath()%>/static/icon/vip<c:if test="${vipinfo.STATE eq 1}">_sel</c:if>.png"/></c:if>
+					 	<c:if test="${vipinfo eq null}"><a href="#page2" class="button button-fill button-warning pull-right" style="background:#FFCC01;color:#000000;font-weight:bold;margin-top:30px;">立即加入</a></c:if>
+					 	<c:if test="${vipinfo ne null}"><img class="pull-right" style="width:40px;margin-top:10px;" src="<%=request.getContextPath()%>/static/icon/vip<c:if test="${vipinfo.STATE eq 1}">_sel</c:if>.png"/></c:if>
 					 	</div>
 					 </div>
-					 <c:if test="${USER_SESSION.MEMBERTYPE_ID eq 2 or USER_SESSION.MEMBERTYPE_ID eq 4}">
+					 <c:if test="${vipinfo ne null}">
 					 	<div class="row" style="padding:5px;">
 					 		<div class="col-40"><button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;margin:10px;">邀请好友</button></div>
 					 		<div class="col-60"><span><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span><span style="margin-left:30px;"><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span></div>
