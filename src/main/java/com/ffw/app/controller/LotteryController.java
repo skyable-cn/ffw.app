@@ -111,6 +111,26 @@ public class LotteryController extends BaseController {
 		return mv;
 	}
 
+	@RequestMapping(value = { "/lottery/member/selected" })
+	public ModelAndView memberSelected() {
+		logger.info("进入中奖人员名单");
+		ModelAndView mv = new ModelAndView();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+
+		PageData pd2 = new PageData();
+		pd2.put("LOTTERY_ID", pd.getString("LOTTERY_ID"));
+		pd2.put("STATE", IConstant.STRING_1);
+		List<PageData> lotteryrecordData = rest.postForList(
+				IConstant.FFW_SERVICE_KEY, "lotteryrecord/listAll", pd2,
+				new ParameterizedTypeReference<List<PageData>>() {
+				});
+		mv.addObject("lotteryrecordData", lotteryrecordData);
+
+		mv.setViewName("lottery/memberselected");
+		return mv;
+	}
+
 	@RequestMapping(value = { "/lottery/save" })
 	@ResponseBody
 	public ReturnModel lotterySave() throws Exception {
@@ -122,6 +142,7 @@ public class LotteryController extends BaseController {
 		pd.put("CDT", DateUtil.getTime());
 		String luckNumber = luckNumber(10);
 		pd.put("LUCKNUMBER", luckNumber);
+		pd.put("STATE", IConstant.STRING_0);
 		ReturnModel rm = new ReturnModel();
 		pd = rest.post(IConstant.FFW_SERVICE_KEY, "lotteryrecord/save", pd,
 				PageData.class);

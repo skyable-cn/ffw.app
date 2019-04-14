@@ -1,6 +1,9 @@
 package com.ffw.app.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,6 +36,16 @@ public class ShopController extends BaseController {
 		pd = rest.post(IConstant.FFW_SERVICE_KEY, "shop/find", pd,
 				PageData.class);
 		mv.addObject("pd", pd);
+
+		PageData pd4 = new PageData();
+		pd4.put("STATE", IConstant.STRING_1);
+		pd4.put("SHOP_ID", pd.getString("SHOP_ID"));
+		List<PageData> goodsData = rest.postForList(IConstant.FFW_SERVICE_KEY,
+				"goods/listAll", pd4,
+				new ParameterizedTypeReference<List<PageData>>() {
+				});
+		mv.addObject("goodsData", goodsData);
+
 		mv.setViewName("shop/info");
 		return mv;
 	}

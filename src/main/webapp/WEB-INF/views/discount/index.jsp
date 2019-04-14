@@ -94,7 +94,7 @@
 			      		<a href="<%=request.getContextPath()%>/shop/info?SHOP_ID=${var.SHOP_ID}" class="external button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</a>
 			      	</c:when>
 			      	<c:otherwise>
-			      		<a href="javascript:;" onclick="$.alert('对不起，周四才可以半价抢购哦')" class="external button button-fill button-warning" style="background:#DDDDDD;color:#000000;font-weight:bold;">抢购</a>
+			      		<a href="javascript:;" onclick="$.alert('对不起，周四才可以半价抢购哦')" class="external button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</a>
 			      	</c:otherwise>
 			      </c:choose>
 			      </span>

@@ -30,12 +30,12 @@
         <div class="content-block">
         <c:choose>
         	<c:when test="${pd.USESTATE eq 0}">
-        		<div style="margin:0 auto;background:#CCCCCC;width:150px;height:150px;border:1px solid #dddddd;border-radius:75px;text-align: center;line-height:150px;color:#000000;font-weight:bold;" onclick="$.alert('对不起，抽奖未开始')">未开始</div>
+        		<div style="margin:0 auto;background:#FFCC01;width:150px;height:150px;border:1px solid #dddddd;border-radius:75px;text-align: center;line-height:150px;color:#000000;font-weight:bold;" onclick="$.alert('对不起，抽奖未开始')">未开始</div>
         	</c:when>
         	<c:when test="${pd.USESTATE eq 1}">
         		<c:choose>
         			<c:when test="${pdme ne null}">
-        				<div style="margin:0 auto;background:#CCCCCC;width:150px;height:150px;border:1px solid #dddddd;border-radius:75px;text-align: center;line-height:150px;color:#000000;font-weight:bold;" onclick="$.alert('对不起，抽奖已参与')">已参与</div>
+        				<div style="margin:0 auto;background:#FFCC01;width:150px;height:150px;border:1px solid #dddddd;border-radius:75px;text-align: center;line-height:150px;color:#000000;font-weight:bold;" onclick="$.alert('对不起，抽奖已参与')">已参与</div>
         			</c:when>
         			<c:otherwise>
         				<div style="margin:0 auto;background:#FFCC01;width:150px;height:150px;border:1px solid #dddddd;border-radius:75px;text-align: center;line-height:150px;color:#000000;font-weight:bold;" onclick="lotterySave()">参与抽奖</div>
@@ -43,10 +43,17 @@
         		</c:choose>
         	</c:when>
         	<c:when test="${pd.USESTATE eq 2}">
-        		<div style="margin:0 auto;background:#CCCCCC;width:150px;height:150px;border:1px solid #dddddd;border-radius:75px;text-align: center;line-height:150px;color:#000000;font-weight:bold;" onclick="$.alert('对不起，抽奖待开奖')">待开奖</div>
+        		<div style="margin:0 auto;background:#FFCC01;width:150px;height:150px;border:1px solid #dddddd;border-radius:75px;text-align: center;line-height:150px;color:#000000;font-weight:bold;" onclick="$.alert('对不起，抽奖待开奖')">待开奖</div>
+        		<c:choose>
+        			<c:when test="${pdme ne null}">
+        				<div style="margin:0 auto;width:300px;text-align: center;padding-top:15px;color:#000000;">我的幸运码</div>
+        				<div style="margin:0 auto;width:300px;text-align: center;padding-top:15px;color:#000000;">${pdme.LUCKNUMBER}</div>
+        			</c:when>
+        		</c:choose>
         	</c:when>
         	<c:otherwise>
-        		<div style="margin:0 auto;background:#CCCCCC;width:150px;height:150px;border:1px solid #dddddd;border-radius:75px;text-align: center;line-height:150px;color:#000000;font-weight:bold;" onclick="$.alert('对不起，抽奖已开奖')">已开奖</div>
+        		<div style="margin:0 auto;background:#FFCC01;width:150px;height:150px;border:1px solid #dddddd;border-radius:75px;text-align: center;line-height:150px;color:#000000;font-weight:bold;" onclick="$.alert('对不起，抽奖已开奖')">已开奖</div>
+        		<div style="margin:0 auto;width:300px;text-align: center;padding-top:5px;"><a class="external" href="<%=request.getContextPath()%>/lottery/member/selected?LOTTERY_ID=${pd.LOTTERY_ID}">查看中奖名单 ></a></div>
         	</c:otherwise>
         </c:choose>
           
