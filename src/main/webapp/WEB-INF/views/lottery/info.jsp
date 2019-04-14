@@ -46,7 +46,7 @@
         		<div style="margin:0 auto;background:#CCCCCC;width:150px;height:150px;border:1px solid #dddddd;border-radius:75px;text-align: center;line-height:150px;color:#000000;font-weight:bold;" onclick="$.alert('对不起，抽奖待开奖')">待开奖</div>
         	</c:when>
         	<c:otherwise>
-        		<div style="margin:0 auto;background:#CCCCCC;width:150px;height:150px;border:1px solid #dddddd;border-radius:75px;text-align: center;line-height:150px;color:#000000;font-weight:bold;" onclick="$.alert('对不起，抽奖已结束')">已结束</div>
+        		<div style="margin:0 auto;background:#CCCCCC;width:150px;height:150px;border:1px solid #dddddd;border-radius:75px;text-align: center;line-height:150px;color:#000000;font-weight:bold;" onclick="$.alert('对不起，抽奖已开奖')">已开奖</div>
         	</c:otherwise>
         </c:choose>
           
