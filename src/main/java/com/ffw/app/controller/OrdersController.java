@@ -2,7 +2,9 @@ package com.ffw.app.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +16,22 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ffw.api.model.PageData;
 import com.ffw.api.util.DateUtil;
+import com.ffw.app.config.WXPayConfigImpl;
+import com.ffw.app.config.WechatMiniConfig;
 import com.ffw.app.constant.IConstant;
 import com.ffw.app.model.ReturnModel;
 import com.ffw.app.util.RestTemplateUtil;
+import com.github.wxpay.sdk.WXPay;
+import com.github.wxpay.sdk.WXPayConstants.SignType;
 
 @Controller
 public class OrdersController extends BaseController {
+
+	@Autowired
+	WechatMiniConfig wechatMiniConfig;
+
+	@Autowired
+	WXPayConfigImpl config;
 
 	@Autowired
 	RestTemplateUtil rest;
@@ -233,5 +245,70 @@ public class OrdersController extends BaseController {
 
 		mv.setViewName("redirect:/my");
 		return mv;
+	}
+
+	@RequestMapping(value = { "/orders/refund" })
+	public ModelAndView refund() {
+		logger.info("进入订单退款信息");
+		ModelAndView mv = new ModelAndView();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+
+		PageData pd2 = new PageData();
+		List<PageData> refundTypeData = rest.postForList(
+				IConstant.FFW_SERVICE_KEY, "orders/listAllRefund", pd2,
+				new ParameterizedTypeReference<List<PageData>>() {
+				});
+		mv.addObject("refundTypeData", refundTypeData);
+		mv.addObject("pd", pd);
+
+		mv.setViewName("orders/refund");
+		return mv;
+	}
+
+	@RequestMapping(value = { "/orders/refund/save" })
+	@ResponseBody
+	public Map<String, String> refundSave() {
+		logger.info("进入订单退款信息保存");
+		PageData pd = new PageData();
+		pd = this.getPageData();
+
+		PageData pdo = new PageData();
+		pdo = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd,
+				PageData.class);
+
+		WXPay wxpay = new WXPay(config, SignType.MD5);
+
+		Map<String, String> reqData = new HashMap<String, String>();
+
+		reqData.put("transaction_id", pdo.getString("WEIXINSN"));
+
+		reqData.put("out_refund_no", pdo.getString("ORDERSN"));
+
+		String fee = String
+				.valueOf(Float.parseFloat(pdo.getString("MONEY")) * 100);
+
+		reqData.put("total_fee", fee.substring(0, fee.indexOf(".")) + "");
+
+		reqData.put("refund_fee", fee.substring(0, fee.indexOf(".")) + "");
+
+		reqData.put("refund_desc", pd.getString("REFUNDDESC"));
+
+		Map<String, String> refund = new HashMap<String, String>();
+		try {
+
+			refund = wxpay.refund(reqData);
+
+			System.err.println(refund);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		pd.put("CDT", DateUtil.getTime());
+		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/saveRefund", pd,
+				PageData.class);
+
+		return refund;
 	}
 }
