@@ -154,7 +154,14 @@
 			},
 			success: function(data){
 				if(data.flag ){
-					goPay(data.data);
+					if(parseFloat(data.data.MONEY)>0){
+						goPay(data.data);
+					}else{
+						$.alert('本次实付金额为0,无需支付费用.',function(){
+							location.href='<%=request.getContextPath()%>/my'
+						})
+						
+					}
 				}
 			},
 			error:function(){

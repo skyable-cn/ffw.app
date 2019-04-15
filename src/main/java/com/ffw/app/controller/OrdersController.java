@@ -62,7 +62,12 @@ public class OrdersController extends BaseController {
 						+ randomNumber(5));
 		pd.put("MEMBER_ID", memberId());
 		pd.put("CDT", DateUtil.getTime());
-		pd.put("STATE", IConstant.STRING_0);
+		if (Double.parseDouble(pd.getString("MONEY")) > 0) {
+			pd.put("STATE", IConstant.STRING_0);
+		} else {
+			pd.put("STATE", IConstant.STRING_1);
+		}
+
 		ReturnModel rm = new ReturnModel();
 		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/save", pd,
 				PageData.class);
