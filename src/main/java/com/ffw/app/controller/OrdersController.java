@@ -109,6 +109,16 @@ public class OrdersController extends BaseController {
 		ModelAndView mv = new ModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
+
+		PageData pd2 = new PageData();
+		pd2.put("MEMBER_ID", memberId());
+		pd2.put("STATE", IConstant.STRING_0);
+		List<PageData> ordersData = rest.postForList(IConstant.FFW_SERVICE_KEY,
+				"orders/listAll", pd2,
+				new ParameterizedTypeReference<List<PageData>>() {
+				});
+		mv.addObject("ordersData", ordersData);
+
 		mv.setViewName("orders/waitpay");
 		return mv;
 	}
@@ -119,7 +129,76 @@ public class OrdersController extends BaseController {
 		ModelAndView mv = new ModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
+
+		PageData pd2 = new PageData();
+		pd2.put("MEMBER_ID", memberId());
+		pd2.put("STATE", IConstant.STRING_1);
+		List<PageData> ordersData = rest.postForList(IConstant.FFW_SERVICE_KEY,
+				"orders/listAll", pd2,
+				new ParameterizedTypeReference<List<PageData>>() {
+				});
+		mv.addObject("ordersData", ordersData);
+
 		mv.setViewName("orders/payed");
+		return mv;
+	}
+
+	@RequestMapping(value = { "/orders/waituse" })
+	public ModelAndView waitUse() {
+		logger.info("进入待使用");
+		ModelAndView mv = new ModelAndView();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+
+		PageData pd2 = new PageData();
+		pd2.put("MEMBER_ID", memberId());
+		pd2.put("STATE", IConstant.STRING_2);
+		List<PageData> ordersData = rest.postForList(IConstant.FFW_SERVICE_KEY,
+				"orders/listAll", pd2,
+				new ParameterizedTypeReference<List<PageData>>() {
+				});
+		mv.addObject("ordersData", ordersData);
+
+		mv.setViewName("orders/waituse");
+		return mv;
+	}
+
+	@RequestMapping(value = { "/orders/used" })
+	public ModelAndView waitUsed() {
+		logger.info("进入已使用");
+		ModelAndView mv = new ModelAndView();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+
+		PageData pd2 = new PageData();
+		pd2.put("MEMBER_ID", memberId());
+		pd2.put("STATE", IConstant.STRING_3);
+		List<PageData> ordersData = rest.postForList(IConstant.FFW_SERVICE_KEY,
+				"orders/listAll", pd2,
+				new ParameterizedTypeReference<List<PageData>>() {
+				});
+		mv.addObject("ordersData", ordersData);
+
+		mv.setViewName("orders/used");
+		return mv;
+	}
+
+	@RequestMapping(value = { "/orders/all" })
+	public ModelAndView all() {
+		logger.info("进入全部订单");
+		ModelAndView mv = new ModelAndView();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+
+		PageData pd2 = new PageData();
+		pd2.put("MEMBER_ID", memberId());
+		List<PageData> ordersData = rest.postForList(IConstant.FFW_SERVICE_KEY,
+				"orders/listAll", pd2,
+				new ParameterizedTypeReference<List<PageData>>() {
+				});
+		mv.addObject("ordersData", ordersData);
+
+		mv.setViewName("orders/all");
 		return mv;
 	}
 }

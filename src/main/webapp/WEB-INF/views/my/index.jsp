@@ -17,24 +17,16 @@
         <div class="page page-current">
 			<div class="content">
 			<div class="row" style="background-color:#FFCC01;height:150px;">
-				<div class="col-33" style="padding:20px;">
+				<div class="col-40" style="padding:20px;">
 					<img align="middle" style="margin:10px; width:80px;border-radius:50%;" src="${USER_SESSION.PHOTO}"/>
 				</div>
-				<div class="col-33" style="padding-top:30px;">
-							<h5 style="margin:0px;font-weight:bold;font-size:0.85rem;padding-bottom:5px;">${USER_SESSION.NICKNAME}</h5>
-							<h5 style="margin:0px;font-weight:bold;font-size:14px;padding-bottom:2px;">个人资料</h5>
-							<h5 style="margin:0px;font-weight:bold;font-size:14px;padding-bottom:2px;">
-							<c:if test="${USER_SESSION.MEMBERTYPE_ID eq 1 or USER_SESSION.MEMBERTYPE_ID eq 3}">${USER_SESSION.MEMBERTYPENAME}</c:if>
-							<c:if test="${vipinfo ne null}">会员卡号:${vipinfo.VIPSN}</c:if>
-							</h5>
-						</div>
-				<div class="col-33" style="padding-top:30px;">
-					<c:if test="${vipinfo eq null}">
-					<div style="background:#FFFFFF;width:110px;height:90px;">
-						<h5 style="text-align:center;margin:0px;"><img style="margin-top:5px;width:30px;margin-right:5px;border-radius:50%;border:1px #FFCC01 solid;margin-right:5px;" src="<%=request.getContextPath()%>/static/icon/vip_sel.png"/></h5>
-						<h5 style="margin-top:5px;text-align:center;font-size:12px;padding-right:5px;">加入会员<br/>周周领卷,件件优惠</h5>
-					</div>
-					</c:if>
+				<div class="col-60" style="padding-top:30px;">
+					<h5 style="margin:0px;font-weight:bold;font-size:0.85rem;padding-bottom:5px;">${USER_SESSION.NICKNAME}</h5>
+					<h5 style="margin:0px;font-weight:bold;font-size:14px;padding-bottom:2px;">个人资料</h5>
+					<h5 style="margin:0px;font-weight:bold;font-size:14px;padding-bottom:2px;">
+					<c:if test="${USER_SESSION.MEMBERTYPE_ID eq 1 or USER_SESSION.MEMBERTYPE_ID eq 3}">${USER_SESSION.MEMBERTYPENAME}</c:if>
+					<c:if test="${vipinfo ne null}">会员卡号:${vipinfo.VIPSN}</c:if>
+					</h5>
 				</div>
 			</div>
 			<div class="row" style="margin:10px;">
@@ -52,7 +44,7 @@
 			<div style="width:100%;height:7px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="margin-top:10px;">
 			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/discount"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/ljdh.png"/><p style="font-size:0.65rem;">礼券兑换</p></a></div>
-			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/discount"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/sjrz.png"/><p style="font-size:0.65rem;">商家入驻</p></a></div>
+			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/seller"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/sjrz.png"/><p style="font-size:0.65rem;">商家入驻</p></a></div>
 			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/discount"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/sjht.png"/><p style="font-size:0.65rem;">商家后台</p></a></div>
 			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/discount"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/drsq.png"/><p style="font-size:0.65rem;">达人申请</p></a></div>
 			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/discount"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/yqmp.png"/><p style="font-size:0.65rem;">邀请名片</p></a></div>

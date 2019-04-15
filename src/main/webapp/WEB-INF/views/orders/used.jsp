@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>我的 - 已支付</title>
+    <title>我的 - 已使用</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" href="/favicon.ico">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -38,7 +38,7 @@
 			    </div>
 			    <div class="card-footer">
 			      <span>下单时间:${var.CDT}</span>
-			      <span><button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">确认信息</button></span>
+			      <span><button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">再来一单</button></span>
 			    </div>
 			  </div>
 			</c:forEach>
