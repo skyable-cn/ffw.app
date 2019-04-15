@@ -97,7 +97,7 @@ public class PayController extends BaseController {
 			return response;
 		}
 
-		response.put("STATEFLAG", "OK");
+		
 
 		// 生成的随机字符串
 		String nonce_str = WXPayUtil.generateNonceStr();
@@ -145,7 +145,7 @@ public class PayController extends BaseController {
 				response.put("paySign", sign);
 				System.out.println("生成的签名paySign : " + sign);
 
-				response.put("order", JSONObject.fromObject(pd).toString());
+				response.put("STATEFLAG", "OK");
 
 			}
 		} catch (Exception e) {
