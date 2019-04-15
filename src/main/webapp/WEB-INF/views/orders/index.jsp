@@ -74,7 +74,7 @@
 				<div class="col-100">
 					<a href="#page1"><div class="card" onclick="changeMoney('${var.CARD_ID}','${var.MONEY}')">
 				    <div class="card-content">
-				      <div class="card-content-inner" style="height:100px;background:#FE0100;color:#FFFFFF;">${var.DESCRIPTION}</div>
+				      <div class="card-content-inner" style="height:100px;background:#FE0100;color:#FFFFFF;font-size:36px;">${var.DESCRIPTION}</div>
 				    </div>
 				    <div class="card-footer" style="text-align:right;background:#FFCC01;"><span></span><span>有效期:${var.STARTTIME} / ${var.ENDTIME}</span></div>
 				  </div></a>
