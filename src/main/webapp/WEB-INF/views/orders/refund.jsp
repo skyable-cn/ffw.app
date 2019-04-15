@@ -58,8 +58,8 @@
 				
 			},
 			success: function(data){
-				if(data.flag ){
-					$.alert(data.message,function(){
+				if(data.return_code=="SUCCESS"){
+					$.alert("退款成功",function(){
 						location.href='<%=request.getContextPath()%>/my'
 					})
 					
