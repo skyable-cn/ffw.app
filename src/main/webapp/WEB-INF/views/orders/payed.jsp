@@ -30,7 +30,7 @@
 			              <div class="item-title-row">
 			                <div class="item-title">${var.GOODSDESC}</div>
 			              </div>
-			              <div class="item-subtitle">总价价:${var.MONEY}<span style="float:right;">数量:${var.NUMBER}</span></div>
+			              <div class="item-subtitle">总价:${var.MONEY}<span style="float:right;">数量:${var.NUMBER}</span></div>
 			            </div>
 			          </li>
 			        </ul>
@@ -38,7 +38,7 @@
 			    </div>
 			    <div class="card-footer">
 			      <span>下单时间:${var.CDT}</span>
-			      <span><button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">确认信息</button></span>
+			      <span><a href="<%=request.getContextPath()%>/orders/useinfo?ORDER_ID=${var.ORDER_ID}" class="external button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">确认信息</a></span>
 			    </div>
 			  </div>
 			</c:forEach>

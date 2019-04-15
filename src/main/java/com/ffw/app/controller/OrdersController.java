@@ -201,4 +201,32 @@ public class OrdersController extends BaseController {
 		mv.setViewName("orders/all");
 		return mv;
 	}
+
+	@RequestMapping(value = { "/orders/useinfo" })
+	public ModelAndView complate() {
+		logger.info("进入订单确认信息");
+		ModelAndView mv = new ModelAndView();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd,
+				PageData.class);
+		mv.addObject("pd", pd);
+
+		mv.setViewName("orders/useinfo");
+		return mv;
+	}
+
+	@RequestMapping(value = { "/orders/useinfo/save" })
+	public ModelAndView complateSave() {
+		logger.info("进入订单确认信息保存");
+		ModelAndView mv = new ModelAndView();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		pd.put("STATE", IConstant.STRING_2);
+		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/edit", pd,
+				PageData.class);
+
+		mv.setViewName("redirect:/my");
+		return mv;
+	}
 }

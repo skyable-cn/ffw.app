@@ -31,7 +31,7 @@
 			              <div class="item-title-row">
 			                <div class="item-title">${var.GOODSDESC}</div>
 			              </div>
-			              <div class="item-subtitle">总价价:${var.MONEY}<span style="float:right;">数量:${var.NUMBER}</span></div>
+			              <div class="item-subtitle">总价:${var.MONEY}<span style="float:right;">数量:${var.NUMBER}</span></div>
 			            </div>
 			          </li>
 			        </ul>
