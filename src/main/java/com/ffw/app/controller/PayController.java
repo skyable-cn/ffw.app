@@ -9,8 +9,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import net.sf.json.JSONObject;
-
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -96,8 +94,6 @@ public class PayController extends BaseController {
 			response.put("STATEMESSAGE", "订单已支付");
 			return response;
 		}
-
-		
 
 		// 生成的随机字符串
 		String nonce_str = WXPayUtil.generateNonceStr();
@@ -232,8 +228,8 @@ public class PayController extends BaseController {
 
 				PageData pdr = new PageData();
 				pdr.put("PRODUCT_ID", pd.getString("PRODUCT_ID"));
-				pdr = rest.post(IConstant.FFW_SERVICE_KEY, "recharge/find",
-						pdr, PageData.class);
+				pdr = rest.post(IConstant.FFW_SERVICE_KEY, "product/find", pdr,
+						PageData.class);
 
 				if (pd2 != null) {
 					pd2.put("STATE", IConstant.STRING_1);
