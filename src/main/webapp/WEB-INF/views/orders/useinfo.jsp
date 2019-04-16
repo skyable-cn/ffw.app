@@ -16,8 +16,6 @@
     <div class="page-group">
         <div class="page page-current">
 			<div class="content">
-			<form action="<%=request.getContextPath()%>/orders/useinfo/save" method="post" onsubmit="return checkErr()">
-			<input type="hidden" name="ORDER_ID" value="${pd.ORDER_ID}"/>
 			<h6 style="margin-top:5px;margin-bottom:5px;margin-left:30px;font-size:12px;color:#AAAAAA;">完善以下信息,确保订单正常使用</h6>
 			<div class="list-block" style="margin-top:5px;">
 		    <ul>
@@ -48,26 +46,50 @@
 		  </div>
 		  <div class="content-block">
 		    <div class="row">
-		      <div class="col-100"><button type="submit" class="button button-big button-fill button-success" style="background:#FFCC01;color:#000000;width:100%;">提交</button></div>
+		      <div class="col-100"><button onclick="saveInfo()" type="button" class="button button-big button-fill button-success" style="background:#FFCC01;color:#000000;width:100%;">提交</button></div>
 		    </div>
 		  </div>
-		  </form>
 			</div>	
     	</div>
     </div>
   </body>
   <%@ include file="../common/headjs.jsp"%>
   <script type="text/javascript">
-  function checkErr(){
+  function saveInfo(){
 	  if($("#USEPERSON").val()==''){
 		   $.toast("姓名不许为空");
-		   return false;
+		   return;
 	   }
 	  if($("#PERSONPHONE").val()==''){
 		   $.toast("手机不许为空");
-		   return false;
+		   return;
 	   }
-	  return true;
+	  $.ajax({
+			type: "POST",
+			url: '<%=request.getContextPath()%>/orders/useinfo/save',
+	    	data:{
+	    		"ORDER_ID":"${pd.ORDER_ID}",
+	    		"USEPERSON":$("#USEPERSON").val(),
+	    		"PERSONPHONE":$("#PERSONPHONE").val()
+	    	},
+	    	async: false,
+			dataType:'json',
+			cache: false,
+			beforeSend:function(){
+				
+			},
+			success: function(data){
+				if(data.flag){
+					$.alert("确认订单信息成功",function(){
+						location.href='<%=request.getContextPath()%>/my'
+					})
+					
+				}
+			},
+			error:function(){
+				
+			}
+		});
 	   
   } 
   </script>

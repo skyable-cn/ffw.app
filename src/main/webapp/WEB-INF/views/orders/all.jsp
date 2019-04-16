@@ -24,6 +24,7 @@
 			    	<c:when test="${var.STATE eq 1}">已支付</c:when>
 			    	<c:when test="${var.STATE eq 2}">待使用</c:when>
 			    	<c:when test="${var.STATE eq 3}">已使用</c:when>
+			    	<c:when test="${var.STATE eq 5}">已退款</c:when>
 			    	<c:otherwise>未知</c:otherwise>
 			    </c:choose>
 			    </span></div>

@@ -149,6 +149,14 @@
     				}
     				var html = "";
     				$.each(list,function(index,value){ 
+    					var backmoney = 0;
+    					if("${USER_SESSION.MEMBERTYPE_ID}"=="1"){
+    						backmoney = value.MEMBERBACKMONEY;
+    					}else if("${USER_SESSION.MEMBERTYPE_ID}"=="2"){
+    						backmoney = value.VIPBACKMONEY;
+    					}else{
+    						backmoney = value.BACKMONEY0;
+    					}
     					html += `
     					<div class="card demo-card-header-pic" style="position:relative;">
     				    <div valign="bottom" class="card-header color-white no-border no-padding">
@@ -164,7 +172,7 @@
     				    <div class="card-footer">
     				      <span>体验价: <strong style="color:#F40A0B;font-size:16px;">`+value.SELLMONEY+`</strong></span>
     				      <span class="delete">¥ `+value.ORIGINALMONEY+`</span>
-    				      <span class="return">返 7.9</span>
+    				      <span class="return">返 `+backmoney+`</span>
     				      <span>已抢:`+value.BUYNUMBER+`</span>
     				    </div>
     				  </div>
@@ -180,6 +188,14 @@
     				var list = data.page1.data;
     				var html = "";
     				$.each(list,function(index,value){ 
+    					var backmoney = 0;
+    					if("${USER_SESSION.MEMBERTYPE_ID}"=="1"){
+    						backmoney = value.MEMBERBACKMONEY;
+    					}else if("${USER_SESSION.MEMBERTYPE_ID}"=="2"){
+    						backmoney = value.VIPBACKMONEY;
+    					}else{
+    						backmoney = value.BACKMONEY0;
+    					}
     					html += `
     					<div class="card demo-card-header-pic" style="position:relative;">
     				    <div valign="bottom" class="card-header color-white no-border no-padding">
@@ -195,7 +211,7 @@
     				    <div class="card-footer">
     				      <span>体验价: <strong style="color:#F40A0B;font-size:16px;">`+value.SELLMONEY+`</strong></span>
     				      <span class="delete">¥ `+value.ORIGINALMONEY+`</span>
-    				      <span class="return">返 7.9</span>
+    				      <span class="return">返 `+backmoney+`</span>
     				      <span>已抢:`+value.BUYNUMBER+`</span>
     				    </div>
     				  </div>

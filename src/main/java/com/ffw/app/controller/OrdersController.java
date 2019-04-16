@@ -234,17 +234,18 @@ public class OrdersController extends BaseController {
 	}
 
 	@RequestMapping(value = { "/orders/useinfo/save" })
-	public ModelAndView complateSave() {
+	@ResponseBody
+	public ReturnModel complateSave() {
 		logger.info("进入订单确认信息保存");
-		ModelAndView mv = new ModelAndView();
+		ReturnModel rm = new ReturnModel();
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		pd.put("STATE", IConstant.STRING_2);
 		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/edit", pd,
 				PageData.class);
-
-		mv.setViewName("redirect:/my");
-		return mv;
+		rm.setFlag(true);
+		rm.setData(pd);
+		return rm;
 	}
 
 	@RequestMapping(value = { "/orders/refund" })
@@ -304,6 +305,9 @@ public class OrdersController extends BaseController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		pdo.put("STATE", IConstant.STRING_5);
+		rest.post(IConstant.FFW_SERVICE_KEY, "orders/edit", pdo, PageData.class);
 
 		pd.put("CDT", DateUtil.getTime());
 		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/saveRefund", pd,

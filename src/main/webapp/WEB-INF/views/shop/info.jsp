@@ -64,7 +64,12 @@
 				    <div class="card-footer">
 				      <span>体验价: <strong style="color:#F40A0B;font-size:16px;">${var.SELLMONEY}</strong></span>
 				      <span class="delete">¥ ${var.ORIGINALMONEY}</span>
-				      <span class="return">返 7.9</span>
+				      <span class="return">返 <c:choose>
+				      	<c:when test="${USER_SESSION.MEMBERTYPE_ID eq 1}">${var.MEMBERBACKMONEY}</c:when>
+				      	<c:when test="${USER_SESSION.MEMBERTYPE_ID eq 2}">${var.VIPBACKMONEY}</c:when>
+				      	<c:otherwise>${var.BACKMONEY0}</c:otherwise>
+				      </c:choose>
+				      </span>
 				      <span>已抢: ${var.BUYNUMBER}</span>
 				    </div>
 				  </div>
