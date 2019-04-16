@@ -70,7 +70,8 @@ public class DiscountController extends BaseController {
 			pd.put("ZSFLAG", IConstant.STRING_1);
 		}
 
-		Map<String, String> config = JSSDKUtil.config();
+		Map<String, String> config = JSSDKUtil
+				.config("https://fanfan.skyable.cn/app/discount");
 		pd.put("config", config);
 
 		// mv.addObject("page", page);

@@ -117,7 +117,9 @@ public class SellerController extends BaseController {
 				});
 		mv.addObject("standData", standData);
 
-		Map<String, String> config = JSSDKUtil.config();
+		Map<String, String> config = JSSDKUtil
+				.config("https://fanfan.skyable.cn/app/seller/manage?SHOP_ID="
+						+ pd.getString("SHOP_ID"));
 		mv.addObject("config", config);
 
 		mv.setViewName("seller/manage");

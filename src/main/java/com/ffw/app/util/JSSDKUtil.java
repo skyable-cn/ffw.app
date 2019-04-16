@@ -42,12 +42,11 @@ public class JSSDKUtil {
 		return rs;
 	}
 
-	public static Map<String, String> config() {
+	public static Map<String, String> config(String url) {
 		String accessToken = AccessToken(appId, appSecret);
 		String ticket = JsapiTicket(accessToken);
 		String noncestr = UUID.randomUUID().toString().replace("-", "");
 		String timestamp = String.valueOf(System.currentTimeMillis() / 1000);
-		String url = "https://fanfan.skyable.cn/app/discount";
 		String str = "jsapi_ticket=" + ticket + "&noncestr=" + noncestr
 				+ "&timestamp=" + timestamp + "&url=" + url;
 
@@ -62,9 +61,5 @@ public class JSSDKUtil {
 		map.put("appId", appId);
 		System.err.println(map);
 		return map;
-	}
-
-	public static void main(String[] args) {
-		config();
 	}
 }
