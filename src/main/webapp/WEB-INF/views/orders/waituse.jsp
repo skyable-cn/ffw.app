@@ -18,7 +18,7 @@
 			<div class="content">
 			<c:forEach var="var" items="${ordersData}">
 			<div class="card">
-			    <div class="card-header">订单:${var.ORDERSN}</div>
+			    <div class="card-header">订单:${var.ORDERSN}<c:if test="${var.WEIXINSN ne null }"><span style="float:right;"><a href="<%=request.getContextPath()%>/orders/refund?ORDER_ID=${var.ORDER_ID}" class="external button button-fill button-warning" style="background:#FFFFFF;color:#888888;font-weight:bold;">申请退款</a></span></c:if></div>
 			    <div class="card-content">
 			      <div class="list-block media-list">
 			        <ul>
