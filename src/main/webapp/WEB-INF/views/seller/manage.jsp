@@ -120,8 +120,7 @@
 		      <div id="tab3" class="tab">
 				<c:forEach var="var" items="${standData}">
 				<div class="row" style="padding:5px;">
-	    					<div class="col-100">
-	    						<a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=${var.GOODS_ID}">
+	    					<div class="col-100">				
     					<div class="card demo-card-header-pic">
     				    <div valign="bottom" class="card-header color-white no-border no-padding">
     				      <img class="card-cover" height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" alt="">
@@ -133,10 +132,14 @@
     				      </div>
     				    </div>
     				  </div>
-    				  </a>
   					</div>
 					</div>
 				</c:forEach>
+				<div class="row" style="padding:5px;">
+   					<div class="col-100">
+   					<a  href="<%=request.getContextPath()%>/stand/goAdd?SHOP_ID=${shop.SHOP_ID}"  class="external button button-big button-fill button-success" style="background:#FFCC01;color:#000000;">申请活动</a>
+   					</div>
+   				</div>
 		      </div>
 		    </div>
 				</div>
@@ -148,7 +151,7 @@
   <%@ include file="../common/headjs.jsp"%>
   <script type="text/javascript">
 	  wx.config({  
-	  	    debug: true,
+	  	    debug: false,
 	  	    appId: "${config.appId}", 
 	  	    timestamp: "${config.timestamp}",
 	  	    nonceStr: "${config.noncestr}",
@@ -252,6 +255,7 @@
     				      <span>下单时间:`+value.CDT+`</span>
     				      <span>`+value.USEPERSON+` / `+value.PERSONPHONE+`</span>
     				    </div>`;
+    				    
     				    if(value.STATE == '3'){
     						html+=`<div class="card-footer">
     	  				      <span>核销时间:`+value.UDT+`</span>

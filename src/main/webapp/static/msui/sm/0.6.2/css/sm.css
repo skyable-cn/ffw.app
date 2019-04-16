@@ -2401,7 +2401,6 @@ input[type="button"].button {
 .buttons-tab .button.active {
   color: #FFCC01;
   border-color: #FFCC01;
-  z-index: 100;
 }
 .buttons-fixed {
   position: fixed;

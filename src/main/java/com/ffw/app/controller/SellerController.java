@@ -137,22 +137,7 @@ public class SellerController extends BaseController {
 		pd1.put("page_currentPage", pd.getString("page_currentPage"));
 		pd1.put("SHOP_ID", pd.getString("SHOP_ID"));
 		pd1.put("SQLCONDITION", " AND os.STATE IN ( '2' , '3' ) ");
-		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "orders/listPage",
-				pd1, Page.class);
-		pd.put("page", page);
-		return pd;
-	}
-
-	@RequestMapping(value = { "/activity/search" })
-	@ResponseBody
-	public PageData activitySearch() {
-		logger.info("进入活动查询");
-		PageData pd = new PageData();
-		pd = this.getPageData();
-
-		PageData pd1 = new PageData();
-		pd1.put("page_currentPage", pd.getString("page_currentPage"));
-		pd1.put("SHOP_ID", pd.getString("SHOP_ID"));
+		pd1.put("keywords", pd.getString("keywords"));
 		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "orders/listPage",
 				pd1, Page.class);
 		pd.put("page", page);
