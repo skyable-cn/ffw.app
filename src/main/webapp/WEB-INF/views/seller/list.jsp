@@ -16,39 +16,31 @@
     <div class="page-group">
         <div class="page page-current">
 			<div class="content">
-			<div class="list-block contacts-block">
-			 <div class="list-group">
-		      <ul>
-		        <li>
-		          <div class="item-content">
-		            <div class="item-inner">
-		              <div class="item-title">科技路店</div>
-		              <div class="item-title">></div>
-		            </div>
-		          </div>
-		        </li>
-		        <li>
-		          <div class="item-content">
-		            <div class="item-inner">
-		              <div class="item-title">高新路店</div>
-		              <div class="item-title">></div>
-		            </div>
-		          </div>
-		        </li>
-		        <li>
-		          <div class="item-content">
-		            <div class="item-inner">
-		              <div class="item-title">大学城店</div>
-		              <div class="item-title">></div>
-		            </div>
-		          </div>
-		        </li>
-		       </ul>
-		      </div>
+			<div class="list-block" style="margin-top:0px;">
+			 <ul>
+			 <c:forEach var="var" items="${shopData}">
+		      <li class="item-content item-link" onclick="goShop('${var.SHOP_ID}','${var.SHOPSTATENAME}')">
+		        <div class="item-media"><i class="icon icon-f7"></i></div>
+		        <div class="item-inner">
+		          <div class="item-title">${var.SHOPNAME}</div>
+		          <div class="item-after">${var.SHOPSTATENAME}</div>
+		        </div>
+		      </li>
+		      </c:forEach>
+		      </ul>
 		      </div>
 			</div>
         </div>
     </div>
   </body>
   <%@ include file="../common/headjs.jsp"%>
+  <script type="text/javascript">
+  	function goShop(id,state){
+  		if(state != '已通过'){
+  			$.alert('该商户审核状态处于'+state,function(){});
+  		}else{
+  			location.href='<%=request.getContextPath()%>/seller/manage?SHOP_ID='+id
+  		}
+  	}
+  </script>
 </html>

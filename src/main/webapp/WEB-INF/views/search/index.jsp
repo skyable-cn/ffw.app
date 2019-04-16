@@ -102,6 +102,7 @@
       	
       	$("#search").blur(function(){
       		searchKeys = $(this).val();
+      		page_currentPage = 1;
       		search(true);
       	});
       	
@@ -111,6 +112,7 @@
       		latitude = $(this).attr("latitude");
       		longitude = $(this).attr("longitude");
       		distance = $(this).attr("distance");
+      		page_currentPage = 1;
       		search(true);
       	});
 

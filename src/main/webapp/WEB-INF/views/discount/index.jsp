@@ -206,6 +206,9 @@
   $.showPreloader('获取位置信息 . . .');	
   
   $("select.select_condition").change(function(){
+	  
+	  page_currentPage = 1;
+	  
 	  search(true);
   })
   

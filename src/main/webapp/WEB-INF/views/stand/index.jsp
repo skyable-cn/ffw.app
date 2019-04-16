@@ -52,9 +52,21 @@
     					html += `
     					<div class="row" style="padding:5px;">
 	    					<div class="col-100">
-	    						<a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=`+value.GOODS_ID+`"><img height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`"/></a>
-	    					</div>
-    					</div>
+	    						<a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=`+value.GOODS_ID+`">
+    					<div class="card demo-card-header-pic">
+    				    <div valign="bottom" class="card-header color-white no-border no-padding">
+    				      <img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="">
+    				    </div>
+    				    <div class="card-content">
+    				      <div class="card-content-inner">
+    				        <p>`+value.STANDDESC+`</p>
+    				        <p class="color-gray">活动时间:`+value.CREATETIME+`</p>
+    				      </div>
+    				    </div>
+    				  </div>
+    				  </a>
+  					</div>
+					</div>
     					`;
     				})
     				if(flag){
