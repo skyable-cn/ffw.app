@@ -46,7 +46,7 @@
           <div class="item-inner">
             <div class="item-title label">商品</div>
             <div class="item-input" style="padding:10px;">
-              <img src="<%=request.getContextPath()%>/file/image?FILENAME=${order.FILEPATH}" width="200">
+              <img src="<%=request.getContextPath()%>/file/image?FILENAME=${order.FILEPATH}" width="200" alt="商品图片">
             </div>
           </div>
         </div>
