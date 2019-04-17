@@ -131,7 +131,7 @@
           <div class="item-inner">
             <div class="item-title label">核销码</div>
             <div class="item-input" style="padding:10px;">
-              <img alt="" src="<%=request.getContextPath()%>/orders/barcode?ORDER_ID=${order.ORDER_ID}">
+              <img alt="" src="<%=request.getContextPath()%>/orders/barcode?ORDER_ID=${order.ORDER_ID}" width="200">
             </div>
           </div>
         </div>
