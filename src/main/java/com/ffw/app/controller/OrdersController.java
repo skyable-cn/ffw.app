@@ -388,9 +388,10 @@ public class OrdersController extends BaseController {
 			order = null;
 		}
 
-		if (!pd.getString("USEKEY").equals(
-				DigestUtils.md5Hex(order.getString("USEKEY")
-						+ IConstant.KEY_SLAT))) {
+		if (null != order
+				&& !pd.getString("USEKEY").equals(
+						DigestUtils.md5Hex(order.getString("USEKEY")
+								+ IConstant.KEY_SLAT))) {
 			order = null;
 		}
 		mv.addObject("order", order);
