@@ -293,6 +293,10 @@
      
   	$(document).on('infinite',function(){
   		
+  		if($("a.active").text()!="核销"){
+  			return;
+  		}
+  		
   		if(parseInt(pageData.currentPage) >= parseInt(pageData.totalPage)){
   			$.toast("数据已经到底了");
   			return;

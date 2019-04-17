@@ -16,10 +16,146 @@
     <div class="page-group">
         <div class="page page-current">
 			<div class="content">
-		
+		<div class="list-block" style="margin-top:0px;">
+    <ul>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-name"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">订单编号</div>
+            <div class="item-input">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.ORDERSN}" disabled="disabled">
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-name"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">下单时间</div>
+            <div class="item-input">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.CDT}" disabled="disabled">
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-name"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">商品</div>
+            <div class="item-input" style="padding:10px;">
+              <img src="<%=request.getContextPath()%>/file/image?FILENAME=${order.FILEPATH}" width="200">
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-name"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">商品名称</div>
+            <div class="item-input">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.GOODSNAME}" disabled="disabled">
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-name"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">商品单价</div>
+            <div class="item-input">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.MONEYONE}" disabled="disabled">
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-name"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">商品数量</div>
+            <div class="item-input">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.NUMBER}" disabled="disabled">
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-name"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">总价</div>
+            <div class="item-input">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.MONEY}" disabled="disabled">
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-name"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">姓名</div>
+            <div class="item-input">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.USEPERSON}" disabled="disabled">
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-name"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">电话</div>
+            <div class="item-input">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.PERSONPHONE}" disabled="disabled">
+            </div>
+          </div>
+        </div>
+      </li>
+      </ul>
+      </div>
+        <div class="content-block">
+    <div class="row">
+      	<div class="col-100"><a href="javascript:;" onclick="save()" class="button button-big button-fill button-success" style="background:#FFCC01;color:#000000;">确认核销</a></div>
+    </div>
+  </div>
         	</div>
     	</div>
     </div>
   </body>
   <%@ include file="../common/headjs.jsp"%>
+  <script type="text/javascript">
+  function save(){
+	  $.ajax({
+			type: "POST",
+			url: '<%=request.getContextPath()%>/orders/verification/save',
+	    	data:{
+	    		"ORDER_ID":"${order.ORDER_ID}"
+	    	},
+	    	async: false,
+			dataType:'json',
+			cache: false,
+			beforeSend:function(){
+				
+			},
+			success: function(data){
+				if(data.flag){
+					$.alert("确认订单核销成功",function(){
+						location.href='<%=request.getContextPath()%>/my'
+					})
+					
+				}
+			},
+			error:function(){
+				
+			}
+		});
+	   
+  } 
+  </script>
 </html>

@@ -17,7 +17,6 @@
         <div class="page page-current">
 			<div class="content">
 			<c:forEach var="var" items="${ordersData}">
-			<a class="external" href="<%=request.getContextPath()%>/orders/info?ORDER_ID=${var.ORDER_ID}">
 			<div class="card">
 			    <div class="card-header">订单:${var.ORDERSN}<c:if test="${var.WEIXINSN ne null }"><span style="float:right;"><a href="<%=request.getContextPath()%>/orders/refund?ORDER_ID=${var.ORDER_ID}" class="external button button-fill button-warning" style="background:#FFFFFF;color:#888888;font-weight:bold;">申请退款</a></span></c:if></div>
 			    <div class="card-content">
@@ -25,7 +24,7 @@
 			        <ul>
 			          <li class="item-content">
 			            <div class="item-media">
-			              <img src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" width="100">
+			              <a class="external" href="<%=request.getContextPath()%>/orders/info?ORDER_ID=${var.ORDER_ID}"><img src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" width="100"></a>
 			            </div>
 			            <div class="item-inner">
 			              <div class="item-title-row">
@@ -42,7 +41,6 @@
 			      <span>${var.USEPERSON} / ${var.PERSONPHONE}</span>
 			    </div>
 			  </div>
-			  </a>
 			</c:forEach>
 			</div>	
     	</div>

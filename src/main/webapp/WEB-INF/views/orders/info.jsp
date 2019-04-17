@@ -24,7 +24,7 @@
           <div class="item-inner">
             <div class="item-title label">订单编号</div>
             <div class="item-input">
-              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.ORDERSN}">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.ORDERSN}" disabled="disabled">
             </div>
           </div>
         </div>
@@ -35,7 +35,7 @@
           <div class="item-inner">
             <div class="item-title label">下单时间</div>
             <div class="item-input">
-              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.CDT}">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.CDT}" disabled="disabled">
             </div>
           </div>
         </div>
@@ -55,9 +55,9 @@
         <div class="item-content">
           <div class="item-media"><i class="icon icon-form-name"></i></div>
           <div class="item-inner">
-            <div class="item-title label">商品描述</div>
+            <div class="item-title label">商品名称</div>
             <div class="item-input">
-              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.GOODSDESC}">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.GOODSNAME}" disabled="disabled">
             </div>
           </div>
         </div>
@@ -68,7 +68,7 @@
           <div class="item-inner">
             <div class="item-title label">商品单价</div>
             <div class="item-input">
-              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${pd.SHOPNAME}">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.MONEYONE}" disabled="disabled">
             </div>
           </div>
         </div>
@@ -79,7 +79,18 @@
           <div class="item-inner">
             <div class="item-title label">商品数量</div>
             <div class="item-input">
-              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${pd.SHOPNAME}">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.NUMBER}" disabled="disabled">
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-name"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">总价</div>
+            <div class="item-input">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.MONEY}" disabled="disabled">
             </div>
           </div>
         </div>
@@ -90,7 +101,7 @@
           <div class="item-inner">
             <div class="item-title label">姓名</div>
             <div class="item-input">
-              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.USEPERSON}">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="" value="${order.USEPERSON}" disabled="disabled">
             </div>
           </div>
         </div>
@@ -101,7 +112,7 @@
           <div class="item-inner">
             <div class="item-title label">电话</div>
             <div class="item-input">
-              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.PERSONPHONE}">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="" value="${order.PERSONPHONE}" disabled="disabled">
             </div>
           </div>
         </div>
@@ -137,11 +148,22 @@
         </div>
       </li>
       </c:if>
+            <c:if test="${order.STATE eq 3}">
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-name"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">核销时间</div>
+            <div class="item-input">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.UDT}" disabled="disabled">
+            </div>
+          </div>
+        </div>
+      </li>
+      </c:if>
       </ul>
       </div>
-				
-        	</div>
-
+		</div>
     	</div>
     </div>
   </body>

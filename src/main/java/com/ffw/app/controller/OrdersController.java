@@ -393,4 +393,21 @@ public class OrdersController extends BaseController {
 		mv.setViewName("orders/verification");
 		return mv;
 	}
+
+	@RequestMapping(value = { "/orders/verification/save" })
+	@ResponseBody
+	public ReturnModel verificationSave() {
+		logger.info("进入订单核销信息保存");
+		ReturnModel rm = new ReturnModel();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		pd.put("STATE", IConstant.STRING_3);
+		pd.put("UDT", DateUtil.getTime());
+		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/edit", pd,
+				PageData.class);
+		rm.setFlag(true);
+		rm.setData(pd);
+		return rm;
+	}
+
 }
