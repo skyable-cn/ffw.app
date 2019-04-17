@@ -80,6 +80,7 @@ public class OrdersController extends BaseController {
 						+ randomNumber(5));
 		pd.put("MEMBER_ID", memberId());
 		pd.put("CDT", DateUtil.getTime());
+		pd.put("USEKEY", randomNumber(8));
 		if (Double.parseDouble(pd.getString("MONEY")) > 0) {
 			pd.put("STATE", IConstant.STRING_0);
 		} else {
