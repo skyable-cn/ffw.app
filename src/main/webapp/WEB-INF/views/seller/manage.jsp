@@ -180,7 +180,7 @@
   			success: function (res) {
   				var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
   				var orderJson = JSON.parse(result);
-  				location.href='<%=request.getContextPath()%>/orders/verification?ORDER_ID='+orderJson.ORDER_ID+'&USEKEY='+orderJson.USEKEY;
+  				location.href='<%=request.getContextPath()%>/orders/verification?ORDER_ID='+orderJson.ORDER_ID+'&USEKEY='+orderJson.USEKEY+"&SHOP_ID=${shop.SHOP_ID}";
   			}
   		});
   	}

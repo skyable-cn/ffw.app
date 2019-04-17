@@ -117,19 +117,41 @@
           </div>
         </div>
       </li>
+      <c:if test="${order.STATE eq 3}">
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-name"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">核销时间</div>
+            <div class="item-input">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.UDT}" disabled="disabled">
+            </div>
+          </div>
+        </div>
+      </li>
+      </c:if>
       </ul>
       </div>
-        <div class="content-block">
+      <c:if test="${order.STATE eq 2}">
+  <div class="content-block">
     <div class="row">
       	<div class="col-100"><a href="javascript:;" onclick="save()" class="button button-big button-fill button-success" style="background:#FFCC01;color:#000000;">确认核销</a></div>
     </div>
   </div>
+  </c:if>
         	</div>
     	</div>
     </div>
   </body>
   <%@ include file="../common/headjs.jsp"%>
   <script type="text/javascript">
+  if(!"${order}"){
+	  $.toast("参数错误/商户不匹配");
+  }
+  
+  if("${order.STATE}" == "3"){
+	  $.toast("该订单已核销");
+  }
   function save(){
 	  $.ajax({
 			type: "POST",

@@ -384,6 +384,10 @@ public class OrdersController extends BaseController {
 		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", order,
 				PageData.class);
 
+		if (!pd.getString("SHOP_ID").equals(order.getString("SHOP_ID"))) {
+			order = null;
+		}
+
 		if (!pd.getString("USEKEY").equals(
 				DigestUtils.md5Hex(order.getString("USEKEY")
 						+ IConstant.KEY_SLAT))) {
