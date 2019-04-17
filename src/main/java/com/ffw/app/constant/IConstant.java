@@ -19,4 +19,6 @@ public interface IConstant {
 	String STRING_4 = "4";
 
 	String STRING_5 = "5";
+
+	String KEY_SLAT = "QAZ!@#";
 }

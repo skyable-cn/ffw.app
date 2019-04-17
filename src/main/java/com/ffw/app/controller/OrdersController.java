@@ -1,5 +1,6 @@
 package com.ffw.app.controller;
 
+import java.awt.image.BufferedImage;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -7,6 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import org.apache.commons.codec.digest.DigestUtils;
+import org.krysalis.barcode4j.HumanReadablePlacement;
+import org.krysalis.barcode4j.impl.code39.Code39Bean;
+import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
+import org.krysalis.barcode4j.tools.UnitConv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Controller;
@@ -314,5 +320,79 @@ public class OrdersController extends BaseController {
 				PageData.class);
 
 		return refund;
+	}
+
+	@RequestMapping(value = { "/orders/info" })
+	public ModelAndView info() {
+		logger.info("进入订单详情");
+		ModelAndView mv = new ModelAndView();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+
+		PageData order = new PageData();
+		order.put("ORDER_ID", pd.getString("ORDER_ID"));
+		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", order,
+				PageData.class);
+
+		mv.addObject("order", order);
+
+		mv.setViewName("orders/info");
+		return mv;
+	}
+
+	@RequestMapping(value = { "/orders/barcode" })
+	public void barcode() throws Exception {
+		logger.info("进入条码生成");
+		PageData pd = new PageData();
+		pd = this.getPageData();
+
+		PageData order = new PageData();
+		order.put("ORDER_ID", pd.getString("ORDER_ID"));
+		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", order,
+				PageData.class);
+
+		String content = DigestUtils.md5Hex(order.getString("USEKEY")
+				+ IConstant.KEY_SLAT);
+
+		Code39Bean bean = new Code39Bean();
+		bean.setHeight(50.0);
+		bean.setMsgPosition(HumanReadablePlacement.HRP_NONE);
+
+		final int dpi = 100;
+		final double moduleWith = UnitConv.in2mm(1.0f / dpi);
+		bean.setModuleWidth(moduleWith);
+		bean.setWideFactor(3);
+		bean.doQuietZone(false);
+
+		BitmapCanvasProvider canvas = new BitmapCanvasProvider(getResponse()
+				.getOutputStream(), "image/png", dpi,
+				BufferedImage.TYPE_BYTE_BINARY, false, 0);
+
+		bean.generateBarcode(canvas, content);
+
+		canvas.finish();
+
+	}
+
+	@RequestMapping(value = { "/orders/verification" })
+	public ModelAndView use() {
+		logger.info("进入订单核销确认");
+		ModelAndView mv = new ModelAndView();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+
+		PageData order = new PageData();
+		order.put("ORDER_ID", pd.getString("ORDER_ID"));
+		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", order,
+				PageData.class);
+
+		if (!pd.getString("USEKEY").equals(
+				DigestUtils.md5Hex(order.getString("USEKEY")
+						+ IConstant.KEY_SLAT))) {
+			order = null;
+		}
+		mv.addObject("order", order);
+		mv.setViewName("orders/verification");
+		return mv;
 	}
 }

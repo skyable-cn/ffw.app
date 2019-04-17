@@ -20,7 +20,7 @@
 			<input id="LATITUDE" name="LATITUDE" type="hidden" value="${pd.LATITUDE}"/>
 			<input id="LONGITUDE" name="LONGITUDE" type="hidden" value="${pd.LONGITUDE}"/>
 			<input id="SHOPADDRESS" name="SHOPADDRESS" type="hidden" value="${pd.ADDRESS}"/>
-				<div class="list-block">
+				<div class="list-block" style="margin-top:0px;">
     <ul>
       <!-- Text inputs -->
       <li>
