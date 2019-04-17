@@ -43,14 +43,14 @@
 			</div>
 			<div style="width:100%;height:7px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="margin-top:10px;">
-			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/discount"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/ljdh.png"/><p style="font-size:0.65rem;">礼券兑换</p></a></div>
+			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/giftchange"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/ljdh.png"/><p style="font-size:0.65rem;">礼券兑换</p></a></div>
 			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/seller"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/sjrz.png"/><p style="font-size:0.65rem;">商家入驻</p></a></div>
 			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/seller/list"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/sjht.png"/><p style="font-size:0.65rem;">商家后台</p></a></div>
-			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/discount"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/drsq.png"/><p style="font-size:0.65rem;">达人申请</p></a></div>
-			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/discount"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/yqmp.png"/><p style="font-size:0.65rem;">邀请名片</p></a></div>
-			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/discount"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/wdtd.png"/><p style="font-size:0.65rem;">我的团队</p></a></div>
-			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/discount"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/tgdd.png"/><p style="font-size:0.65rem;">推广订单</p></a></div>
-			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/discount"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/phb.png"/><p style="font-size:0.65rem;">排行榜</p></a></div>
+			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/supermaninfo"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/drsq.png"/><p style="font-size:0.65rem;">达人申请</p></a></div>
+			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/invitationcard"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/yqmp.png"/><p style="font-size:0.65rem;">邀请名片</p></a></div>
+			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/myteam"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/wdtd.png"/><p style="font-size:0.65rem;">我的团队</p></a></div>
+			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/spreadorder"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/tgdd.png"/><p style="font-size:0.65rem;">推广订单</p></a></div>
+			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/rank"><img width="50%" src="<%=request.getContextPath()%>/static/icon/my/phb.png"/><p style="font-size:0.65rem;">排行榜</p></a></div>
 			</div>
 			<h5>&nbsp;</h5>
 			</div>
