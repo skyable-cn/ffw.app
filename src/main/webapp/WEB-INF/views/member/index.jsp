@@ -62,7 +62,7 @@
 			<div class="row" style="padding:5px;">
 				<div class="col-25"><div style="color:#F40A0B;border-right:2px #888888 dotted;text-align:center;width:80%;min-height:100px;line-height:50px;font-weight:bold;">优<br/>先</div></div>
 				<div class="col-25"><img width="80%" src="<%=request.getContextPath()%>/static/icon/member/hyyxg.png"/><br/><font style="font-size:14px;">会员优先购</font><br/><font style="font-size:12px;color:#aaaaaa;">爆款优先买</font></div>
-				<div class="col-25"><img width="80%" src="<%=request.getContextPath()%>/static/icon/member/hyyxg.png"/><br/><font style="font-size:14px;">新品提前购</font><br/><font style="font-size:12px;color:#aaaaaa;">提前1天</font></div>
+				<div class="col-25"><img width="80%" src="<%=request.getContextPath()%>/static/icon/member/hytqg.png"/><br/><font style="font-size:14px;">新品提前购</font><br/><font style="font-size:12px;color:#aaaaaa;">提前1天</font></div>
 				<div class="col-25">&nbsp;</div>
 			</div>
 			<h5>&nbsp;</h5>
