@@ -4748,6 +4748,15 @@ html:not(.watch-active-state) .theme-white label.label-radio:active,
 .right{
 	right:0px;
 }
+
+.center{
+	top:100px;
+	right:0px;
+	background:#F40A0B;
+	border-top-left-radius:20px;
+	border-bottom-left-radius:20px;
+	height:40px;
+}
 .suspend span{
 	background-color:#eeeeee;
 	padding:3px;

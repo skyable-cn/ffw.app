@@ -25,6 +25,7 @@
 				      <img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=${pd.FILEPATH}';">
 				      <div id="goods_time_id_${pd.GOODS_ID}_tj_left" class="suspend left">抢购中</div>
 				      <div id="goods_time_id_${pd.GOODS_ID}_tj_right" class="suspend right">活动倒计时<div id="goods_time_id_${pd.GOODS_ID}_tj"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
+				      <div class="suspend center" onclick="shareGoods()"><img style="margin-top:0px;margin-left:15px;margin-right:15px;" width="30" src="<%=request.getContextPath()%>/static/icon/share.png"/></div>
 				    </div>
 				    <div class="card-content">
 				      <div class="card-content-inner">
@@ -135,6 +136,11 @@
   		wx.miniProgram.navigateTo({
             url: '/pages/position/position?latitude=${shop.LATITUDE}&longitude=${shop.LONGITUDE}&address=${shop.SHOPADDRESS}'
        })
+  	}
+  	function shareGoods(){
+  		 wx.miniProgram.navigateTo({
+             url: '/pages/share/share?fromopenid=${USER_SESSION.WXOPEN_ID}&image=${var.FILEPATH}&path=/pages/index/index&title=美食推广宣传'
+        })
   	}
   </script>
 </html>
