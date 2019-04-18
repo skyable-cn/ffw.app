@@ -59,7 +59,8 @@ public class WeChatController extends BaseController {
 			pd.put("MEMBERTYPE_ID", IConstant.STRING_1);
 			pd.put("ACCOUNTBALANCE", IConstant.STRING_0);
 
-			if (null == pd.get("FROMWXOPEN_ID")) {
+			if (null == pd.get("FROMWXOPEN_ID")
+					|| pd.getString("FROMWXOPEN_ID").equals("null")) {
 				pd.remove("FROMWXOPEN_ID");
 			}
 
@@ -71,7 +72,8 @@ public class WeChatController extends BaseController {
 			pdm.put("PHOTO", pd.getString("PHOTO"));
 			pdm.put("SEX", pd.getString("SEX"));
 
-			if (null != pd.get("FROMWXOPEN_ID")) {
+			if (null != pd.get("FROMWXOPEN_ID")
+					&& !pd.getString("FROMWXOPEN_ID").equals("null")) {
 				if (null == pdm.getString("FROMWXOPEN_ID")
 						|| StringUtils.isEmpty(pdm.getString("FROMWXOPEN_ID"))) {
 					pdm.put("FROMWXOPEN_ID", pd.getString("FROMWXOPEN_ID"));
