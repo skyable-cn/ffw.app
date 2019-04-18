@@ -144,7 +144,8 @@
 	    		"DERATE":MONEY,
 	    		"CARD_ID":CARD_ID,
 	    		"GOODS_ID":'${pd.GOODS_ID}',
-	    		"NUMBER":$("#numberButton").text()
+	    		"NUMBER":$("#numberButton").text(),
+	    		"FROMWXOPEN_ID":'${FROMWXOPEN_ID}'
 	    	},
 	    	async: false,
 			dataType:'json',

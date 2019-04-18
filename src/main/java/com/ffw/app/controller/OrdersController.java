@@ -49,6 +49,10 @@ public class OrdersController extends BaseController {
 		ModelAndView mv = new ModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
+
+		String FROMWXOPEN_ID = pd.getString("FROMWXOPEN_ID");
+		mv.addObject("FROMWXOPEN_ID", FROMWXOPEN_ID);
+
 		pd = rest.post(IConstant.FFW_SERVICE_KEY, "goods/find", pd,
 				PageData.class);
 		mv.addObject("pd", pd);

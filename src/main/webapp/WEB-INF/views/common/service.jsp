@@ -9,6 +9,6 @@
      <span class="icon"><img src="<%=request.getContextPath()%>/static/icon/service.png"/></span>
      <span class="tab-label">客服</span>
     </a>
-    <a class="tab-item external" style="background:#FFCC01;color:#000000;" href="<%=request.getContextPath()%>/goBuy?GOODS_ID=${pd.GOODS_ID}">立即购买</a>
+    <a class="tab-item external" style="background:#FFCC01;color:#000000;" href="<%=request.getContextPath()%>/goBuy?GOODS_ID=${pd.GOODS_ID}&FROMWXOPEN_ID=${FROMWXOPEN_ID}">立即购买</a>
   </div>
 </nav>
