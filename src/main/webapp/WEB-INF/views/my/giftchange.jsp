@@ -16,8 +16,8 @@
     <div class="page-group">
         <div class="page page-current">
 			<div class="content">
-			<div class="list-block" style="margin-top:5px;">
-		    <ul  style="margin-left:1.5%;margin-right: 1.5%;border-radius:25px;">
+			<div class="list-block" style="margin-top:5px;margin-bottom:10px;">
+		    <ul  style="margin-left:2%;margin-right: 2%;border-radius:25px;">
 		      <!-- Text inputs -->
 		      <li style="">
 		        <div class="item-content">
@@ -30,12 +30,11 @@
 		      </li>
 		    </ul>
 		  </div>
-		  <div class="content-block">
+		  <div class="content-block" style="margin-top:5px;">
 		    <div class="row">
-		      <div class="col-100" style="text-align:c"><button onclick="saveInfo()" type="button" class="button button-big button-fill button-success" style="background:#FFCC01;color:#000000;width:100%;">立即兑换</button></div>
+		      <div class="col-100"><button onclick="saveInfo()" type="button" class="button button-big button-fill button-success" style="background:#FFCC01;color:#000000;width:100%;">立即兑换</button></div>
 		    </div>
 		  </div>
-			<h5>&nbsp;</h5>
 			</div>
         </div>
     </div>

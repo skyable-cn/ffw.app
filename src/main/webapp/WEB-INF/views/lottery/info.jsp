@@ -92,7 +92,7 @@
   <script type="text/javascript">
   	function goShare(){
   		 wx.miniProgram.navigateTo({
-             url: '/pages/share/share?image=${pd.FILEPATH}'
+             url: '/pages/share/share?image=${pd.FILEPATH}&path=/pages/index/index&title=免费抽奖了'
         })
   	}
   	

@@ -16,16 +16,15 @@
     <div class="page-group">
         <div class="page page-current">
 			<div class="content">
-			<div class="row" style="padding:5px;height:calc(100% - 75px);">
-				<div class="col-100" style="height:100%;">
-				<textarea id="SUPERMANDESC" name="SUPERMANDESC" placeholder="达人申请介绍 . . ." style="margin:5px;width:calc(100% - 10px);height:100%;">${supermaninfo.SUPERMANDESC}</textarea>
+			<div class="row" style="height:calc(100% - 70px);">
+				<div class="col-100" style="padding:5px;height:100%;padding-bottom:0px;">
+				<textarea id="SUPERMANDESC" name="SUPERMANDESC" placeholder="达人申请介绍 . . ." style="width:100%;height:100%;">${supermaninfo.SUPERMANDESC}</textarea>
 				</div>
 			</div>
-			 <div class="content-block" style="margin-top:5px;margin-bottom: 5px;">
 		    <div class="row">
-		      <div class="col-100" style="text-align:c"><button onclick="saveInfo()" type="button" class="button button-big button-fill button-success" style="background:#FFCC01;color:#000000;width:100%;">提交</button></div>
+		      <div class="col-100" style="padding:5px;"><button onclick="saveInfo()" type="button" class="button button-big button-fill button-success" style="background:#FFCC01;color:#000000;width:100%;">提交</button></div>
 		    </div>
-		  </div>
+	
 			</div>
         </div>
     </div>
