@@ -66,7 +66,8 @@ public class WeChatController extends BaseController {
 			pdm.put("PHOTO", pd.getString("PHOTO"));
 			pdm.put("SEX", pd.getString("SEX"));
 
-			if (StringUtils.isEmpty(pdm.getString("FROMWXOPEN_ID"))) {
+			if (null == pdm.getString("FROMWXOPEN_ID")
+					|| StringUtils.isEmpty(pdm.getString("FROMWXOPEN_ID"))) {
 				pdm.put("FROMWXOPEN_ID", pd.getString("FROMWXOPEN_ID"));
 			}
 
