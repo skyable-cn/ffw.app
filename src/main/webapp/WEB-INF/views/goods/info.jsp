@@ -139,7 +139,7 @@
   	}
   	function shareGoods(){
   		 wx.miniProgram.navigateTo({
-             url: '/pages/share/share?fromopenid=${USER_SESSION.WXOPEN_ID}&image=${var.FILEPATH}&path=/pages/index/index&title=美食推广宣传'
+             url: '/pages/share/share?fromopenid=${USER_SESSION.WXOPEN_ID}&image=${pd.FILEPATH}&path=/pages/index/index&title=美食推广宣传'
         })
   	}
   </script>
