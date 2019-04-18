@@ -76,7 +76,10 @@ public class WeChatController extends BaseController {
 					&& !pd.getString("FROMWXOPEN_ID").equals("null")) {
 				if (null == pdm.getString("FROMWXOPEN_ID")
 						|| StringUtils.isEmpty(pdm.getString("FROMWXOPEN_ID"))) {
-					pdm.put("FROMWXOPEN_ID", pd.getString("FROMWXOPEN_ID"));
+					if (!pd.getString("FROMWXOPEN_ID").equals(
+							pd.getString("WXOPEN_ID"))) {
+						pdm.put("FROMWXOPEN_ID", pd.getString("FROMWXOPEN_ID"));
+					}
 				}
 			}
 			rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pdm,
