@@ -27,11 +27,65 @@
     <a href="#tab1" class="tab-link active button">佣金排行</a>
     <a href="#tab2" class="tab-link button">人数排行</a>
   </div>
-  <div class="content-block">
+  <div class="content-block" style="margin: 0px;padding: 0px;">
     <div class="tabs">
       <div id="tab1" class="tab active">
+      <c:forEach var="var" items="${chargesData}" varStatus="status">
+      <c:if test="${USER_SESSION.MEMBER_ID eq var.MEMBER_ID}">
+    <div class="list-block" style="margin-top:5px;margin-bottom:5px;">
+    <ul>
+      <li class="item-content">
+        <div class="item-inner">
+          <div class="item-title">${status.index+1}&nbsp;<img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="${var.PHOTO}"/>${var.NICKNAME}</div>
+          <div class="item-after">${var.ACCOUNTBALANCE}元</div>
+        </div>
+      </li>
+    </ul>
+    </div>
+    </c:if>
+    </c:forEach>
+	<div class="list-block" style="margin-top:0px;">
+    <ul>
+	<c:forEach var="var" items="${chargesData}" varStatus="status">
+      <li class="item-content">
+        <div class="item-inner">
+          <div class="item-title"><c:if test="${status.index <= 2 }"><img align="middle" width="40" src="<%=request.getContextPath()%>/static/icon/top${status.index}.png"/></c:if><img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="${var.PHOTO}"/>${var.NICKNAME}</div>
+          <div class="item-after">${var.ACCOUNTBALANCE}元</div>
+        </div>
+      </li>
+      </c:forEach>
+    </ul>
+  </div>
       </div>
       <div id="tab2" class="tab">
+      
+      <c:forEach var="var" items="${numberData}" varStatus="status">
+      <c:if test="${USER_SESSION.MEMBER_ID eq var.MEMBER_ID}">
+    <div class="list-block" style="margin-top:5px;margin-bottom:5px;">
+    <ul>
+      <li class="item-content">
+        <div class="item-inner">
+          <div class="item-title">${status.index+1}&nbsp;<img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="${var.PHOTO}"/>${var.NICKNAME}</div>
+          <div class="item-after">${var.COUNT}人</div>
+        </div>
+      </li>
+    </ul>
+    </div>
+    </c:if>
+    </c:forEach>
+	<div class="list-block" style="margin-top:0px;">
+    <ul>
+	<c:forEach var="var" items="${numberData}" varStatus="status">
+      <li class="item-content">
+        <div class="item-inner">
+          <div class="item-title"><c:if test="${status.index <= 2 }"><img align="middle" width="40" src="<%=request.getContextPath()%>/static/icon/top${status.index}.png"/></c:if><img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="${var.PHOTO}"/>${var.NICKNAME}</div>
+          <div class="item-after">${var.COUNT}人</div>
+        </div>
+      </li>
+      </c:forEach>
+    </ul>
+  </div>
+      
       </div>
      </div>
 					

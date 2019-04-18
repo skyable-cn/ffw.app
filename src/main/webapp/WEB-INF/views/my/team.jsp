@@ -21,28 +21,26 @@
 					 	<img height="150" width="100%" src="<%=request.getContextPath()%>/static/image/team.jpg" alt="">
 					</div>
 			</div>
-			<div class="row" style="border-bottom:1px #DDDDDD solid;padding:5px;">
+			<c:forEach var="var1" items="${teamtData}" varStatus="status1">
+			<c:if test="${var1.LEVEL eq 1 }">
+			<div class="row" style="<c:if test="${status1.index eq 0}">border-top:1px #DDDDDD solid;</c:if>border-bottom:1px #DDDDDD solid;">
 				<div class="col-50">
-				 	1
+				 	<img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="${var1.PHOTO}"/>${var1.NICKNAME}
 				</div>
-				<div class="col-50">
-				 	<div class="row"  style="border-bottom:1px #DDDDDD solid;padding:5px;">
+				<div class="col-50" style="border-left:1px #DDDDDD solid;">
+					<c:forEach var="var2" items="${teamtData}"  varStatus="status2">
+					<c:if test="${var2.LEVEL eq 2 &&  var1.WXOPEN_ID eq var2.FROMWXOPEN_ID}">
+				 	<div class="row">
 						<div class="col-100">
-						11
+						<img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="${var2.PHOTO}"/>${var2.NICKNAME}
 						</div>
 					</div>
-					<div class="row"  style="border-bottom:1px #DDDDDD solid;padding:5px;">
-						<div class="col-100">
-						11
-						</div>
-					</div>
-					<div class="row" style="border-bottom:1px #DDDDDD solid;padding:5px;">
-						<div class="col-100">
-						11
-						</div>
-					</div>
+					</c:if>
+					</c:forEach>
 				</div>
-			</div>	
+			</div>
+			</c:if>
+			</c:forEach>	
 			</div>
         </div>
     </div>
