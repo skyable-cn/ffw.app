@@ -31,7 +31,7 @@
   <script type="text/javascript">
   	function goShare(){
   		 wx.miniProgram.navigateTo({
-             url: '/pages/share/share?image=back.jpg&path=/pages/index/index&title=邀请名片'
+             url: '/pages/share/share?fromopenid=${USER_SESSION.WXOPEN_ID}&image=back.jpg&path=/pages/index/index&title=邀请名片'
         })
   	}
   </script>

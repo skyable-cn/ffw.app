@@ -2,6 +2,7 @@ package com.ffw.app.controller;
 
 import net.sf.json.JSONObject;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -64,6 +65,11 @@ public class WeChatController extends BaseController {
 			pdm.put("SEX", pd.getString("SEX"));
 			pdm.put("PHOTO", pd.getString("PHOTO"));
 			pdm.put("SEX", pd.getString("SEX"));
+
+			if (StringUtils.isEmpty(pdm.getString("FROMWXOPEN_ID"))) {
+				pdm.put("FROMWXOPEN_ID", pd.getString("FROMWXOPEN_ID"));
+			}
+
 			rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pdm,
 					PageData.class);
 		}
