@@ -138,9 +138,14 @@
     					if(value.FILEPATH){
     						src="<%=request.getContextPath()%>/file/image?FILENAME="+value.FILEPATH;
     					}
-    					var href='<a href="javascript:;" onclick="$.alert(\'对不起，周四才可以半价抢购哦\')" class="external button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</a>';
+    					var href='<a href="javascript:;" onclick="$.alert(\'对不起，周四才可以半价抢购哦\')" class="external button button-fill button-warning" style="background:#DDDDDD;color:#000000;font-weight:bold;">抢购</a>';
     					if(value.ZSFLAG == '4'){
-    						href='<a href="<%=request.getContextPath()%>/shop/info?SHOP_ID='+value.SHOP_ID+'" class="external button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</a>';
+    						if("${USER_SESSION.MEMBERTYPE_ID}"=="2" || "${USER_SESSION.MEMBERTYPE_ID}"=="4"){
+    							href='<a href="<%=request.getContextPath()%>/shop/info?SHOP_ID='+value.SHOP_ID+'" class="external button button-fill button-warning" style="background:#DDDDDD;color:#000000;font-weight:bold;">抢购</a>';
+    						}else{
+    							href='<a href="javascript:;"  onclick="$.alert(\'对不起，加入会员才可以享受哦\')" class="external button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</a>';
+    						}
+    						
     					} 
     					html += `<div class="row" style="padding:5px;padding-top:0px;">
     				      <div class="col-100">
@@ -168,7 +173,7 @@
     					              	`+value.SHOPTYPENAME+`
     					              </div>
     					              <div class="item-subtitle" style="color:#F40A0B;">
-    					              	<span class="quan">券</span>83代100元
+    					              	<span class="quan">周四五折</span>
     					              </div>
     					            </div>
     					          </li>

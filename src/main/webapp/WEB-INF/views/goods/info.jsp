@@ -92,7 +92,7 @@
 			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-60" style="padding:5px;">
-					<span style="color:#fff;background-color:#F40A0B;padding:5px;border-radius:5px;padding-left:10px;padding-right:10px;">优惠券1</span>
+					<span style="color:#fff;background-color:#F40A0B;padding:5px;border-radius:5px;padding-left:10px;padding-right:10px;">周四五折</span>
 				</div>
 		        <div class="col-40"><button class="button button-fill button-warning pull-right" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</button></div>
 			</div>
