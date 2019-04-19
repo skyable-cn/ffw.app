@@ -44,6 +44,12 @@ public class MyController extends BaseController {
 				vipinfo, PageData.class);
 		mv.addObject("vipinfo", vipinfo);
 
+		PageData supermaninfo = new PageData();
+		supermaninfo.put("MEMBER_ID", memberId());
+		supermaninfo = rest.post(IConstant.FFW_SERVICE_KEY,
+				"supermaninfo/findBy", supermaninfo, PageData.class);
+		mv.addObject("supermaninfo", supermaninfo);
+
 		mv.setViewName("my/index");
 		mv.addObject("nav", "my");
 		return mv;

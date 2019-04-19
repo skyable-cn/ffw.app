@@ -50,6 +50,18 @@ public class SupermaninfoController extends BaseController {
 			pd.put("SUPERMANINFO_ID", null);
 			pd = rest.post(IConstant.FFW_SERVICE_KEY, "supermaninfo/save", pd,
 					PageData.class);
+
+			String MEMBERTYPE_ID = userSession().getString("MEMBERTYPE_ID");
+			PageData pdmember = new PageData();
+			pdmember.put("MEMBER_ID", memberId());
+			if (MEMBERTYPE_ID.equals(IConstant.STRING_1)) {
+				pdmember.put("MEMBERTYPE_ID", IConstant.STRING_3);
+			} else if (MEMBERTYPE_ID.equals(IConstant.STRING_2)) {
+				pdmember.put("MEMBERTYPE_ID", IConstant.STRING_4);
+			}
+			rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pdmember,
+					PageData.class);
+
 		} else {
 			rest.post(IConstant.FFW_SERVICE_KEY, "supermaninfo/edit", pd,
 					PageData.class);

@@ -24,7 +24,7 @@
 					<h5 style="margin:0px;font-weight:bold;font-size:0.85rem;padding-bottom:5px;">${USER_SESSION.NICKNAME}</h5>
 					<h5 style="margin:0px;font-weight:bold;font-size:14px;padding-bottom:2px;">个人资料</h5>
 					<h5 style="margin:0px;font-weight:bold;font-size:14px;padding-bottom:2px;">
-					<c:if test="${USER_SESSION.MEMBERTYPE_ID eq 1 or USER_SESSION.MEMBERTYPE_ID eq 3}">${USER_SESSION.MEMBERTYPENAME}</c:if>
+					${USER_SESSION.MEMBERTYPENAME}
 					<c:if test="${vipinfo ne null}">会员卡号:${vipinfo.VIPSN}</c:if>
 					</h5>
 				</div>
