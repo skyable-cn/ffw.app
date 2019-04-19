@@ -26,7 +26,7 @@ public class SpreadorderController extends BaseController {
 		pd = this.getPageData();
 
 		pd.put("FROMWXOPEN_ID", userSession().getString("WXOPEN_ID"));
-		pd.put("STATE", IConstant.STRING_3);
+		pd.put("SQLCONDITION", " and os.GIVEMONEY is not null ");
 
 		List<PageData> orderData = rest.postForList(IConstant.FFW_SERVICE_KEY,
 				"orders/listAll", pd,
