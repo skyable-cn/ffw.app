@@ -172,9 +172,6 @@
     					              <div class="item-subtitle" style="font-weight:bold;">
     					              	`+value.SHOPTYPENAME+`
     					              </div>
-    					              <div class="item-subtitle" style="color:#F40A0B;">
-    					              	<span class="quan">周四五折</span>
-    					              </div>
     					            </div>
     					          </li>
     					        </ul>
