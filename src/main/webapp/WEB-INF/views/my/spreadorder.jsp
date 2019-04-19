@@ -37,7 +37,7 @@
       <li class="item-content">
         <div class="item-inner">
           <div class="item-title">${var.ORDERSN}</div>
-          <div class="item-after">${var.MONEY}元</div>
+          <div class="item-after">${var.GIVEMONEY}元</div>
         </div>
       </li>
       </c:forEach>
