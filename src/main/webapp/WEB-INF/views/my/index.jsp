@@ -25,7 +25,7 @@
 					<h5 style="margin:0px;font-weight:bold;font-size:14px;padding-bottom:2px;">个人资料</h5>
 					<h5 style="margin:0px;font-weight:bold;font-size:14px;padding-bottom:2px;">
 					${USER_SESSION.MEMBERTYPENAME}
-					<c:if test="${vipinfo ne null}">会员卡号:${vipinfo.VIPSN}</c:if>
+					<c:if test="${vipinfo ne null}"><br/>会员卡号:${vipinfo.VIPSN}</c:if>
 					</h5>
 				</div>
 			</div>
