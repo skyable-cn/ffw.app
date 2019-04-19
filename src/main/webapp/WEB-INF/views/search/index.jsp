@@ -34,13 +34,13 @@
 			<div class="row" style="padding:5px;">
 				<div class="col-50">
 					<div class="selectdiv" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2000" latitude="34.23" longitude="108.23">
-						<h4 style="font-size:16px;margin:0px;">主城区沿线<span style="float:right;"><img width="30" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></h4>
+						<h4 style="font-size:16px;margin:0px;">主城区沿线<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></h4>
 						<h4 style="font-size:14px;margin:0px;">2.0km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></h4>
 					</div>
 				</div>
 				<div class="col-50">
 					<div class="selectdiv" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2000" latitude="34.23" longitude="108.23">
-						<h4 style="font-size:16px;margin:0px;">环城区沿线<span style="float:right;"><img width="30" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></h4>
+						<h4 style="font-size:16px;margin:0px;">环城区沿线<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></h4>
 						<h4 style="font-size:14px;margin:0px;">2.0km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></h4>
 					</div>
 				</div>
@@ -48,19 +48,19 @@
 			<div class="row" style="padding:5px;">
 				<div class="col-33">
 					<div class="selectdiv" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2500" latitude="34.23" longitude="108.23">
-						<h4 style="font-size:16px;margin:0px;">钟楼<span style="float:right;"><img width="30" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></h4>
+						<h4 style="font-size:16px;margin:0px;">钟楼<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></h4>
 						<h4 style="font-size:14px;margin:0px;">2.5km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></h4>
 					</div>
 				</div>
 				<div class="col-33">
 					<div class="selectdiv" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2500" latitude="34.23" longitude="108.23">
-						<h4 style="font-size:16px;margin:0px;">小寨<span style="float:right;"><img width="30" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></h4>
+						<h4 style="font-size:16px;margin:0px;">小寨<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></h4>
 						<h4 style="font-size:14px;margin:0px;">2.5km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></h4>
 					</div>
 				</div>
 				<div class="col-33">
 					<div class="selectdiv" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2500" latitude="34.23" longitude="108.23">
-						<h4 style="font-size:16px;margin:0px;">高新<span style="float:right;"><img width="30" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></h4>
+						<h4 style="font-size:16px;margin:0px;">高新<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></h4>
 						<h4 style="font-size:14px;margin:0px;">2.5km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></h4>
 					</div>
 				</div>
