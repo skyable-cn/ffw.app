@@ -57,8 +57,8 @@ public class WeChatController extends BaseController {
 				PageData.class);
 		if (null == pdm) {
 			pd.put("MEMBERTYPE_ID", IConstant.STRING_1);
-			pd.put("ACCOUNTBALANCE", IConstant.STRING_0);
-
+			pd.put("WAITACCOUNT", IConstant.STRING_0);
+			pd.put("ALREADYACCOUNT", IConstant.STRING_0);
 			if (null == pd.get("FROMWXOPEN_ID")
 					|| pd.getString("FROMWXOPEN_ID").equals("null")) {
 				pd.remove("FROMWXOPEN_ID");

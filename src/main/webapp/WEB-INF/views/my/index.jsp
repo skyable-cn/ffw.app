@@ -31,7 +31,7 @@
 			</div>
 			<div class="row" style="margin:10px;">
 			<div class="col-50" style="border-right:2px #cccccc solid;text-align: center;padding:5px;"><a class="external" href="<%=request.getContextPath()%>/my/cards">${cardsNum}<br/>我的卡券</a></div>
-			<div class="col-50" style="text-align: center;padding:5px;"><a class="external" href="<%=request.getContextPath()%>/my/account">${USER_SESSION.ACCOUNTBALANCE}<br/>我的金库</a></div>
+			<div class="col-50" style="text-align: center;padding:5px;"><a class="external" href="<%=request.getContextPath()%>/my/account">${USER_SESSION.WAITACCOUNT}<br/>我的金库</a></div>
 			</div>
 			<div style="width:100%;height:7px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;padding-top:10px;">

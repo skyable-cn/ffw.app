@@ -37,7 +37,7 @@
       <li class="item-content">
         <div class="item-inner">
           <div class="item-title">${status.index+1}&nbsp;<img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="${var.PHOTO}"/>${var.NICKNAME}</div>
-          <div class="item-after">${var.ACCOUNTBALANCE}元</div>
+          <div class="item-after">${var.WAITACCOUNT}元</div>
         </div>
       </li>
     </ul>
@@ -50,7 +50,7 @@
       <li class="item-content">
         <div class="item-inner">
           <div class="item-title"><c:if test="${status.index <= 2 }"><img align="middle" width="40" src="<%=request.getContextPath()%>/static/icon/top${status.index}.png"/></c:if><img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="${var.PHOTO}"/>${var.NICKNAME}</div>
-          <div class="item-after">${var.ACCOUNTBALANCE}元</div>
+          <div class="item-after">${var.WAITACCOUNT}元</div>
         </div>
       </li>
       </c:forEach>
