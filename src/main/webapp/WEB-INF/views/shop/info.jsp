@@ -22,10 +22,10 @@
 				<div class="col-40">
 				<c:choose>
 	              	<c:when test="${pd.FILEPATH eq null}">
-	              	<img style="margin-left:20px; width:80px; height:80px; border-radius:50%;" src="<%=request.getContextPath()%>/static/image/shop.jpg"/>
+	              	<img style="margin-left:20px; width:60px; height:60px; border-radius:50%;" src="<%=request.getContextPath()%>/static/image/shop.jpg"/>
 	              	</c:when>
 	              	<c:otherwise>
-	              	<img style="margin-left:20px; width:80px; height:80px; border-radius:50%;" src="<%=request.getContextPath()%>/file/image?FILENAME=${pd.FILEPATH}"/>
+	              	<img style="margin-left:20px; width:60px; height:60px; border-radius:50%;" src="<%=request.getContextPath()%>/file/image?FILENAME=${pd.FILEPATH}"/>
 	              	</c:otherwise>
 	              </c:choose>
 				</div>
@@ -36,6 +36,7 @@
 				<div class="col-60">${pd.SHOPADDRESS}</div>
 		        <div class="col-40" style="text-align:right;"><img onclick="phone()" width="20" style="margin-right:15px;" src="<%=request.getContextPath()%>/static/icon/phone.png"/> | <img onclick="position()" style="margin-left:15px;" width="20" src="<%=request.getContextPath()%>/static/icon/send.png"/></div>
 			</div>
+			<!-- 
 			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-60" style="padding:5px;">
@@ -43,6 +44,7 @@
 				</div>
 		        <div class="col-40"><button class="button button-fill button-warning pull-right" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</button></div>
 			</div>
+			 -->
 			<div style="width:100%;height:10px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-100" style="font-weight:bold;">所有菜单</div>

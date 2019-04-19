@@ -76,10 +76,10 @@
 		          <div class="row" style="padding:5px;margin-top:5px;margin-bottom:5px;">
 					<div class="col-60"><c:choose>
 	              	<c:when test="${shop.FILEPATH eq null}">
-	              	<img align="middle" style="margin-left:20px; width:80px; height:80px; border-radius:50%;" src="<%=request.getContextPath()%>/static/image/shop.jpg"/>
+	              	<img align="middle" style="margin-left:20px; width:60px; height:60px; border-radius:50%;" src="<%=request.getContextPath()%>/static/image/shop.jpg"/>
 	              	</c:when>
 	              	<c:otherwise>
-	              	<img align="middle" style="margin-left:20px; width:80px; height:80px; border-radius:50%;" src="<%=request.getContextPath()%>/file/image?FILENAME=${shop.FILEPATH}"/>
+	              	<img align="middle" style="margin-left:20px; width:60px; height:60px; border-radius:50%;" src="<%=request.getContextPath()%>/file/image?FILENAME=${shop.FILEPATH}"/>
 	              	</c:otherwise>
 	              </c:choose>${shop.SHOPNAME}</div>
 					<div class="col-40" style="line-height:80px;text-align:right;"><a class="external" href="<%=request.getContextPath()%>/shop/info?SHOP_ID=${shop.SHOP_ID}" style="font-size:14px;text-decoration:underline;color:#444444;">进店逛逛</a></div>
@@ -89,6 +89,7 @@
 				<div class="col-60">${shop.SHOPADDRESS}</div>
 		        <div class="col-40" style="text-align:right;"><img onclick="phone()" width="20" style="margin-right:15px;" src="<%=request.getContextPath()%>/static/icon/phone.png"/> | <img  onclick="position()" style="margin-left:15px;" width="20" src="<%=request.getContextPath()%>/static/icon/send.png"/></div>
 			</div>
+			<!-- 
 			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-60" style="padding:5px;">
@@ -96,8 +97,8 @@
 				</div>
 		        <div class="col-40"><button class="button button-fill button-warning pull-right" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</button></div>
 			</div>
+			 -->
 			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
-			<h5>&nbsp;</h5>
 		      </div>
 		      <div id="tab2" class="tab">
 		        <div class="row" style="padding:5px;">
