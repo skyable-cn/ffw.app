@@ -25,7 +25,7 @@
 				 <div class="div_height2" style="background:#ffffff;height:80px;position:absolute;top:100px;z-index:999;left:5%;right:5%;-webkit-box-shadow: 3px 3px 12px #666;-moz-box-shadow: 3px 3px 12px #666;box-shadow: 3px 3px 12px #666; -moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;">
 					 <div class="row">
 					 	<div class="col-25" style="text-align: center;font-size:14px;padding:10px;font-weight:bold;">
-					 		¥ ${USER_SESSION.WAITMONEY}<br/>可提现
+					 		¥ ${sessionScope.USER_SESSION.WAITMONEY}<br/>可提现
 					 	</div>
 					 	<div class="col-25" style="text-align: center;font-size:14px;padding:10px;font-weight:bold;">
 					 		¥ ${USER_SESSION.ALREADYMONEY}<br/>已提现
@@ -46,7 +46,4 @@
     </div>
   </body>
   <%@ include file="../common/headjs.jsp"%>
-  <script type="text/javascript">
-  1111111
-  </script>
 </html>
