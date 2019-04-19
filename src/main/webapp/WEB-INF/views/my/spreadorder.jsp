@@ -29,19 +29,15 @@
     <ul>
     <li class="item-content">
         <div class="item-inner">
-          <div class="item-title">序号</div>
           <div class="item-title">订单</div>
-          <div class="item-title">返利金额</div>
-          <div class="item-after">时间</div>
+          <div class="item-after">返利金额</div>
         </div>
       </li>
 	<c:forEach var="var" items="${orderData}" varStatus="status">
       <li class="item-content">
         <div class="item-inner">
-          <div class="item-title">${var.status + 1}</div>
           <div class="item-title">${var.ORDERSN}</div>
-          <div class="item-title">${var.MONEY}</div>
-          <div class="item-after">${var.CDT}</div>
+          <div class="item-after">${var.MONEY}元</div>
         </div>
       </li>
       </c:forEach>

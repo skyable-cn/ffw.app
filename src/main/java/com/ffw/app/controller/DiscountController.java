@@ -1,7 +1,5 @@
 package com.ffw.app.controller;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ffw.api.model.Page;
 import com.ffw.api.model.PageData;
+import com.ffw.api.util.DateUtil;
 import com.ffw.app.constant.IConstant;
 import com.ffw.app.util.JSSDKUtil;
 import com.ffw.app.util.RestTemplateUtil;
@@ -62,11 +61,8 @@ public class DiscountController extends BaseController {
 		// pd1,
 		// Page.class);
 
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(new Date());
-		int w = cal.get(Calendar.DAY_OF_WEEK) - 2;
 		pd.put("ZSFLAG", IConstant.STRING_0);
-		if (w == 4) {
+		if (DateUtil.getWeek() == 4) {
 			pd.put("ZSFLAG", IConstant.STRING_1);
 		}
 

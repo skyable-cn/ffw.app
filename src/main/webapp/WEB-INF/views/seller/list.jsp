@@ -20,7 +20,6 @@
 			 <ul>
 			 <c:forEach var="var" items="${shopData}">
 		      <li class="item-content item-link" onclick="goShop('${var.SHOP_ID}','${var.SHOPSTATENAME}')">
-		        <div class="item-media"><i class="icon icon-f7"></i></div>
 		        <div class="item-inner">
 		          <div class="item-title">${var.SHOPNAME}</div>
 		          <div class="item-after">${var.SHOPSTATENAME}</div>
