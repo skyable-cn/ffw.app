@@ -22,6 +22,7 @@ import com.ffw.app.config.WXPayConfigImpl;
 import com.ffw.app.config.WechatMiniConfig;
 import com.ffw.app.constant.IConstant;
 import com.ffw.app.model.ReturnModel;
+import com.ffw.app.util.JSSDKUtil;
 import com.ffw.app.util.RestTemplateUtil;
 import com.github.wxpay.sdk.WXPay;
 import com.github.wxpay.sdk.WXPayConstants.SignType;
@@ -339,6 +340,11 @@ public class OrdersController extends BaseController {
 		order.put("ORDER_ID", pd.getString("ORDER_ID"));
 		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", order,
 				PageData.class);
+
+		Map<String, String> config = JSSDKUtil
+				.config("https://fanfan.skyable.cn/app/orders/info?ORDER_ID="
+						+ pd.getString("ORDER_ID"));
+		pd.put("config", config);
 
 		mv.addObject("order", order);
 

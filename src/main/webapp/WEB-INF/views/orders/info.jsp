@@ -11,6 +11,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <%@ include file="../common/headcss.jsp"%>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
   </head>
   <body>
     <div class="page-group">
@@ -142,7 +143,7 @@
           <div class="item-inner">
             <div class="item-title label">核销码</div>
             <div class="item-input" style="padding:10px;">
-              <img alt="" src="<%=request.getContextPath()%>/orders/barcode?ORDER_ID=${order.ORDER_ID}" width="200">
+              <img onclick="preview()" alt="" src="<%=request.getContextPath()%>/orders/barcode?ORDER_ID=${order.ORDER_ID}" width="200">
             </div>
           </div>
         </div>
@@ -168,4 +169,36 @@
     </div>
   </body>
   <%@ include file="../common/headjs.jsp"%>
+    <script type="text/javascript">
+    
+    	wx.config({  
+    	    debug: false,
+    	    appId: "${config.appId}", 
+    	    timestamp: "${config.timestamp}",
+    	    nonceStr: "${config.noncestr}",
+    	    signature: "${config.signature}",  
+    	    jsApiList: [  
+    	        'previewImage'
+    	    ]  
+    	}); 
+    	
+    	wx.ready(
+    		function(){
+    			
+    		}
+    	);
+    	
+    	wx.error(
+    		function(res){
+    			console.log(res);
+    		}
+    	);
+    	
+    	function preview(){
+    		wx.previewImage({
+	   			current: '<%=request.getContextPath()%>/orders/barcode?ORDER_ID=${order.ORDER_ID}', // 当前显示图片的http链接
+	   			urls: ['<%=request.getContextPath()%>/orders/barcode?ORDER_ID=${order.ORDER_ID}'] // 需要预览的图片http链接列表
+   			});
+    	}
+    </script>
 </html>
