@@ -2,6 +2,7 @@ package com.ffw.app.controller;
 
 import java.util.List;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.commons.lang.StringUtils;
@@ -93,7 +94,7 @@ public class WeChatController extends BaseController {
 
 	@RequestMapping(value = { "/customer" })
 	@ResponseBody
-	public JSONObject customer() {
+	public JSONArray customer() {
 		logger.info("获取群组信息");
 		PageData pd = new PageData();
 		pd = this.getPageData();
@@ -103,7 +104,7 @@ public class WeChatController extends BaseController {
 				"groups/listAll", pd1,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
-		JSONObject obj = JSONObject.fromObject(data);
+		JSONArray obj = JSONArray.fromObject(data);
 		return obj;
 	}
 }
