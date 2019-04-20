@@ -81,12 +81,28 @@
 				  </c:forEach>
 			<h5>&nbsp;</h5>
         	</div>
-        	<%@ include file="../common/shop.jsp"%>
+        	<nav class="bar bar-tab">
+  <div class="row">
+  	<a class="tab-item external" href="<%=request.getContextPath()%>/home" style="border-right:1px #aaaaaa solid;">
+     <span class="icon"><img src="<%=request.getContextPath()%>/static/icon/index.png"/></span>
+     <span class="tab-label">首页</span>
+    </a>
+    <a class="tab-item external" href="javascript:;" onclick="goCustomer()" style="border-right:1px #aaaaaa solid;">
+     <span class="icon"><img src="<%=request.getContextPath()%>/static/icon/service.png"/></span>
+     <span class="tab-label">客服</span>
+    </a>
+  </div>
+</nav>
         </div>
     </div>
   </body>
   <%@ include file="../common/headjs.jsp"%>
   <script type="text/javascript">
+  	function goCustomer(){
+		wx.miniProgram.navigateTo({
+          url: '/pages/customer/customer'
+     })
+	}
   	function phone(){
   		wx.miniProgram.navigateTo({
             url: '/pages/phone/phone?phone=${pd.CONTRACTPHONE}'
