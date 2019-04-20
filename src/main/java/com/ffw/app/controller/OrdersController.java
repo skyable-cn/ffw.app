@@ -375,6 +375,7 @@ public class OrdersController extends BaseController {
 		String format = "png";// 图像类型
 		Map<EncodeHintType, Object> hints = new HashMap<EncodeHintType, Object>();
 		hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+		hints.put(EncodeHintType.MARGIN, 1);
 		BitMatrix bitMatrix = new MultiFormatWriter().encode(
 				json.toJSONString(), BarcodeFormat.QR_CODE, width, height,
 				hints);// 生成矩阵

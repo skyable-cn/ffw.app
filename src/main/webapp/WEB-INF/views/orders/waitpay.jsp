@@ -19,13 +19,13 @@
 			<div class="content">
 			<c:forEach var="var" items="${ordersData}">
 			<div class="card">
-			    <div class="card-header">订单:${var.ORDERSN}</div>
+			    <div class="card-header">下单时间:${var.CDT}</div>
 			    <div class="card-content">
 			      <div class="list-block media-list">
 			        <ul>
 			          <li class="item-content">
 			            <div class="item-media">
-			              <a class="external" href="<%=request.getContextPath()%>/orders/info?ORDER_ID=${var.ORDER_ID}"><img src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" width="100"></a>
+			              <img src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" width="100">
 			            </div>
 			            <div class="item-inner">
 			              <div class="item-title-row">
@@ -38,7 +38,7 @@
 			      </div>
 			    </div>
 			    <div class="card-footer">
-			      <span>下单时间:${var.CDT}</span>
+			      <span></span>
 			      <span><button onclick="goPay('${var.ORDER_ID}','${var.ORDERSN}','${var.ORIGINAL}','${var.DERATE}','${var.MONEY}');" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">立即支付</button></span>
 			    </div>
 			  </div>
@@ -49,10 +49,10 @@
   </body>
   <%@ include file="../common/headjs.jsp"%>
   <script type="text/javascript">
-  	function goPay(id,sn,original,derate,money){
-		 wx.miniProgram.navigateTo({
-         url: '/pages/pay/pay?type=goods&id='+id+'&sn='+sn+'&original='+original+'&derate='+derate+'&money='+money
-    	})
-	}
+ 	function goPay(id,sn,original,derate,money){
+   		 wx.miniProgram.navigateTo({
+            url: '/pages/pay/pay?type=goods&id='+id+'&sn='+sn+'&original='+original+'&derate='+derate+'&money='+money
+       	})
+   	}
   </script>
 </html>

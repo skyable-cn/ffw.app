@@ -16,6 +16,11 @@
     <div class="page-group">
         <div class="page page-current">
 			<div class="content">
+			<div class="row" style="padding:50px;">
+				<div class="col-33">&nbsp;</div>
+				<div class="col-33" style="text-align:center;"><img align="middle" width="60" style="border-radius:50%;" src="<%=request.getContextPath()%>/static/image/payok.png"/><br/><br/>支付成功</div>
+				<div class="col-33">&nbsp;</div>
+			</div>
 			<h6 style="margin-top:5px;margin-bottom:5px;margin-left:30px;font-size:12px;color:#AAAAAA;">完善以下信息,确保订单正常使用</h6>
 			<div class="list-block" style="margin-top:5px;">
 		    <ul>

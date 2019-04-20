@@ -15,156 +15,108 @@
   </head>
   <body>
     <div class="page-group">
-        <div class="page page-current">
+        <div class="page page-current" style="background:#FFFFFF;">
 			<div class="content">
-			  <div class="list-block" style="margin-top:0px;">
-    <ul>
-      <li>
-        <div class="item-content">
-          <div class="item-media"><i class="icon icon-form-name"></i></div>
-          <div class="item-inner">
-            <div class="item-title label">订单编号</div>
-            <div class="item-input">
-              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.ORDERSN}" disabled="disabled">
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="item-content">
-          <div class="item-media"><i class="icon icon-form-name"></i></div>
-          <div class="item-inner">
-            <div class="item-title label">下单时间</div>
-            <div class="item-input">
-              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.CDT}" disabled="disabled">
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="item-content">
-          <div class="item-media"><i class="icon icon-form-name"></i></div>
-          <div class="item-inner">
-            <div class="item-title label">商品</div>
-            <div class="item-input" style="padding:10px;">
-              <img src="<%=request.getContextPath()%>/file/image?FILENAME=${order.FILEPATH}" width="200">
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="item-content">
-          <div class="item-media"><i class="icon icon-form-name"></i></div>
-          <div class="item-inner">
-            <div class="item-title label">商品名称</div>
-            <div class="item-input">
-              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.GOODSNAME}" disabled="disabled">
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="item-content">
-          <div class="item-media"><i class="icon icon-form-name"></i></div>
-          <div class="item-inner">
-            <div class="item-title label">商品单价</div>
-            <div class="item-input">
-              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.MONEYONE}" disabled="disabled">
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="item-content">
-          <div class="item-media"><i class="icon icon-form-name"></i></div>
-          <div class="item-inner">
-            <div class="item-title label">商品数量</div>
-            <div class="item-input">
-              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.NUMBER}" disabled="disabled">
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="item-content">
-          <div class="item-media"><i class="icon icon-form-name"></i></div>
-          <div class="item-inner">
-            <div class="item-title label">总价</div>
-            <div class="item-input">
-              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.MONEY}" disabled="disabled">
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="item-content">
-          <div class="item-media"><i class="icon icon-form-name"></i></div>
-          <div class="item-inner">
-            <div class="item-title label">姓名</div>
-            <div class="item-input">
-              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="" value="${order.USEPERSON}" disabled="disabled">
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="item-content">
-          <div class="item-media"><i class="icon icon-form-name"></i></div>
-          <div class="item-inner">
-            <div class="item-title label">电话</div>
-            <div class="item-input">
-              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="" value="${order.PERSONPHONE}" disabled="disabled">
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="item-content">
-          <div class="item-media"><i class="icon icon-form-name"></i></div>
-          <div class="item-inner">
-            <div class="item-title label">状态</div>
-            <div class="item-input"><span style="border:1px #444444 solid;border-radius: 5px;padding: 5px;font-size: 14px;">
-              <c:choose>
-			    	<c:when test="${order.STATE eq 0}">待付款</c:when>
-			    	<c:when test="${order.STATE eq 1}">已支付</c:when>
-			    	<c:when test="${order.STATE eq 2}">待使用</c:when>
-			    	<c:when test="${order.STATE eq 3}">已使用</c:when>
-			    	<c:when test="${order.STATE eq 5}">已退款</c:when>
-			    	<c:otherwise>未知</c:otherwise>
-			    </c:choose></span>
-            </div>
-          </div>
-        </div>
-      </li>
-      <c:if test="${order.STATE eq 2}">
-      <li>
-        <div class="item-content">
-          <div class="item-media"><i class="icon icon-form-name"></i></div>
-          <div class="item-inner">
-            <div class="item-title label">核销码</div>
-            <div class="item-input" style="padding:10px;">
-              <img onclick="preview()" alt="" src="<%=request.getContextPath()%>/orders/barcode?ORDER_ID=${order.ORDER_ID}" width="200">
-            </div>
-          </div>
-        </div>
-      </li>
-      </c:if>
-            <c:if test="${order.STATE eq 3}">
-      <li>
-        <div class="item-content">
-          <div class="item-media"><i class="icon icon-form-name"></i></div>
-          <div class="item-inner">
-            <div class="item-title label">核销时间</div>
-            <div class="item-input">
-              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="您的店名称" value="${order.UDT}" disabled="disabled">
-            </div>
-          </div>
-        </div>
-      </li>
-      </c:if>
-      </ul>
-      </div>
-		</div>
+				<div class="row" style="padding:5px;">
+					<div class="col-100" style="text-align: right;font-size:0.7rem;font-weight:bold;">
+					<c:choose>
+				    	<c:when test="${order.STATE eq 0}">待付款</c:when>
+				    	<c:when test="${order.STATE eq 1}">已支付</c:when>
+				    	<c:when test="${order.STATE eq 2}">待使用</c:when>
+				    	<c:when test="${order.STATE eq 3}">已使用</c:when>
+				    	<c:when test="${order.STATE eq 5}">已退款</c:when>
+				    	<c:otherwise>未知</c:otherwise>
+				    </c:choose>
+			    </div>
+				</div>
+				<div style="width:100%;height:7px;background:#dddddd;">&nbsp;</div>
+			  	<div class="row" style="padding:5px;">
+					<div class="col-25">&nbsp;</div>
+					<div class="col-50"><img onclick="preview()" alt="" src="<%=request.getContextPath()%>/orders/barcode?ORDER_ID=${order.ORDER_ID}" width="100%"></div>
+					<div class="col-25">&nbsp;</div>
+				</div>
+				<div class="row" style="padding:5px;">
+					<div class="col-100">
+						<div style="text-align:center;font-size:0.7rem;font-weight:bold;">有效期 2012-12-12 12:12:12~2019-12-12 12:12:12</div>
+					</div>
+				</div>
+				<div style="margin:10px;border:1px #DDDDDD solid;height:100px;">
+					<div class="row">
+						<div class="col-50" style="padding:7px;padding-top:15px;font-size:0.7rem;font-weight:bold;">核销码</div>
+						<div class="col-50" style="padding:7px;padding-top:15px;text-align:right;"><button onclick="goRefund('${order.ORDER_ID}');" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;float:right;font-size:0.7rem;font-weight:bold;">申请退款</button></div>
+					</div>
+					<div class="row">
+						<div class="col-50" style="padding:7px;padding-top:7px;font-size:0.7rem;font-weight:bold;">核销码:${order.USEKEY}</div>
+						<div class="col-50" style="padding:7px;padding-top:7px;text-align:right;font-size:0.7rem;font-weight:bold;"><c:choose>
+				    	<c:when test="${order.STATE eq 0}">待付款</c:when>
+				    	<c:when test="${order.STATE eq 1}">已支付</c:when>
+				    	<c:when test="${order.STATE eq 2}">待使用</c:when>
+				    	<c:when test="${order.STATE eq 3}">已使用</c:when>
+				    	<c:when test="${order.STATE eq 5}">已退款</c:when>
+				    	<c:otherwise>未知</c:otherwise>
+				    </c:choose></div>
+					</div>
+				</div>
+				<div class="content-block" style="margin-left:15%;margin-right:15%;margin-top:15px;margin-bottom:15px;">
+				    <a href="#" class="button button-round button-big button-fill" style="background:#FFCC01;color:#000000;">转赠好友</a>
+				</div>
+				<div class="row" style="padding:5px;padding-top:0px;">
+					<div class="col-100">
+						<div style="text-align:center;font-size:0.65rem;font-weight:bold;color:#666666;">好友接收成功后,订单无法退款,你将不能再核销</div>
+					</div>
+				</div>
+				<div class="row" style="padding:5px;padding-top:30px;">
+					<div class="col-100">
+						<div style="text-align:center;font-size:0.85rem;font-weight:bold;">使用方法</div>
+					</div>
+				</div>
+				<div class="row" style="padding:5px;margin-bottom:20px;">
+					<div class="col-100">
+						<div style="text-align:center;font-size:0.7rem;font-weight:bold;">向商家出示二维码或核销码,扫码后核销成功,不支持截图</div>
+					</div>
+				</div>
+				<div style="width:100%;height:7px;background:#dddddd;">&nbsp;</div>
+				<div class="card">
+			    <div class="card-content">
+			      <div class="list-block media-list">
+			        <ul>
+			          <li class="item-content">
+			            <div class="item-media">
+			              <img src="<%=request.getContextPath()%>/file/image?FILENAME=${order.FILEPATH}" width="100" height="100">
+			            </div>
+			            <div class="item-inner">
+			              <div class="item-title-row">
+			                <div class="item-title">${order.GOODSDESC}</div>
+			              </div>
+			              <div class="item-subtitle">总价:${order.MONEY}<span style="float:right;">数量:${order.NUMBER}</span></div>
+			            </div>
+			          </li>
+			        </ul>
+			      </div>
+			    </div>
+			  </div>
+			  <div style="width:100%;height:7px;background:#dddddd;">&nbsp;</div>
+			  <div class="row" style="padding:5px;margin-top:10px;">
+					<div class="col-100">
+						<div style="text-align:left;font-size:0.8rem;font-weight:bold;padding-left:5px;border-left:8px #FFCC01 solid;">核销记录</div>
+					</div>
+				</div>
+				<div class="row" style="padding:5px;">
+					<div class="col-100">
+						<div style="text-align:left;font-size:0.7rem;font-weight:bold;color:#666666;padding:5px;">${order.SHOPNAME}</div>
+					</div>
+				</div>
+				<div class="content-block" style="margin-left:2%;margin-right:2%;margin-top:15px;margin-bottom:15px;">
+				    <a href="#" class="button button-big button-fill" style="background:#FFCC01;color:#000000;">暂无核销记录</a>
+				</div>
+				<div class="row" style="padding:5px;margin-top:10px;">
+					<div class="col-100">
+						<div style="text-align:left;font-size:0.8rem;font-weight:bold;padding-left:5px;border-left:8px #FFCC01 solid;">注意事项</div>
+					</div>
+				</div>
+				<div style="padding:5px;margin:10px;border:1px #DDDDDD solid;min-height:250px;word-wrap: break-word;word-break: break-all;overflow: hidden;">${order.BUYNOTICE}
+				</div>
+			</div>
     	</div>
     </div>
   </body>
@@ -200,5 +152,10 @@
 	   			urls: ['https://fanfan.skyable.cn<%=request.getContextPath()%>/orders/barcode?ORDER_ID=${order.ORDER_ID}'] // 需要预览的图片http链接列表
    			});
     	}
+
+    	function goRefund(id){
+      		location.href="<%=request.getContextPath()%>/orders/refund?ORDER_ID="+id
+      	}
+    	
     </script>
 </html>

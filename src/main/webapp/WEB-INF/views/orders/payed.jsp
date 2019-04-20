@@ -18,7 +18,7 @@
 			<div class="content">
 			<c:forEach var="var" items="${ordersData}">
 			<div class="card">
-			    <div class="card-header">订单:${var.ORDERSN}<c:if test="${var.WEIXINSN ne null }"><span style="float:right;"><a href="<%=request.getContextPath()%>/orders/refund?ORDER_ID=${var.ORDER_ID}" class="external button button-fill button-warning" style="background:#FFFFFF;color:#888888;font-weight:bold;">申请退款</a></span></c:if></div>
+			    <div class="card-header">下单时间:${var.CDT}</div>
 			    <div class="card-content">
 			      <div class="list-block media-list">
 			        <ul>
@@ -37,7 +37,7 @@
 			      </div>
 			    </div>
 			    <div class="card-footer">
-			      <span>下单时间:${var.CDT}</span><span><a href="<%=request.getContextPath()%>/orders/useinfo?ORDER_ID=${var.ORDER_ID}" class="external button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">确认信息</a></span>
+			      <span></span><span><button onclick="goUseInfo('${var.ORDER_ID}');" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">确认信息</button></span>
 			    </div>
 			  </div>
 			</c:forEach>
@@ -46,4 +46,9 @@
     </div>
   </body>
   <%@ include file="../common/headjs.jsp"%>
+    <script type="text/javascript">
+  	function goUseInfo(id){
+		 location.href="<%=request.getContextPath()%>/orders/useinfo?ORDER_ID="+id
+	}
+  </script>
 </html>

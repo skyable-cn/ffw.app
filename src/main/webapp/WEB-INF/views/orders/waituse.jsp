@@ -18,13 +18,13 @@
 			<div class="content">
 			<c:forEach var="var" items="${ordersData}">
 			<div class="card">
-			    <div class="card-header">订单:${var.ORDERSN}<c:if test="${var.WEIXINSN ne null }"><span style="float:right;"><a href="<%=request.getContextPath()%>/orders/refund?ORDER_ID=${var.ORDER_ID}" class="external button button-fill button-warning" style="background:#FFFFFF;color:#888888;font-weight:bold;">申请退款</a></span></c:if></div>
+			    <div class="card-header">下单时间:${var.CDT}</div>
 			    <div class="card-content">
 			      <div class="list-block media-list">
 			        <ul>
 			          <li class="item-content">
 			            <div class="item-media">
-			              <a class="external" href="<%=request.getContextPath()%>/orders/info?ORDER_ID=${var.ORDER_ID}"><img src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" width="100"></a>
+			              <img src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" width="100">
 			            </div>
 			            <div class="item-inner">
 			              <div class="item-title-row">
@@ -37,8 +37,8 @@
 			      </div>
 			    </div>
 			    <div class="card-footer">
-			      <span>下单时间:${var.CDT}</span>
-			      <span>${var.USEPERSON} / ${var.PERSONPHONE}</span>
+			      <span></span>
+			      <span><button onclick="goInfo('${var.ORDER_ID}');" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">查看详情</button></span>
 			    </div>
 			  </div>
 			</c:forEach>
@@ -47,4 +47,9 @@
     </div>
   </body>
   <%@ include file="../common/headjs.jsp"%>
+  <script type="text/javascript">
+  function goInfo(id){
+		 location.href="<%=request.getContextPath()%>/orders/info?ORDER_ID="+id
+	}
+  </script>
 </html>
