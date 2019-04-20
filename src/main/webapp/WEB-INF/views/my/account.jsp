@@ -70,6 +70,11 @@
 			 $.prompt('请输入提现金额<br/>规则:数值小于等于可提现金额', '',
 		        function (value) {
 				 
+				 if(value==""){
+					 $.alert("请输入提现金额",function(){})
+						return; 
+				 }
+				 
 				 if(isNaN(value)){
 					 $.alert("对不起,输入金额非法",function(){})
 						return;
