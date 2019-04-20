@@ -114,6 +114,19 @@ public class MyController extends BaseController {
 		pd.put("STATE", IConstant.STRING_0);
 		pd = rest.post(IConstant.FFW_SERVICE_KEY, "withdraw/save", pd,
 				PageData.class);
+
+		PageData pdm = new PageData();
+		pdm.put("MEMBER_ID", memberId());
+		pdm.put("WAITACCOUNT",
+				String.valueOf(Double.parseDouble(userSession().getString(
+						"WAITACCOUNT"))
+						- Double.parseDouble(pd.getString("MONEY"))));
+		pdm.put("ALREADYACCOUNT",
+				String.valueOf(Double.parseDouble(userSession().getString(
+						"ALREADYACCOUNT"))
+						+ Double.parseDouble(pd.getString("MONEY"))));
+		rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pdm, PageData.class);
+
 		rm.setFlag(true);
 		rm.setData(pd);
 		return rm;
