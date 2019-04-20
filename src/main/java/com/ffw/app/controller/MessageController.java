@@ -42,6 +42,7 @@ public class MessageController extends BaseController {
 				+ openid
 				+ "\",\"msgtype\": \"news\", \"news\": {\"articles\": [{\"title\":\"咨询入群引导\",\"description\":\"请识别图片的二维码入群详细咨询\",\"picurl\":\"https://fanfan.skyable.cn/app/file/image?FILENAME="
 				+ pd.getString("FILEPATH2") + "\"}]}}";
+		System.err.println(json);
 		JSONObject rs = null;
 		try {
 			String str = HttpUtils.post(
