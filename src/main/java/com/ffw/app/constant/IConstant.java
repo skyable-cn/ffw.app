@@ -21,4 +21,6 @@ public interface IConstant {
 	String STRING_5 = "5";
 
 	String KEY_SLAT = "QAZ!@#";
+
+	String NO_INTERCEPTOR_PATH = null;
 }

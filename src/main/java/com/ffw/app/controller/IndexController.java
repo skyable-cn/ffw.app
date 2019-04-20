@@ -15,4 +15,12 @@ public class IndexController extends BaseController {
 		return mv;
 	}
 
+	@RequestMapping(value = { "/mini" })
+	public ModelAndView mini() {
+
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/mini/index");
+		return mv;
+	}
+
 }
