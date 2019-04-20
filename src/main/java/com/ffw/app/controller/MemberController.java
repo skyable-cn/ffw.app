@@ -45,6 +45,17 @@ public class MemberController extends BaseController {
 				vipinfo, PageData.class);
 		mv.addObject("vipinfo", vipinfo);
 
+		PageData friends = new PageData();
+		friends.put("FROMWXOPEN_ID", openId());
+		List<PageData> friendData = rest.postForList(IConstant.FFW_SERVICE_KEY,
+				"member/listAll", friends,
+				new ParameterizedTypeReference<List<PageData>>() {
+				});
+		if (friendData.size() > 2) {
+			friendData = friendData.subList(0, 2);
+		}
+		mv.addObject("friendData", friendData);
+
 		mv.setViewName("member/index");
 		mv.addObject("nav", "member");
 		return mv;

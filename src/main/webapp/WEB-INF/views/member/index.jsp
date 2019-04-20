@@ -35,8 +35,24 @@
 					 </div>
 					 <c:if test="${vipinfo ne null}">
 					 	<div class="row" style="padding:5px;">
-					 		<div class="col-40"><button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;margin:10px;">邀请好友</button></div>
-					 		<div class="col-60"><span><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span><span style="margin-left:30px;"><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span></div>
+					 		<div class="col-40"><button onclick="goShare()" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;margin:10px;">邀请好友</button></div>
+					 		<div class="col-60">
+					 		<c:if test="${fn:length(friendData) eq 0}">
+					 		<span onclick="goShare()"><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
+					 		<span onclick="goShare()" style="margin-left:30px;"><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
+					 		</c:if>
+					 		<c:if test="${fn:length(friendData) eq 1}">
+					 		<c:forEach var="var" items="${friendData}">
+					 		<span><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="${var.PHOTO}"/></span>
+					 		</c:forEach>
+					 		<span onclick="goShare()" style="margin-left:30px;"><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
+					 		</c:if>
+					 		<c:if test="${fn:length(friendData) eq 2}">
+					 		<c:forEach var="var" items="${friendData}" varStatus="status">
+					 		<span <c:if test="${status.index ne 0 }">style="margin-left:30px;"</c:if>><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="${var.PHOTO}"/></span>
+					 		</c:forEach>
+					 		</c:if>
+					 		</div>
 					 	</div>
 					 	<div class="row" style="padding:5px;">
 					 		<div class="col-40"><button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;margin:10px;margin-top:5px;">邀请赚钱</button></div>
@@ -158,5 +174,11 @@
   		$(".div_height1").attr("height",parseInt($(".div_height1").attr("height"))-100)
   		$(".div_height2").css("height",(parseInt($(".div_height2").css("height"))-100)+'px')
   	}
+  	
+  	function goShare(){
+ 		 wx.miniProgram.navigateTo({
+            url: '/pages/share/share?type=vipinfo&fromopenid=${USER_SESSION.WXOPEN_ID}&image=vip.jpg&datakey=&title=邀请加入会员'
+       })
+ 	}
   </script>
 </html>
