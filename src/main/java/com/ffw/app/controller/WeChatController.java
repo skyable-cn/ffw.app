@@ -1,9 +1,12 @@
 package com.ffw.app.controller;
 
+import java.util.List;
+
 import net.sf.json.JSONObject;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -86,5 +89,21 @@ public class WeChatController extends BaseController {
 					PageData.class);
 		}
 		return new ReturnModel();
+	}
+
+	@RequestMapping(value = { "/customer" })
+	@ResponseBody
+	public JSONObject customer() {
+		logger.info("获取群组信息");
+		PageData pd = new PageData();
+		pd = this.getPageData();
+
+		PageData pd1 = new PageData();
+		List<PageData> data = rest.postForList(IConstant.FFW_SERVICE_KEY,
+				"groups/listAll", pd1,
+				new ParameterizedTypeReference<List<PageData>>() {
+				});
+		JSONObject obj = JSONObject.fromObject(data);
+		return obj;
 	}
 }
