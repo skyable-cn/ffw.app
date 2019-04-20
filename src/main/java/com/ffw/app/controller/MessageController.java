@@ -30,13 +30,15 @@ public class MessageController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 
+		String openid = pd.getString("openid");
+
 		pd = rest.post(IConstant.FFW_SERVICE_KEY, "groups/find", pd,
 				PageData.class);
 
 		String token = JSSDKUtil.AccessToken(wechatMiniConfig.getAppid(),
 				wechatMiniConfig.getAppsecret());
 
-		String json = "{\"touser\": \"" + pd.getString("openid")
+		String json = "{\"touser\": \"" + openid
 				+ "\",\"msgtype\": \"image\", \"image\": {\"media_id\": \""
 				+ pd.getString("MEDIA_ID") + "\"}}";
 		JSONObject rs = null;
