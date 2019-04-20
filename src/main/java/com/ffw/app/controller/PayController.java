@@ -209,7 +209,8 @@ public class PayController extends BaseController {
 					pdaccount.put("ORDER_ID", pd.getString("ORDER_ID"));
 					pdaccount.put("MEMBER_ID", pd.getString("MEMBER_ID"));
 					pdaccount.put("GIVEMONEY", GIVEMONEY);
-					pdaccount.put("DESCRIPTION", "普通用户购买返利");
+					pdaccount.put("DESCRIPTION", "普通/达人用户购买返利");
+					pdaccount.put("TYPE", IConstant.STRING_1);
 					pdaccount.put("CDT", DateUtil.getTime());
 					rest.post(IConstant.FFW_SERVICE_KEY, "member/saveAccount",
 							pdaccount, PageData.class);
@@ -235,8 +236,9 @@ public class PayController extends BaseController {
 					pdaccount.put("ORDER_ID", pd.getString("ORDER_ID"));
 					pdaccount.put("MEMBER_ID", pd.getString("MEMBER_ID"));
 					pdaccount.put("GIVEMONEY", GIVEMONEY);
-					pdaccount.put("DESCRIPTION", "会员用户购买返利");
+					pdaccount.put("DESCRIPTION", "普通/达人会员购买返利");
 					pdaccount.put("CDT", DateUtil.getTime());
+					pdaccount.put("TYPE", IConstant.STRING_1);
 					rest.post(IConstant.FFW_SERVICE_KEY, "member/saveAccount",
 							pdaccount, PageData.class);
 
@@ -274,6 +276,7 @@ public class PayController extends BaseController {
 							pdmember0.getString("MEMBER_ID"));
 					pdaccount0.put("GIVEMONEY", GIVEMONEY0);
 					pdaccount0.put("DESCRIPTION", "分销本级返利");
+					pdaccount0.put("TYPE", IConstant.STRING_2);
 					pdaccount0.put("CDT", DateUtil.getTime());
 					rest.post(IConstant.FFW_SERVICE_KEY, "member/saveAccount",
 							pdaccount0, PageData.class);
@@ -306,6 +309,7 @@ public class PayController extends BaseController {
 								pdmember1.getString("MEMBER_ID"));
 						pdaccount1.put("GIVEMONEY", GIVEMONEY1);
 						pdaccount1.put("DESCRIPTION", "分销一级返利");
+						pdaccount1.put("TYPE", IConstant.STRING_3);
 						pdaccount1.put("CDT", DateUtil.getTime());
 						rest.post(IConstant.FFW_SERVICE_KEY,
 								"member/saveAccount", pdaccount1,
@@ -343,6 +347,7 @@ public class PayController extends BaseController {
 									pdmember2.getString("MEMBER_ID"));
 							pdaccount2.put("GIVEMONEY", GIVEMONEY2);
 							pdaccount2.put("DESCRIPTION", "分销二级返利");
+							pdaccount2.put("TYPE", IConstant.STRING_4);
 							pdaccount2.put("CDT", DateUtil.getTime());
 							rest.post(IConstant.FFW_SERVICE_KEY,
 									"member/saveAccount", pdaccount2,
@@ -442,5 +447,38 @@ public class PayController extends BaseController {
 			getResponse().getOutputStream().write(response.getBytes());
 		}
 
+	}
+
+	@RequestMapping("wxTransfers")
+	@ResponseBody
+	public Map<String, String> wxTransfers() throws Exception {
+		logger.info("进入企业付款到个人");
+		PageData pd = new PageData();
+		pd = this.getPageData();
+		WXPay wxpay = new WXPay(config, SignType.MD5);
+		Map<String, String> parameters = new HashMap<String, String>();
+		parameters.put("mch_appid", wechatMiniConfig.getAppid());
+		parameters.put("mchid", wechatMiniConfig.getMchid());
+		parameters.put("nonce_str", WXPayUtil.generateNonceStr());
+		parameters.put("partner_trade_no", pd.getString("WITHDRAW_ID"));
+		parameters.put("openid", openId());
+		parameters.put("check_name", "NO_CHECK");
+		String fee = String
+				.valueOf(Float.parseFloat(pd.getString("MONEY")) * 100);
+		parameters.put("amount", fee.substring(0, fee.indexOf(".")) + "");
+		parameters.put("spbill_create_ip", getIpAddr(getRequest()));
+		parameters.put("desc", "饭饭网用户提现");
+		// 签名
+		String sign = WXPayUtil.generateSignature(parameters,
+				wechatMiniConfig.getMchkey());
+		parameters.put("sign", sign);
+
+		String notityXml = wxpay
+				.requestWithCert(
+						"https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers",
+						parameters, config.getHttpConnectTimeoutMs(),
+						config.getHttpReadTimeoutMs());
+		Map<String, String> dataMap = WXPayUtil.xmlToMap(notityXml);
+		return dataMap;
 	}
 }

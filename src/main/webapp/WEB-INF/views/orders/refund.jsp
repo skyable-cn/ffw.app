@@ -58,7 +58,7 @@
 				
 			},
 			success: function(data){
-				if(data.return_code=="SUCCESS"){
+				if(data.result_code=="SUCCESS"){
 					$.alert("退款成功",function(){
 						location.href='<%=request.getContextPath()%>/my'
 					})
