@@ -478,6 +478,7 @@ public class PayController extends BaseController {
 						"https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers",
 						parameters, config.getHttpConnectTimeoutMs(),
 						config.getHttpReadTimeoutMs());
+		System.err.println(notityXml);
 		Map<String, String> dataMap = WXPayUtil.xmlToMap(notityXml);
 		return dataMap;
 	}
