@@ -196,8 +196,8 @@
     	
     	function preview(){
     		wx.previewImage({
-	   			current: '<%=request.getContextPath()%>/orders/barcode?ORDER_ID=${order.ORDER_ID}', // 当前显示图片的http链接
-	   			urls: ['<%=request.getContextPath()%>/orders/barcode?ORDER_ID=${order.ORDER_ID}'] // 需要预览的图片http链接列表
+	   			current: 'https://fanfan.skyable.cn<%=request.getContextPath()%>/orders/barcode?ORDER_ID=${order.ORDER_ID}', // 当前显示图片的http链接
+	   			urls: ['https://fanfan.skyable.cn<%=request.getContextPath()%>/orders/barcode?ORDER_ID=${order.ORDER_ID}'] // 需要预览的图片http链接列表
    			});
     	}
     </script>
