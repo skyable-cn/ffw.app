@@ -277,6 +277,11 @@
     			$.alert("对不起,该订单已退款",function(){})
     			return;
     		}
+    		
+    		wx.miniProgram.navigateTo({
+                url: '/pages/share/share?type=orders&fromopenid=${USER_SESSION.WXOPEN_ID}&image=orders.jpg&datakey=${order.ORDER_ID}&title=转赠好友订单'
+           })
+    		
       	}
     	
     	function phone(){
@@ -289,12 +294,6 @@
                 url: '/pages/position/position?latitude=${order.LATITUDE}&longitude=${order.LONGITUDE}&address=${order.SHOPADDRESS}'
            })
       	}
-      	
-      	function goShare(){
-    		 wx.miniProgram.navigateTo({
-               url: '/pages/share/share?type=orders&fromopenid=${USER_SESSION.WXOPEN_ID}&image=orders.jpg&datakey=${order.ORDER_ID}&title=转赠好友订单'
-          })
-    	}
     	
     </script>
 </html>
