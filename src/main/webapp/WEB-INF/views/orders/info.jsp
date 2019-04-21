@@ -101,15 +101,29 @@
 						<div style="text-align:left;font-size:0.8rem;font-weight:bold;padding-left:5px;border-left:8px #FFCC01 solid;">核销记录</div>
 					</div>
 				</div>
+				<c:if test="${fn:length(useData) eq 0}">
 				<div class="content-block" style="margin-left:2%;margin-right:2%;margin-top:15px;margin-bottom:15px;">
 				    <a href="#" class="button button-big button-fill" style="background:#FFCC01;color:#000000;">暂无核销记录</a>
 				</div>
+				</c:if>
+				<c:if test="${fn:length(useData) ne 0}">
+				<c:forEach var="var" items="${useData}">
+				<div class="row" style="padding:5px;">
+					<div class="col-50">
+						<div style="text-align:left;font-size:0.65rem;font-weight:bold;color:#666666;padding:5px;">${var.SHOPNAME}</div>
+					</div>
+					<div class="col-50" style="text-align:right;">
+						${var.CDT}
+					</div>
+				</div>
+				</c:forEach>
+				</c:if>
 				<div class="row" style="padding:5px;margin-top:20px;">
 					<div class="col-100">
 						<div style="text-align:left;font-size:0.8rem;font-weight:bold;padding-left:5px;border-left:8px #FFCC01 solid;">注意事项</div>
 					</div>
 				</div>
-				<div style="padding:5px;margin:10px;border:1px #DDDDDD solid;min-height:250px;word-wrap: break-word;word-break: break-all;overflow: hidden;">${order.BUYNOTICE}
+				<div style="padding:5px;margin:10px;border:1px #DDDDDD solid;min-height:250px;word-wrap: break-word;word-break: break-all;overflow: hidden;font-size:0.65rem;font-weight:bold;">${order.BUYNOTICE}
 				</div>
 				<div style="width:100%;height:7px;background:#dddddd;margin-top:20px;margin-bottom: 20px;">&nbsp;</div>
 				<div class="row" style="padding:5px;margin-top:20px;">
@@ -140,7 +154,7 @@
 						<div style="text-align:left;font-size:0.65rem;font-weight:bold;color:#666666;padding:5px;">${order.SHOPADDRESS}</div>
 					</div>
 					<div class="col-50" style="text-align:right;">
-					<img onclick="phone()" width="20" style="margin-right:15px;" src="<%=request.getContextPath()%>/static/icon/send.png"/>
+					<img onclick="position()" width="20" style="margin-right:15px;" src="<%=request.getContextPath()%>/static/icon/send.png"/>
 					</div>
 				</div>
 				

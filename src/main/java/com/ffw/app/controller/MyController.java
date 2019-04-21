@@ -25,12 +25,13 @@ public class MyController extends BaseController {
 	public ModelAndView index() {
 		logger.info("进入我的");
 		ModelAndView mv = new ModelAndView();
-		/**
-		 * PageData old = (PageData) getSession().getAttribute(
-		 * IConstant.USER_SESSION); old = rest.post(IConstant.FFW_SERVICE_KEY,
-		 * "member/find", old, PageData.class);
-		 * getSession().setAttribute(IConstant.USER_SESSION, old);
-		 */
+
+		PageData old = (PageData) getSession().getAttribute(
+				IConstant.USER_SESSION);
+		old = rest.post(IConstant.FFW_SERVICE_KEY, "member/find", old,
+				PageData.class);
+		getSession().setAttribute(IConstant.USER_SESSION, old);
+
 		PageData pd2 = new PageData();
 		pd2.put("MEMBER_ID", memberId());
 		pd2.put("STATE", IConstant.STRING_0);

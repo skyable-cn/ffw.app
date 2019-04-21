@@ -341,6 +341,14 @@ public class OrdersController extends BaseController {
 		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", order,
 				PageData.class);
 
+		PageData pdu = new PageData();
+		pdu.put("ORDER_ID", pd.getString("ORDER_ID"));
+		List<PageData> useData = rest.postForList(IConstant.FFW_SERVICE_KEY,
+				"orderuse/listAll", pdu,
+				new ParameterizedTypeReference<List<PageData>>() {
+				});
+		mv.addObject("useData", useData);
+
 		Map<String, String> config = JSSDKUtil
 				.config("https://fanfan.skyable.cn/app/orders/info?ORDER_ID="
 						+ pd.getString("ORDER_ID"));
@@ -419,6 +427,18 @@ public class OrdersController extends BaseController {
 		pd.put("UDT", DateUtil.getTime());
 		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/edit", pd,
 				PageData.class);
+
+		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd,
+				PageData.class);
+
+		PageData pdu = new PageData();
+		pdu.put("ORDER_ID", pd.getString("ORDER_ID"));
+		pdu.put("SHOP_ID", pd.getString("SHOP_ID"));
+		pdu.put("MEMBER_ID", memberId());
+		pdu.put("CDT", DateUtil.getTime());
+		rest.post(IConstant.FFW_SERVICE_KEY, "orderuse/save", pdu,
+				PageData.class);
+
 		rm.setFlag(true);
 		rm.setData(pd);
 		return rm;
