@@ -12,6 +12,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <%@ include file="../common/headcss.jsp"%>
     <%@ include file="../common/utiljs.jsp"%>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
   </head>
   <body>
     <div class="page-group">
@@ -78,6 +79,7 @@
 				</div>
 			</div>
 		    <h5>&nbsp;</h5>
+		    <div style="width:60px;position:fixed;right:0;top:70%;z-index:999;" onclick="goCustomer();"><img width="55" src="<%=request.getContextPath()%>/static/icon/weixin.png"/></div>
 			</div>
 			<%@ include file="../common/nav.jsp"%>
         </div>
@@ -235,5 +237,12 @@
              $.refreshScroller();
          }, 500);
   	});
+  </script>
+  <script type="text/javascript">
+  function goCustomer(){
+		wx.miniProgram.navigateTo({
+          url: '/pages/customer/customer'
+     })
+	}
   </script>
 </html>
