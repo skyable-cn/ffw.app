@@ -193,23 +193,23 @@ public class OrdersController extends BaseController {
 		return mv;
 	}
 
-	@RequestMapping(value = { "/orders/used" })
+	@RequestMapping(value = { "/orders/complate" })
 	public ModelAndView waitUsed() {
-		logger.info("进入已使用");
+		logger.info("进入已完成");
 		ModelAndView mv = new ModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
 
 		PageData pd2 = new PageData();
 		pd2.put("MEMBER_ID", memberId());
-		pd2.put("STATE", IConstant.STRING_3);
+		pd2.put("SQLCONDITION", " and os.STATE IN ( '3' , '5' ) ");
 		List<PageData> ordersData = rest.postForList(IConstant.FFW_SERVICE_KEY,
 				"orders/listAll", pd2,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("ordersData", ordersData);
 
-		mv.setViewName("orders/used");
+		mv.setViewName("orders/complate");
 		return mv;
 	}
 
@@ -363,9 +363,7 @@ public class OrdersController extends BaseController {
 		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", order,
 				PageData.class);
 
-		JSONObject json = new JSONObject();
-		json.put("ORDER_ID", pd.getString("ORDER_ID"));
-		json.put(
+		order.put(
 				"USEKEY",
 				DigestUtils.md5Hex(order.getString("USEKEY")
 						+ IConstant.KEY_SLAT));
@@ -377,8 +375,8 @@ public class OrdersController extends BaseController {
 		hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
 		hints.put(EncodeHintType.MARGIN, 1);
 		BitMatrix bitMatrix = new MultiFormatWriter().encode(
-				json.toJSONString(), BarcodeFormat.QR_CODE, width, height,
-				hints);// 生成矩阵
+				JSONObject.toJSONString(order), BarcodeFormat.QR_CODE, width,
+				height, hints);// 生成矩阵
 		MatrixToImageWriter.writeToStream(bitMatrix, format, getResponse()
 				.getOutputStream());
 	}

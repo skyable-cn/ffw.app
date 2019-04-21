@@ -38,7 +38,7 @@
 			<div class="col-20" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/orders/waitpay"><img width="80%" src="<%=request.getContextPath()%>/static/icon/my/dfk.png"/><p style="font-size:0.65rem;">待付款</p></a></div>
 			<div class="col-20" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/orders/payed"><img width="80%" src="<%=request.getContextPath()%>/static/icon/my/yzf.png"/><p style="font-size:0.65rem;">已支付</p></a></div>
 			<div class="col-20" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/orders/waituse"><img width="80%" src="<%=request.getContextPath()%>/static/icon/my/dsy.png"/><p style="font-size:0.65rem;">待使用</p></a></div>
-			<div class="col-20" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/orders/used"><img width="80%" src="<%=request.getContextPath()%>/static/icon/my/ywc.png"/><p style="font-size:0.65rem;">已完成</p></a></div>
+			<div class="col-20" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/orders/complate"><img width="80%" src="<%=request.getContextPath()%>/static/icon/my/ywc.png"/><p style="font-size:0.65rem;">已完成</p></a></div>
 			<div class="col-20" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/orders/all"><img width="80%" src="<%=request.getContextPath()%>/static/icon/my/wddd.png"/><p style="font-size:0.65rem;">我的订单</p></a></div>
 			</div>
 			<div style="width:100%;height:7px;background:#dddddd;">&nbsp;</div>

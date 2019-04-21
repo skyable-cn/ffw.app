@@ -16,7 +16,18 @@
     <div class="page-group">
         <div class="page page-current">
 			<div class="content">
-			<c:forEach var="var" items="${ordersData}">
+			
+			<div class="row" style="padding:5px;">
+				<div class="col-100">
+				<div class="buttons-tab">
+			    <a href="#tab1" class="tab-link active button">全部</a>
+			    <a href="#tab2" class="tab-link button">待付款</a>
+			    <a href="#tab3" class="tab-link button">待使用</a>
+			    <a href="#tab4" class="tab-link button">已核销</a>
+			</div>
+		    <div class="tabs">
+		      <div id="tab1" class="tab active">
+		      			<c:forEach var="var" items="${ordersData}">
 			<div class="card">
 			    <div class="card-header">下单时间:${var.CDT}<span style="float:right;border:1px #444444 solid;border-radius: 5px;padding: 5px;font-size: 14px;">
 			    <c:choose>
@@ -33,7 +44,7 @@
 			        <ul>
 			          <li class="item-content">
 			            <div class="item-media">
-			              <a class="external" href="<%=request.getContextPath()%>/orders/info?ORDER_ID=${var.ORDER_ID}"><img src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" width="100"></a>
+			              <img src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" width="100">
 			            </div>
 			            <div class="item-inner">
 			              <div class="item-title-row">
@@ -63,6 +74,106 @@
 			    </div>
 			  </div>
 			</c:forEach>
+		      </div>
+		      <div id="tab2" class="tab">
+				<c:forEach var="var" items="${ordersData}">
+				<c:if test="${var.STATE eq 0}">
+				<div class="card">
+			    <div class="card-header">下单时间:${var.CDT}</div>
+			    <div class="card-content">
+			      <div class="list-block media-list">
+			        <ul>
+			          <li class="item-content">
+			            <div class="item-media">
+			              <img src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" width="100">
+			            </div>
+			            <div class="item-inner">
+			              <div class="item-title-row">
+			                <div class="item-title">${var.GOODSDESC}</div>
+			              </div>
+			              <div class="item-subtitle">总价:${var.MONEY}<span style="float:right;">数量:${var.NUMBER}</span></div>
+			            </div>
+			          </li>
+			        </ul>
+			      </div>
+			    </div>
+			    <div class="card-footer">
+			      <span></span>
+			      <span>
+			      <button onclick="goPay('${var.ORDER_ID}','${var.ORDERSN}','${var.ORIGINAL}','${var.DERATE}','${var.MONEY}');;" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">立即支付</button>
+			      </span>
+			    </div>
+			  </div>
+			  </c:if>
+			</c:forEach>
+		      </div>
+		      <div id="tab3" class="tab">
+				<c:forEach var="var" items="${ordersData}">
+				<c:if test="${var.STATE eq 1 or var.STATE eq 2 }">
+				<div class="card">
+			    <div class="card-header">下单时间:${var.CDT}</div>
+			    <div class="card-content">
+			      <div class="list-block media-list">
+			        <ul>
+			          <li class="item-content">
+			            <div class="item-media">
+			              <img src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" width="100">
+			            </div>
+			            <div class="item-inner">
+			              <div class="item-title-row">
+			                <div class="item-title">${var.GOODSDESC}</div>
+			              </div>
+			              <div class="item-subtitle">总价:${var.MONEY}<span style="float:right;">数量:${var.NUMBER}</span></div>
+			            </div>
+			          </li>
+			        </ul>
+			      </div>
+			    </div>
+			    <div class="card-footer">
+			      <span></span>
+			      <span>
+			      <button onclick="goInfo('${var.ORDER_ID}');" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">查看详情</button>
+			      </span>
+			    </div>
+			  </div>
+			  </c:if>
+			</c:forEach>
+		      </div>
+		      <div id="tab4" class="tab">
+				<c:forEach var="var" items="${ordersData}">
+				<c:if test="${var.STATE eq 3}">
+				<div class="card">
+			    <div class="card-header">下单时间:${var.CDT}</div>
+			    <div class="card-content">
+			      <div class="list-block media-list">
+			        <ul>
+			          <li class="item-content">
+			            <div class="item-media">
+			              <img src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" width="100">
+			            </div>
+			            <div class="item-inner">
+			              <div class="item-title-row">
+			                <div class="item-title">${var.GOODSDESC}</div>
+			              </div>
+			              <div class="item-subtitle">总价:${var.MONEY}<span style="float:right;">数量:${var.NUMBER}</span></div>
+			            </div>
+			          </li>
+			        </ul>
+			      </div>
+			    </div>
+			    <div class="card-footer">
+			      <span></span>
+			      <span>
+			      <button onclick="goInfo('${var.ORDER_ID}');" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">查看详情</button>
+			      </span>
+			    </div>
+			  </div>
+			  </c:if>
+			</c:forEach>
+		      </div>
+		    </div>
+				</div>
+			</div>
 			</div>	
     	</div>
     </div>

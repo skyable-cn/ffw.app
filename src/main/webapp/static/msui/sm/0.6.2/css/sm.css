@@ -3344,7 +3344,6 @@ html.with-statusbar-overlay .popup.tablet-fullscreen {
 }
 .card {
   background: #fff;
-  box-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.3);
   margin: 0.0rem;
   position: relative;
   border-radius: 0.1rem;
@@ -3474,7 +3473,6 @@ html:not(.watch-active-state) .card-footer a.link:active,
   top: auto;
   height: 1px;
   width: 100%;
-  background-color: #e1e1e1;
   display: block;
   z-index: 15;
   -webkit-transform-origin: 50% 100%;
@@ -3515,7 +3513,6 @@ html:not(.watch-active-state) .card-footer a.link:active,
   right: auto;
   height: 1px;
   width: 100%;
-  background-color: #e1e1e1;
   display: block;
   z-index: 15;
   -webkit-transform-origin: 50% 0%;

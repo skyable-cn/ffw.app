@@ -180,6 +180,18 @@
   			success: function (res) {
   				var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
   				var orderJson = JSON.parse(result);
+  				if(orderJson.STATE == "0"){
+  					$.alert("该订单待付款,请先付款",function(){})
+  					return;
+  				}
+  				//if(orderJson.STATE == "1"){
+  				//	$.alert("该订单待确认,请先确认信息",function(){})
+  				//	return;
+  				//}
+  				if(orderJson.STATE == "4"){
+  					$.alert("对不起,该订单已退款",function(){})
+  					return;
+  				}
   				location.href='<%=request.getContextPath()%>/orders/verification?ORDER_ID='+orderJson.ORDER_ID+'&USEKEY='+orderJson.USEKEY+"&SHOP_ID=${shop.SHOP_ID}";
   			}
   		});

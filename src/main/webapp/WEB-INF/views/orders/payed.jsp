@@ -24,7 +24,7 @@
 			        <ul>
 			          <li class="item-content">
 			            <div class="item-media">
-			              <a class="external" href="<%=request.getContextPath()%>/orders/info?ORDER_ID=${var.ORDER_ID}"><img src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" width="100"></a>
+			              <img src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" width="100">
 			            </div>
 			            <div class="item-inner">
 			              <div class="item-title-row">
