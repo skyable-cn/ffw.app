@@ -1154,7 +1154,7 @@ a:active {
 /* === Lists === */
 .list-block {
   margin: 1.75rem 0;
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   /*
     .swipeout {
         overflow: hidden;
@@ -1638,7 +1638,7 @@ html:not(.watch-active-state) .list-block .item-link:active .item-inner:after,
   color: #5f646e;
 }
 .list-block .item-subtitle {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   position: relative;
   overflow: hidden;
   white-space: nowrap;
@@ -1646,7 +1646,7 @@ html:not(.watch-active-state) .list-block .item-link:active .item-inner:after,
   text-overflow: ellipsis;
 }
 .list-block .item-text {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: #5f646e;
   line-height: 1.05rem;
   position: relative;
@@ -2150,7 +2150,7 @@ label.label-checkbox.active-state .item-inner:after {
   white-space: nowrap;
   position: relative;
   text-overflow: ellipsis;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-family: inherit;
   cursor: pointer;
 }
@@ -3461,7 +3461,7 @@ html:not(.watch-active-state) .card-footer a.link:active,
 }
 .card-header {
   border-radius: 0.1rem 0.1rem 0 0;
-  font-size: 0.85rem;
+  font-size: 0.7rem;
 }
 .card-header:after {
   content: '';
