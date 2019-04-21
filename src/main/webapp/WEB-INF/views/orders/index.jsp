@@ -21,27 +21,27 @@
 					<div class="col-40">
 					<img width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=${pd.FILEPATH}';">
 					</div>
-					<div class="col-60" style="font-weight:bold;">
+					<div class="col-60" style="font-weight:bold;font-size:0.7rem;">
 					${pd.GOODSNAME}<br/>
 					${pd.GOODSDESC}
 					</div>
 				</div>
 				<div style="width:100%;height:5px;background:#dddddd;">&nbsp;</div>
 				<div class="row" style="padding:10px;padding-top:15px;padding-bottom:15px;">
-					<div class="col-50" style="font-weight:bold;">购买数量</div>
-					<div class="col-50"><div style="margin-right:20px;float:right;"><button style="width:40px;margin-right:1px;" onclick="computer('-1')">-</button><button style="width:50px;background:#FFFFFF;" id="numberButton">1</button><button style="width:40px;margin-left:1px;" onclick="computer('1')">+</button></div></div>
+					<div class="col-50" style="font-weight:bold;font-size:0.7rem;">购买数量</div>
+					<div class="col-50"><div style="margin-right:20px;float:right;"><button style="width:35px;margin-right:1px;height:35px;" onclick="computer('-1')">-</button><button style="width:40px;background:#FFFFFF;height:35px;" id="numberButton">1</button><button style="width:35px;margin-left:1px;height:35px;" onclick="computer('1')">+</button></div></div>
 				</div>
 				<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 				<div class="row" style="padding:10px;padding-top:15px;padding-bottom:15px;">
-					<div class="col-50" style="font-weight:bold;">小计</div>
-					<div class="col-50"><div style="margin-right:20px;float:right;"><span id="XJ">${pd.SELLMONEY}</span>元</div></div>
+					<div class="col-50" style="font-weight:bold;font-size:0.7rem;">小计</div>
+					<div class="col-50"><div style="margin-right:20px;float:right;"><span id="XJ" style="font-size:0.7rem;">${pd.SELLMONEY}</span>元</div></div>
 				</div>
 				<c:if test="${fn:length(cardsData) > 0}">
 				<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 				<div class="row" style="padding:10px;padding-top:15px;padding-bottom:15px;">
-					<div class="col-40" style="font-weight:bold;">卡券抵扣</div>
+					<div class="col-40" style="font-weight:bold;font-size:0.7rem;">卡券抵扣</div>
 					<div class="col-60"><div style="margin-right:20px;float:right;">
-						<font id="JMTS" style="color:red;">(抵消0.00元)</font><a href="#page2" style="color:#3d4145;font-size:0.85rem;font-weight:normal;text-decoration:underline;">${fn:length(cardsData)}个卡券</a>
+						<font id="JMTS" style="color:#F40A0B;font-size:0.7rem;">(抵消0.00元)</font><a href="#page2" style="color:#3d4145;font-size:0.7rem;font-weight:normal;text-decoration:underline;">${fn:length(cardsData)}个卡券</a>
 						<!-- <select onchange="changeMoney()" id="KQID" style="border:none;background:#eee;">
 							<option value="">${fn:length(cardsData)}个卡券可用</option>
 							<c:forEach var="var" items="${cardsData}">
@@ -55,8 +55,8 @@
 				</c:if>
 				<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 				<div class="row" style="padding:10px;padding-top:15px;padding-bottom:15px;">
-					<div class="col-50" style="font-weight:bold;">实付金额</div>
-					<div class="col-50"><div style="margin-right:20px;float:right;"><span id="SF">${pd.SELLMONEY}</span>元</div></div>
+					<div class="col-50" style="font-weight:bold;font-size:0.7rem;">实付金额</div>
+					<div class="col-50"><div style="margin-right:20px;float:right;"><span id="SF" style="font-size:0.7rem;">${pd.SELLMONEY}</span>元</div></div>
 				</div>
 				<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
         	</div>
@@ -74,9 +74,9 @@
 				<div class="col-100">
 					<a href="#page1"><div class="card" onclick="changeMoney('${var.CARD_ID}','${var.MONEY}')">
 				    <div class="card-content">
-				      <div class="card-content-inner" style="height:100px;background:#FE0100;color:#FFFFFF;font-size:36px;">${var.DESCRIPTION}</div>
+				      <div class="card-content-inner" style="height:100px;background:#FE0100;color:#FFFFFF;font-size:1.0rem;">${var.DESCRIPTION}</div>
 				    </div>
-				    <div class="card-footer" style="text-align:right;background:#FFCC01;"><span></span><span>有效期:${var.STARTTIME} / ${var.ENDTIME}</span></div>
+				    <div class="card-footer" style="text-align:right;background:#FFCC01;font-size:0.65rem;"><span></span><span>有效期:${var.STARTTIME} / ${var.ENDTIME}</span></div>
 				  </div></a>
 			  	</div>
 			  </div>

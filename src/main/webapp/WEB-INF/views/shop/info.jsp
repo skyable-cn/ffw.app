@@ -29,11 +29,11 @@
 	              	</c:otherwise>
 	              </c:choose>
 				</div>
-		        <div class="col-60" style="line-height:100px;">${pd.SHOPNAME}</div>
+		        <div class="col-60" style="line-height:70px;font-size:0.7rem;font-weight:bold;">${pd.SHOPNAME}</div>
 			</div>
 			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:10px;">
-				<div class="col-60">${pd.SHOPADDRESS}</div>
+				<div class="col-60" style="font-size:0.7rem;font-weight:bold;">${pd.SHOPADDRESS}</div>
 		        <div class="col-40" style="text-align:right;"><img onclick="phone()" width="20" style="margin-right:15px;" src="<%=request.getContextPath()%>/static/icon/phone.png"/> | <img onclick="position()" style="margin-left:15px;" width="20" src="<%=request.getContextPath()%>/static/icon/send.png"/></div>
 			</div>
 			<!-- 
@@ -47,7 +47,7 @@
 			 -->
 			<div style="width:100%;height:10px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
-				<div class="col-100" style="font-weight:bold;">所有菜单</div>
+				<div class="col-100" style="font-weight:bold;font-size:0.75rem;">所有菜单</div>
 			</div>
 			<c:forEach var="var" items="${goodsData}">
 			<div class="row" style="padding:5px;">
