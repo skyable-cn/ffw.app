@@ -12,6 +12,15 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <%@ include file="../common/headcss.jsp"%>
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+    <style type="text/css">
+    	.customerModal .modal-inner{
+    		background:#FFFFFF;
+    	}
+    	.customerModal .modal-button{
+    		color:#444444;
+    		background: #FFCC01;
+    	}
+    </style>
   </head>
   <body>
     <div class="page-group">
@@ -65,20 +74,20 @@
 			<h4 style="text-align: center;">会员专享特权</h4>
 			<div class="row" style="padding:5px;">
 				<div class="col-25"><div style="color:#F40A0B;border-right:2px #888888 dotted;text-align:center;width:80%;min-height:100px;line-height:50px;font-weight:bold;">省<br/>钱</div></div>
-				<div class="col-25"><img width="80%" src="<%=request.getContextPath()%>/static/icon/member/hyzx.png"/><br/><font style="font-size:14px;">会员专享价</font><br/><font style="font-size:12px;color:#aaaaaa;">全场有优惠</font></div>
-				<div class="col-25"><img width="80%" src="<%=request.getContextPath()%>/static/icon/member/hyzsz.png"/><br/><font style="font-size:14px;">会员折上折</font><br/><font style="font-size:12px;color:#aaaaaa;">红包+折扣</font></div>
+				<div class="col-25" onclick="goVipBuy('会员专享','hyzx.png')"><img width="80%" src="<%=request.getContextPath()%>/static/icon/member/hyzx.png"/><br/><font style="font-size:14px;">会员专享价</font><br/><font style="font-size:12px;color:#aaaaaa;">全场有优惠</font></div>
+				<div class="col-25" onclick="goVipBuy('会员折上折','hyzsz.png')"><img width="80%" src="<%=request.getContextPath()%>/static/icon/member/hyzsz.png"/><br/><font style="font-size:14px;">会员折上折</font><br/><font style="font-size:12px;color:#aaaaaa;">红包+折扣</font></div>
 				<div class="col-25">&nbsp;</div>
 			</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-25"><div style="color:#F40A0B;border-right:2px #888888 dotted;text-align:center;width:80%;min-height:100px;line-height:50px;font-weight:bold;">福<br/>利</div></div>
-				<div class="col-25"><img width="80%" src="<%=request.getContextPath()%>/static/icon/member/hyhb.png"/><br/><font style="font-size:14px;">会员红包</font><br/><font style="font-size:12px;color:#aaaaaa;">周周送红包</font></div>
-				<div class="col-25"><img width="80%" src="<%=request.getContextPath()%>/static/icon/member/fxhb.png"/><br/><font style="font-size:14px;">分享红包</font><br/><font style="font-size:12px;color:#aaaaaa;">推荐领红包</font></div>
-				<div class="col-25"><img width="80%" src="<%=request.getContextPath()%>/static/icon/member/srlb.png"/><br/><font style="font-size:14px;">生日礼包</font><br/><font style="font-size:12px;color:#aaaaaa;">生日送大礼</font></div>
+				<div class="col-25" onclick="goVipBuy('会员红包','hyhb.png')"><img width="80%" src="<%=request.getContextPath()%>/static/icon/member/hyhb.png"/><br/><font style="font-size:14px;">会员红包</font><br/><font style="font-size:12px;color:#aaaaaa;">周周送红包</font></div>
+				<div class="col-25" onclick="goVipBuy('分享红包','fxhb.png')"><img width="80%" src="<%=request.getContextPath()%>/static/icon/member/fxhb.png"/><br/><font style="font-size:14px;">分享红包</font><br/><font style="font-size:12px;color:#aaaaaa;">推荐领红包</font></div>
+				<div class="col-25" onclick="goVipBuy('生日礼包','srlb.png')"><img width="80%" src="<%=request.getContextPath()%>/static/icon/member/srlb.png"/><br/><font style="font-size:14px;">生日礼包</font><br/><font style="font-size:12px;color:#aaaaaa;">生日送大礼</font></div>
 			</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-25"><div style="color:#F40A0B;border-right:2px #888888 dotted;text-align:center;width:80%;min-height:100px;line-height:50px;font-weight:bold;">优<br/>先</div></div>
-				<div class="col-25"><img width="80%" src="<%=request.getContextPath()%>/static/icon/member/hyyxg.png"/><br/><font style="font-size:14px;">会员优先购</font><br/><font style="font-size:12px;color:#aaaaaa;">爆款优先买</font></div>
-				<div class="col-25"><img width="80%" src="<%=request.getContextPath()%>/static/icon/member/hytqg.png"/><br/><font style="font-size:14px;">新品提前购</font><br/><font style="font-size:12px;color:#aaaaaa;">提前1天</font></div>
+				<div class="col-25" onclick="goVipBuy('会员优先购','hyyxg.png')"><img width="80%" src="<%=request.getContextPath()%>/static/icon/member/hyyxg.png"/><br/><font style="font-size:14px;">会员优先购</font><br/><font style="font-size:12px;color:#aaaaaa;">爆款优先买</font></div>
+				<div class="col-25" onclick="goVipBuy('新品提前购','hyyxg.png')"><img width="80%" src="<%=request.getContextPath()%>/static/icon/member/hytqg.png"/><br/><font style="font-size:14px;">新品提前购</font><br/><font style="font-size:12px;color:#aaaaaa;">提前1天</font></div>
 				<div class="col-25">&nbsp;</div>
 			</div>
 			<h5>&nbsp;</h5>
@@ -180,5 +189,22 @@
             url: '/pages/share/share?type=vipinfo&fromopenid=${USER_SESSION.WXOPEN_ID}&image=vip.jpg&datakey=&title=邀请加入会员'
        })
  	}
+  	
+  	function goVipBuy(title,image){
+  		var typeMsg = "开通";
+  		if("${vipinfo}" != null){
+  			typeMsg = "购买";
+  		}
+  		momal = $.modal({
+  	      title:'',
+  	      text: '',
+  	      afterText:'<div style="text-algin:center;">'+title+'<span style="float:right;"><img onclick="closeModal();" width="30" src="<%=request.getContextPath()%>/static/image/close.png"/></span></div><hr style="margin-top:20px;width:70%;color:#000000;"/><br/><img src="<%=request.getContextPath()%>/static/icon/member/'+image+'"/><br/><a href="#page2" onclick="closeModal();" class="button button-big button-round button-fill" style="background:#FFCC01;color:#000000;font-weight: normal;margin-top:20px;">立即'+typeMsg+'会员</a>',
+  	      extraClass:'customerModal'
+  	    })
+  	}
+  	
+  	function closeModal(){
+  		$.closeModal(momal);
+  	}
   </script>
 </html>
