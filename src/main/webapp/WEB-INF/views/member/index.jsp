@@ -29,6 +29,7 @@
 			<div class="row">
 				<div class="col-100" style="position:relative;">
 				 <div><img class='card-cover div_height1' height="260" width="100%" src="<%=request.getContextPath()%>/static/icon/me.png" alt=""></div>
+				 <div><marquee direction="left" style="position:absolute;top:20px;color:#F40A0B;font-size:0.65rem;">1、成功邀请两名好友开通会员送你一个月会员。2、成功邀请好友开通年卡送你30元佣金。</marquee></div>
 				 <div class="div_height2" style="background:#ffffff;height:200px;position:absolute;top:60px;z-index:999;left:5%;right:5%;-webkit-box-shadow: 3px 3px 12px #666;-moz-box-shadow: 3px 3px 12px #666;box-shadow: 3px 3px 12px #666; -moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;">
 					 <div class="row">
 					 	<div class="col-60">
@@ -44,7 +45,7 @@
 					 </div>
 					 <c:if test="${vipinfo ne null}">
 					 	<div class="row" style="padding:5px;">
-					 		<div class="col-40"><button onclick="goShare()" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;margin:10px;">邀请好友</button></div>
+					 		<div class="col-40"><button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;margin:10px;">邀请好友</button></div>
 					 		<div class="col-60">
 					 		<c:if test="${fn:length(friendData) eq 0}">
 					 		<span onclick="goShare()"><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
@@ -65,7 +66,7 @@
 					 	</div>
 					 	<div class="row" style="padding:5px;">
 					 		<div class="col-40"><button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;margin:10px;margin-top:5px;">邀请赚钱</button></div>
-					 		<div class="col-60"><button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;margin:10px;margin-top:5px;margin-left:0px;">分享</button></div>
+					 		<div class="col-60"><button onclick="goShare()" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;margin:10px;margin-top:5px;margin-left:0px;">分享</button></div>
 					 	</div>
 					 </c:if>
 				 </div>
