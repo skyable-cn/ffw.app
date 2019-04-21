@@ -30,6 +30,12 @@ public class MessageController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
 		String openid = pd.getString("openid");
 
 		pd = rest.post(IConstant.FFW_SERVICE_KEY, "groups/find", pd,
