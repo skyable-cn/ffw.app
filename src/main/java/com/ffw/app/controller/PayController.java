@@ -192,6 +192,12 @@ public class PayController extends BaseController {
 				pdgoods = rest.post(IConstant.FFW_SERVICE_KEY, "goods/find",
 						pdgoods, PageData.class);
 
+				pdgoods.put("BUYNUMBER",
+						Integer.parseInt(pdgoods.getString("BUYNUMBER"))
+								+ Integer.parseInt(pd.getString("NUMBER")));
+				rest.post(IConstant.FFW_SERVICE_KEY, "goods/edit", pdgoods,
+						PageData.class);
+
 				PageData pdmember = new PageData();
 				pdmember.put("MEMBER_ID", pd.getString("MEMBER_ID"));
 				pdmember = rest.post(IConstant.FFW_SERVICE_KEY, "member/find",

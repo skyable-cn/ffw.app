@@ -30,7 +30,8 @@ public class CommonInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object arg2) throws Exception {
 		String path = request.getServletPath();
-		if ("/mini".equals(path) || "/index".equals(path)) {
+		if ("/mini".equals(path) || "/index".equals(path)
+				|| "/wxNotify".equals(path)) {
 			return true;
 		}
 
