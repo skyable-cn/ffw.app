@@ -227,6 +227,24 @@ public class PayController extends BaseController {
 								.get(0).getString("PRODUCTTIME")));
 						rest.post(IConstant.FFW_SERVICE_KEY, "vipinfo/save",
 								pd2, PageData.class);
+
+						PageData pd21 = new PageData();
+						pd21.put("MEMBER_ID", pd.getString("MEMBER_ID"));
+						pd21 = rest.post(IConstant.FFW_SERVICE_KEY,
+								"member/find", pd21, PageData.class);
+						if (IConstant.STRING_1.equals(pd21
+								.getString("MEMBERTYPE_ID"))) {
+							pd21.put("MEMBERTYPE_ID", IConstant.STRING_2);
+							rest.post(IConstant.FFW_SERVICE_KEY, "member/edit",
+									pd21, PageData.class);
+						} else if (IConstant.STRING_3.equals(pd21
+								.getString("MEMBERTYPE_ID"))) {
+							pd21.put("MEMBERTYPE_ID", IConstant.STRING_4);
+							rest.post(IConstant.FFW_SERVICE_KEY, "member/edit",
+									pd21, PageData.class);
+						} else {
+
+						}
 					} else {
 						Date lasttime = new SimpleDateFormat(
 								"yyyy-MM-dd HH:mm:ss").parse(vipinfo
