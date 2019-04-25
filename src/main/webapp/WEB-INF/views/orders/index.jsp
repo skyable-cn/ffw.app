@@ -137,6 +137,7 @@
   	}
   	
   	var PERCENT = "${ZSFLAG}"=="1" && "${vipinfo}"!="" ? "0.5":"1.0";
+  	$("#SFC").text(parseFloat('${pd.SELLMONEY}')*parseFloat(PERCENT));
   	
   	var CARD_ID = '0';
   	
