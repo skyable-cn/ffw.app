@@ -58,11 +58,35 @@
 					<div class="col-50" style="font-weight:bold;font-size:0.7rem;">实付金额</div>
 					<div class="col-50"><div style="margin-right:20px;float:right;"><span id="SF" style="font-size:0.7rem;">${pd.SELLMONEY}</span>元</div></div>
 				</div>
+				<c:if test="${vipinfo ne null}">
 				<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
+				</c:if>
+				<c:if test="${vipinfo eq null}">
+				<div style="width:100%;height:20px;background:#dddddd;">&nbsp;</div>
+				<div class="row" style="padding:10px;padding-top:15px;padding-bottom:15px;height:100px;position:relative;">
+	        	<div class="col-50" style="padding-top:30px;font-size:0.9rem;color:#666666;">
+	        	${product.PRODUCTDESC}(${product.PRODUCTTIME}天)
+	        	</div>
+	        	<div class="col-25" style="line-height:60px;text-align:right;color:#666666;font-size:0.75rem;font-weight:bold;">
+	        	¥ ${product.PRODUCTMONEY}
+	        	</div>
+	        	<div class="col-25" style="line-height:60px;text-align:right;">
+	        	<div class="item-input">
+              <label class="label-switch">
+                <input type="checkbox" id="vip" name="vip">
+                <div class="checkbox"  value="1"></div>
+              </label>
+            </div>
+	        	</div>
+	        	<div style="background:#FFCC01;position:absolute;top:0px;color:#333333;padding:5px;font-weight:bold;font-size:0.6rem;padding-left:15px;border-bottom-right-radius:10px;">开通会员,周四立享五折优惠</div>
+        	  </div>
+        	  <div style="width:100%;height:5px;background:#dddddd;">&nbsp;</div>
+        	  </c:if>
         	</div>
+        	
         	<nav class="bar bar-tab">
   <div class="row">
-  	<a class="tab-item external" href="javascript:;" style="color:#000000;">实付金额: ¥ <span id="SFC">${pd.SELLMONEY}</span>元</a>
+  	<a class="tab-item external" href="javascript:;" style="color:#000000;">实付款: ¥ <span id="SFC">${pd.SELLMONEY}</span>元</a>
     <a class="tab-item external" onclick="orderSave()" style="background:#FFCC01;color:#000000;" href="javascript:;">立即购买</a>
   </div>
 </nav>
@@ -103,8 +127,8 @@
   		$("#numberButton").text(lastNum);
   		
   		$("#XJ").html(lastNum * parseFloat('${pd.SELLMONEY}'));
-  		$("#SF").html(lastNum * parseFloat('${pd.SELLMONEY}') - parseFloat(MONEY));
-  		$("#SFC").html(lastNum * parseFloat('${pd.SELLMONEY}') - parseFloat(MONEY));
+  		$("#SF").html(lastNum * parseFloat('${pd.SELLMONEY}') - parseFloat(MONEY) + parseFloat(VIPMONEY));
+  		$("#SFC").html((lastNum * parseFloat('${pd.SELLMONEY}') - parseFloat(MONEY) + parseFloat(VIPMONEY))*PERCENT);
   		
   		if(parseFloat($("#SF").text()) < 0){
   			$("#SF").html("0.00");
@@ -112,9 +136,13 @@
   		}
   	}
   	
+  	var PERCENT = "${ZSFLAG}"=="1" && "${vipinfo}"!="" ? "0.5":"1.0";
+  	
   	var CARD_ID = '0';
   	
   	var MONEY = '0';
+  	
+  	var VIPMONEY = '0';
   	
   	function changeMoney(id,money){
   		
@@ -125,8 +153,8 @@
   		
   		var count = parseInt($("#numberButton").text());
   		$("#XJ").html(count * parseFloat('${pd.SELLMONEY}'));
-  		$("#SF").html(count * parseFloat('${pd.SELLMONEY}') - parseFloat(MONEY));
-  		$("#SFC").html(count * parseFloat('${pd.SELLMONEY}') - parseFloat(MONEY));
+  		$("#SF").html(count * parseFloat('${pd.SELLMONEY}') - parseFloat(MONEY) + parseFloat(VIPMONEY));
+  		$("#SFC").html((count * parseFloat('${pd.SELLMONEY}') - parseFloat(MONEY) + parseFloat(VIPMONEY))*PERCENT);
   		
   		if(parseFloat($("#SF").text()) < 0){
   			$("#SF").html("0.00");
@@ -140,12 +168,15 @@
 			url: '<%=request.getContextPath()%>/orders/save',
 	    	data:{
 	    		"ORIGINAL":$("#XJ").text(),
-	    		"MONEY":$("#SF").text(),
+	    		"MONEY":$("#SFC").text(),
+	    		"VIPMONEY":VIPMONEY,
 	    		"DERATE":MONEY,
 	    		"CARD_ID":CARD_ID,
 	    		"GOODS_ID":'${pd.GOODS_ID}',
 	    		"NUMBER":$("#numberButton").text(),
-	    		"FROMWXOPEN_ID":'${FROMWXOPEN_ID}'
+	    		"FROMWXOPEN_ID":'${FROMWXOPEN_ID}',
+	    		"NEEDMONEY":$("#SF").text(),
+	    		"PERCENT":PERCENT
 	    	},
 	    	async: false,
 			dataType:'json',
@@ -176,5 +207,24 @@
             url: '/pages/pay/pay?type=goods&id='+data.ORDER_ID+'&sn='+data.ORDERSN+'&original='+data.ORIGINAL+'&derate='+data.DERATE+'&money='+data.MONEY
        })
  	}
+  	
+  	$("#vip").change(function(){
+  		if(VIPMONEY == '0'){
+  			VIPMONEY = "${product.PRODUCTMONEY}";
+  		}else{
+  			VIPMONEY = "0";
+  		}
+  		
+  		var count = parseInt($("#numberButton").text());
+  		$("#XJ").html(count * parseFloat('${pd.SELLMONEY}'));
+  		$("#SF").html(count * parseFloat('${pd.SELLMONEY}') - parseFloat(MONEY) + parseFloat(VIPMONEY));
+  		$("#SFC").html((count * parseFloat('${pd.SELLMONEY}') - parseFloat(MONEY) + parseFloat(VIPMONEY))*PERCENT);
+  		
+  		if(parseFloat($("#SF").text()) < 0){
+  			$("#SF").html("0.00");
+  			$("#SFC").html("0.00");
+  		}
+  		
+  	})
   </script>
 </html>

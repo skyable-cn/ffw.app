@@ -1898,7 +1898,7 @@ html:not(.watch-active-state) .list-block .item-link:active .item-inner:after,
   display: none;
 }
 .label-switch input[type="checkbox"]:checked + .checkbox {
-  background: #4cd964;
+  background: #FFCC01;
 }
 .label-switch input[type="checkbox"]:checked + .checkbox:before {
   -webkit-transform: scale(0);

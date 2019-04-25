@@ -32,7 +32,7 @@
 				<div style="width:100%;height:7px;background:#dddddd;">&nbsp;</div>
 			  	<div class="row" style="padding:5px;">
 					<div class="col-25">&nbsp;</div>
-					<div class="col-50"><img onclick="preview()" alt="" src="<%=request.getContextPath()%>/orders/barcode?ORDER_ID=${order.ORDER_ID}" width="100%"></div>
+					<div class="col-50"><img onclick="preview()" alt="" src="<%=request.getContextPath()%>/orders/barcode?USEID=${order.USEID}" width="100%"></div>
 					<div class="col-25">&nbsp;</div>
 				</div>
 				<div class="row" style="padding:5px;">
@@ -43,7 +43,7 @@
 				<div style="margin:10px;border:1px #DDDDDD solid;height:100px;">
 					<div class="row">
 						<div class="col-50" style="padding:7px;padding-top:15px;font-size:0.7rem;font-weight:bold;">核销码</div>
-						<div class="col-50" style="padding:7px;padding-top:15px;text-align:right;"><button onclick="goRefund('${order.ORDER_ID}','${order.STATE}');" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;float:right;font-size:0.7rem;font-weight:bold;">申请退款</button></div>
+						<div class="col-50" style="padding:7px;padding-top:15px;text-align:right;"><button onclick="goRefund('${order.ORDER_ID}','${order.WEIXINSN}','${order.MONEY}','${order.STATE}');" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;float:right;font-size:0.7rem;font-weight:bold;">申请退款</button></div>
 					</div>
 					<div class="row">
 						<div class="col-50" style="padding:7px;padding-top:7px;font-size:0.7rem;font-weight:bold;">核销码:${order.USEKEY}</div>
@@ -278,7 +278,7 @@
       		location.href="<%=request.getContextPath()%>/orders/refund?ORDER_ID="+id
       	}
     	
-    	function goGive(id,state){
+    	function goGive(id,sn,mn,state){
     		if(state == '0'){
     			$.alert("对不起,无法发起赠送",function(){})
     			return;
@@ -289,6 +289,21 @@
     		}
     		if(state == '5'){
     			$.alert("对不起,该订单已退款",function(){})
+    			return;
+    		}
+    		
+    		if(state == '5'){
+    			$.alert("对不起,该订单已退款",function(){})
+    			return;
+    		}
+    		
+    		if(sn == ''){
+    			$.alert("对不起,该订单使用优惠券无法退款",function(){})
+    			return;
+    		}
+    		
+    		if(mn == '0'||mn == '0.0'){
+    			$.alert("对不起,该订单包含会员产品暂无法退款",function(){})
     			return;
     		}
     		

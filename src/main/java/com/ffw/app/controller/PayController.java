@@ -5,12 +5,15 @@ import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -186,6 +189,77 @@ public class PayController extends BaseController {
 				pd.put("STATE", IConstant.STRING_1);
 				rest.post(IConstant.FFW_SERVICE_KEY, "orders/edit", pd,
 						PageData.class);
+
+				if (pd.getString("VIPFLAG").equals(IConstant.STRING_1)) {
+
+					PageData pd1 = new PageData();
+					List<PageData> product = rest.postForList(
+							IConstant.FFW_SERVICE_KEY, "product/listAll", pd1,
+							new ParameterizedTypeReference<List<PageData>>() {
+							});
+
+					PageData pd0 = new PageData();
+					pd0.put("RECHARGESN",
+							new SimpleDateFormat("yyyyMMddHHmmss")
+									.format(new Date()) + randomNumber(5));
+					pd0.put("PRODUCT_ID", product.get(0)
+							.getString("PRODUCT_ID"));
+					pd0.put("MEMBER_ID", pd.getString("MEMBER_ID"));
+					pd0.put("ORIGINAL", product.get(0)
+							.getString("PRODUCTMONEY"));
+					pd0.put("MONEY", product.get(0).getString("PRODUCTMONEY"));
+					pd0.put("DERATE", IConstant.STRING_0);
+					pd0.put("CDT", DateUtil.getTime());
+					pd0.put("STATE", IConstant.STRING_1);
+					rest.post(IConstant.FFW_SERVICE_KEY, "recharge/save", pd0,
+							PageData.class);
+
+					PageData vipinfo = new PageData();
+					vipinfo.put("MEMBER_ID", pd.getString("MEMBER_ID"));
+					vipinfo = rest.post(IConstant.FFW_SERVICE_KEY,
+							"vipinfo/findBy", vipinfo, PageData.class);
+					if (null == vipinfo) {
+						PageData pd2 = new PageData();
+						pd2.put("VIPSN", DateUtil.getNumber());
+						pd2.put("MEMBER_ID", pd.getString("MEMBER_ID"));
+						pd2.put("CDT", DateUtil.getTime());
+						pd2.put("LASTTIME", DateUtil.getAfterDayDate(product
+								.get(0).getString("PRODUCTTIME")));
+						rest.post(IConstant.FFW_SERVICE_KEY, "vipinfo/save",
+								pd2, PageData.class);
+					} else {
+						Date lasttime = new SimpleDateFormat(
+								"yyyy-MM-dd HH:mm:ss").parse(vipinfo
+								.getString("LASTTIME"));
+						if (lasttime.getTime() > new Date().getTime()) {
+							vipinfo.put("LASTTIME", DateUtil
+									.getAfterDayDateWith(
+											lasttime,
+											product.get(0).getString(
+													"PRODUCTTIME")));
+						} else {
+							vipinfo.put("LASTTIME", DateUtil
+									.getAfterDayDate(product.get(0).getString(
+											"PRODUCTTIME")));
+						}
+						rest.post(IConstant.FFW_SERVICE_KEY, "vipinfo/edit",
+								vipinfo, PageData.class);
+					}
+
+					Double goodsMoney = Double.parseDouble(pd
+							.getString("MONEY"))
+							- Double.parseDouble(product.get(0).getString(
+									"PRODUCTMONEY"));
+					if (goodsMoney <= 0) {
+						pd.put("MONEY", IConstant.STRING_0);
+					} else {
+						pd.put("MONEY", String.valueOf(goodsMoney));
+					}
+
+					rest.post(IConstant.FFW_SERVICE_KEY, "orders/edit", pd,
+							PageData.class);
+
+				}
 
 				PageData pdgoods = new PageData();
 				pdgoods.put("GOODS_ID", pd.getString("GOODS_ID"));
@@ -487,5 +561,15 @@ public class PayController extends BaseController {
 		System.err.println(notityXml);
 		Map<String, String> dataMap = WXPayUtil.xmlToMap(notityXml);
 		return dataMap;
+	}
+
+	private String randomNumber(int length) {
+		StringBuilder sb = new StringBuilder();
+		Random r = new Random();
+		String s = "0123456789";
+		for (int i = 0; i < length; i++) {
+			sb.append(s.charAt(r.nextInt(s.length())));
+		}
+		return sb.toString();
 	}
 }

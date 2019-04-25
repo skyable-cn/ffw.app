@@ -67,6 +67,24 @@ public class OrdersController extends BaseController {
 				});
 		mv.addObject("cardsData", cardsData);
 
+		mv.addObject("ZSFLAG", IConstant.STRING_0);
+		if (DateUtil.getWeek() == 4) {
+			mv.addObject("ZSFLAG", IConstant.STRING_1);
+		}
+
+		PageData vipinfo = new PageData();
+		vipinfo.put("MEMBER_ID", memberId());
+		vipinfo = rest.post(IConstant.FFW_SERVICE_KEY, "vipinfo/findBy",
+				vipinfo, PageData.class);
+		mv.addObject("vipinfo", vipinfo);
+
+		PageData pd1 = new PageData();
+		List<PageData> product = rest.postForList(IConstant.FFW_SERVICE_KEY,
+				"product/listAll", pd1,
+				new ParameterizedTypeReference<List<PageData>>() {
+				});
+		mv.addObject("product", product.get(0));
+
 		mv.setViewName("orders/index");
 		return mv;
 	}
@@ -81,16 +99,55 @@ public class OrdersController extends BaseController {
 		String GOODS_ID = pd.getString("GOODS_ID");
 		String NUMBER = pd.getString("NUMBER");
 
-		pd.put("ORDERSN",
-				new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())
-						+ randomNumber(5));
+		String VIPMONEY = pd.getString("VIPMONEY");
+		if (!VIPMONEY.equals("0")) {
+			pd.put("VIPFLAG", IConstant.STRING_1);
+		} else {
+			pd.put("VIPFLAG", IConstant.STRING_0);
+		}
+
+		String ORDERSN = new SimpleDateFormat("yyyyMMddHHmmss")
+				.format(new Date()) + randomNumber(5);
+		pd.put("ORDERSN", ORDERSN);
 		pd.put("MEMBER_ID", memberId());
 		pd.put("CDT", DateUtil.getTime());
+		pd.put("USEID", DigestUtils.md5Hex(ORDERSN + IConstant.KEY_SLAT));
 		pd.put("USEKEY", randomNumber(8));
 		if (Double.parseDouble(pd.getString("MONEY")) > 0) {
 			pd.put("STATE", IConstant.STRING_0);
 		} else {
 			pd.put("STATE", IConstant.STRING_1);
+
+			PageData pd1 = new PageData();
+			List<PageData> product = rest.postForList(
+					IConstant.FFW_SERVICE_KEY, "product/listAll", pd1,
+					new ParameterizedTypeReference<List<PageData>>() {
+					});
+
+			PageData pd0 = new PageData();
+			pd0.put("RECHARGESN",
+					new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())
+							+ randomNumber(5));
+			pd0.put("PRODUCT_ID", product.get(0).getString("PRODUCT_ID"));
+			pd0.put("MEMBER_ID", memberId());
+			pd0.put("ORIGINAL", product.get(0).getString("PRODUCTMONEY"));
+			pd0.put("MONEY", product.get(0).getString("PRODUCTMONEY"));
+			pd0.put("DERATE", IConstant.STRING_0);
+			pd0.put("CDT", DateUtil.getTime());
+			pd0.put("STATE", IConstant.STRING_1);
+			rest.post(IConstant.FFW_SERVICE_KEY, "recharge/save", pd0,
+					PageData.class);
+
+			PageData pd2 = new PageData();
+			pd2.put("VIPSN", DateUtil.getNumber());
+			pd2.put("MEMBER_ID", memberId());
+			pd2.put("CDT", DateUtil.getTime());
+			pd2.put("LASTTIME",
+					DateUtil.getAfterDayDate(product.get(0).getString(
+							"PRODUCTTIME")));
+			rest.post(IConstant.FFW_SERVICE_KEY, "vipinfo/save", pd2,
+					PageData.class);
+
 		}
 
 		ReturnModel rm = new ReturnModel();
@@ -367,14 +424,17 @@ public class OrdersController extends BaseController {
 		pd = this.getPageData();
 
 		PageData order = new PageData();
-		order.put("ORDER_ID", pd.getString("ORDER_ID"));
-		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", order,
+		order.put("USEID", pd.getString("USEID"));
+		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/findBy", order,
 				PageData.class);
 
-		order.put(
+		PageData orderOUT = new PageData();
+		orderOUT.put("USEID", order.getString("USEID"));
+		orderOUT.put(
 				"USEKEY",
 				DigestUtils.md5Hex(order.getString("USEKEY")
 						+ IConstant.KEY_SLAT));
+		orderOUT.put("STATE", order.getString("STATE"));
 
 		int width = 200; // 图像宽度
 		int height = 200; // 图像高度
@@ -383,8 +443,8 @@ public class OrdersController extends BaseController {
 		hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
 		hints.put(EncodeHintType.MARGIN, 1);
 		BitMatrix bitMatrix = new MultiFormatWriter().encode(
-				JSONObject.toJSONString(order), BarcodeFormat.QR_CODE, width,
-				height, hints);// 生成矩阵
+				JSONObject.toJSONString(orderOUT), BarcodeFormat.QR_CODE,
+				width, height, hints);// 生成矩阵
 		MatrixToImageWriter.writeToStream(bitMatrix, format, getResponse()
 				.getOutputStream());
 	}
@@ -397,8 +457,8 @@ public class OrdersController extends BaseController {
 		pd = this.getPageData();
 
 		PageData order = new PageData();
-		order.put("ORDER_ID", pd.getString("ORDER_ID"));
-		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", order,
+		order.put("USEID", pd.getString("USEID"));
+		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/findBy", order,
 				PageData.class);
 
 		if (!pd.getString("SHOP_ID").equals(order.getString("SHOP_ID"))) {
