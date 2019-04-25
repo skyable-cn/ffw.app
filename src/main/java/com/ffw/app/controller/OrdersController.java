@@ -148,6 +148,23 @@ public class OrdersController extends BaseController {
 			rest.post(IConstant.FFW_SERVICE_KEY, "vipinfo/save", pd2,
 					PageData.class);
 
+			PageData pd21 = new PageData();
+			pd21.put("MEMBER_ID", memberId());
+			pd21 = rest.post(IConstant.FFW_SERVICE_KEY, "member/find", pd21,
+					PageData.class);
+			if (IConstant.STRING_1.equals(pd21.getString("MEMBERTYPE_ID"))) {
+				pd21.put("MEMBERTYPE_ID", IConstant.STRING_2);
+				rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pd21,
+						PageData.class);
+			} else if (IConstant.STRING_3.equals(pd21
+					.getString("MEMBERTYPE_ID"))) {
+				pd21.put("MEMBERTYPE_ID", IConstant.STRING_4);
+				rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pd21,
+						PageData.class);
+			} else {
+
+			}
+
 		}
 
 		ReturnModel rm = new ReturnModel();
