@@ -67,17 +67,20 @@ public class PayController extends BaseController {
 
 		String SNID = null;
 		String BODYDESC = null;
-		if ("goods".equals(pd.getString("TYPE"))) {
+		
+		String type = pd.getString("TYPE");
+		
+		if ("goods".equals(type)) {
 			pd.put("ORDER_ID", pd.getString("ID"));
 			pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd,
 					PageData.class);
-			SNID = "GOODS_" + pd.getString("ORDER_ID");
+			SNID = pd.getString("ORDERSN");
 			BODYDESC = "饭饭网产品消费";
-		} else if ("product".equals(pd.getString("TYPE"))) {
+		} else if ("product".equals(type)) {
 			pd.put("RECHARGE_ID", pd.getString("ID"));
 			pd = rest.post(IConstant.FFW_SERVICE_KEY, "recharge/find", pd,
 					PageData.class);
-			SNID = "PRODUCT_" + pd.getString("RECHARGE_ID");
+			SNID = pd.getString("RECHARGESN");
 			BODYDESC = "饭饭网会员充值";
 		} else {
 
@@ -117,6 +120,7 @@ public class PayController extends BaseController {
 		data.put("notify_url", wechatMiniConfig.getNoticeurl());// 支付成功后的回调地址
 		data.put("trade_type", "JSAPI");// 支付方式
 		data.put("openid", openId());
+		data.put("attach", type);
 
 		response.put("appId", wechatMiniConfig.getAppid());
 
@@ -171,14 +175,13 @@ public class PayController extends BaseController {
 		String returnCode = dataMap.get("return_code");
 		if ("SUCCESS".equals(returnCode)) {
 			String transaction_id = dataMap.get("transaction_id");
-			String[] out_trade_no = dataMap.get("out_trade_no").split("_");
-			String type = out_trade_no[0];
-			String id = out_trade_no[1];
+			String out_trade_no = dataMap.get("out_trade_no");
+			String type = dataMap.get("attach");
 			PageData pd = new PageData();
-			if ("GOODS".equals(type)) {
-				pd.put("ORDER_ID", id);
+			if ("goods".equals(type)) {
+				pd.put("ORDERSN", out_trade_no);
 
-				pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd,
+				pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/findBy", pd,
 						PageData.class);
 
 				if (StringUtils.isNotEmpty(pd.getString("WEIXINSN"))) {
@@ -465,10 +468,10 @@ public class PayController extends BaseController {
 					}
 				}
 
-			} else if ("PRODUCT".equals(type)) {
-				pd.put("RECHARGE_ID", id);
+			} else if ("product".equals(type)) {
+				pd.put("RECHARGESN", out_trade_no);
 
-				pd = rest.post(IConstant.FFW_SERVICE_KEY, "recharge/find", pd,
+				pd = rest.post(IConstant.FFW_SERVICE_KEY, "recharge/findBy", pd,
 						PageData.class);
 				if (StringUtils.isNotEmpty(pd.getString("WEIXINSN"))) {
 					return;
