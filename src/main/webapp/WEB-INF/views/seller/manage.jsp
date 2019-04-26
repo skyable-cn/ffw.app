@@ -179,10 +179,16 @@
   			scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
   			success: function (res) {
   				var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
-  				var orderJson = JSON.parse(result);
+  				var orderJson = null;
+  				try{
+  					orderJson = JSON.parse(result);
+  				}catch(e){
+  					$.alert("对不起,请检查二维码数据来源",function(){})
+  					return;
+  				}
   				
   				if(!orderJson.USEID || !orderJson.USEKEY){
-  					$.alert("核销码无法识别,数据信息异常",function(){})
+  					$.alert("核销码无法识别,数据信息异常缺失",function(){})
   					return;
   				}
   				
