@@ -80,6 +80,11 @@
 						return;
 				 }
 				 
+				 if(parseFloat(value) < 0.5){
+					 $.alert("对不起,每次最少提现0.5元",function(){goApprove()})
+						return;
+				 }
+				 
 		          if(parseFloat("${USER_SESSION.WAITACCOUNT}") < parseFloat(value)){
 		        	  $.alert("对不起,输入金额过大",function(){goApprove()})
 		          }else{
