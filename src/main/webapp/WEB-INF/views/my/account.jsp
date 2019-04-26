@@ -97,30 +97,9 @@
 		  				},
 		  				success: function(data){
 		  					if(data.flag){
-		  						$.ajax({
-		  			  				type: "POST",
-		  			  				url: '<%=request.getContextPath()%>/wxTransfers',
-		  			  		    	data:{
-		  			  		    		WITHDRAW_ID:data.data.WITHDRAW_ID,
-		  			  		    		MONEY:data.data.MONEY
-		  			  		    	},
-		  			  		    	async: false,
-		  			  				dataType:'json',
-		  			  				cache: false,
-		  			  				beforeSend:function(){
-		  			  					
-		  			  				},
-		  			  				success: function(data){
-		  			  				if(data.result_code=="SUCCESS"){
-			  								$.alert("提现成功",function(){
-			  									location.href='<%=request.getContextPath()%>/my'
-			  								})
-		  								}
-		  			  				},
-		  			  				error:function(){
-		  			  					
-		  			  				}
-		  			  			});
+		  						$.alert("提现申请成功,请等待审核",function(){
+  									location.href='<%=request.getContextPath()%>/my'
+  								})
 		  					}
 		  				},
 		  				error:function(){

@@ -31,7 +31,7 @@ public class CommonInterceptor implements HandlerInterceptor {
 			HttpServletResponse response, Object arg2) throws Exception {
 		String path = request.getServletPath();
 		if ("/mini".equals(path) || "/index".equals(path)
-				|| "/wxNotify".equals(path)) {
+				|| "/wxNotify".equals(path) || "wxTransfers".equals(path)) {
 			return true;
 		}
 
