@@ -451,7 +451,6 @@ public class OrdersController extends BaseController {
 				"USEKEY",
 				DigestUtils.md5Hex(order.getString("USEKEY")
 						+ IConstant.KEY_SLAT));
-		orderOUT.put("STATE", order.getString("STATE"));
 
 		int width = 200; // 图像宽度
 		int height = 200; // 图像高度
@@ -491,6 +490,28 @@ public class OrdersController extends BaseController {
 		mv.addObject("order", order);
 		mv.setViewName("orders/verification");
 		return mv;
+	}
+
+	@RequestMapping(value = { "/orders/verification/info" })
+	@ResponseBody
+	public ReturnModel verificationInfo() {
+		logger.info("进入订单核销信息查询");
+		ReturnModel rm = new ReturnModel();
+		PageData pd = new PageData();
+		pd = this.getPageData();
+
+		PageData rs = new PageData();
+		PageData order = new PageData();
+		order.put("USEID", pd.getString("USEID"));
+		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/findBy", order,
+				PageData.class);
+		if (null != order) {
+			rs.put("STATE", order.getString("STATE"));
+		}
+
+		rm.setFlag(true);
+		rm.setData(rs);
+		return rm;
 	}
 
 	@RequestMapping(value = { "/orders/verification/save" })

@@ -181,24 +181,47 @@
   				var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
   				var orderJson = JSON.parse(result);
   				
-  				if(!orderJson.STATE || !orderJson.USEID || !orderJson.USEKEY){
+  				if(!orderJson.USEID || !orderJson.USEKEY){
   					$.alert("核销码无法识别,数据信息异常",function(){})
   					return;
   				}
   				
-  				if(orderJson.STATE == "0"){
-  					$.alert("该订单待付款,请先付款",function(){})
-  					return;
-  				}
-  				//if(orderJson.STATE == "1"){
-  				//	$.alert("该订单待确认,请先确认信息",function(){})
-  				//	return;
-  				//}
-  				if(orderJson.STATE == "5"){
-  					$.alert("对不起,该订单已退款",function(){})
-  					return;
-  				}
-  				location.href='<%=request.getContextPath()%>/orders/verification?USEID='+orderJson.USEID+'&USEKEY='+orderJson.USEKEY+"&SHOP_ID=${shop.SHOP_ID}";
+  				$.ajax({
+  					type: "POST",
+  					url: '<%=request.getContextPath()%>/orders/verification/info',
+  			    	data:{
+  			    		"USEID":orderJson.USEID
+  			    	},
+  			    	async: false,
+  					dataType:'json',
+  					cache: false,
+  					beforeSend:function(){
+  						
+  					},
+  					success: function(data){
+  						var ORDERSTATE = data.data.STATE;
+  						if(data.flag && ORDERSTATE){
+  							if(ORDERSTATE == "0"){
+  			  					$.alert("该订单待付款,请先付款",function(){})
+  			  					return;
+  			  				}
+  			  				//if(ORDERSTATE == "1"){
+  			  				//	$.alert("该订单待确认,请先确认信息",function(){})
+  			  				//	return;
+  			  				//}
+  			  				if(ORDERSTATE == "5"){
+  			  					$.alert("对不起,该订单已退款",function(){})
+  			  					return;
+  			  				}
+  			  				location.href='<%=request.getContextPath()%>/orders/verification?USEID='+orderJson.USEID+'&USEKEY='+orderJson.USEKEY+"&SHOP_ID=${shop.SHOP_ID}";
+  						}else{
+  							$.alert("对不起,订单参数信息非法",function(){})
+  						}
+  					},
+  					error:function(){
+  						
+  					}
+  				});
   			}
   		});
   	}

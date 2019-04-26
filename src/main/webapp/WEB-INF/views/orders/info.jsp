@@ -262,7 +262,7 @@
    			});
     	}
 
-    	function goRefund(id,state){
+    	function goRefund(id,sn,mn,state){
     		if(state == '0'){
     			$.alert("对不起,无法发起退款",function(){})
     			return;
@@ -275,10 +275,21 @@
     			$.alert("对不起,该订单已退款",function(){})
     			return;
     		}
+    		
+    		if(sn == ''){
+    			$.alert("对不起,该订单使用优惠券无法退款",function(){})
+    			return;
+    		}
+    		
+    		if(parseFloat(mn) == 0.0){
+    			$.alert("对不起,该订单包含会员产品暂无法退款",function(){})
+    			return;
+    		}
+    		
       		location.href="<%=request.getContextPath()%>/orders/refund?ORDER_ID="+id
       	}
     	
-    	function goGive(id,sn,mn,state){
+    	function goGive(id,state){
     		if(state == '0'){
     			$.alert("对不起,无法发起赠送",function(){})
     			return;
@@ -289,21 +300,6 @@
     		}
     		if(state == '5'){
     			$.alert("对不起,该订单已退款",function(){})
-    			return;
-    		}
-    		
-    		if(state == '5'){
-    			$.alert("对不起,该订单已退款",function(){})
-    			return;
-    		}
-    		
-    		if(sn == ''){
-    			$.alert("对不起,该订单使用优惠券无法退款",function(){})
-    			return;
-    		}
-    		
-    		if(mn == '0'||mn == '0.0'){
-    			$.alert("对不起,该订单包含会员产品暂无法退款",function(){})
     			return;
     		}
     		
