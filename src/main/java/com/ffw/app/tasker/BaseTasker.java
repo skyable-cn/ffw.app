@@ -57,8 +57,6 @@ public class BaseTasker implements CommandLineRunner {
 			fileMap.put("file", filepath);
 			String ret = HttpPostUploadUtil
 					.formUpload(urlStr, textMap, fileMap);
-			System.out.println(ret);
-
 			pageData.put("MEDIA_ID",
 					JSONObject.fromObject(ret).getString("media_id"));
 
