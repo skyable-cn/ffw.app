@@ -67,9 +67,9 @@ public class PayController extends BaseController {
 
 		String SNID = null;
 		String BODYDESC = null;
-		
+
 		String type = pd.getString("TYPE");
-		
+
 		if ("goods".equals(type)) {
 			pd.put("ORDER_ID", pd.getString("ID"));
 			pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd,
@@ -471,8 +471,8 @@ public class PayController extends BaseController {
 			} else if ("product".equals(type)) {
 				pd.put("RECHARGESN", out_trade_no);
 
-				pd = rest.post(IConstant.FFW_SERVICE_KEY, "recharge/findBy", pd,
-						PageData.class);
+				pd = rest.post(IConstant.FFW_SERVICE_KEY, "recharge/findBy",
+						pd, PageData.class);
 				if (StringUtils.isNotEmpty(pd.getString("WEIXINSN"))) {
 					return;
 				}
@@ -548,40 +548,6 @@ public class PayController extends BaseController {
 			getResponse().getOutputStream().write(response.getBytes());
 		}
 
-	}
-
-	@RequestMapping("wxTransfers")
-	@ResponseBody
-	public Map<String, String> wxTransfers() throws Exception {
-		logger.info("进入企业付款到个人");
-		PageData pd = new PageData();
-		pd = this.getPageData();
-		WXPay wxpay = new WXPay(config, SignType.MD5);
-		Map<String, String> parameters = new HashMap<String, String>();
-		parameters.put("mch_appid", wechatMiniConfig.getAppid());
-		parameters.put("mchid", wechatMiniConfig.getMchid());
-		parameters.put("nonce_str", WXPayUtil.generateNonceStr());
-		parameters.put("partner_trade_no", pd.getString("WITHDRAW_ID"));
-		parameters.put("openid", openId());
-		parameters.put("check_name", "NO_CHECK");
-		String fee = String
-				.valueOf(Float.parseFloat(pd.getString("MONEY")) * 100);
-		parameters.put("amount", fee.substring(0, fee.indexOf(".")) + "");
-		parameters.put("spbill_create_ip", getIpAddr(getRequest()));
-		parameters.put("desc", "饭饭网用户提现");
-		// 签名
-		String sign = WXPayUtil.generateSignature(parameters,
-				wechatMiniConfig.getMchkey());
-		parameters.put("sign", sign);
-
-		String notityXml = wxpay
-				.requestWithCert(
-						"https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers",
-						parameters, config.getHttpConnectTimeoutMs(),
-						config.getHttpReadTimeoutMs());
-		System.err.println(notityXml);
-		Map<String, String> dataMap = WXPayUtil.xmlToMap(notityXml);
-		return dataMap;
 	}
 
 	private String randomNumber(int length) {
