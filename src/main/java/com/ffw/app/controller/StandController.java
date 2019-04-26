@@ -37,6 +37,7 @@ public class StandController extends BaseController {
 		logger.info("进入展位查询");
 		PageData pd = new PageData();
 		pd = this.getPageData();
+		pd.put("STATE", IConstant.STRING_1);
 		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "stand/listPage", pd,
 				Page.class);
 		pd.put("page", page);

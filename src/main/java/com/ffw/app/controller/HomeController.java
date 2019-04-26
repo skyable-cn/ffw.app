@@ -43,6 +43,7 @@ public class HomeController extends BaseController {
 		mv.addObject("cardsNum", cardsData.size());
 
 		PageData pd3 = new PageData();
+		pd3.put("STATE", IConstant.STRING_1);
 		List<PageData> standData = rest.postForList(IConstant.FFW_SERVICE_KEY,
 				"stand/listAll", pd3,
 				new ParameterizedTypeReference<List<PageData>>() {
