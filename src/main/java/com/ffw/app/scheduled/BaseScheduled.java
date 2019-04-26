@@ -62,6 +62,7 @@ public class BaseScheduled {
 
 		String DATE = DateUtil.getAfterDayDate("-1").split(" ")[0].replace("-",
 				"");
+		LOGGER.info("开始下载" + DATE + "微信账单数据");
 
 		WXPay wxpay = new WXPay(config, SignType.MD5);
 		Map<String, String> parameters = new HashMap<String, String>();
@@ -81,6 +82,12 @@ public class BaseScheduled {
 						config.getHttpReadTimeoutMs());
 
 		String data = result.get("data");
+
+		if (null == data) {
+			LOGGER.info("再次更新微信账单数据");
+			autoDownloadBill();
+			return;
+		}
 
 		System.err.println(data);
 
