@@ -33,20 +33,9 @@
         <div class="item-content">
           <div class="item-media"><i class="icon icon-form-name"></i></div>
           <div class="item-inner">
-            <div class="item-title label">下单时间</div>
+            <div class="item-title label">核销码</div>
             <div class="item-input">
-              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="" value="${order.CDT}" disabled="disabled">
-            </div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="item-content">
-          <div class="item-media"><i class="icon icon-form-name"></i></div>
-          <div class="item-inner">
-            <div class="item-title label">商品</div>
-            <div class="item-input" style="padding:10px;">
-              <img src="<%=request.getContextPath()%>/file/image?FILENAME=${order.FILEPATH}" width="200" alt="商品图片">
+              <input id="USEKEY" name="USEKEY" type="text" placeholder="" value="${order.USEKEY}" disabled="disabled">
             </div>
           </div>
         </div>
@@ -113,6 +102,17 @@
             <div class="item-title label">电话</div>
             <div class="item-input">
               <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="" value="${order.PERSONPHONE}" disabled="disabled">
+            </div>
+          </div>
+        </div>
+      </li>
+       <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-name"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">下单时间</div>
+            <div class="item-input">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="" value="${order.CDT}" disabled="disabled">
             </div>
           </div>
         </div>

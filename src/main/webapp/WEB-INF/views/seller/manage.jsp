@@ -219,7 +219,7 @@
   			  					$.alert("对不起,该订单已退款",function(){})
   			  					return;
   			  				}
-  			  				location.href='<%=request.getContextPath()%>/orders/verification?USEID='+orderJson.USEID+'&USEKEY='+orderJson.USEKEY+"&SHOP_ID=${shop.SHOP_ID}";
+  			  				location.href='<%=request.getContextPath()%>/orders/verification?USEID='+orderJson.USEID+'&USEKEY='+orderJson.USEKEY+"&FROM=BAR&SHOP_ID=${shop.SHOP_ID}";
   						}else{
   							$.alert("对不起,订单参数信息非法",function(){})
   						}
@@ -303,6 +303,12 @@
     				      <span>下单时间:`+value.CDT+`</span>
     				      <span>`+value.USEPERSON+` / `+value.PERSONPHONE+`</span>
     				    </div>`;
+    				    if($("#search").val() == value.USEKEY && value.STATE == '2'){
+    				    	html+=`<div class="card-footer">
+	  				      <span></span>
+	  				      <span><button onclick="goConfirm('`+value.USEID+`','`+value.USEKEY+`')" class="button button-fill button-success" style="background:#FFCC01;color:#000000;width:100%;">立即核销</button></span>
+	  				    </div>`;
+    				    }
     				    
     				    if(value.STATE == '3'){
     						html+=`<div class="card-footer">
@@ -367,5 +373,9 @@
              $.refreshScroller();
          }, 500);
   	});
+  	
+  	function goConfirm(id,key){
+  		location.href='<%=request.getContextPath()%>/orders/verification?USEID='+id+'&USEKEY='+key+"&FROM=CODE&SHOP_ID=${shop.SHOP_ID}";
+  	}
   </script>
 </html>
