@@ -311,7 +311,7 @@ public class PayController extends BaseController {
 					pdaccount.put("MEMBER_ID", pd.getString("MEMBER_ID"));
 					pdaccount.put("GIVEMONEY", GIVEMONEY);
 					pdaccount.put("DESCRIPTION", "普通/达人用户购买返利");
-					pdaccount.put("TYPE", IConstant.STRING_1);
+					pdaccount.put("TYPE", IConstant.STRING_0);
 					pdaccount.put("CDT", DateUtil.getTime());
 					rest.post(IConstant.FFW_SERVICE_KEY, "member/saveAccount",
 							pdaccount, PageData.class);
