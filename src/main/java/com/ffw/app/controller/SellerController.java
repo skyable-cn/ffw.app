@@ -68,6 +68,10 @@ public class SellerController extends BaseController {
 
 		pd.put("CDT", DateUtil.getTime());
 		pd.put("SHOPSTATE_ID", IConstant.STRING_1);
+
+		pd.put("MEMBER_ID", memberId());
+		pd.put("AVGMONEY", IConstant.STRING_0);
+
 		ReturnModel rm = new ReturnModel();
 		pd = rest.post(IConstant.FFW_SERVICE_KEY, "shop/save", pd,
 				PageData.class);
