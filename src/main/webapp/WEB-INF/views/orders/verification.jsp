@@ -57,7 +57,7 @@
           <div class="item-inner">
             <div class="item-title label">商品单价</div>
             <div class="item-input">
-              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="" value="${order.MONEYONE}" disabled="disabled">
+              <input id="SHOPNAME" name="SHOPNAME" type="text" placeholder="" value="${order.SELLMONEY}" disabled="disabled">
             </div>
           </div>
         </div>

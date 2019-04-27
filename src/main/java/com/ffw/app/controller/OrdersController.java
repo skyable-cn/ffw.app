@@ -181,15 +181,9 @@ public class OrdersController extends BaseController {
 		pdc.put("ORDER_ID", pd.getString("ORDER_ID"));
 		rest.post(IConstant.FFW_SERVICE_KEY, "cards/edit", pdc, PageData.class);
 
-		PageData pdg = new PageData();
-		pdg.put("GOODS_ID", GOODS_ID);
-		pdg = rest.post(IConstant.FFW_SERVICE_KEY, "goods/find", pdg,
-				PageData.class);
-
 		PageData pdoi = new PageData();
 		pdoi.put("ORDER_ID", pd.getString("ORDER_ID"));
 		pdoi.put("GOODS_ID", GOODS_ID);
-		pdoi.put("MONEY", pdg.getString("SELLMONEY"));
 		pdoi.put("NUMBER", NUMBER);
 		rest.post(IConstant.FFW_SERVICE_KEY, "ordersitem/save", pdoi,
 				PageData.class);
