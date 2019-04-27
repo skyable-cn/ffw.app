@@ -155,9 +155,7 @@
     					        <ul>
     					          <li class="item-content">
     					            <div class="item-media">
-    					              <a class="external" href="<%=request.getContextPath()%>/shop/info?SHOP_ID=`+value.SHOP_ID+`">
-    					              <img src="`+src+`" width="150" height="100">
-    					              </a>
+    					              <img src="`+src+`" width="150" height="150">
     					            </div>
     					            <div class="item-inner">
     					              <div class="item-title-row">
