@@ -155,7 +155,7 @@
     					        <ul>
     					          <li class="item-content">
     					            <div class="item-media">
-    					              <img src="`+src+`" width="150" height="150">
+    					              <img src="`+src+`" width="150" height="120">
     					            </div>
     					            <div class="item-inner">
     					              <div class="item-title-row">
