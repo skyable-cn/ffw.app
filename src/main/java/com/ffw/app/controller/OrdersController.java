@@ -537,14 +537,19 @@ public class OrdersController extends BaseController {
 		rest.post(IConstant.FFW_SERVICE_KEY, "orderuse/save", pdu,
 				PageData.class);
 
+		PageData shop = new PageData();
+		shop.put("SHOP_ID", pd.getString("SHOP_ID"));
+		shop = rest.post(IConstant.FFW_SERVICE_KEY, "shop/find", shop,
+				PageData.class);
+
 		PageData pds = new PageData();
 		pds.put("SHOP_ID", pd.getString("SHOP_ID"));
 
 		Double addMoney = Integer.parseInt(pd.getString("NUMBER"))
 				* Double.parseDouble(pd.getString("BALANCEMONEY"));
 
-		pds.put("WAITACCOUNT", Double.parseDouble(pd.getString("WAITACCOUNT"))
-				+ addMoney);
+		pds.put("WAITACCOUNT",
+				Double.parseDouble(shop.getString("WAITACCOUNT")) + addMoney);
 		rest.post(IConstant.FFW_SERVICE_KEY, "shop/edit", pds, PageData.class);
 
 		PageData pdst = new PageData();
