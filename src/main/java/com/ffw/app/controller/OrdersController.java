@@ -537,9 +537,25 @@ public class OrdersController extends BaseController {
 		rest.post(IConstant.FFW_SERVICE_KEY, "orderuse/save", pdu,
 				PageData.class);
 
+		PageData pds = new PageData();
+		pds.put("SHOP_ID", pd.getString("SHOP_ID"));
+
+		Double addMoney = Integer.parseInt(pd.getString("NUMBER"))
+				* Double.parseDouble(pd.getString("BALANCEMONEY"));
+
+		pds.put("WAITACCOUNT", Double.parseDouble(pd.getString("WAITACCOUNT"))
+				+ addMoney);
+		rest.post(IConstant.FFW_SERVICE_KEY, "shop/edit", pds, PageData.class);
+
+		PageData pdst = new PageData();
+		pdst.put("ORDER_ID", pd.getString("ORDER_ID"));
+		pdst.put("SETTLEMONEY", String.valueOf(addMoney));
+		pdst.put("CDT", DateUtil.getTime());
+		rest.post(IConstant.FFW_SERVICE_KEY, "settle/save", pdst,
+				PageData.class);
+
 		rm.setFlag(true);
 		rm.setData(pd);
 		return rm;
 	}
-
 }
