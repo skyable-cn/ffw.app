@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ffw.api.model.PageData;
 import com.ffw.api.util.DateUtil;
+import com.ffw.api.util.DoubleUtil;
 import com.ffw.app.constant.IConstant;
 import com.ffw.app.model.ReturnModel;
 import com.ffw.app.util.RestTemplateUtil;
@@ -119,13 +120,15 @@ public class MyController extends BaseController {
 		PageData pdm = new PageData();
 		pdm.put("MEMBER_ID", memberId());
 		pdm.put("WAITACCOUNT",
-				String.valueOf(Double.parseDouble(userSession().getString(
-						"WAITACCOUNT"))
-						- Double.parseDouble(pd.getString("MONEY"))));
+				String.valueOf(DoubleUtil.sub(
+						Double.parseDouble(userSession().getString(
+								"WAITACCOUNT")),
+						Double.parseDouble(pd.getString("MONEY")))));
 		pdm.put("ALREADYACCOUNT",
-				String.valueOf(Double.parseDouble(userSession().getString(
-						"ALREADYACCOUNT"))
-						+ Double.parseDouble(pd.getString("MONEY"))));
+				String.valueOf(DoubleUtil.sum(
+						Double.parseDouble(userSession().getString(
+								"ALREADYACCOUNT")),
+						Double.parseDouble(pd.getString("MONEY")))));
 		rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pdm, PageData.class);
 
 		rm.setFlag(true);

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ffw.api.model.PageData;
 import com.ffw.api.util.DateUtil;
+import com.ffw.api.util.DoubleUtil;
 import com.ffw.app.config.WXPayConfigImpl;
 import com.ffw.app.config.WechatMiniConfig;
 import com.ffw.app.constant.IConstant;
@@ -267,10 +268,10 @@ public class PayController extends BaseController {
 								vipinfo, PageData.class);
 					}
 
-					Double goodsMoney = Double.parseDouble(pd
-							.getString("MONEY"))
-							- Double.parseDouble(product.get(0).getString(
-									"PRODUCTMONEY"));
+					Double goodsMoney = DoubleUtil.sub(
+							Double.parseDouble(pd.getString("MONEY")),
+							Double.parseDouble(product.get(0).getString(
+									"PRODUCTMONEY")));
 					if (goodsMoney <= 0) {
 						pd.put("MONEY", IConstant.STRING_0);
 					} else {
