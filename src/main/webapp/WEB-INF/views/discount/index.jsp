@@ -156,21 +156,24 @@
     					          <li class="item-content">
     					            <div class="item-media">
     					              <a class="external" href="<%=request.getContextPath()%>/shop/info?SHOP_ID=`+value.SHOP_ID+`">
-    					              <img src="`+src+`" width="150" height="120">
+    					              <img src="`+src+`" width="150" height="100">
     					              </a>
     					            </div>
     					            <div class="item-inner">
     					              <div class="item-title-row">
-    					                <div class="item-title" style="font-weight:bold;">`+value.SHOPNAME+`</div>
+    					                <div class="item-title">`+value.SHOPNAME+`</div>
     					              </div>
-    					              <div class="item-subtitle" style="font-weight:bold;">
+    					              <div class="item-subtitle">
     					              	¥ `+value.AVGMONEY+` / 人
     					              	<span>
     					              	`+value.DISTANCE+`
     					              	</span>
     					              </div>
-    					              <div class="item-subtitle" style="font-weight:bold;">
+    					              <div class="item-subtitle">
     					              	`+value.SHOPTYPENAME+`
+    					              </div>
+    					              <div class="item-subtitle">
+    					              	`+value.SHOPADDRESS+`
     					              </div>
     					            </div>
     					          </li>
@@ -178,7 +181,7 @@
     					      </div>
     					    </div>
     					    <div class="card-footer">
-    					      <span style="font-weight:bold;">`+value.SHOPADDRESS+`</span>
+    					      <span></span>
     					      <span>
     					      `+href+`
     					      </span>
