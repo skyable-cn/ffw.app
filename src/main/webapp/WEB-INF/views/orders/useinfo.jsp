@@ -21,7 +21,7 @@
 				<div class="col-33" style="text-align:center;"><img align="middle" width="60" style="border-radius:50%;" src="<%=request.getContextPath()%>/static/image/payok.png"/><br/><br/>支付成功</div>
 				<div class="col-33">&nbsp;</div>
 			</div>
-			<h6 style="margin-top:5px;margin-bottom:5px;margin-left:30px;">完善以下信息,确保订单正常使用</h6>
+			<div style="margin-top:5px;margin-bottom:5px;margin-left:30px;">完善以下信息,确保订单正常使用</div>
 			<div class="list-block" style="margin-top:5px;">
 		    <ul>
 		      <!-- Text inputs -->
