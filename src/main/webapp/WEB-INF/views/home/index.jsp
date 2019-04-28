@@ -21,11 +21,11 @@
 			<div class="row" style="background-color:#FFCC01;height:150px;">
 				<div class="col-50" style="padding:20px;">
 					<div class="row">
-						<div class="col-100" style="font-weight:bold;">${USER_SESSION.NICKNAME}</div>
+						<div class="col-100" style="margin-top:10px;font-weight:bold;font-size:1.2rem;">${USER_SESSION.NICKNAME}</div>
 					</div>
-					<div class="row">
-						<div class="col-50" style="font-weight:bold;">${ordersNum}<br/>订单</div>
-						<div class="col-50" style="font-weight:bold;">${cardsNum}<br/>卡券</div>
+					<div class="row" style="font-size:0.85rem;">
+						<div class="col-50">${ordersNum}<br/>订单</div>
+						<div class="col-50">${cardsNum}<br/>卡券</div>
 					</div>
 				</div>
 				<div class="col-50" style="padding:20px;">
@@ -33,15 +33,15 @@
 				</div>
 			</div>
 			<div class="row module2" style="margin-top:10px;">
-				<div class="col-25"><a class="external" href="<%=request.getContextPath()%>/discount"><img src="<%=request.getContextPath()%>/static/icon/home/wz.png"/><p style="font-size:0.7rem;">周四五折</p></a></div>
-		        <div class="col-25"><a class="external" href="<%=request.getContextPath()%>/lottery"><img src="<%=request.getContextPath()%>/static/icon/home/cj.png"/><p style="font-size:0.7rem;">免费抽奖</p></a></div>
-		        <div class="col-25"><a class="external" href="<%=request.getContextPath()%>/shop"><img src="<%=request.getContextPath()%>/static/icon/home/tj.png"/><p style="font-size:0.7rem;">好店推荐</p></a></div>
-		        <div class="col-25"><a class="external" href="<%=request.getContextPath()%>/seller"><img src="<%=request.getContextPath()%>/static/icon/home/rz.png"/><p style="font-size:0.7rem;">商家入驻</p></a></div>
+				<div class="col-25"><a class="external" href="<%=request.getContextPath()%>/discount"><img src="<%=request.getContextPath()%>/static/icon/home/wz.png"/><p>周四五折</p></a></div>
+		        <div class="col-25"><a class="external" href="<%=request.getContextPath()%>/lottery"><img src="<%=request.getContextPath()%>/static/icon/home/cj.png"/><p>免费抽奖</p></a></div>
+		        <div class="col-25"><a class="external" href="<%=request.getContextPath()%>/shop"><img src="<%=request.getContextPath()%>/static/icon/home/tj.png"/><p>好店推荐</p></a></div>
+		        <div class="col-25"><a class="external" href="<%=request.getContextPath()%>/seller"><img src="<%=request.getContextPath()%>/static/icon/home/rz.png"/><p>商家入驻</p></a></div>
 			</div>
 			<div style="width:100%;height:10px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
-				<div class="col-50" style="font-weight:bold;font-size:0.75rem;">优惠活动</div>
-				<div class="col-50 more_activity"><a class="external" href="<%=request.getContextPath()%>/stand" style="color:#FFCC01;font-size:0.7rem;">查看更多</a></div>
+				<div class="col-50" style="font-size:0.85rem;">优惠活动</div>
+				<div class="col-50 more_activity"><a class="external" href="<%=request.getContextPath()%>/stand" style="color:#FFCC01;">查看更多</a></div>
 			</div>
 			<div class="row" style="padding:5px;padding-top:0px;">
 				<div class="col-100">
@@ -56,7 +56,7 @@
 				</div>
 			</div>
 			<div class="row" style="padding:5px;">
-				<div class="col-100" style="font-weight:bold;font-size:0.75rem;">热卖区</div>
+				<div class="col-100" style="font-size:0.85rem;">热卖区</div>
 			</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-100">
@@ -141,7 +141,7 @@
     				      </div>
     				    </div>
     				    <div class="card-footer">
-    				      <span>体验价: <strong style="color:#F40A0B;font-size:16px;">`+value.SELLMONEY+`</strong></span>
+    				      <span>体验价: <font style="color:#F40A0B;">`+value.SELLMONEY+`</font></span>
     				      <span class="delete">¥ `+value.ORIGINALMONEY+`</span>
     				      <span class="return">返 `+backmoney+`</span>
     				      <span>已抢:`+value.BUYNUMBER+`</span>
@@ -180,7 +180,7 @@
     				      </div>
     				    </div>
     				    <div class="card-footer">
-    				      <span>体验价: <strong style="color:#F40A0B;font-size:16px;">`+value.SELLMONEY+`</strong></span>
+    				      <span>体验价: <font style="color:#F40A0B;">`+value.SELLMONEY+`</font></span>
     				      <span class="delete">¥ `+value.ORIGINALMONEY+`</span>
     				      <span class="return">返 `+backmoney+`</span>
     				      <span>已抢:`+value.BUYNUMBER+`</span>

@@ -18,7 +18,7 @@
         <div class="page page-current" style="background:#FFFFFF;">
 			<div class="content">
 				<div class="row" style="padding:5px;">
-					<div class="col-100" style="text-align: right;font-size:0.7rem;font-weight:bold;">
+					<div class="col-100" style="text-align:right;">
 					<c:choose>
 				    	<c:when test="${order.STATE eq 0}">待付款</c:when>
 				    	<c:when test="${order.STATE eq 1}">已支付</c:when>
@@ -37,17 +37,17 @@
 				</div>
 				<div class="row" style="padding:5px;">
 					<div class="col-100">
-						<div style="text-align:center;font-size:0.7rem;font-weight:bold;">有效期 ${order.STARTTIME}~${order.ENDTIME}</div>
+						<div style="text-align:center;">有效期 ${order.STARTTIME}~${order.ENDTIME}</div>
 					</div>
 				</div>
-				<div style="margin:10px;border:1px #DDDDDD solid;height:100px;">
+				<div style="margin:10px;border:1px #CCCCCC solid;height:100px;">
 					<div class="row">
-						<div class="col-50" style="padding:7px;padding-top:15px;font-size:0.7rem;font-weight:bold;">核销码</div>
-						<div class="col-50" style="padding:7px;padding-top:15px;text-align:right;"><button onclick="goRefund('${order.ORDER_ID}','${order.WEIXINSN}','${order.MONEY}','${order.STATE}');" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;float:right;font-size:0.7rem;font-weight:bold;">申请退款</button></div>
+						<div class="col-50" style="padding:7px;padding-top:15px;">核销码</div>
+						<div class="col-50" style="padding:7px;padding-top:15px;text-align:right;"><button onclick="goRefund('${order.ORDER_ID}','${order.WEIXINSN}','${order.MONEY}','${order.STATE}');" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;float:right;">申请退款</button></div>
 					</div>
 					<div class="row">
-						<div class="col-50" style="padding:7px;padding-top:7px;font-size:0.7rem;font-weight:bold;">核销码:${order.USEKEY}</div>
-						<div class="col-50" style="padding:7px;padding-top:7px;text-align:right;font-size:0.7rem;font-weight:bold;"><c:choose>
+						<div class="col-50" style="padding:7px;padding-top:7px;">核销码:${order.USEKEY}</div>
+						<div class="col-50" style="padding:7px;padding-top:7px;text-align:right;"><c:choose>
 				    	<c:when test="${order.STATE eq 0}">待付款</c:when>
 				    	<c:when test="${order.STATE eq 1}">已支付</c:when>
 				    	<c:when test="${order.STATE eq 2}">待使用</c:when>
@@ -62,17 +62,17 @@
 				</div>
 				<div class="row" style="padding:5px;padding-top:0px;">
 					<div class="col-100">
-						<div style="text-align:center;font-size:0.65rem;font-weight:bold;color:#666666;">好友接收成功后,订单无法退款,你将不能再核销</div>
+						<div style="text-align:center;">好友接收成功后,订单无法退款,你将不能再核销</div>
 					</div>
 				</div>
 				<div class="row" style="padding:5px;padding-top:30px;">
 					<div class="col-100">
-						<div style="text-align:center;font-size:0.85rem;font-weight:bold;">使用方法</div>
+						<div style="text-align:center;font-size:0.85rem;">使用方法</div>
 					</div>
 				</div>
 				<div class="row" style="padding:5px;margin-bottom:20px;">
 					<div class="col-100">
-						<div style="text-align:center;font-size:0.7rem;font-weight:bold;">向商家出示二维码或核销码,扫码后核销成功,不支持截图</div>
+						<div style="text-align:center;">向商家出示二维码或核销码,扫码后核销成功,不支持截图</div>
 					</div>
 				</div>
 				<div style="width:100%;height:7px;background:#dddddd;">&nbsp;</div>
@@ -98,7 +98,7 @@
 			  <div style="width:100%;height:7px;background:#dddddd;">&nbsp;</div>
 			  <div class="row" style="padding:5px;margin-top:20px;">
 					<div class="col-100">
-						<div style="text-align:left;font-size:0.8rem;font-weight:bold;padding-left:5px;border-left:8px #FFCC01 solid;">核销记录</div>
+						<div style="text-align:left;padding-left:5px;border-left:8px #FFCC01 solid;font-size:0.85rem;">核销记录</div>
 					</div>
 				</div>
 				<c:if test="${fn:length(useData) eq 0}">
@@ -110,7 +110,7 @@
 				<c:forEach var="var" items="${useData}">
 				<div class="row" style="padding:5px;">
 					<div class="col-50">
-						<div style="text-align:left;font-size:0.65rem;font-weight:bold;color:#666666;padding:5px;">${var.SHOPNAME}</div>
+						<div style="text-align:left;padding:5px;">${var.SHOPNAME}</div>
 					</div>
 					<div class="col-50" style="text-align:right;">
 						${var.CDT}
@@ -120,108 +120,108 @@
 				</c:if>
 				<div class="row" style="padding:5px;margin-top:20px;">
 					<div class="col-100">
-						<div style="text-align:left;font-size:0.8rem;font-weight:bold;padding-left:5px;border-left:8px #FFCC01 solid;">注意事项</div>
+						<div style="text-align:left;padding-left:5px;border-left:8px #FFCC01 solid;font-size:0.85rem;">注意事项</div>
 					</div>
 				</div>
-				<div style="padding:5px;margin:10px;border:1px #DDDDDD solid;min-height:250px;word-wrap: break-word;word-break: break-all;overflow: hidden;font-size:0.65rem;font-weight:bold;">${order.BUYNOTICE}
+				<div style="padding:5px;margin:10px;border:1px #CCCCCC solid;min-height:250px;word-wrap: break-word;word-break: break-all;overflow: hidden;">${order.BUYNOTICE}
 				</div>
 				<div style="width:100%;height:7px;background:#dddddd;margin-top:20px;margin-bottom: 20px;">&nbsp;</div>
 				<div class="row" style="padding:5px;margin-top:20px;">
 					<div class="col-100">
-						<div style="text-align:left;font-size:0.8rem;font-weight:bold;padding-left:5px;border-left:8px #FFCC01 solid;">商家信息</div>
+						<div style="text-align:left;padding-left:5px;border-left:8px #FFCC01 solid;font-size:0.85rem;">商家信息</div>
 					</div>
 				</div>
 				<div class="row" style="padding:5px;">
 					<div class="col-100">
-						<div style="text-align:left;font-size:0.65rem;font-weight:bold;color:#666666;padding:5px;">${order.SHOPNAME}</div>
+						<div style="text-align:left;padding:5px;">${order.SHOPNAME}</div>
 					</div>
 				</div>
 				<div class="row" style="padding:5px;">
 					<div class="col-100">
-						<div style="text-align:left;font-size:0.65rem;font-weight:bold;color:#666666;padding:5px;">营业时间:8:00:00~21:00:00</div>
+						<div style="text-align:left;padding:5px;">营业时间:8:00:00~21:00:00</div>
 					</div>
 				</div>
 				<div class="row" style="padding:5px;">
 					<div class="col-50">
-						<div style="text-align:left;font-size:0.65rem;font-weight:bold;color:#666666;padding:5px;">商家电话:${order.CONTRACTPHONE}</div>
+						<div style="text-align:left;padding:5px;">商家电话:${order.CONTRACTPHONE}</div>
 					</div>
 					<div class="col-50" style="text-align:right;">
-					<img onclick="phone()" width="20" style="margin-right:15px;" src="<%=request.getContextPath()%>/static/icon/phone.png"/>
+					<img onclick="phone()" width="20" style="margin-right:5px;" src="<%=request.getContextPath()%>/static/icon/phone.png"/>
 					</div>
 				</div>
 				<div class="row" style="padding:5px;">
 					<div class="col-50">
-						<div style="text-align:left;font-size:0.65rem;font-weight:bold;color:#666666;padding:5px;">${order.SHOPADDRESS}</div>
+						<div style="text-align:left;padding:5px;">${order.SHOPADDRESS}</div>
 					</div>
 					<div class="col-50" style="text-align:right;">
-					<img onclick="position()" width="20" style="margin-right:15px;" src="<%=request.getContextPath()%>/static/icon/send.png"/>
+					<img onclick="position()" width="20" style="margin-right:5px;" src="<%=request.getContextPath()%>/static/icon/send.png"/>
 					</div>
 				</div>
 				
 				<div class="row" style="padding:5px;margin-top:20px;">
 					<div class="col-100">
-						<div style="text-align:left;font-size:0.8rem;font-weight:bold;padding-left:5px;border-left:8px #FFCC01 solid;">订单信息</div>
+						<div style="text-align:left;padding-left:5px;border-left:8px #FFCC01 solid;font-size:0.85rem;">订单信息</div>
 					</div>
 				</div>
 				<div class="row" style="padding:5px;">
 					<div class="col-50">
-						<div style="text-align:left;font-size:0.65rem;font-weight:bold;color:#666666;padding:5px;">订单编号</div>
+						<div style="text-align:left;padding:5px;">订单编号</div>
 					</div>
-					<div class="col-50" style="text-align:right;">
+					<div class="col-50" style="text-align:right;padding:5px;">
 						${order.ORDERSN}
 					</div>
 				</div>
 				<div class="row" style="padding:5px;">
 					<div class="col-50">
-						<div style="text-align:left;font-size:0.65rem;font-weight:bold;color:#666666;padding:5px;">购买日期</div>
+						<div style="text-align:left;padding:5px;">购买日期</div>
 					</div>
-					<div class="col-50" style="text-align:right;">
+					<div class="col-50" style="text-align:right;padding:5px;">
 						${order.CDT}
 					</div>
 				</div>
 				<div class="row" style="padding:5px;">
 					<div class="col-50">
-						<div style="text-align:left;font-size:0.65rem;font-weight:bold;color:#666666;padding:5px;">购买数量</div>
+						<div style="text-align:left;padding:5px;">购买数量</div>
 					</div>
-					<div class="col-50" style="text-align:right;">
+					<div class="col-50" style="text-align:right;padding:5px;">
 						${order.NUMBER}
 					</div>
 				</div>
 				<div class="row" style="padding:5px;">
 					<div class="col-50">
-						<div style="text-align:left;font-size:0.65rem;font-weight:bold;color:#666666;padding:5px;">商品总价</div>
+						<div style="text-align:left;padding:5px;">商品总价</div>
 					</div>
-					<div class="col-50" style="text-align:right;">
+					<div class="col-50" style="text-align:right;padding:5px;">
 						${order.ORIGINAL}元
 					</div>
 				</div>
 				<div class="row" style="padding:5px;">
 					<div class="col-50">
-						<div style="text-align:left;font-size:0.65rem;font-weight:bold;color:#666666;padding:5px;">实付金额</div>
+						<div style="text-align:left;padding:5px;">实付金额</div>
 					</div>
-					<div class="col-50" style="text-align:right;">
+					<div class="col-50" style="text-align:right;padding:5px;">
 						${order.MONEY}元
 					</div>
 				</div>
 				
 				<div class="row" style="padding:5px;margin-top:20px;">
 					<div class="col-100">
-						<div style="text-align:left;font-size:0.8rem;font-weight:bold;padding-left:5px;border-left:8px #FFCC01 solid;">用户信息</div>
+						<div style="text-align:left;padding-left:5px;border-left:8px #FFCC01 solid;font-size:0.85rem;">用户信息</div>
 					</div>
 				</div>
 				<div class="row" style="padding:5px;">
 					<div class="col-50">
-						<div style="text-align:left;font-size:0.65rem;font-weight:bold;color:#666666;padding:5px;">用户姓名</div>
+						<div style="text-align:left;padding:5px;">用户姓名</div>
 					</div>
-					<div class="col-50" style="text-align:right;">
+					<div class="col-50" style="text-align:right;padding:5px;">
 						${order.USEPERSON}
 					</div>
 				</div>
 				<div class="row" style="padding:5px;">
 					<div class="col-50">
-						<div style="text-align:left;font-size:0.65rem;font-weight:bold;color:#666666;padding:5px;">用户电话</div>
+						<div style="text-align:left;padding:5px;">用户电话</div>
 					</div>
-					<div class="col-50" style="text-align:right;">
+					<div class="col-50" style="text-align:right;padding:5px;">
 						${order.PERSONPHONE}
 					</div>
 				</div>

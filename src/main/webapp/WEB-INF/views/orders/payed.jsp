@@ -37,7 +37,7 @@
 			      </div>
 			    </div>
 			    <div class="card-footer">
-			      <span></span><span><button onclick="goUseInfo('${var.ORDER_ID}');" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">确认信息</button></span>
+			      <span></span><span><button onclick="goUseInfo('${var.ORDER_ID}');" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;">确认信息</button></span>
 			    </div>
 			  </div>
 			</c:forEach>

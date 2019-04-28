@@ -39,7 +39,7 @@
 			    </div>
 			    <div class="card-footer">
 			      <span></span>
-			      <span><button onclick="goPay('${var.ORDER_ID}','${var.ORDERSN}','${var.ORIGINAL}','${var.DERATE}','${var.MONEY}');" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;">立即支付</button></span>
+			      <span><button onclick="goPay('${var.ORDER_ID}','${var.ORDERSN}','${var.ORIGINAL}','${var.DERATE}','${var.MONEY}');" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;">立即支付</button></span>
 			    </div>
 			  </div>
 			</c:forEach>

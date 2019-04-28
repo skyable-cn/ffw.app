@@ -24,14 +24,14 @@
 			<c:forEach var="var1" items="${teamtData}" varStatus="status1">
 			<c:if test="${var1.LEVEL eq 1 }">
 			<div class="row" style="<c:if test="${status1.index eq 0}">border-top:1px #DDDDDD solid;</c:if>border-bottom:1px #DDDDDD solid;">
-				<div class="col-50" style="font-size:0.7rem;">
+				<div class="col-50">
 				 	<img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="${var1.PHOTO}"/>${var1.NICKNAME}
 				</div>
 				<div class="col-50" style="border-left:1px #DDDDDD solid;">
 					<c:forEach var="var2" items="${teamtData}"  varStatus="status2">
 					<c:if test="${var2.LEVEL eq 2 &&  var1.WXOPEN_ID eq var2.FROMWXOPEN_ID}">
 				 	<div class="row">
-						<div class="col-100"  style="font-size:0.7rem;">
+						<div class="col-100">
 						<img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="${var2.PHOTO}"/>${var2.NICKNAME}
 						</div>
 					</div>

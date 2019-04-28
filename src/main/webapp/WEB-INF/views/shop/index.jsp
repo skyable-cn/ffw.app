@@ -20,34 +20,34 @@
 			<div class="row" style="padding:5px;">
 				<div class="col-50">
 					<div class="selectdiv" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2000" latitude="34.277050" longitude="108.962660">
-						<h4 style="font-size:0.7rem;;margin:0px;">西安火车站<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></h4>
-						<h4 style="font-size:0.6rem;margin:0px;">2.0km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></h4>
+						<div>西安火车站<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
+						<div>2.0km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
 					</div>
 				</div>
 				<div class="col-50">
 					<div class="selectdiv" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2000" latitude="34.250660" longitude="108.947029">
-						<h4 style="font-size:0.7rem;margin:0px;">西安城墙南门<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></h4>
-						<h4 style="font-size:0.6rem;margin:0px;">2.0km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></h4>
+						<div>西安城墙南门<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
+						<div>2.0km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
 					</div>
 				</div>
 			</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-33">
 					<div class="selectdiv" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2500" latitude="34.259430" longitude="108.947040">
-						<h4 style="font-size:0.7rem;margin:0px;">钟楼<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></h4>
-						<h4 style="font-size:0.6rem;margin:0px;">2.5km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></h4>
+						<div>钟楼<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
+						<div>2.5km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
 					</div>
 				</div>
 				<div class="col-33">
 					<div class="selectdiv" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2500" latitude="34.222819" longitude="108.946696">
-						<h4 style="font-size:0.7rem;margin:0px;">小寨<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></h4>
-						<h4 style="font-size:0.6rem;margin:0px;">2.5km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></h4>
+						<div>小寨<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
+						<div>2.5km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
 					</div>
 				</div>
 				<div class="col-33">
 					<div class="selectdiv" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2500" latitude="34.162457" longitude="108.903866">
-						<h4 style="font-size:0.7rem;margin:0px;">大学城<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></h4>
-						<h4 style="font-size:0.6rem;margin:0px;">2.5km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></h4>
+						<div>大学城<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
+						<div>2.5km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
 					</div>
 				</div>
 			</div>
@@ -156,7 +156,7 @@
     				      </div>
     				    </div>
     				    <div class="card-footer">
-    				      <span>体验价: <strong style="color:#F40A0B;font-size:16px;">`+value.SELLMONEY+`</strong></span>
+    				      <span>体验价: <font style="color:#F40A0B;">`+value.SELLMONEY+`</font></span>
     				      <span class="delete">¥ `+value.ORIGINALMONEY+`</span>
     				      <span class="return">返 `+backmoney+`</span>
     				      <span>已抢:`+value.BUYNUMBER+`</span>
@@ -195,7 +195,7 @@
     				      </div>
     				    </div>
     				    <div class="card-footer">
-    				      <span>体验价: <strong style="color:#F40A0B;font-size:16px;">`+value.SELLMONEY+`</strong></span>
+    				      <span>体验价: <font style="color:#F40A0B;">`+value.SELLMONEY+`</font></span>
     				      <span class="delete">¥ `+value.ORIGINALMONEY+`</span>
     				      <span class="return">返 `+backmoney+`</span>
     				      <span>已抢:`+value.BUYNUMBER+`</span>

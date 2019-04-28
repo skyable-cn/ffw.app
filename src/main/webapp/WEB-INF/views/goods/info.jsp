@@ -33,7 +33,7 @@
 				      </div>
 				    </div>
 				    <div class="card-footer">
-				      <span>体验价: <strong style="color:#F40A0B;font-size:16px;">${pd.SELLMONEY}</strong></span>
+				      <span>体验价: <font style="color:#F40A0B;">${pd.SELLMONEY}</font></span>
 				      <span class="delete">¥ ${pd.ORIGINALMONEY}</span>
 				      <span class="return">返 
 				      <c:choose>
@@ -50,13 +50,13 @@
 			</div>
 			<div style="width:100%;height:5px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
-				<div class="col-100" style="font-weight:bold;font-size:0.75rem;">已抢购用户</div>
+				<div class="col-100" style="font-size:0.85rem;">已抢购用户</div>
 			</div>
 			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
         	<div class="row" style="padding:5px;">
 				<div class="col-100">
 					<c:if test="${fn:length(peopleDataList) eq 0}">
-						&nbsp;
+						<span><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
 					</c:if>
 					<c:forEach var="var" items="${peopleDataList}">
 						<img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="${var.PHOTO}"/>
@@ -74,7 +74,7 @@
 		    <div class="tabs">
 		      <div id="tab1" class="tab active">
 		          <div class="row" style="padding:5px;margin-top:5px;margin-bottom:5px;">
-					<div class="col-60" style="font-size:0.7rem;font-weight:bold;"><c:choose>
+					<div class="col-60"><c:choose>
 	              	<c:when test="${shop.FILEPATH eq null}">
 	              	<img align="middle" style="margin-left:20px; width:60px; height:60px; border-radius:50%;" src="<%=request.getContextPath()%>/static/image/shop.jpg"/>
 	              	</c:when>
@@ -82,11 +82,11 @@
 	              	<img align="middle" style="margin-left:20px; width:60px; height:60px; border-radius:50%;" src="<%=request.getContextPath()%>/file/image?FILENAME=${shop.FILEPATH}"/>
 	              	</c:otherwise>
 	              </c:choose>${shop.SHOPNAME}</div>
-					<div class="col-40" style="line-height:60px;text-align:right;"><a class="external" href="<%=request.getContextPath()%>/shop/info?SHOP_ID=${shop.SHOP_ID}" style="font-size:0.65rem;text-decoration:underline;color:#444444;font-weight:bold;">进店逛逛</a></div>
+					<div class="col-40" style="line-height:60px;text-align:right;"><a class="external" href="<%=request.getContextPath()%>/shop/info?SHOP_ID=${shop.SHOP_ID}" style="text-decoration:underline;">进店逛逛</a></div>
 				</div>
 			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:10px;">
-				<div class="col-60" style="font-size:0.7rem;font-weight:bold;">${shop.SHOPADDRESS}</div>
+				<div class="col-60">${shop.SHOPADDRESS}</div>
 		        <div class="col-40" style="text-align:right;"><img onclick="phone()" width="20" style="margin-right:15px;" src="<%=request.getContextPath()%>/static/icon/phone.png"/> | <img  onclick="position()" style="margin-left:15px;" width="20" src="<%=request.getContextPath()%>/static/icon/send.png"/></div>
 			</div>
 			<!-- 
@@ -103,14 +103,14 @@
 		      <div id="tab2" class="tab">
 		        <div class="row" style="padding:5px;">
 				<div class="col-100">
-					<div style="min-height:180px;padding:10px;border:1px #dddddd solid;word-wrap: break-word;word-break: break-all;overflow: hidden;font-size:0.7rem;">${pd.BUYNOTICE}</div>
+					<div style="min-height:180px;padding:10px;border:1px #dddddd solid;word-wrap: break-word;word-break: break-all;overflow: hidden;">${pd.BUYNOTICE}</div>
 				</div>
 			</div>
 		      </div>
 		      <div id="tab3" class="tab">
 		        <c:forEach var="var" items="${fileDataList}" varStatus="index">
-		        <h5 style="text-align: center;font-size:0.65rem;color:#888888;">${index.index+1}产品图片</h5>
-			<div class="row" style="padding:5px;">
+		        <div style="text-align:center;padding:5px;">${index.index+1}产品图片</div>
+				<div class="row" style="padding:5px;">
 				<div class="col-100">
 					<img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" alt="">
 				</div>

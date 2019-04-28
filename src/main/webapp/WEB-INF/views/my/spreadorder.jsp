@@ -17,7 +17,7 @@
         <div class="page page-current">
 			<div class="content">
 			<div class="row" style="background-color:#FFCC01;height:150px;">
-				<div class="col-50" style="padding:20px;">
+				<div class="col-50" style="padding:20px;font-size:0.85rem;">
 				累积推广订单<br/>
 				${fn:length(orderData)}&nbsp;/&nbsp;单
 				</div>

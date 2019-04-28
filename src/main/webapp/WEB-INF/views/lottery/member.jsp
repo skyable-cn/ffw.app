@@ -23,13 +23,13 @@
 				</div>
 				<div class="col-50">
 					<div class="row">
-						<div class="col-100" style="font-weight:bold;font-size:0.7rem;">${var.NICKNAME}</div>
+						<div class="col-100">${var.NICKNAME}</div>
 					</div>
 					<div class="row">
-						<div class="col-100" style="font-weight:bold;font-size:0.7rem;">${var.LUCKNUMBER}</div>
+						<div class="col-100">${var.LUCKNUMBER}</div>
 					</div>
 					<div class="row">
-						<div class="col-100" style="font-weight:bold;font-size:0.7rem;">${var.CDT}</div>
+						<div class="col-100">${var.CDT}</div>
 					</div>
 				</div>
 			</div>

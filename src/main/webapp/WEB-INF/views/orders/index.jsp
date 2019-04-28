@@ -21,27 +21,27 @@
 					<div class="col-40">
 					<img width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=${pd.FILEPATH}';">
 					</div>
-					<div class="col-60" style="font-weight:bold;font-size:0.7rem;">
+					<div class="col-60">
 					${pd.GOODSNAME}<br/>
 					${pd.GOODSDESC}
 					</div>
 				</div>
 				<div style="width:100%;height:5px;background:#dddddd;">&nbsp;</div>
-				<div class="row" style="padding:10px;padding-top:15px;padding-bottom:15px;">
-					<div class="col-50" style="font-weight:bold;font-size:0.7rem;">购买数量</div>
+				<div class="row" style="padding:10px;padding-top:10px;padding-bottom:10px;">
+					<div class="col-50" style="line-height:50px;">购买数量</div>
 					<div class="col-50"><div style="margin-right:20px;float:right;"><button style="width:35px;margin-right:1px;height:35px;" onclick="computer('-1')">-</button><button style="width:40px;background:#FFFFFF;height:35px;" id="numberButton">1</button><button style="width:35px;margin-left:1px;height:35px;" onclick="computer('1')">+</button></div></div>
 				</div>
 				<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 				<div class="row" style="padding:10px;padding-top:15px;padding-bottom:15px;">
-					<div class="col-50" style="font-weight:bold;font-size:0.7rem;">小计</div>
+					<div class="col-50">小计</div>
 					<div class="col-50"><div style="margin-right:20px;float:right;"><span id="XJ" style="font-size:0.7rem;">${pd.SELLMONEY}</span>元</div></div>
 				</div>
 				<c:if test="${fn:length(cardsData) > 0}">
 				<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 				<div class="row" style="padding:10px;padding-top:15px;padding-bottom:15px;">
-					<div class="col-40" style="font-weight:bold;font-size:0.7rem;">卡券抵扣</div>
+					<div class="col-40">卡券抵扣</div>
 					<div class="col-60"><div style="margin-right:20px;float:right;">
-						<font id="JMTS" style="color:#F40A0B;font-size:0.7rem;">(抵消0.00元)</font><a href="#page2" style="color:#3d4145;font-size:0.7rem;font-weight:normal;text-decoration:underline;">${fn:length(cardsData)}个卡券</a>
+						<font id="JMTS" style="color:#F40A0B;">(抵消0.00元)</font><a href="#page2" style="color:#3d4145;font-size:0.7rem;font-weight:normal;text-decoration:underline;">${fn:length(cardsData)}个卡券</a>
 						<!-- <select onchange="changeMoney()" id="KQID" style="border:none;background:#eee;">
 							<option value="">${fn:length(cardsData)}个卡券可用</option>
 							<c:forEach var="var" items="${cardsData}">
@@ -55,7 +55,7 @@
 				</c:if>
 				<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 				<div class="row" style="padding:10px;padding-top:15px;padding-bottom:15px;">
-					<div class="col-50" style="font-weight:bold;font-size:0.7rem;">实付金额</div>
+					<div class="col-50">实付金额</div>
 					<div class="col-50"><div style="margin-right:20px;float:right;"><span id="SF" style="font-size:0.7rem;">${pd.SELLMONEY}</span>元</div></div>
 				</div>
 				<c:if test="${vipinfo ne null}">
@@ -64,10 +64,10 @@
 				<c:if test="${vipinfo eq null}">
 				<div style="width:100%;height:20px;background:#dddddd;">&nbsp;</div>
 				<div class="row" style="padding:10px;padding-top:15px;padding-bottom:15px;height:100px;position:relative;">
-	        	<div class="col-50" style="padding-top:30px;font-size:0.9rem;color:#666666;">
-	        	${product.PRODUCTDESC}(${product.PRODUCTTIME}天)
+	        	<div class="col-50" style="padding-top:30px;font-size:1.2rem;color:#666666;">
+	        	${product.PRODUCTDESC}
 	        	</div>
-	        	<div class="col-25" style="line-height:60px;text-align:right;color:#666666;font-size:0.75rem;font-weight:bold;">
+	        	<div class="col-25" style="line-height:60px;text-align:right;">
 	        	¥ ${product.PRODUCTMONEY}
 	        	</div>
 	        	<div class="col-25" style="line-height:60px;text-align:right;">
@@ -78,7 +78,7 @@
               </label>
             </div>
 	        	</div>
-	        	<div style="background:#FFCC01;position:absolute;top:0px;color:#333333;padding:5px;font-weight:bold;font-size:0.6rem;padding-left:15px;border-bottom-right-radius:10px;">开通会员,周四立享五折优惠</div>
+	        	<div style="background:#FFCC01;position:absolute;top:0px;color:#333333;padding:5px;padding-left:15px;border-bottom-right-radius:10px;">开通会员,周四立享五折优惠</div>
         	  </div>
         	  <div style="width:100%;height:5px;background:#dddddd;">&nbsp;</div>
         	  </c:if>
