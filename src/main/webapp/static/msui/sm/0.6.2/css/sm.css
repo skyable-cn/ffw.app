@@ -1065,7 +1065,7 @@ a:active {
 }
 .bar-tab .tab-item .icon ~ .tab-label {
   display: block;
-  font-size: 0.55rem;
+  font-size: 0.65rem;
   position: relative;
   top: 0.15rem;
 }

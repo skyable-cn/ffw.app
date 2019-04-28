@@ -19,11 +19,11 @@
 			<c:forEach var="var" items="${cardsData}">
 			<div class="row" style="padding:5px;">
 				<div class="col-100">
-					<div class="card" onclick="changeMoney('${var.CARD_ID}','${var.MONEY}')">
+					<div class="card" style="background:#efeff4;" onclick="changeMoney('${var.CARD_ID}','${var.MONEY}')">
 				    <div class="card-content">
-				      <div class="card-content-inner" style="height:100px;background:#FE0100;color:#FFFFFF;font-size:1.0rem;">${var.DESCRIPTION}</div>
+				      <div class="card-content-inner" style="border-top-left-radius:15px;border-top-right-radius:15px;height:80px;background:#FE0100;color:#FFFFFF;font-size:1.0rem;font-weight:normal;">${var.DESCRIPTION}</div>
 				    </div>
-				    <div class="card-footer" style="text-align:right;background:#FFCC01;font-size:0.65rem;"><span></span><span>有效期:${var.STARTTIME} / ${var.ENDTIME}</span></div>
+				    <div class="card-footer" style="border-bottom-left-radius:15px;border-bottom-right-radius:15px;text-align:right;background:#FFCC01;font-weight:normal;"><span></span><span>有效期:${var.STARTTIME} / ${var.ENDTIME}</span></div>
 				  </div>
 			  	</div>
 			  </div>

@@ -102,7 +102,7 @@
 				<div class="col-100">
 					<div class="card" style="background:#efeff4;" onclick="selectProduct(this)" MONEY="${var.PRODUCTMONEY}" PRODUCT_ID="${var.PRODUCT_ID}">
 				    <div class="card-content">
-				      <div class="card-content-inner" style="border-top-left-radius:15px;border-top-right-radius:15px;height:80px;background:#FE0100;color:#FFFFFF;font-size:1.0rem;font-weight:normal;">${var.PRODUCTDESC}<span style="float:right;"><img width="30" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
+				      <div class="card-content-inner" style="border-top-left-radius:15px;border-top-right-radius:15px;height:80px;background:#FE0100;color:#FFFFFF;font-size:1.0rem;font-weight:normal;">${var.PRODUCTDESC}<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
 				    </div>
 				    <div class="card-footer" style="border-bottom-left-radius:15px;border-bottom-right-radius:15px;text-align:right;background:#FFCC01;font-weight:normal;">
 				    <span>¥ ${var.PRODUCTMONEY} 元</span><span>送会员: ${var.PRODUCTTIME} 天</span>
