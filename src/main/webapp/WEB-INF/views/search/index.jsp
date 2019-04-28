@@ -107,6 +107,7 @@
       	});
       	
       	$(".selectdiv").click(function(){
+      		if (loading) return;
       		$(document).find("img.selectpng").css("display","none");
       		$(this).find("img.selectpng").css("display","");
       		latitude = $(this).attr("latitude");
