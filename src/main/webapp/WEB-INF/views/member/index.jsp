@@ -45,7 +45,7 @@
 					 </div>
 					 <c:if test="${vipinfo ne null}">
 					 	<div class="row" style="padding:5px;">
-					 		<div class="col-40"><button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;font-weight:bold;margin:10px;font-size:0.6rem;">邀请好友</button></div>
+					 		<div class="col-40"><button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;margin:10px;">邀请好友</button></div>
 					 		<div class="col-60">
 					 		<c:if test="${fn:length(friendData) eq 0}">
 					 		<span onclick="goShare()"><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
@@ -65,8 +65,8 @@
 					 		</div>
 					 	</div>
 					 	<div class="row" style="padding:5px;">
-					 		<div class="col-40"><button class="button button-fill button-warning" style="background:#FFCC01;margin:10px;margin-top:5px;">邀请赚钱</button></div>
-					 		<div class="col-60"><button onclick="goShare()" class="button button-fill button-warning" style="background:#FFCC01;margin:10px;margin-top:5px;margin-left:0px;">分享</button></div>
+					 		<div class="col-40"><button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;margin:10px;margin-top:5px;">邀请赚钱</button></div>
+					 		<div class="col-60"><button onclick="goShare()" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;margin:10px;margin-top:5px;margin-left:0px;">分享</button></div>
 					 	</div>
 					 </c:if>
 				 </div>
