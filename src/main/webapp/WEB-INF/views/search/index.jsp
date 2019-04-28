@@ -146,7 +146,7 @@
     					$("#goods1").html('');
     					$("#goods2").html('');
     					$.hidePreloader();
-    					setTimeout(function(){$.hidePreloader();$.toast("该条件暂无数据");setTimeout(function(){loading = false;},2000);},1000);
+    					setTimeout(function(){$.hidePreloader();},1000);
     					loading = false;
     					return;
     				}
