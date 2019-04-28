@@ -145,7 +145,6 @@
     				if(list.length == 0){
     					$("#goods1").html('');
     					$("#goods2").html('');
-    					$.hidePreloader();
     					setTimeout(function(){$.hidePreloader();},1000);
     					loading = false;
     					return;
