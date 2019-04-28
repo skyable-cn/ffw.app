@@ -132,7 +132,7 @@
     	    		"DISTANCE":distance,
   					"page_currentPage":page_currentPage
     	    	},
-    	    	async: false,
+    	    	async: true,
     			dataType:'json',
     			cache: false,
     			beforeSend:function(){
@@ -146,7 +146,7 @@
     					$("#goods1").html('');
     					$("#goods2").html('');
     					$.hidePreloader();
-    					$.toast("该条件暂无数据");
+    					setTimeout(function(){$.hidePreloader();$.toast("该条件暂无数据");setTimeout(function(){loading = false;},2000);},1000);
     					loading = false;
     					return;
     				}
@@ -227,9 +227,8 @@
     					$("#goods2").append(html);
     				}
     				
-    				setTimeout(function(){$.hidePreloader();},1000);
-    				
-    	             loading = false;
+    				setTimeout(function(){$.hidePreloader();loading = false;},1000);
+
     			},
     			error:function(){
     				
