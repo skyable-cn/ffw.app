@@ -41,7 +41,7 @@
 			<div style="width:100%;height:10px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-50" style="font-size:0.85rem;">优惠活动</div>
-				<div class="col-50 more_activity"><a class="external" href="<%=request.getContextPath()%>/stand" style="color:#FFCC01;">查看更多</a></div>
+				<div class="col-50 more_activity"><a class="external" href="<%=request.getContextPath()%>/stand" style="color:#FFCC01;font-size:0.85rem;">查看更多</a></div>
 			</div>
 			<div class="row" style="padding:5px;padding-top:0px;">
 				<div class="col-100">
