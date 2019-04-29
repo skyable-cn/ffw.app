@@ -2136,7 +2136,7 @@ label.label-checkbox.active-state .item-inner:after {
   text-align: center;
   display: block;
   border-radius: 0.25rem;
-  line-height: 1.25rem;
+  line-height: 1.75rem;
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -2145,7 +2145,7 @@ label.label-checkbox.active-state .item-inner:after {
   background: none;
   padding: 0 0.5rem;
   margin: 0;
-  height: 1.35rem;
+  height: 1.85rem;
   white-space: nowrap;
   position: relative;
   text-overflow: ellipsis;
@@ -2178,7 +2178,7 @@ input[type="button"].button {
   color: #fff;
   background: #0894ec;
   border: none;
-  line-height: 1.35rem;
+  line-height: 1.85rem;
 }
 .button.button-fill.active,
 .button.button-fill:active {
@@ -2349,10 +2349,10 @@ input[type="button"].button {
   border-radius: 0 0.25rem 0.25rem 0;
 }
 .buttons-row .button.button-round:first-child {
-  border-radius: 1.35rem 0 0 1.35rem;
+  border-radius: 1.85rem 0 0 1.85rem;
 }
 .buttons-row .button.button-round:last-child {
-  border-radius: 0 1.35rem 1.35rem 0;
+  border-radius: 0 1.85rem 1.85rem 0;
 }
 .buttons-tab {
   background: white;

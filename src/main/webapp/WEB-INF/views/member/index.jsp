@@ -28,9 +28,8 @@
 			<div class="content">
 			<div class="row">
 				<div class="col-100" style="position:relative;">
-				 <div><img class='card-cover div_height1' height="260" width="100%" src="<%=request.getContextPath()%>/static/icon/me.png" alt=""></div>
-				 <div><marquee direction="left" style="position:absolute;top:20px;color:#F40A0B;font-size:0.7rem;">1、成功邀请两名好友开通会员送你一个月会员。2、成功邀请好友开通年卡送你30元佣金。</marquee></div>
-				 <div class="div_height2" style="background:#ffffff;height:200px;position:absolute;top:60px;z-index:999;left:5%;right:5%;-webkit-box-shadow: 3px 3px 12px #666;-moz-box-shadow: 3px 3px 12px #666;box-shadow: 3px 3px 12px #666; -moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;">
+				 <div><img class='card-cover div_height1' height="230" width="100%" src="<%=request.getContextPath()%>/static/icon/me.png" alt=""></div>
+				 <div class="div_height2" style="background:#ffffff;height:200px;position:absolute;top:30px;z-index:999;left:2%;right:2%;-webkit-box-shadow: 3px 3px 12px #666;-moz-box-shadow: 3px 3px 12px #666;box-shadow: 3px 3px 12px #666; -moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;">
 					 <div class="row">
 					 	<div class="col-60">
 					 		<div class="row">
@@ -45,28 +44,44 @@
 					 </div>
 					 <c:if test="${vipinfo ne null}">
 					 	<div class="row" style="padding:5px;">
-					 		<div class="col-40"><button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;margin:10px;">邀请好友</button></div>
-					 		<div class="col-60">
+					 		<div class="col-50">
+					 		<div class="row">
+						 		<div class="col-50">
+						 		<button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;margin-left:5px;margin-top: 5px;">邀请好友</button>
+						 		</div>
+						 		<div class="col-50" style="padding-top:5px;">
 					 		<c:if test="${fn:length(friendData) eq 0}">
-					 		<span onclick="goShare()"><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
-					 		<span onclick="goShare()" style="margin-left:30px;"><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
+					 		<span onclick="goShare()"><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
+					 		<span onclick="goShare()" style="margin-left:5px;"><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
 					 		</c:if>
 					 		<c:if test="${fn:length(friendData) eq 1}">
 					 		<c:forEach var="var" items="${friendData}">
-					 		<span><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="${var.PHOTO}"/></span>
+					 		<span><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="${var.PHOTO}"/></span>
 					 		</c:forEach>
-					 		<span onclick="goShare()" style="margin-left:30px;"><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
+					 		<span onclick="goShare()" style="margin-left:5px;"><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
 					 		</c:if>
 					 		<c:if test="${fn:length(friendData) eq 2}">
 					 		<c:forEach var="var" items="${friendData}" varStatus="status">
-					 		<span <c:if test="${status.index ne 0 }">style="margin-left:30px;"</c:if>><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="${var.PHOTO}"/></span>
+					 		<span <c:if test="${status.index ne 0 }">style="margin-left:5px;"</c:if>><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="${var.PHOTO}"/></span>
 					 		</c:forEach>
 					 		</c:if>
 					 		</div>
+							</div>
+					 		</div>
+					 		<div class="col-50" style="font-size:0.6rem;color:#888888;line-height:2rem;">邀请两名好友开通会员送你月会员</div>
 					 	</div>
 					 	<div class="row" style="padding:5px;">
-					 		<div class="col-40"><button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;margin:10px;margin-top:5px;">邀请赚钱</button></div>
-					 		<div class="col-60"><button onclick="goShare()" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;margin:10px;margin-top:5px;margin-left:0px;">分享</button></div>
+					 		<div class="col-40">
+						 		<div class="row">
+							 		<div class="col-50">
+							 		<button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;margin-left:5px;">邀请赚钱</button>
+							 		</div>
+							 		<div class="col-50">
+							 		<button onclick="goShare()" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;margin-left:15px;">分享</button>
+							 		</div>
+						 		</div>
+					 		</div>
+					 		<div class="col-60" style="font-size:0.6rem;color:#888888;line-height:2rem;">邀请好友开通年卡送你30元佣金</div>
 					 	</div>
 					 </c:if>
 				 </div>
