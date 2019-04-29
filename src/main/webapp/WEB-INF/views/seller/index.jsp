@@ -55,7 +55,7 @@
           <div class="item-inner">
             <div class="item-title label">商家位置</div>
             <div class="item-input position">
-			<a class="external" onclick="position()" href="javascript:;"><img alt="" src="<%=request.getContextPath()%>/static/icon/position.png"/>${pd.ADDRESS}</a>
+			<a class="external" onclick="position()" href="javascript:;"><img align="middle" alt="" src="<%=request.getContextPath()%>/static/icon/position.png"/>${pd.ADDRESS}</a>
             </div>
           </div>
         </div>
