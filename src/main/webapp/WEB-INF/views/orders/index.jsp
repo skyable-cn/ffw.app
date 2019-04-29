@@ -94,15 +94,24 @@
     	<div class="page" id="page2">
 			<div class="content">
 			<c:forEach var="var" items="${cardsData}">
-			<div class="row" style="padding:5px;">
+			  <div class="row" style="padding:5px;">
 				<div class="col-100">
-					<a href="#page1"><div class="card" onclick="changeMoney('${var.CARD_ID}','${var.MONEY}')">
+					<a href="#page1"><div class="card" style="background:#efeff4;" onclick="changeMoney('${var.CARD_ID}','${var.MONEY}')">
 				    <div class="card-content">
-				      <div class="card-content-inner" style="height:100px;background:#FE0100;color:#FFFFFF;font-size:1.0rem;">${var.DESCRIPTION}</div>
+				      <div class="card-content-inner" style="border-top-left-radius:5px;border-top-right-radius:5px;height:80px;background:#FE0100;color:#FFFFFF;font-weight:normal;">
+				      <div class="row">
+				      	<div class="col-30" style="padding-left:15px;line-height:2.5rem;font-size:1.5rem;">${var.MONEY}元</div>
+				      	<div class="col-60">
+				      	<div style="font-size:0.85rem;">代金券</div>
+				      	<div>全场通用</div>
+				      	</div>
+				      </div>
+				      </div>
 				    </div>
-				    <div class="card-footer" style="text-align:right;background:#FFCC01;font-size:0.65rem;"><span></span><span>有效期:${var.STARTTIME} / ${var.ENDTIME}</span></div>
-				  </div></a>
-			  	</div>
+				    <div class="card-footer" style="border-bottom-left-radius:5px;border-bottom-right-radius:5px;text-align:right;background:#FFCC01;font-weight:normal;"><span></span><span>有效期:${var.STARTTIME} / ${var.ENDTIME}</span></div>
+				  </div>
+				  </a>
+			  </div>
 			  </div>
 			</c:forEach>
 			<div class="row" style="padding:5px;">

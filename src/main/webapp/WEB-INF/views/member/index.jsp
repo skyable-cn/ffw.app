@@ -117,10 +117,18 @@
 				<div class="col-100">
 					<div class="card" style="background:#efeff4;" onclick="selectProduct(this)" MONEY="${var.PRODUCTMONEY}" PRODUCT_ID="${var.PRODUCT_ID}">
 				    <div class="card-content">
-				      <div class="card-content-inner" style="border-top-left-radius:15px;border-top-right-radius:15px;height:80px;background:#FE0100;color:#FFFFFF;font-size:1.0rem;font-weight:normal;">${var.PRODUCTDESC}<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
+				      <div class="card-content-inner" style="border-top-left-radius:10px;border-top-right-radius:10px;height:60px;background:#FFCC01;font-weight:normal;">
+				      <div class="row">
+				      	<div class="col-60">
+				      	<div style="font-size:1.0rem;font-weight:bold;">${var.PRODUCTDESC}</div>
+				      	<div style="font-size:0.85rem;">¥ ${var.PRODUCTMONEY} 元</div>
+				      	</div>
+				      	<div class="col-40" style="text-align:right;"><img width="20" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/payok.png"/></div>
+				      </div>
+				      </div>
 				    </div>
-				    <div class="card-footer" style="border-bottom-left-radius:15px;border-bottom-right-radius:15px;text-align:right;background:#FFCC01;font-weight:normal;">
-				    <span>¥ ${var.PRODUCTMONEY} 元</span><span>送会员: ${var.PRODUCTTIME} 天</span>
+				    <div class="card-footer" style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;text-align:right;background:#FFCC01;font-weight:normal;color:#3d414;">
+				    <span>有效期: ${var.PRODUCTTIME} 天</span>
 				    </div>
 				  </div>
 			  	</div>
