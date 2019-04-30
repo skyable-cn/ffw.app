@@ -21,7 +21,7 @@
 					<img align="middle" style="margin:10px; width:80px;border-radius:50%;" src="${USER_SESSION.PHOTO}"/>
 				</div>
 				<div class="col-60" style="padding-top:30px;">
-					<div style="font-size:1.2rem;padding-bottom:5px;">${USER_SESSION.NICKNAME}</div>
+					<div style="font-size:0.85rem;padding-bottom:5px;">${USER_SESSION.NICKNAME}</div>
 					<div style="padding-bottom:2px;">个人资料</div>
 					<div style="padding-bottom:2px;">
 					${USER_SESSION.MEMBERTYPENAME}
