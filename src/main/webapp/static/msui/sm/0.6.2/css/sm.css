@@ -4811,8 +4811,8 @@ html:not(.watch-active-state) .theme-white label.label-radio:active,
 .select_condition{
 	border: none;
 	height:40px;
-	font-size:0.85rem;
-	width:80%;
+	font-size:0.7rem;
+	width:100%;
 	background:#ffffff;
 }
 ul.noafter:after{
