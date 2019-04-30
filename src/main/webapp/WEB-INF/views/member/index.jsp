@@ -43,7 +43,7 @@
 					 	</div>
 					 </div>
 					 <c:if test="${vipinfo ne null}">
-					 	<div class="row" style="padding:5px;">
+					 	<div class="row">
 					 		<div class="col-50">
 					 		<div class="row">
 						 		<div class="col-50">
@@ -52,17 +52,17 @@
 						 		<div class="col-50" style="padding-top:5px;">
 					 		<c:if test="${fn:length(friendData) eq 0}">
 					 		<span onclick="goShare()"><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
-					 		<span onclick="goShare()" style="margin-left:5px;"><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
+					 		<span onclick="goShare()"><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
 					 		</c:if>
 					 		<c:if test="${fn:length(friendData) eq 1}">
 					 		<c:forEach var="var" items="${friendData}">
 					 		<span><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="${var.PHOTO}"/></span>
 					 		</c:forEach>
-					 		<span onclick="goShare()" style="margin-left:5px;"><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
+					 		<span onclick="goShare()"><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
 					 		</c:if>
 					 		<c:if test="${fn:length(friendData) eq 2}">
 					 		<c:forEach var="var" items="${friendData}" varStatus="status">
-					 		<span <c:if test="${status.index ne 0 }">style="margin-left:5px;"</c:if>><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="${var.PHOTO}"/></span>
+					 		<span <c:if test="${status.index ne 0 }"></c:if>><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="${var.PHOTO}"/></span>
 					 		</c:forEach>
 					 		</c:if>
 					 		</div>
@@ -70,7 +70,7 @@
 					 		</div>
 					 		<div class="col-50" style="font-size:0.6rem;color:#888888;line-height:2rem;">邀请两名好友开通会员送你月会员</div>
 					 	</div>
-					 	<div class="row" style="padding:5px;">
+					 	<div class="row"style="margin-top:10px;">
 					 		<div class="col-40">
 						 		<div class="row">
 							 		<div class="col-50">
