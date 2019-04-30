@@ -4796,8 +4796,8 @@ html:not(.watch-active-state) .theme-white label.label-radio:active,
 }
 .discount div select{
 	border: none;
-	width:100%;
 	height:40px;
+	float: right;
 }
 .item-subtitle span{
 	float:right;
