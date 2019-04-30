@@ -112,7 +112,7 @@
 		        <div style="text-align:center;padding:5px;">${index.index+1}产品图片</div>
 				<div class="row" style="padding:5px;">
 				<div class="col-100">
-					<img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" alt="">
+					<img style="border-top-left-radius:5px;border-top-right-radius:5px;border-bottom-left-radius:5px;border-bottom-right-radius:5px;" height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" alt="">
 				</div>
 		      </div>
 		      </c:forEach>

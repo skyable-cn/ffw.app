@@ -1672,6 +1672,10 @@ html:not(.watch-active-state) .list-block .item-link:active .item-inner:after,
 }
 .list-block.media-list .item-media img {
   display: block;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+  border-bottom-left-radius:5px;
+  border-bottom-right-radius:5px;
 }
 .list-block.media-list .item-title-row {
   display: -webkit-box;
@@ -4792,10 +4796,8 @@ html:not(.watch-active-state) .theme-white label.label-radio:active,
 }
 .discount div select{
 	border: none;
-	background:#eee;
 	width:100%;
 	height:40px;
-	font-weight:bold;
 }
 .item-subtitle span{
 	float:right;
