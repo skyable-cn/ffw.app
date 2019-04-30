@@ -24,11 +24,11 @@
 					<div class="row" style="position:absolute;z-index:999;height:150px;top:5px;width:100%;">
 					<div class="col-50" style="padding:20px;">
 						<div class="row">
-							<div class="col-100" style="margin-top:10px;font-weight:bold;font-size:1.2rem;">${USER_SESSION.NICKNAME}</div>
+							<div class="col-100" style="margin-top:10px;font-weight:bold;font-size:0.85rem;">${USER_SESSION.NICKNAME}</div>
 						</div>
-						<div class="row" style="font-size:0.85rem;">
-							<div class="col-50">${ordersNum}<br/>订单</div>
-							<div class="col-50">${cardsNum}<br/>卡券</div>
+						<div class="row" style="margin-top:15px;">
+							<div class="col-50"><div style="font-size:0.85rem;">${ordersNum}</div><div>订单</div></div>
+							<div class="col-50"><div style="font-size:0.85rem;">${cardsNum}</div><div>卡券</div></div>
 						</div>
 					</div>
 					<div class="col-50" style="padding:20px;">
@@ -45,8 +45,8 @@
 			</div>
 			<div style="width:100%;height:10px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
-				<div class="col-50" style="font-size:0.85rem;">优惠活动</div>
-				<div class="col-50 more_activity"><a class="external" href="<%=request.getContextPath()%>/stand" style="color:#FFCC01;font-size:0.85rem;">查看更多</a></div>
+				<div class="col-50" style="font-size:1.0rem;font-weight:bold;">优惠活动</div>
+				<div class="col-50 more_activity"><a class="external" href="<%=request.getContextPath()%>/stand" style="color:#FFCC01;font-size:0.85rem;line-height:45px;">查看更多</a></div>
 			</div>
 			<div class="row" style="padding:5px;padding-top:0px;">
 				<div class="col-100">
@@ -61,14 +61,18 @@
 				</div>
 			</div>
 			<div class="row" style="padding:5px;">
-				<div class="col-100" style="font-size:0.85rem;">热卖区</div>
+				<div class="col-60" style="font-weight:bold;"><div style="font-size:1.0rem;">今日热卖</div><div>好店爆款,人手一份</div></div>
+				<div class="col-40">
+				<div class="content-block" style="margin:0px;margin-top:10px;">
+				    <div class="buttons-row">
+				      <a href="#tab1" class="tab-link active button">推荐</a>
+				      <a href="#tab2" class="tab-link button">最热</a>
+				    </div>
+				  </div>
+			  </div>
 			</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-100">
-				<div class="buttons-tab">
-			    <a href="#tab1" class="tab-link active button">推荐</a>
-			    <a href="#tab2" class="tab-link button">最热</a>
-			</div>
 		    <div class="tabs">
 		      <div id="tab1" class="tab active">
 		      	<div id="goods1">

@@ -2335,12 +2335,12 @@ input[type="button"].button {
   width: 100%;
   -webkit-box-flex: 1;
   -ms-flex: 1;
-  border-color: #0894ec;
-  color: #0894ec;
+  border-color: #FFCC01;
+  color: #000000;
 }
 .buttons-row .button.active {
-  background-color: #0894ec;
-  color: white;
+  background-color: #FFCC01;
+  color: #000000;
   z-index: 90;
 }
 .buttons-row .button:first-child {
