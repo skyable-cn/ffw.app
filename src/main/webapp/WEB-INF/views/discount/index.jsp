@@ -17,7 +17,7 @@
     <div class="page-group">
         <div class="page page-current">
 			<div class="content infinite-scroll" data-distance="30">
-				<div class="row discount" style="padding:5px;">
+				<div class="row" style="padding:5px;">
 			      <div class="col-25">
 			      	<select id="SHOPTYPE_ID" name="SHOPTYPE_ID" class="select_condition">
 				      	<option value="">分类</option>

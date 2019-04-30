@@ -4794,12 +4794,6 @@ html:not(.watch-active-state) .theme-white label.label-radio:active,
 .position img{
 	width:20px;
 }
-.discount div select{
-	border: none;
-	height:40px;
-	float: right;
-	background:#FFFFFF;
-}
 .item-subtitle span{
 	float:right;
 }
@@ -4815,8 +4809,11 @@ html:not(.watch-active-state) .theme-white label.label-radio:active,
 	border-bottom:1px #aaaaaa solid;
 }
 .select_condition{
-	font-size:0.7rem;
-	text-align: right; 
+	border: none;
+	height:40px;
+	font-size:0.85rem;
+	width:100%;
+	background:#ffffff;
 }
 ul.noafter:after{
     background:#ffffff;
