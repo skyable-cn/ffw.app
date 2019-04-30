@@ -2172,6 +2172,7 @@ input[type="button"].button {
 .button.active:active {
   color: #FFCC01;
   border-color: #FFCC01;
+  font-weight:bold;
 }
 .button.button-big {
   font-size: 0.85rem;
