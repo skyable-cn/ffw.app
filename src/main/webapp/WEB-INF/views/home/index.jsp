@@ -18,18 +18,23 @@
     <div class="page-group">
         <div class="page page-current">
 			<div class="content infinite-scroll" data-distance="30">
-			<div class="row" style="background-color:#FFCC01;height:150px;">
-				<div class="col-50" style="padding:20px;">
-					<div class="row">
-						<div class="col-100" style="margin-top:10px;font-weight:bold;font-size:1.2rem;">${USER_SESSION.NICKNAME}</div>
+			<div class="row">
+				<div class="col-100" style="position:relative;">
+					<img class='card-cover' src="/app/static/icon/active.gif" width="100%" height="160px"/>
+					<div class="row" style="position:absolute;z-index:999;height:150px;top:5px;width:100%;">
+					<div class="col-50" style="padding:20px;">
+						<div class="row">
+							<div class="col-100" style="margin-top:10px;font-weight:bold;font-size:1.2rem;">${USER_SESSION.NICKNAME}</div>
+						</div>
+						<div class="row" style="font-size:0.85rem;">
+							<div class="col-50">${ordersNum}<br/>订单</div>
+							<div class="col-50">${cardsNum}<br/>卡券</div>
+						</div>
 					</div>
-					<div class="row" style="font-size:0.85rem;">
-						<div class="col-50">${ordersNum}<br/>订单</div>
-						<div class="col-50">${cardsNum}<br/>卡券</div>
+					<div class="col-50" style="padding:20px;">
+						<img align="middle" style="margin:10px; width:80px;border-radius:50%;margin-left:50px;" src="${USER_SESSION.PHOTO}"/>
 					</div>
 				</div>
-				<div class="col-50" style="padding:20px;">
-					<img align="middle" style="margin:10px; width:80px;border-radius:50%;margin-left:50px;" src="${USER_SESSION.PHOTO}"/>
 				</div>
 			</div>
 			<div class="row module2" style="margin-top:10px;">
