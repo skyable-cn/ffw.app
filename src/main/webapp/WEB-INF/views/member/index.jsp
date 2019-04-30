@@ -89,19 +89,19 @@
 			</div>
 			<div style="text-align:center;font-size:0.85rem;margin:20px;font-weight:bold;">会员专享特权</div>
 			<div class="row" style="padding:5px;">
-				<div class="col-25"><div style="color:#F40A0B;border-right:2px #888888 dotted;text-align:center;width:80%;min-height:100px;line-height:50px;font-size:0.85rem;">省<br/>钱</div></div>
+				<div class="col-25"><div style="color:#F40A0B;border-right:2px #888888 dotted;text-align:center;width:80%;min-height:100px;font-size:0.85rem;padding-top:30px;">省<br/>钱</div></div>
 				<div class="col-25" onclick="goVipBuy('会员专享','hyzx.png')" style="text-align:center;"><img width="60%" src="<%=request.getContextPath()%>/static/icon/member/hyzx.png"/><br/>会员专享价<br/><font style="font-size:0.6rem;color:#888888;">全场有优惠</font></div>
 				<div class="col-25" onclick="goVipBuy('会员折上折','hyzsz.png')" style="text-align:center;"><img width="60%" src="<%=request.getContextPath()%>/static/icon/member/hyzsz.png"/><br/>会员折上折<br/><font style="font-size:0.6rem;color:#888888;">红包+折扣</font></div>
 				<div class="col-25">&nbsp;</div>
 			</div>
 			<div class="row" style="padding:5px;">
-				<div class="col-25"><div style="color:#F40A0B;border-right:2px #888888 dotted;text-align:center;width:80%;min-height:100px;line-height:50px;font-size:0.85rem;">福<br/>利</div></div>
+				<div class="col-25"><div style="color:#F40A0B;border-right:2px #888888 dotted;text-align:center;width:80%;min-height:100px;font-size:0.85rem;padding-top:30px;">福<br/>利</div></div>
 				<div class="col-25" onclick="goVipBuy('会员红包','hyhb.png')" style="text-align:center;"><img width="60%" src="<%=request.getContextPath()%>/static/icon/member/hyhb.png"/><br/>会员红包<br/><font style="font-size:0.6rem;color:#888888;">周周送红包</font></div>
 				<div class="col-25" onclick="goVipBuy('分享红包','fxhb.png')" style="text-align:center;"><img width="60%" src="<%=request.getContextPath()%>/static/icon/member/fxhb.png"/><br/>分享红包<br/><font style="font-size:0.6rem;color:#888888;">推荐领红包</font></div>
 				<div class="col-25" onclick="goVipBuy('生日礼包','srlb.png')" style="text-align:center;"><img width="60%" src="<%=request.getContextPath()%>/static/icon/member/srlb.png"/><br/>生日礼包<br/><font style="font-size:0.6rem;color:#888888;">生日送大礼</font></div>
 			</div>
 			<div class="row" style="padding:5px;">
-				<div class="col-25"><div style="color:#F40A0B;border-right:2px #888888 dotted;text-align:center;width:80%;min-height:100px;line-height:50px;font-size:0.85rem;">优<br/>先</div></div>
+				<div class="col-25"><div style="color:#F40A0B;border-right:2px #888888 dotted;text-align:center;width:80%;min-height:100px;font-size:0.85rem;padding-top:30px;">优<br/>先</div></div>
 				<div class="col-25" onclick="goVipBuy('会员优先购','hyyxg.png')" style="text-align:center;"><img width="60%" src="<%=request.getContextPath()%>/static/icon/member/hyyxg.png"/><br/>会员优先购<br/><font style="font-size:0.6rem;color:#888888;">爆款优先买</font></div>
 				<div class="col-25" onclick="goVipBuy('新品提前购','hyyxg.png')" style="text-align:center;"><img width="60%" src="<%=request.getContextPath()%>/static/icon/member/hytqg.png"/><br/>新品提前购<br/><font style="font-size:0.6rem;color:#888888;">提前1天</font></div>
 				<div class="col-25">&nbsp;</div>
