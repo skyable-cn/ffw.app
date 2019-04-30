@@ -1088,7 +1088,7 @@ a:active {
   font-size: 0.8rem;
   line-height: 2.2rem;
   height: 2.2rem;
-  color: #0894ec;
+  color: #FFCC01;
   border: 0;
 }
 .bar .button-link:active,
@@ -2186,7 +2186,7 @@ input[type="button"].button {
 }
 .button.button-fill.active,
 .button.button-fill:active {
-  background: #0a8ddf;
+  background: #FFCC01;
 }
 .button.button-fill.button-big {
   line-height: 2.4rem;
@@ -2194,7 +2194,7 @@ input[type="button"].button {
 .button .button-link {
   padding-top: 0.3rem;
   padding-bottom: 0.3rem;
-  color: #0894ec;
+  color: #FFCC01;
   background-color: transparent;
   border: 0;
 }
