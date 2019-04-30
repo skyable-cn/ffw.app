@@ -41,7 +41,7 @@
 				<div class="row" style="padding:10px;padding-top:15px;padding-bottom:15px;">
 					<div class="col-40">卡券抵扣</div>
 					<div class="col-60"><div style="margin-right:20px;float:right;">
-						<font id="JMTS" style="color:#F40A0B;">(抵消0.00元)</font><a href="#page2" style="color:#3d4145;font-size:0.7rem;font-weight:normal;text-decoration:underline;">${fn:length(cardsData)}个卡券</a>
+						<font id="JMTS" style="color:#F40A0B;display:none;">(抵扣0.00元)</font><a href="#page2" style="color:#3d4145;font-size:0.7rem;font-weight:normal;">${fn:length(cardsData)}张可用&nbsp;&nbsp;<img width="8" src="<%=request.getContextPath()%>/static/icon/right.png"/></a>
 						<!-- <select onchange="changeMoney()" id="KQID" style="border:none;background:#eee;">
 							<option value="">${fn:length(cardsData)}个卡券可用</option>
 							<c:forEach var="var" items="${cardsData}">
@@ -155,8 +155,14 @@
   	var VIPMONEY = '0';
   	
   	function changeMoney(id,money){
+  		if(money != "0"){
+  			$("#JMTS").html("(抵消"+money+")");
+  			$("#JMTS").css("display","");
+  		}else{
+  			$("#JMTS").html("(抵消0.00元)");
+  			$("#JMTS").css("display","none");
+  		}
   		
-  		$("#JMTS").html("(抵消"+money+")");
   		
   		CARD_ID = id;
   		MONEY = money;
