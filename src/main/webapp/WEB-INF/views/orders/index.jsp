@@ -19,11 +19,11 @@
 			<div class="content">
 				<div class="row" style="padding:10px;">
 					<div class="col-40">
-					<img width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=${pd.FILEPATH}';">
+					<img width="100%" style="border-top-left-radius:5px;border-top-right-radius:5px;border-bottom-left-radius:5px;border-bottom-right-radius:5px;" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=${pd.FILEPATH}';">
 					</div>
 					<div class="col-60">
-					${pd.GOODSNAME}<br/>
-					${pd.GOODSDESC}
+					<div style="font-size:0.85rem;">${pd.GOODSNAME}</div>
+					<div>${pd.GOODSDESC}</div>
 					</div>
 				</div>
 				<div style="width:100%;height:5px;background:#dddddd;">&nbsp;</div>
