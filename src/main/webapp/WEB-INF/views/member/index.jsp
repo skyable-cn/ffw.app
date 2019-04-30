@@ -68,10 +68,10 @@
 					 		</div>
 							</div>
 					 		</div>
-					 		<div class="col-50" style="font-size:0.6rem;color:#888888;padding-top:8px;">成功邀请两名好友开通会员<br/>送你一个月会员</div>
+					 		<div class="col-50" style="color:#888888;padding:8px;word-wrap: break-word;word-break: break-all;overflow: hidden;font-size:0.6rem;">成功邀请两名好友开通会员送你一个月会员</div>
 					 	</div>
 					 	<div class="row"style="margin-top:10px;">
-					 		<div class="col-40">
+					 		<div class="col-50">
 						 		<div class="row">
 							 		<div class="col-50">
 							 		<button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;margin-left:5px;">邀请赚钱</button>
@@ -81,7 +81,7 @@
 							 		</div>
 						 		</div>
 					 		</div>
-					 		<div class="col-60" style="font-size:0.6rem;color:#888888;line-height:2rem;">成功邀请好友开通年卡送你30元佣金</div>
+					 		<div class="col-50" style="color:#888888;font-size:0.7rem;color:#888888;padding:8px;word-wrap: break-word;word-break: break-all;overflow: hidden;font-size:0.6rem;padding-top:3px;">成功邀请好友开通年卡送你30元佣金</div>
 					 	</div>
 					 </c:if>
 				 </div>
