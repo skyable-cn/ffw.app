@@ -2162,8 +2162,8 @@ input[type="button"].button {
   width: 100%;
 }
 .button:active {
-  color: #0a8ddf;
-  border-color: #0a8ddf;
+  color: #000000;
+  border-color: #FFCC01;
 }
 .button.button-round {
   border-radius: 1.25rem;
