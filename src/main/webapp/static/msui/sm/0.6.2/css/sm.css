@@ -4798,6 +4798,7 @@ html:not(.watch-active-state) .theme-white label.label-radio:active,
 	border: none;
 	height:40px;
 	float: right;
+	background:#FFFFFF;
 }
 .item-subtitle span{
 	float:right;
