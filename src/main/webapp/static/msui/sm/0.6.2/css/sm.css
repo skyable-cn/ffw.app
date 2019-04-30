@@ -866,7 +866,7 @@ a:active {
   color: #999;
 }
 .color-primary {
-  color: #0894ec;
+  color: #FFCC01;
 }
 .color-success {
   color: #4cd964;
@@ -1585,7 +1585,7 @@ html:not(.watch-active-state) .list-block .item-link:active .item-inner:after,
 .list-block .item-link.list-button {
   padding: 0 0.75rem;
   text-align: center;
-  color: #0894ec;
+  color: #FFCC01;
   display: block;
   line-height: 2.15rem;
 }
@@ -1989,7 +1989,7 @@ html.android .label-switch input[type="checkbox"] + .checkbox:before {
   height: 0.1rem;
   margin-top: -1px;
   z-index: 1;
-  background: #0894ec;
+  background: #FFCC01;
   content: ' ';
 }
 label.label-checkbox {
@@ -2020,7 +2020,7 @@ label.label-checkbox input[type="radio"] {
 label.label-checkbox input[type="checkbox"]:checked + .item-media i.icon-form-checkbox,
 label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-checkbox {
   border: none;
-  background-color: #0894ec;
+  background-color: #FFCC01;
 }
 label.label-checkbox input[type="checkbox"]:checked + .item-media i.icon-form-checkbox:after,
 label.label-checkbox input[type="radio"]:checked + .item-media i.icon-form-checkbox:after {
@@ -2814,7 +2814,7 @@ input[type="button"].button {
   font-size: 0.85rem;
   line-height: 2.2rem;
   text-align: center;
-  color: #0894ec;
+  color: #FFCC01;
   background: #e8e8e8;
   display: block;
   position: relative;
@@ -3044,7 +3044,7 @@ html:not(.watch-active-state) .modal-button:active,
   cursor: pointer;
   line-height: 2.15rem;
   font-size: 1rem;
-  color: #0894ec;
+  color: #FFCC01;
 }
 .actions-modal-button:active,
 .actions-modal-button.active-state {
@@ -3836,7 +3836,7 @@ body.panel-closing .page {
   background: #e3e3e3;
 }
 .picker-calendar-day.picker-calendar-day-selected span {
-  background: #0894ec;
+  background: #FFCC01;
   color: #fff;
 }
 .picker-calendar-day span {
@@ -4319,7 +4319,7 @@ Framework7 Layouts Themes
   color: #fff;
 }
 .theme-dark .tab-item.active {
-  color: #0894ec;
+  color: #FFCC01;
 }
 .theme-dark .picker-calendar-week-days {
   color: #fff;
