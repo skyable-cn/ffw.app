@@ -55,7 +55,7 @@
 }
 */
 html {
-  font-size: 18px;
+  font-size: 20px;
 }
 @media only screen and (min-width: 400px) {
   html {
@@ -2443,7 +2443,7 @@ input[type="button"].button {
   top: 0;
   width: 100%;
   height: 100%;
-  background: #efeff4;
+  background: #ffffff;
   display: none;
   overflow: hidden;
 }
@@ -3347,7 +3347,8 @@ html.with-statusbar-overlay .popup.tablet-fullscreen {
   border-radius: 0.1rem;
   font-size: 0.7rem;
   margin-top:0.25rem;
-  margin-bottom:0.25rem;
+  margin-bottom:1.0rem;
+  border-bottom: 1px #EEEEEE solid;
 }
 .card .list-block,
 .card .content-block {
@@ -3491,6 +3492,11 @@ html:not(.watch-active-state) .card-footer a.link:active,
 .card-header .card-cover {
   width: 100%;
   display: block;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+  border-bottom-left-radius:5px;
+  border-bottom-right-radius:5px;
+  height:180px;
 }
 .card-header.no-border:after {
   display: none;
@@ -4701,7 +4707,6 @@ html:not(.watch-active-state) .theme-white label.label-radio:active,
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
 
   /* Center slide text vertically */
   display: -webkit-box;
@@ -4716,6 +4721,13 @@ html:not(.watch-active-state) .theme-white label.label-radio:active,
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
+}
+.swiper-slide img{
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px;
+	height:180px;
 }
 .more_activity{
 	text-align:right;
@@ -4734,6 +4746,10 @@ html:not(.watch-active-state) .theme-white label.label-radio:active,
 	color:#333333;
 	padding:5px;
 	font-size:0.7rem;
+	border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
 }
 .left{
 	left:0px;
@@ -4748,6 +4764,8 @@ html:not(.watch-active-state) .theme-white label.label-radio:active,
 	background:#F40A0B;
 	border-top-left-radius:20px;
 	border-bottom-left-radius:20px;
+	border-top-right-radius:0px;
+	border-bottom-right-radius:0px;
 	height:40px;
 }
 .suspend span{
@@ -4796,4 +4814,7 @@ html:not(.watch-active-state) .theme-white label.label-radio:active,
 .select_condition{
 	font-size:0.7rem;
 	text-align: right; 
+}
+ul.noafter:after{
+    background:#ffffff;
 }

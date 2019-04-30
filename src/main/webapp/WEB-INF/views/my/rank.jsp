@@ -33,7 +33,7 @@
       <c:forEach var="var" items="${chargesData}" varStatus="status">
       <c:if test="${USER_SESSION.MEMBER_ID eq var.MEMBER_ID}">
     <div class="list-block" style="margin-top:5px;margin-bottom:5px;">
-    <ul>
+    <ul class="noafter">
       <li class="item-content">
         <div class="item-inner">
           <div class="item-title">${status.index+1}&nbsp;<img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="${var.PHOTO}"/>${var.NICKNAME}</div>
@@ -62,7 +62,7 @@
       <c:forEach var="var" items="${numberData}" varStatus="status">
       <c:if test="${USER_SESSION.MEMBER_ID eq var.MEMBER_ID}">
     <div class="list-block" style="margin-top:5px;margin-bottom:5px;">
-    <ul>
+    <ul class="noafter">
       <li class="item-content">
         <div class="item-inner">
           <div class="item-title">${status.index+1}&nbsp;<img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="${var.PHOTO}"/>${var.NICKNAME}</div>

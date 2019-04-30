@@ -48,7 +48,7 @@
 					<div class="swiper-container">
 					    <div class="swiper-wrapper">
 						    <c:forEach var="var" items="${standData}">
-						    	<div class="swiper-slide"><a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=${var.GOODS_ID}"><img height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}';"/></a></div>
+						    	<div class="swiper-slide"><a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=${var.GOODS_ID}"><img width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}';"/></a></div>
 						    </c:forEach>
 					    </div>
 					    <div class="swiper-pagination"></div>
