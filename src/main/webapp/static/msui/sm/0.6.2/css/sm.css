@@ -4812,7 +4812,7 @@ html:not(.watch-active-state) .theme-white label.label-radio:active,
 	border: none;
 	height:40px;
 	font-size:0.85rem;
-	width:100%;
+	width:80%;
 	background:#ffffff;
 }
 ul.noafter:after{
