@@ -61,8 +61,8 @@
 				</div>
 			</div>
 			<div class="row" style="padding:5px;">
-				<div class="col-60" style="font-weight:bold;"><div style="font-size:1.0rem;">今日热卖</div><div>好店爆款,人手一份</div></div>
-				<div class="col-40">
+				<div class="col-50" style="font-weight:bold;"><div style="font-size:1.0rem;">今日热卖</div><div>好店爆款,人手一份</div></div>
+				<div class="col-50">
 				<div class="content-block" style="margin:0px;margin-top:10px;">
 				    <div class="buttons-row">
 				      <a href="#tab1" class="tab-link active button">推荐</a>

@@ -2134,8 +2134,8 @@ label.label-checkbox.active-state .item-inner:after {
   color: #5f646e;
 }
 .button {
-  border: 1px solid #0894ec;
-  color: #0894ec;
+  border: 1px solid #FFCC01;
+  color: #000000;
   text-decoration: none;
   text-align: center;
   display: block;
