@@ -2170,8 +2170,8 @@ input[type="button"].button {
 }
 .button.active,
 .button.active:active {
-  color: #0a8ddf;
-  border-color: #0a8ddf;
+  color: #FFCC01;
+  border-color: #FFCC01;
 }
 .button.button-big {
   font-size: 0.85rem;
