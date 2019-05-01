@@ -29,15 +29,7 @@
 				</div>
 			</div>
 			<div class="row" style="padding-left:5px;padding-right:5px;">
-				<div class="col-50"><div style="font-size:1.0rem;font-weight:bold;">人气商圈</div></div>
-				<div class="col-50">
-				<div class="content-block" style="margin:0px;margin-top:10px;">
-				    <div class="buttons-row">
-				      <a href="#tab1" class="tab-link active button">推荐</a>
-				      <a href="#tab2" class="tab-link button">最热</a>
-				    </div>
-				  </div>
-			  </div>
+				<div class="col-100" style="font-size:1.0rem;font-weight:bold;">人气商圈</div>
 			</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-50">
@@ -75,6 +67,10 @@
 			</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-100">
+				<div class="buttons-tab">
+			    <a href="#tab1" class="tab-link active button">推荐</a>
+			    <a href="#tab2" class="tab-link button">最热</a>
+			</div>
 		    <div class="tabs">
 		      <div id="tab1" class="tab active">
 		          <div id="goods1">
