@@ -4815,6 +4815,9 @@ html:not(.watch-active-state) .theme-white label.label-radio:active,
 	width:100%;
 	background:#ffffff;
 }
+ul.noafter:before{
+    background:#ffffff;
+}
 ul.noafter:after{
     background:#ffffff;
 }
