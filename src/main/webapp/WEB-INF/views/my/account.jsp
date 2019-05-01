@@ -24,16 +24,16 @@
 				 </div>
 				 <div class="div_height2" style="background:#ffffff;height:80px;position:absolute;top:100px;z-index:999;left:5%;right:5%;-webkit-box-shadow: 3px 3px 12px #666;-moz-box-shadow: 3px 3px 12px #666;box-shadow: 3px 3px 12px #666; -moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;">
 					 <div class="row">
-					 	<div class="col-25" style="text-align: center;padding:10px;">
+					 	<div class="col-25" style="text-align: center;padding-top:10px;">
 					 		¥ ${USER_SESSION.WAITACCOUNT}<br/>可提现
 					 	</div>
-					 	<div class="col-25" style="text-align: center;padding:10px;">
+					 	<div class="col-25" style="text-align: center;padding-top:10px;">
 					 		¥ ${USER_SESSION.ALREADYACCOUNT}<br/>已提现
 					 	</div>
-					 	<div class="col-25" style="text-align: center;padding:10px;">
+					 	<div class="col-25" style="text-align: center;padding-top:10px;">
 					 		¥ ${pd1.MEACCOUNT}<br/>直卖收益
 					 	</div>
-					 	<div class="col-25" style="text-align: center;padding:10px;">
+					 	<div class="col-25" style="text-align: center;padding-top:10px;">
 					 		¥ ${pd1.TEAMACCOUNT}<br/>团队收益
 					 	</div>
 					 </div>
