@@ -117,7 +117,7 @@
 				<div class="col-100">
 					<div class="card" style="background:#efeff4;" onclick="selectProduct(this)" MONEY="${var.PRODUCTMONEY}" PRODUCT_ID="${var.PRODUCT_ID}">
 				    <div class="card-content">
-				      <div class="card-content-inner" style="border-top-left-radius:10px;border-top-right-radius:10px;height:60px;background:#FFCC01;font-weight:normal;">
+				      <div class="card-content-inner" style="border-top-left-radius:10px;border-top-right-radius:10px;height:70px;background:#FFCC01;font-weight:normal;">
 				      <div class="row">
 				      	<div class="col-60">
 				      	<div style="font-size:1.0rem;font-weight:bold;">${var.PRODUCTDESC}</div>

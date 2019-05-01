@@ -20,19 +20,24 @@
 			<div class="content infinite-scroll" data-distance="30">
 			<div class="row">
 				<div class="col-100" style="position:relative;">
-					<img class='card-cover' src="/app/static/icon/active.gif" width="100%" height="160px"/>
+					<img class='card-cover' src="<%=request.getContextPath()%>/static/icon/active.gif" width="100%" height="160px"/>
 					<div class="row" style="position:absolute;z-index:999;height:150px;top:5px;width:100%;">
-					<div class="col-50" style="padding:20px;">
+					<div class="col-60" style="padding:20px;">
 						<div class="row">
-							<div class="col-100" style="margin-top:10px;font-weight:bold;font-size:0.85rem;">${USER_SESSION.NICKNAME}</div>
+							<div class="col-100" style="margin-top:10px;">
+							<span style="font-weight:bold;font-size:0.85rem;">${USER_SESSION.NICKNAME}</span>
+							<c:if test="${USER_SESSION.MEMBERTYPE_ID eq 1 or USER_SESSION.MEMBERTYPE_ID eq 3}">
+							<span onclick="javascript:location.href='<%=request.getContextPath()%>/member';" style="margin-left:15px;background:#ffffff;padding-top:2px;padding-bottom:2px;padding-left:7px;padding-right:7px;border-top-left-radius:5px;border-top-right-radius:5px;border-bottom-left-radius:5px;border-bottom-right-radius:5px;">未加入会员</span>
+							</c:if>
+							</div>
 						</div>
 						<div class="row" style="margin-top:15px;">
 							<div class="col-50"><div style="font-size:0.85rem;">${ordersNum}</div><div>订单</div></div>
 							<div class="col-50"><div style="font-size:0.85rem;">${cardsNum}</div><div>卡券</div></div>
 						</div>
 					</div>
-					<div class="col-50" style="padding:20px;">
-						<img align="middle" style="margin:10px; width:80px;border-radius:50%;margin-left:50px;" src="${USER_SESSION.PHOTO}"/>
+					<div class="col-40" style="padding:20px;">
+						<img align="middle" style="margin:10px; width:80px;border-radius:50%;" src="${USER_SESSION.PHOTO}"/>
 					</div>
 				</div>
 				</div>
