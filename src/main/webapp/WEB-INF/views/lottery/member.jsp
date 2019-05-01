@@ -18,21 +18,19 @@
 			<div class="content">
 			<c:forEach var="var" items="${lotteryrecordData}">
 			<div class="row" style="padding:5px;border-bottom:1px #cccccc solid;">
-				<div class="col-70">
+				<div class="col-60">
 					<div class="row">
 						<div class="col-30" style="padding:10px;">
 						<img align="middle" style="width:50px;border-radius:50%;" src="${var.PHOTO}"/>
 						</div>
-						<div class="col-70" style="padding-left:10px;padding-top:15px;">
+						<div class="col-70" style="padding-top:15px;">
 						<div style="margin-bottom:5px;">${var.NICKNAME}</div>
 						<div>${var.CDT}</div>
 						</div>
 					</div>
 					
 				</div>
-				<div class="col-30" style="text-align:right;padding-top:25px;">
-					${var.LUCKNUMBER}
-				</div>
+				<div class="col-40" style="text-align:right;padding-top:25px;">${var.LUCKNUMBER}</div>
 			</div>
 			</c:forEach>
 	    	</div>
