@@ -23,7 +23,7 @@
 		        <div class="item-content">
 		          <div class="item-inner">
 		            <div class="item-input">
-		              <input id="ACTIVECODE" name="ACTIVECODE" type="text" placeholder="激活码" autocomplete="off">
+		              <input id="ACTIVECODE" name="ACTIVECODE" type="text" placeholder="请输入激活码 . . . " autocomplete="off">
 		            </div>
 		          </div>
 		        </div>

@@ -138,12 +138,12 @@
     					if(value.FILEPATH){
     						src="<%=request.getContextPath()%>/file/image?FILENAME="+value.FILEPATH;
     					}
-    					var href='<a href="javascript:;" onclick="$.alert(\'对不起，周四才可以半价抢购哦\')" class="external button button-fill button-warning" style="background:#DDDDDD;color:#000000;">抢购</a>';
+    					var href='<a href="javascript:;" onclick="$.alert(\'对不起，周四才可以半价抢购哦\')" class="external button button-fill" style="padding-left:1.0rem;padding-right:1.0rem;color:#000000;">抢购</a>';
     					if("${pd.ZSFLAG}" == '1'){
     						if("${USER_SESSION.MEMBERTYPE_ID}"=="2" || "${USER_SESSION.MEMBERTYPE_ID}"=="4"){
-    							href='<a href="<%=request.getContextPath()%>/shop/info?SHOP_ID='+value.SHOP_ID+'" class="external button button-fill button-warning" style="background:#FFCC01;color:#000000;">抢购</a>';
+    							href='<a href="<%=request.getContextPath()%>/shop/info?SHOP_ID='+value.SHOP_ID+'" class="external button button-fill" style="padding-left:1.0rem;padding-right:1.0rem;color:#000000;">抢购</a>';
     						}else{
-    							href='<a href="javascript:;"  onclick="$.alert(\'对不起，加入会员才可以享受哦\')" class="external button button-fill button-warning" style="background:#FFCC01;color:#000000;">抢购</a>';
+    							href='<a href="javascript:;"  onclick="$.alert(\'对不起，加入会员才可以享受哦\')" class="external button button-fill" style="padding-left:1.0rem;padding-right:1.0rem;color:#000000;">抢购</a>';
     						}
     						
     					} 
