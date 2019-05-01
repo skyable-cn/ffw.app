@@ -69,7 +69,6 @@
 		    </div>
 				</div>
 			</div>
-			<h5>&nbsp;</h5>
 			</div>
         </div>
     </div>
