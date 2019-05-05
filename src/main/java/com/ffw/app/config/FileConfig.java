@@ -25,12 +25,23 @@ public class FileConfig {
 		return getDir() + File.separator + "image";
 	}
 
+	public String getDirPoster() {
+		return getDir() + File.separator + "poster";
+	}
+
 	@PostConstruct
 	public void init() {
 
 		String tempPath = getDir() + File.separator + "image";
 
 		File ft = new File(tempPath);
+		if (!ft.exists()) {
+			ft.mkdir();
+		}
+
+		tempPath = getDir() + File.separator + "poster";
+
+		ft = new File(tempPath);
 		if (!ft.exists()) {
 			ft.mkdir();
 		}
