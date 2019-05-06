@@ -28,11 +28,13 @@
 		      </c:forEach>
 		      </ul>
 		      </div>
+		      <!-- 
 		      <div class="row" style="padding:5px;">
    					<div class="col-100">
    					<a href="<%=request.getContextPath()%>/seller"  class="external button button-big button-fill button-success" style="background:#FFCC01;color:#000000;">新增商户</a>
    					</div>
    				</div>
+   			 -->
 			</div>
         </div>
     </div>

@@ -44,7 +44,7 @@
 			<div style="width:100%;height:7px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="margin-top:10px;">
 			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/giftchange"><img width="40%" src="<%=request.getContextPath()%>/static/icon/my/ljdh.png"/><p>礼券兑换</p></a></div>
-			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/seller"><img width="40%" src="<%=request.getContextPath()%>/static/icon/my/sjrz.png"/><p>商家入驻</p></a></div>
+			<!-- <div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/seller"><img width="40%" src="<%=request.getContextPath()%>/static/icon/my/sjrz.png"/><p>商家入驻</p></a></div> -->
 			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/seller/list"><img width="40%" src="<%=request.getContextPath()%>/static/icon/my/sjht.png"/><p>商家后台</p></a></div>
 			<c:if test="${supermaninfo eq null}">
 			<div class="col-33" style="text-align: center;"><a class="external" href="<%=request.getContextPath()%>/supermaninfo"><img width="40%" src="<%=request.getContextPath()%>/static/icon/my/drsq.png"/><p>达人申请</p></a></div>
