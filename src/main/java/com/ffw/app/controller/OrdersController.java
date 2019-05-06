@@ -118,52 +118,63 @@ public class OrdersController extends BaseController {
 		} else {
 			pd.put("STATE", IConstant.STRING_1);
 
-			PageData pd1 = new PageData();
-			List<PageData> product = rest.postForList(
-					IConstant.FFW_SERVICE_KEY, "product/listAll", pd1,
-					new ParameterizedTypeReference<List<PageData>>() {
-					});
+			if (!VIPMONEY.equals("0")) {
+				PageData pd1 = new PageData();
+				List<PageData> product = rest.postForList(
+						IConstant.FFW_SERVICE_KEY, "product/listAll", pd1,
+						new ParameterizedTypeReference<List<PageData>>() {
+						});
 
-			PageData pd0 = new PageData();
-			pd0.put("RECHARGESN",
-					new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())
-							+ randomNumber(5));
-			pd0.put("PRODUCT_ID", product.get(0).getString("PRODUCT_ID"));
-			pd0.put("MEMBER_ID", memberId());
-			pd0.put("ORIGINAL", product.get(0).getString("PRODUCTMONEY"));
-			pd0.put("MONEY", product.get(0).getString("PRODUCTMONEY"));
-			pd0.put("DERATE", IConstant.STRING_0);
-			pd0.put("CDT", DateUtil.getTime());
-			pd0.put("STATE", IConstant.STRING_1);
-			rest.post(IConstant.FFW_SERVICE_KEY, "recharge/save", pd0,
-					PageData.class);
-
-			PageData pd2 = new PageData();
-			pd2.put("VIPSN", DateUtil.getNumber());
-			pd2.put("MEMBER_ID", memberId());
-			pd2.put("CDT", DateUtil.getTime());
-			pd2.put("LASTTIME",
-					DateUtil.getAfterDayDate(product.get(0).getString(
-							"PRODUCTTIME")));
-			rest.post(IConstant.FFW_SERVICE_KEY, "vipinfo/save", pd2,
-					PageData.class);
-
-			PageData pd21 = new PageData();
-			pd21.put("MEMBER_ID", memberId());
-			pd21 = rest.post(IConstant.FFW_SERVICE_KEY, "member/find", pd21,
-					PageData.class);
-			if (IConstant.STRING_1.equals(pd21.getString("MEMBERTYPE_ID"))) {
-				pd21.put("MEMBERTYPE_ID", IConstant.STRING_2);
-				rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pd21,
+				PageData pd0 = new PageData();
+				pd0.put("RECHARGESN",
+						new SimpleDateFormat("yyyyMMddHHmmss")
+								.format(new Date()) + randomNumber(5));
+				pd0.put("PRODUCT_ID", product.get(0).getString("PRODUCT_ID"));
+				pd0.put("MEMBER_ID", memberId());
+				pd0.put("ORIGINAL", product.get(0).getString("PRODUCTMONEY"));
+				pd0.put("MONEY", product.get(0).getString("PRODUCTMONEY"));
+				pd0.put("DERATE", IConstant.STRING_0);
+				pd0.put("CDT", DateUtil.getTime());
+				pd0.put("STATE", IConstant.STRING_1);
+				rest.post(IConstant.FFW_SERVICE_KEY, "recharge/save", pd0,
 						PageData.class);
-			} else if (IConstant.STRING_3.equals(pd21
-					.getString("MEMBERTYPE_ID"))) {
-				pd21.put("MEMBERTYPE_ID", IConstant.STRING_4);
-				rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pd21,
-						PageData.class);
-			} else {
 
+				PageData pd2 = new PageData();
+				pd2.put("VIPSN", DateUtil.getNumber());
+				pd2.put("MEMBER_ID", memberId());
+				pd2.put("CDT", DateUtil.getTime());
+				pd2.put("LASTTIME",
+						DateUtil.getAfterDayDate(product.get(0).getString(
+								"PRODUCTTIME")));
+				rest.post(IConstant.FFW_SERVICE_KEY, "vipinfo/save", pd2,
+						PageData.class);
+
+				PageData pd21 = new PageData();
+				pd21.put("MEMBER_ID", memberId());
+				pd21 = rest.post(IConstant.FFW_SERVICE_KEY, "member/find",
+						pd21, PageData.class);
+				if (IConstant.STRING_1.equals(pd21.getString("MEMBERTYPE_ID"))) {
+					pd21.put("MEMBERTYPE_ID", IConstant.STRING_2);
+					rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pd21,
+							PageData.class);
+				} else if (IConstant.STRING_3.equals(pd21
+						.getString("MEMBERTYPE_ID"))) {
+					pd21.put("MEMBERTYPE_ID", IConstant.STRING_4);
+					rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pd21,
+							PageData.class);
+				} else {
+
+				}
 			}
+
+			PageData pdg = new PageData();
+			pdg.put("GOODS_ID", GOODS_ID);
+			pdg = rest.post(IConstant.FFW_SERVICE_KEY, "goods/find", pdg,
+					PageData.class);
+			pdg.put("BUYNUMBER", Integer.parseInt(pdg.getString("BUYNUMBER"))
+					+ Integer.parseInt(NUMBER));
+			rest.post(IConstant.FFW_SERVICE_KEY, "goods/edit", pdg,
+					PageData.class);
 
 		}
 
