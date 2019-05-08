@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -53,6 +55,14 @@ public class InvitationcardController extends BaseController {
 		ModelAndView mv = new ModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
+
+		List<PageData> posterData = rest.postForList(IConstant.FFW_SERVICE_KEY,
+				"poster/listAll", pd,
+				new ParameterizedTypeReference<List<PageData>>() {
+				});
+
+		pd = posterData.get(0);
+		mv.addObject("pd", pd);
 
 		mv.setViewName("my/invitationcard");
 		return mv;

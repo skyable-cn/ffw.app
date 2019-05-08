@@ -17,8 +17,11 @@
     <div class="page-group">
         <div class="page page-current">
 			<div class="content" >
-			<div class="row" style="height:calc(100% - 80px);">
-				<div class="col-100" style="padding:5px;"><img width="100%" height="100%" src="<%=request.getContextPath()%>/static/image/back.jpg"/></div>	
+			<div class="row" style="height:calc(100% - 60px);">
+				<div class="col-100" style="padding:5px;">
+				<div style="position:relative;"><img width="100%" height="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${pd.FILEPATH}"/></div>
+				<div style="position:absolute;z-index:999;bottom:100px;text-align: center;"><img width="60%" src="<%=request.getContextPath()%>/poster"/></div>
+				</div>	
 			</div>
 			<div class="row">
 		      <div class="col-100" style="padding:5px;"><button onclick="goShare()" type="button" class="button button-big button-fill button-success" style="background:#FFCC01;color:#000000;width:100%;">邀请好友</button></div>
@@ -31,7 +34,7 @@
   <script type="text/javascript">
   	function goShare(){
   		 wx.miniProgram.navigateTo({
-             url: '/pages/share/share?type=friends&fromopenid=${USER_SESSION.WXOPEN_ID}&image=back.jpg&datakey=&title=邀请名片'
+             url: '/pages/share/share?type=friends&fromopenid=${USER_SESSION.WXOPEN_ID}&image=${pd.FILEPATH}&datakey=&title=邀请名片'
         })
   	}
   </script>
