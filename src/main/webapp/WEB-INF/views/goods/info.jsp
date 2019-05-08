@@ -157,7 +157,7 @@
   	}
   	function shareGoods(){
   		 wx.miniProgram.navigateTo({
-             url: '/pages/share/share?type=goods&fromopenid=${USER_SESSION.WXOPEN_ID}&image=${pd.FILEPATH}&datakey=${pd.GOODS_ID}&title=美食推广宣传'
+             url: '/pages/share/share?type=goods&fromopenid=${USER_SESSION.WXOPEN_ID}&image=${pd.FILEPATH1}&datakey=${pd.GOODS_ID}&title=美食推广宣传'
         })
   	}
   </script>
