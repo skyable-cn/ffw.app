@@ -34,4 +34,9 @@ public class AppApplication extends SpringBootServletInitializer {
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
+
+	@Bean
+	public RestTemplate restTemplateOther() {
+		return new RestTemplate();
+	}
 }
