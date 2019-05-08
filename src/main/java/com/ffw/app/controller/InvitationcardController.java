@@ -95,7 +95,7 @@ public class InvitationcardController extends BaseController {
 				String url = "https://api.weixin.qq.com/wxa/getwxacode?access_token="
 						+ token;
 				Map<String, Object> param = new HashMap<>();
-				param.put("path", "pages/index/index?fromopenid=" + fileName);
+				param.put("path", "pages/index/index?fromopenid=" + WXOPEN_ID);
 				param.put("width", 430);
 				param.put("auto_color", false);
 				Map<String, Object> line_color = new HashMap<>();
