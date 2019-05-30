@@ -1,5 +1,6 @@
 package com.ffw.app.controller;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -18,8 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.fastjson.JSONObject;
 import com.ffw.api.model.PageData;
 import com.ffw.api.util.DateUtil;
+import com.ffw.app.config.FileConfig;
 import com.ffw.app.config.WXPayConfigImpl;
-import com.ffw.app.config.WechatMiniConfig;
 import com.ffw.app.constant.IConstant;
 import com.ffw.app.model.ReturnModel;
 import com.ffw.app.util.JSSDKUtil;
@@ -36,10 +37,7 @@ import com.google.zxing.common.BitMatrix;
 public class OrdersController extends BaseController {
 
 	@Autowired
-	WechatMiniConfig wechatMiniConfig;
-
-	@Autowired
-	WXPayConfigImpl config;
+	FileConfig fileConfig;
 
 	@Autowired
 	RestTemplateUtil rest;
@@ -54,15 +52,13 @@ public class OrdersController extends BaseController {
 		String FROMWXOPEN_ID = pd.getString("FROMWXOPEN_ID");
 		mv.addObject("FROMWXOPEN_ID", FROMWXOPEN_ID);
 
-		pd = rest.post(IConstant.FFW_SERVICE_KEY, "goods/find", pd,
-				PageData.class);
+		pd = rest.post(IConstant.FFW_SERVICE_KEY, "goods/find", pd, PageData.class);
 		mv.addObject("pd", pd);
 
 		PageData pd2 = new PageData();
 		pd2.put("MEMBER_ID", memberId());
 		pd2.put("STATE", IConstant.STRING_0);
-		List<PageData> cardsData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"cards/listAll", pd2,
+		List<PageData> cardsData = rest.postForList(IConstant.FFW_SERVICE_KEY, "cards/listAll", pd2,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("cardsData", cardsData);
@@ -74,13 +70,11 @@ public class OrdersController extends BaseController {
 
 		PageData vipinfo = new PageData();
 		vipinfo.put("MEMBER_ID", memberId());
-		vipinfo = rest.post(IConstant.FFW_SERVICE_KEY, "vipinfo/findBy",
-				vipinfo, PageData.class);
+		vipinfo = rest.post(IConstant.FFW_SERVICE_KEY, "vipinfo/findBy", vipinfo, PageData.class);
 		mv.addObject("vipinfo", vipinfo);
 
 		PageData pd1 = new PageData();
-		List<PageData> product = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"product/listAll", pd1,
+		List<PageData> product = rest.postForList(IConstant.FFW_SERVICE_KEY, "product/listAll", pd1,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("product", product.get(0));
@@ -106,8 +100,7 @@ public class OrdersController extends BaseController {
 			pd.put("VIPFLAG", IConstant.STRING_0);
 		}
 
-		String ORDERSN = new SimpleDateFormat("yyyyMMddHHmmss")
-				.format(new Date()) + randomNumber(5);
+		String ORDERSN = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + randomNumber(5);
 		pd.put("ORDERSN", ORDERSN);
 		pd.put("MEMBER_ID", memberId());
 		pd.put("CDT", DateUtil.getTime());
@@ -120,15 +113,12 @@ public class OrdersController extends BaseController {
 
 			if (!VIPMONEY.equals("0")) {
 				PageData pd1 = new PageData();
-				List<PageData> product = rest.postForList(
-						IConstant.FFW_SERVICE_KEY, "product/listAll", pd1,
+				List<PageData> product = rest.postForList(IConstant.FFW_SERVICE_KEY, "product/listAll", pd1,
 						new ParameterizedTypeReference<List<PageData>>() {
 						});
 
 				PageData pd0 = new PageData();
-				pd0.put("RECHARGESN",
-						new SimpleDateFormat("yyyyMMddHHmmss")
-								.format(new Date()) + randomNumber(5));
+				pd0.put("RECHARGESN", new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + randomNumber(5));
 				pd0.put("PRODUCT_ID", product.get(0).getString("PRODUCT_ID"));
 				pd0.put("MEMBER_ID", memberId());
 				pd0.put("ORIGINAL", product.get(0).getString("PRODUCTMONEY"));
@@ -136,32 +126,24 @@ public class OrdersController extends BaseController {
 				pd0.put("DERATE", IConstant.STRING_0);
 				pd0.put("CDT", DateUtil.getTime());
 				pd0.put("STATE", IConstant.STRING_1);
-				rest.post(IConstant.FFW_SERVICE_KEY, "recharge/save", pd0,
-						PageData.class);
+				rest.post(IConstant.FFW_SERVICE_KEY, "recharge/save", pd0, PageData.class);
 
 				PageData pd2 = new PageData();
 				pd2.put("VIPSN", DateUtil.getNumber());
 				pd2.put("MEMBER_ID", memberId());
 				pd2.put("CDT", DateUtil.getTime());
-				pd2.put("LASTTIME",
-						DateUtil.getAfterDayDate(product.get(0).getString(
-								"PRODUCTTIME")));
-				rest.post(IConstant.FFW_SERVICE_KEY, "vipinfo/save", pd2,
-						PageData.class);
+				pd2.put("LASTTIME", DateUtil.getAfterDayDate(product.get(0).getString("PRODUCTTIME")));
+				rest.post(IConstant.FFW_SERVICE_KEY, "vipinfo/save", pd2, PageData.class);
 
 				PageData pd21 = new PageData();
 				pd21.put("MEMBER_ID", memberId());
-				pd21 = rest.post(IConstant.FFW_SERVICE_KEY, "member/find",
-						pd21, PageData.class);
+				pd21 = rest.post(IConstant.FFW_SERVICE_KEY, "member/find", pd21, PageData.class);
 				if (IConstant.STRING_1.equals(pd21.getString("MEMBERTYPE_ID"))) {
 					pd21.put("MEMBERTYPE_ID", IConstant.STRING_2);
-					rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pd21,
-							PageData.class);
-				} else if (IConstant.STRING_3.equals(pd21
-						.getString("MEMBERTYPE_ID"))) {
+					rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pd21, PageData.class);
+				} else if (IConstant.STRING_3.equals(pd21.getString("MEMBERTYPE_ID"))) {
 					pd21.put("MEMBERTYPE_ID", IConstant.STRING_4);
-					rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pd21,
-							PageData.class);
+					rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pd21, PageData.class);
 				} else {
 
 				}
@@ -169,21 +151,16 @@ public class OrdersController extends BaseController {
 
 			PageData pdg = new PageData();
 			pdg.put("GOODS_ID", GOODS_ID);
-			pdg = rest.post(IConstant.FFW_SERVICE_KEY, "goods/find", pdg,
-					PageData.class);
-			pdg.put("BUYNUMBER", Integer.parseInt(pdg.getString("BUYNUMBER"))
-					+ Integer.parseInt(NUMBER));
-			rest.post(IConstant.FFW_SERVICE_KEY, "goods/edit", pdg,
-					PageData.class);
+			pdg = rest.post(IConstant.FFW_SERVICE_KEY, "goods/find", pdg, PageData.class);
+			pdg.put("BUYNUMBER", Integer.parseInt(pdg.getString("BUYNUMBER")) + Integer.parseInt(NUMBER));
+			rest.post(IConstant.FFW_SERVICE_KEY, "goods/edit", pdg, PageData.class);
 
 		}
 
 		ReturnModel rm = new ReturnModel();
-		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/save", pd,
-				PageData.class);
+		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/save", pd, PageData.class);
 		rm.setFlag(true);
-		rm.setMessage(getMessage("MSG_CODE_ADD_SUCCESS", new Object[] { "订单" },
-				""));
+		rm.setMessage(getMessage("MSG_CODE_ADD_SUCCESS", new Object[] { "订单" }, ""));
 		rm.setData(pd);
 
 		PageData pdc = new PageData();
@@ -196,8 +173,7 @@ public class OrdersController extends BaseController {
 		pdoi.put("ORDER_ID", pd.getString("ORDER_ID"));
 		pdoi.put("GOODS_ID", GOODS_ID);
 		pdoi.put("NUMBER", NUMBER);
-		rest.post(IConstant.FFW_SERVICE_KEY, "ordersitem/save", pdoi,
-				PageData.class);
+		rest.post(IConstant.FFW_SERVICE_KEY, "ordersitem/save", pdoi, PageData.class);
 
 		return rm;
 	}
@@ -222,8 +198,7 @@ public class OrdersController extends BaseController {
 		PageData pd2 = new PageData();
 		pd2.put("MEMBER_ID", memberId());
 		pd2.put("STATE", IConstant.STRING_0);
-		List<PageData> ordersData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"orders/listAll", pd2,
+		List<PageData> ordersData = rest.postForList(IConstant.FFW_SERVICE_KEY, "orders/listAll", pd2,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("ordersData", ordersData);
@@ -242,8 +217,7 @@ public class OrdersController extends BaseController {
 		PageData pd2 = new PageData();
 		pd2.put("MEMBER_ID", memberId());
 		pd2.put("STATE", IConstant.STRING_1);
-		List<PageData> ordersData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"orders/listAll", pd2,
+		List<PageData> ordersData = rest.postForList(IConstant.FFW_SERVICE_KEY, "orders/listAll", pd2,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("ordersData", ordersData);
@@ -262,8 +236,7 @@ public class OrdersController extends BaseController {
 		PageData pd2 = new PageData();
 		pd2.put("MEMBER_ID", memberId());
 		pd2.put("STATE", IConstant.STRING_2);
-		List<PageData> ordersData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"orders/listAll", pd2,
+		List<PageData> ordersData = rest.postForList(IConstant.FFW_SERVICE_KEY, "orders/listAll", pd2,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("ordersData", ordersData);
@@ -282,8 +255,7 @@ public class OrdersController extends BaseController {
 		PageData pd2 = new PageData();
 		pd2.put("MEMBER_ID", memberId());
 		pd2.put("SQLCONDITION", " and os.STATE IN ( '3' , '5' ) ");
-		List<PageData> ordersData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"orders/listAll", pd2,
+		List<PageData> ordersData = rest.postForList(IConstant.FFW_SERVICE_KEY, "orders/listAll", pd2,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("ordersData", ordersData);
@@ -301,8 +273,7 @@ public class OrdersController extends BaseController {
 
 		PageData pd2 = new PageData();
 		pd2.put("MEMBER_ID", memberId());
-		List<PageData> ordersData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"orders/listAll", pd2,
+		List<PageData> ordersData = rest.postForList(IConstant.FFW_SERVICE_KEY, "orders/listAll", pd2,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("ordersData", ordersData);
@@ -317,8 +288,7 @@ public class OrdersController extends BaseController {
 		ModelAndView mv = new ModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd,
-				PageData.class);
+		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd, PageData.class);
 		mv.addObject("pd", pd);
 
 		mv.setViewName("orders/useinfo");
@@ -333,8 +303,7 @@ public class OrdersController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		pd.put("STATE", IConstant.STRING_2);
-		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/edit", pd,
-				PageData.class);
+		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/edit", pd, PageData.class);
 		rm.setFlag(true);
 		rm.setData(pd);
 		return rm;
@@ -348,8 +317,7 @@ public class OrdersController extends BaseController {
 		pd = this.getPageData();
 
 		PageData pd2 = new PageData();
-		List<PageData> refundTypeData = rest.postForList(
-				IConstant.FFW_SERVICE_KEY, "orders/listAllRefund", pd2,
+		List<PageData> refundTypeData = rest.postForList(IConstant.FFW_SERVICE_KEY, "orders/listAllRefund", pd2,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("refundTypeData", refundTypeData);
@@ -367,8 +335,12 @@ public class OrdersController extends BaseController {
 		pd = this.getPageData();
 
 		PageData pdo = new PageData();
-		pdo = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd,
-				PageData.class);
+		pdo = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd, PageData.class);
+
+		PageData market = (PageData) getSession().getAttribute(IConstant.MARKET_SESSION);
+		WXPayConfigImpl config = new WXPayConfigImpl(market.getString("WXAPPID"), market.getString("WXAPPSECRET"),
+				market.getString("WXMCHID"), market.getString("WXMCHKEY"),
+				fileConfig.getDirCert() + File.separator + market.getString("FILEPATH2"));
 
 		WXPay wxpay = new WXPay(config, SignType.MD5);
 
@@ -378,8 +350,7 @@ public class OrdersController extends BaseController {
 
 		reqData.put("out_refund_no", pdo.getString("ORDERSN"));
 
-		String fee = String
-				.valueOf(Float.parseFloat(pdo.getString("MONEY")) * 100);
+		String fee = String.valueOf(Float.parseFloat(pdo.getString("MONEY")) * 100);
 
 		reqData.put("total_fee", fee.substring(0, fee.indexOf(".")) + "");
 
@@ -402,8 +373,7 @@ public class OrdersController extends BaseController {
 		rest.post(IConstant.FFW_SERVICE_KEY, "orders/edit", pdo, PageData.class);
 
 		pd.put("CDT", DateUtil.getTime());
-		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/saveRefund", pd,
-				PageData.class);
+		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/saveRefund", pd, PageData.class);
 
 		return refund;
 	}
@@ -417,20 +387,17 @@ public class OrdersController extends BaseController {
 
 		PageData order = new PageData();
 		order.put("ORDER_ID", pd.getString("ORDER_ID"));
-		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", order,
-				PageData.class);
+		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", order, PageData.class);
 
 		PageData pdu = new PageData();
 		pdu.put("ORDER_ID", pd.getString("ORDER_ID"));
-		List<PageData> useData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"orderuse/listAll", pdu,
+		List<PageData> useData = rest.postForList(IConstant.FFW_SERVICE_KEY, "orderuse/listAll", pdu,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("useData", useData);
 
 		Map<String, String> config = JSSDKUtil
-				.config("https://fanfan.skyable.cn/app/orders/info?ORDER_ID="
-						+ pd.getString("ORDER_ID"));
+				.config("https://fanfan.skyable.cn/app/orders/info?ORDER_ID=" + pd.getString("ORDER_ID"));
 		pd.put("config", config);
 
 		mv.addObject("order", order);
@@ -447,15 +414,11 @@ public class OrdersController extends BaseController {
 
 		PageData order = new PageData();
 		order.put("USEID", pd.getString("USEID"));
-		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/findBy", order,
-				PageData.class);
+		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/findBy", order, PageData.class);
 
 		PageData orderOUT = new PageData();
 		orderOUT.put("USEID", order.getString("USEID"));
-		orderOUT.put(
-				"USEKEY",
-				DigestUtils.md5Hex(order.getString("USEKEY")
-						+ IConstant.KEY_SLAT));
+		orderOUT.put("USEKEY", DigestUtils.md5Hex(order.getString("USEKEY") + IConstant.KEY_SLAT));
 
 		int width = 200; // 图像宽度
 		int height = 200; // 图像高度
@@ -463,11 +426,9 @@ public class OrdersController extends BaseController {
 		Map<EncodeHintType, Object> hints = new HashMap<EncodeHintType, Object>();
 		hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
 		hints.put(EncodeHintType.MARGIN, 1);
-		BitMatrix bitMatrix = new MultiFormatWriter().encode(
-				JSONObject.toJSONString(orderOUT), BarcodeFormat.QR_CODE,
+		BitMatrix bitMatrix = new MultiFormatWriter().encode(JSONObject.toJSONString(orderOUT), BarcodeFormat.QR_CODE,
 				width, height, hints);// 生成矩阵
-		MatrixToImageWriter.writeToStream(bitMatrix, format, getResponse()
-				.getOutputStream());
+		MatrixToImageWriter.writeToStream(bitMatrix, format, getResponse().getOutputStream());
 	}
 
 	@RequestMapping(value = { "/orders/verification" })
@@ -479,23 +440,18 @@ public class OrdersController extends BaseController {
 
 		PageData order = new PageData();
 		order.put("USEID", pd.getString("USEID"));
-		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/findBy", order,
-				PageData.class);
+		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/findBy", order, PageData.class);
 
 		if (!pd.getString("SHOP_ID").equals(order.getString("SHOP_ID"))) {
 			order = null;
 		}
 
 		if (pd.getString("FROM").equals("CODE")) {
-			pd.put("USEKEY",
-					DigestUtils.md5Hex(pd.getString("USEKEY")
-							+ IConstant.KEY_SLAT));
+			pd.put("USEKEY", DigestUtils.md5Hex(pd.getString("USEKEY") + IConstant.KEY_SLAT));
 		}
 
 		if (null != order
-				&& !pd.getString("USEKEY").equals(
-						DigestUtils.md5Hex(order.getString("USEKEY")
-								+ IConstant.KEY_SLAT))) {
+				&& !pd.getString("USEKEY").equals(DigestUtils.md5Hex(order.getString("USEKEY") + IConstant.KEY_SLAT))) {
 			order = null;
 		}
 		mv.addObject("order", order);
@@ -514,8 +470,7 @@ public class OrdersController extends BaseController {
 		PageData rs = new PageData();
 		PageData order = new PageData();
 		order.put("USEID", pd.getString("USEID"));
-		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/findBy", order,
-				PageData.class);
+		order = rest.post(IConstant.FFW_SERVICE_KEY, "orders/findBy", order, PageData.class);
 		if (null != order) {
 			rs.put("STATE", order.getString("STATE"));
 		}
@@ -534,41 +489,34 @@ public class OrdersController extends BaseController {
 		pd = this.getPageData();
 		pd.put("STATE", IConstant.STRING_3);
 		pd.put("UDT", DateUtil.getTime());
-		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/edit", pd,
-				PageData.class);
+		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/edit", pd, PageData.class);
 
-		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd,
-				PageData.class);
+		pd = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd, PageData.class);
 
 		PageData pdu = new PageData();
 		pdu.put("ORDER_ID", pd.getString("ORDER_ID"));
 		pdu.put("SHOP_ID", pd.getString("SHOP_ID"));
 		pdu.put("MEMBER_ID", memberId());
 		pdu.put("CDT", DateUtil.getTime());
-		rest.post(IConstant.FFW_SERVICE_KEY, "orderuse/save", pdu,
-				PageData.class);
+		rest.post(IConstant.FFW_SERVICE_KEY, "orderuse/save", pdu, PageData.class);
 
 		PageData shop = new PageData();
 		shop.put("SHOP_ID", pd.getString("SHOP_ID"));
-		shop = rest.post(IConstant.FFW_SERVICE_KEY, "shop/find", shop,
-				PageData.class);
+		shop = rest.post(IConstant.FFW_SERVICE_KEY, "shop/find", shop, PageData.class);
 
 		PageData pds = new PageData();
 		pds.put("SHOP_ID", pd.getString("SHOP_ID"));
 
-		Double addMoney = Integer.parseInt(pd.getString("NUMBER"))
-				* Double.parseDouble(pd.getString("BALANCEMONEY"));
+		Double addMoney = Integer.parseInt(pd.getString("NUMBER")) * Double.parseDouble(pd.getString("BALANCEMONEY"));
 
-		pds.put("WAITACCOUNT",
-				Double.parseDouble(shop.getString("WAITACCOUNT")) + addMoney);
+		pds.put("WAITACCOUNT", Double.parseDouble(shop.getString("WAITACCOUNT")) + addMoney);
 		rest.post(IConstant.FFW_SERVICE_KEY, "shop/edit", pds, PageData.class);
 
 		PageData pdst = new PageData();
 		pdst.put("ORDER_ID", pd.getString("ORDER_ID"));
 		pdst.put("SETTLEMONEY", String.valueOf(addMoney));
 		pdst.put("CDT", DateUtil.getTime());
-		rest.post(IConstant.FFW_SERVICE_KEY, "settle/save", pdst,
-				PageData.class);
+		rest.post(IConstant.FFW_SERVICE_KEY, "settle/save", pdst, PageData.class);
 
 		rm.setFlag(true);
 		rm.setData(pd);

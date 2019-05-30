@@ -23,4 +23,6 @@ public interface IConstant {
 	String KEY_SLAT = "QAZ!@#";
 
 	String NO_INTERCEPTOR_PATH = null;
+
+	String MARKET_SESSION = "MARKET_SESSION";
 }

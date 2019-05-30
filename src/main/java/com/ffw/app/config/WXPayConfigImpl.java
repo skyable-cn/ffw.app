@@ -5,20 +5,29 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.util.ResourceUtils;
 
 import com.github.wxpay.sdk.WXPayConfig;
 
-@Component
 public class WXPayConfigImpl implements WXPayConfig {
+
+	private String appID;
+
+	private String appSecret;
+
+	private String noticeUrl = "https://fanfan.skyable.cn/app/wxNotify";
+
+	private String mchID;
+
+	private String mchKey;
 
 	private byte[] certData;
 
-	public WXPayConfigImpl() {
-		String certPath = "classpath:apiclient_cert.p12";
-		// String certPath = "C:/apiclient_cert.p12";
+	public WXPayConfigImpl(String appID, String appSecret, String mchID, String mchKey, String certPath) {
+		this.appID = appID;
+		this.appSecret = appSecret;
+		this.mchID = mchID;
+		this.mchKey = mchKey;
 		try {
 			File file = ResourceUtils.getFile(certPath);
 			InputStream certStream = new FileInputStream(file);
@@ -30,22 +39,19 @@ public class WXPayConfigImpl implements WXPayConfig {
 		}
 	}
 
-	@Autowired
-	WechatMiniConfig wechatMiniConfig;
-
 	@Override
 	public String getAppID() {
-		return wechatMiniConfig.getAppid();
+		return appID;
 	}
 
 	@Override
 	public String getMchID() {
-		return wechatMiniConfig.getMchid();
+		return mchID;
 	}
 
 	@Override
 	public String getKey() {
-		return wechatMiniConfig.getMchkey();
+		return mchKey;
 	}
 
 	@Override
@@ -65,6 +71,14 @@ public class WXPayConfigImpl implements WXPayConfig {
 	public int getHttpReadTimeoutMs() {
 		// TODO Auto-generated method stub
 		return 60000;
+	}
+
+	public String getAppSecret() {
+		return appSecret;
+	}
+
+	public String getNoticeUrl() {
+		return noticeUrl;
 	}
 
 }

@@ -29,7 +29,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ffw.api.model.PageData;
 import com.ffw.app.config.FileConfig;
-import com.ffw.app.config.WechatMiniConfig;
 import com.ffw.app.constant.IConstant;
 import com.ffw.app.util.JSSDKUtil;
 import com.ffw.app.util.RestTemplateUtil;
@@ -44,9 +43,6 @@ public class InvitationcardController extends BaseController {
 	RestTemplate restTemplateOther;
 
 	@Autowired
-	WechatMiniConfig wechatMiniConfig;
-
-	@Autowired
 	FileConfig fileConfig;
 
 	@RequestMapping(value = { "/invitationcard" })
@@ -56,8 +52,7 @@ public class InvitationcardController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 
-		List<PageData> posterData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"poster/listAll", pd,
+		List<PageData> posterData = rest.postForList(IConstant.FFW_SERVICE_KEY, "poster/listAll", pd,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 
@@ -69,13 +64,11 @@ public class InvitationcardController extends BaseController {
 	}
 
 	@RequestMapping("/poster")
-	public void imageFile(HttpServletRequest request,
-			HttpServletResponse response) {
+	public void imageFile(HttpServletRequest request, HttpServletResponse response) {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 
-		PageData user = (PageData) getSession().getAttribute(
-				IConstant.USER_SESSION);
+		PageData user = (PageData) getSession().getAttribute(IConstant.USER_SESSION);
 
 		String WXOPEN_ID = user.getString("WXOPEN_ID");
 		if (StringUtils.isEmpty(WXOPEN_ID)) {
@@ -84,16 +77,16 @@ public class InvitationcardController extends BaseController {
 
 		String fileName = WXOPEN_ID + ".png";
 
-		File file = new File(fileConfig.getDirPoster() + File.separator
-				+ fileName);
+		File file = new File(fileConfig.getDirPoster() + File.separator + fileName);
 		if (!file.exists()) {
-			String token = JSSDKUtil.AccessToken(wechatMiniConfig.getAppid(),
-					wechatMiniConfig.getAppsecret());
+
+			PageData market = (PageData) getSession().getAttribute(IConstant.MARKET_SESSION);
+
+			String token = JSSDKUtil.AccessToken(market.getString("WXAPPID"), market.getString("WXAPPSECRET"));
 			InputStream inputStream = null;
 			OutputStream outputStream = null;
 			try {
-				String url = "https://api.weixin.qq.com/wxa/getwxacode?access_token="
-						+ token;
+				String url = "https://api.weixin.qq.com/wxa/getwxacode?access_token=" + token;
 				Map<String, Object> param = new HashMap<>();
 				param.put("path", "pages/index/index?fromopenid=" + WXOPEN_ID);
 				param.put("width", 430);
@@ -104,11 +97,9 @@ public class InvitationcardController extends BaseController {
 				line_color.put("b", 0);
 				param.put("line_color", line_color);
 				MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
-				HttpEntity<Object> requestEntity = new HttpEntity<Object>(
-						param, headers);
-				ResponseEntity<byte[]> entity = restTemplateOther.exchange(url,
-						HttpMethod.POST, requestEntity, byte[].class,
-						new Object[0]);
+				HttpEntity<Object> requestEntity = new HttpEntity<Object>(param, headers);
+				ResponseEntity<byte[]> entity = restTemplateOther.exchange(url, HttpMethod.POST, requestEntity,
+						byte[].class, new Object[0]);
 				byte[] result = entity.getBody();
 				inputStream = new ByteArrayInputStream(result);
 
@@ -147,8 +138,7 @@ public class InvitationcardController extends BaseController {
 			response.reset();
 			response.setContentType("image/png");
 			response.setHeader("Content-Type", "application/octet-stream");
-			response.setHeader("Content-Disposition", "attachment;filename="
-					+ fileName);
+			response.setHeader("Content-Disposition", "attachment;filename=" + fileName);
 			try {
 				InputStream in = new FileInputStream(file);
 				byte[] bytearray = new byte[1024];

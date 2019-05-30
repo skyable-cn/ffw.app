@@ -2,9 +2,6 @@ package com.ffw.app.controller;
 
 import java.util.List;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -13,17 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ffw.api.model.PageData;
-import com.ffw.app.config.WechatMiniConfig;
 import com.ffw.app.constant.IConstant;
 import com.ffw.app.model.ReturnModel;
 import com.ffw.app.util.HttpUtils;
 import com.ffw.app.util.RestTemplateUtil;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 @Controller
 public class WeChatController extends BaseController {
-
-	@Autowired
-	WechatMiniConfig wechatMiniConfig;
 
 	@Autowired
 	RestTemplateUtil rest;
@@ -36,12 +32,14 @@ public class WeChatController extends BaseController {
 		pd = this.getPageData();
 		String str = null;
 		try {
-			str = HttpUtils
-					.get("https://api.weixin.qq.com/sns/jscode2session?appid="
-							+ wechatMiniConfig.getAppid() + "&secret="
-							+ wechatMiniConfig.getAppsecret() + "&js_code="
-							+ pd.getString("CODE")
-							+ "&grant_type=authorization_code");
+
+			PageData market = new PageData();
+			market.put("MARKET_ID", pd.getString("MARKET_ID"));
+			market = rest.post(IConstant.FFW_SERVICE_KEY, "market/find", market, PageData.class);
+
+			str = HttpUtils.get("https://api.weixin.qq.com/sns/jscode2session?appid=" + market.getString("WXAPPID")
+					+ "&secret=" + market.getString("WXAPPSECRET") + "&js_code=" + pd.getString("CODE")
+					+ "&grant_type=authorization_code");
 		} catch (Exception e) {
 
 		}
@@ -57,37 +55,32 @@ public class WeChatController extends BaseController {
 		pd = this.getPageData();
 		PageData pdm = new PageData();
 		pdm.put("WXOPEN_ID", pd.getString("WXOPEN_ID"));
-		pdm = rest.post(IConstant.FFW_SERVICE_KEY, "member/findBy", pdm,
-				PageData.class);
+		pdm = rest.post(IConstant.FFW_SERVICE_KEY, "member/findBy", pdm, PageData.class);
 		if (null == pdm) {
 			pd.put("MEMBERTYPE_ID", IConstant.STRING_1);
+			pd.put("CLASS", "wx");
+			pd.put("MARKET_ID", pd.getString("MARKET_ID"));
 			pd.put("WAITACCOUNT", IConstant.STRING_0);
 			pd.put("ALREADYACCOUNT", IConstant.STRING_0);
-			if (null == pd.get("FROMWXOPEN_ID")
-					|| pd.getString("FROMWXOPEN_ID").equals("null")) {
+			if (null == pd.get("FROMWXOPEN_ID") || pd.getString("FROMWXOPEN_ID").equals("null")) {
 				pd.remove("FROMWXOPEN_ID");
 			}
 
-			rest.post(IConstant.FFW_SERVICE_KEY, "member/save", pd,
-					PageData.class);
+			rest.post(IConstant.FFW_SERVICE_KEY, "member/save", pd, PageData.class);
 		} else {
 			pdm.put("NICKNAME", pd.getString("NICKNAME"));
 			pdm.put("SEX", pd.getString("SEX"));
 			pdm.put("PHOTO", pd.getString("PHOTO"));
 			pdm.put("SEX", pd.getString("SEX"));
 
-			if (null != pd.get("FROMWXOPEN_ID")
-					&& !pd.getString("FROMWXOPEN_ID").equals("null")) {
-				if (null == pdm.getString("FROMWXOPEN_ID")
-						|| StringUtils.isEmpty(pdm.getString("FROMWXOPEN_ID"))) {
-					if (!pd.getString("FROMWXOPEN_ID").equals(
-							pd.getString("WXOPEN_ID"))) {
+			if (null != pd.get("FROMWXOPEN_ID") && !pd.getString("FROMWXOPEN_ID").equals("null")) {
+				if (null == pdm.getString("FROMWXOPEN_ID") || StringUtils.isEmpty(pdm.getString("FROMWXOPEN_ID"))) {
+					if (!pd.getString("FROMWXOPEN_ID").equals(pd.getString("WXOPEN_ID"))) {
 						pdm.put("FROMWXOPEN_ID", pd.getString("FROMWXOPEN_ID"));
 					}
 				}
 			}
-			rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pdm,
-					PageData.class);
+			rest.post(IConstant.FFW_SERVICE_KEY, "member/edit", pdm, PageData.class);
 		}
 		return new ReturnModel();
 	}
@@ -99,9 +92,11 @@ public class WeChatController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 
+		PageData market = (PageData) getSession().getAttribute(IConstant.MARKET_SESSION);
+
 		PageData pd1 = new PageData();
-		List<PageData> data = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"groups/listAll", pd1,
+		pd1.put("MARKET_ID", market.getString("MARKET_ID"));
+		List<PageData> data = rest.postForList(IConstant.FFW_SERVICE_KEY, "groups/listAll", pd1,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		JSONArray obj = JSONArray.fromObject(data);

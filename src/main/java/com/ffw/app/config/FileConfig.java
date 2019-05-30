@@ -29,6 +29,10 @@ public class FileConfig {
 		return getDir() + File.separator + "poster";
 	}
 
+	public String getDirCert() {
+		return getDir() + File.separator + "cert";
+	}
+
 	@PostConstruct
 	public void init() {
 
@@ -40,6 +44,13 @@ public class FileConfig {
 		}
 
 		tempPath = getDir() + File.separator + "poster";
+
+		ft = new File(tempPath);
+		if (!ft.exists()) {
+			ft.mkdir();
+		}
+
+		tempPath = getDir() + File.separator + "cert";
 
 		ft = new File(tempPath);
 		if (!ft.exists()) {
