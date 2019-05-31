@@ -40,8 +40,8 @@ public class LotteryController extends BaseController {
 		logger.info("进入免费抽奖查询");
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "lottery/listPage",
-				pd, Page.class);
+		pd.put("MARKET_ID", marketId());
+		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "lottery/listPage", pd, Page.class);
 		pd.put("page", page);
 		return pd;
 	}
@@ -52,26 +52,20 @@ public class LotteryController extends BaseController {
 		ModelAndView mv = new ModelAndView();
 		PageData pd = new PageData();
 		pd = this.getPageData();
-		pd = rest.post(IConstant.FFW_SERVICE_KEY, "lottery/find", pd,
-				PageData.class);
+		pd = rest.post(IConstant.FFW_SERVICE_KEY, "lottery/find", pd, PageData.class);
 
 		Date now = new Date();
-		Date start = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(pd
-				.getString("STARTTIME"));
-		Date end = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(pd
-				.getString("ENDTIME"));
-		Date show = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(pd
-				.getString("SHOWTIME"));
+		Date start = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(pd.getString("STARTTIME"));
+		Date end = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(pd.getString("ENDTIME"));
+		Date show = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(pd.getString("SHOWTIME"));
 		pd.put("USESTATE", IConstant.STRING_0);
 		if (now.getTime() - start.getTime() < 0) {
 			pd.put("USESTATE", IConstant.STRING_0);
 		}
-		if (now.getTime() - start.getTime() >= 0
-				&& now.getTime() - end.getTime() < 0) {
+		if (now.getTime() - start.getTime() >= 0 && now.getTime() - end.getTime() < 0) {
 			pd.put("USESTATE", IConstant.STRING_1);
 		}
-		if (now.getTime() - end.getTime() >= 0
-				&& now.getTime() - show.getTime() < 0) {
+		if (now.getTime() - end.getTime() >= 0 && now.getTime() - show.getTime() < 0) {
 			pd.put("USESTATE", IConstant.STRING_2);
 		}
 		if (now.getTime() - show.getTime() >= 0) {
@@ -82,14 +76,12 @@ public class LotteryController extends BaseController {
 		PageData pd1 = new PageData();
 		pd1.put("MEMBER_ID", memberId());
 		pd1.put("LOTTERY_ID", pd.getString("LOTTERY_ID"));
-		pd1 = rest.post(IConstant.FFW_SERVICE_KEY, "lotteryrecord/findBy", pd1,
-				PageData.class);
+		pd1 = rest.post(IConstant.FFW_SERVICE_KEY, "lotteryrecord/findBy", pd1, PageData.class);
 		mv.addObject("pdme", pd1);
 
 		PageData pd2 = new PageData();
 		pd2.put("LOTTERY_ID", pd.getString("LOTTERY_ID"));
-		List<PageData> lotteryrecordData = rest.postForList(
-				IConstant.FFW_SERVICE_KEY, "lotteryrecord/listAll", pd2,
+		List<PageData> lotteryrecordData = rest.postForList(IConstant.FFW_SERVICE_KEY, "lotteryrecord/listAll", pd2,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("lotteryrecordData", lotteryrecordData);
@@ -107,8 +99,7 @@ public class LotteryController extends BaseController {
 
 		PageData pd2 = new PageData();
 		pd2.put("LOTTERY_ID", pd.getString("LOTTERY_ID"));
-		List<PageData> lotteryrecordData = rest.postForList(
-				IConstant.FFW_SERVICE_KEY, "lotteryrecord/listAll", pd2,
+		List<PageData> lotteryrecordData = rest.postForList(IConstant.FFW_SERVICE_KEY, "lotteryrecord/listAll", pd2,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("lotteryrecordData", lotteryrecordData);
@@ -127,8 +118,7 @@ public class LotteryController extends BaseController {
 		PageData pd2 = new PageData();
 		pd2.put("LOTTERY_ID", pd.getString("LOTTERY_ID"));
 		pd2.put("STATE", IConstant.STRING_1);
-		List<PageData> lotteryrecordData = rest.postForList(
-				IConstant.FFW_SERVICE_KEY, "lotteryrecord/listAll", pd2,
+		List<PageData> lotteryrecordData = rest.postForList(IConstant.FFW_SERVICE_KEY, "lotteryrecord/listAll", pd2,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("lotteryrecordData", lotteryrecordData);
@@ -150,12 +140,10 @@ public class LotteryController extends BaseController {
 		pd.put("LUCKNUMBER", luckNumber);
 		pd.put("STATE", IConstant.STRING_0);
 		ReturnModel rm = new ReturnModel();
-		pd = rest.post(IConstant.FFW_SERVICE_KEY, "lotteryrecord/save", pd,
-				PageData.class);
+		pd = rest.post(IConstant.FFW_SERVICE_KEY, "lotteryrecord/save", pd, PageData.class);
 		rm.setFlag(true);
 		rm.setData(luckNumber);
-		rm.setMessage(getMessage("MSG_CODE_ADD_SUCCESS",
-				new Object[] { "抽奖记录" }, ""));
+		rm.setMessage(getMessage("MSG_CODE_ADD_SUCCESS", new Object[] { "抽奖记录" }, ""));
 		return rm;
 	}
 

@@ -38,8 +38,8 @@ public class StandController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 		pd.put("STATE", IConstant.STRING_1);
-		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "stand/listPage", pd,
-				Page.class);
+		pd.put("MARKET_ID", marketId());
+		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "stand/listPage", pd, Page.class);
 		pd.put("page", page);
 		return pd;
 	}
@@ -52,8 +52,7 @@ public class StandController extends BaseController {
 		pd = this.getPageData();
 
 		PageData pdm = new PageData();
-		List<PageData> typeData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"stand/listAllType", pdm,
+		List<PageData> typeData = rest.postForList(IConstant.FFW_SERVICE_KEY, "stand/listAllType", pdm,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("typeData", typeData);
@@ -61,8 +60,8 @@ public class StandController extends BaseController {
 		PageData pdm2 = new PageData();
 		pdm2.put("STATE", IConstant.STRING_1);
 		pdm2.put("SHOP_ID", pd.getString("SHOP_ID"));
-		List<PageData> goodsData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"goods/listAll", pdm2,
+		pdm2.put("WXFLAG", IConstant.STRING_1);
+		List<PageData> goodsData = rest.postForList(IConstant.FFW_SERVICE_KEY, "goods/listAll", pdm2,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("goodsData", goodsData);
@@ -80,14 +79,14 @@ public class StandController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 
+		pd.put("MARKET_ID", marketId());
+
 		pd.put("CREATETIME", DateUtil.getTime());
 		pd.put("STATE", IConstant.STRING_0);
 		ReturnModel rm = new ReturnModel();
-		pd = rest.post(IConstant.FFW_SERVICE_KEY, "stand/save", pd,
-				PageData.class);
+		pd = rest.post(IConstant.FFW_SERVICE_KEY, "stand/save", pd, PageData.class);
 		rm.setFlag(true);
-		rm.setMessage(getMessage("MSG_CODE_ADD_SUCCESS",
-				new Object[] { "申请活动" }, ""));
+		rm.setMessage(getMessage("MSG_CODE_ADD_SUCCESS", new Object[] { "申请活动" }, ""));
 		return rm;
 	}
 

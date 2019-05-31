@@ -36,6 +36,8 @@ public class ShopController extends BaseController {
 		pd = this.getPageData();
 
 		PageData pd1 = new PageData();
+		pd1.put("MARKET_ID", marketId());
+		pd1.put("WXFLAG", IConstant.STRING_1);
 		pd1.put("STATE", IConstant.STRING_1);
 		pd1.put("SEARCHTYPE", IConstant.STRING_1);
 		pd1.put("page_currentPage", pd.getString("page_currentPage"));
@@ -43,10 +45,11 @@ public class ShopController extends BaseController {
 		pd1.put("LATITUDE", pd.getString("LATITUDE"));
 		pd1.put("LONGITUDE", pd.getString("LONGITUDE"));
 		pd1.put("DISTANCE", pd.getString("DISTANCE"));
-		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "goods/listPage", pd1,
-				Page.class);
+		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "goods/listPage", pd1, Page.class);
 
 		PageData pd2 = new PageData();
+		pd2.put("MARKET_ID", marketId());
+		pd2.put("WXFLAG", IConstant.STRING_1);
 		pd2.put("STATE", IConstant.STRING_1);
 		pd2.put("SEARCHTYPE", IConstant.STRING_2);
 		pd2.put("page_currentPage", pd.getString("page_currentPage"));
@@ -54,8 +57,7 @@ public class ShopController extends BaseController {
 		pd2.put("LATITUDE", pd.getString("LATITUDE"));
 		pd2.put("LONGITUDE", pd.getString("LONGITUDE"));
 		pd2.put("DISTANCE", pd.getString("DISTANCE"));
-		Page page1 = rest.post(IConstant.FFW_SERVICE_KEY, "goods/listPage",
-				pd2, Page.class);
+		Page page1 = rest.post(IConstant.FFW_SERVICE_KEY, "goods/listPage", pd2, Page.class);
 
 		pd.put("page", page);
 		pd.put("page1", page1);
@@ -69,15 +71,13 @@ public class ShopController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 
-		pd = rest.post(IConstant.FFW_SERVICE_KEY, "shop/find", pd,
-				PageData.class);
+		pd = rest.post(IConstant.FFW_SERVICE_KEY, "shop/find", pd, PageData.class);
 		mv.addObject("pd", pd);
 
 		PageData pd4 = new PageData();
 		pd4.put("STATE", IConstant.STRING_1);
 		pd4.put("SHOP_ID", pd.getString("SHOP_ID"));
-		List<PageData> goodsData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"goods/listAll", pd4,
+		List<PageData> goodsData = rest.postForList(IConstant.FFW_SERVICE_KEY, "goods/listAll", pd4,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("goodsData", goodsData);

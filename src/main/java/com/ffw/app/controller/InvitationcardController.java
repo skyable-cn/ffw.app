@@ -52,6 +52,8 @@ public class InvitationcardController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 
+		pd.put("MARKET_ID", marketId());
+
 		List<PageData> posterData = rest.postForList(IConstant.FFW_SERVICE_KEY, "poster/listAll", pd,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
@@ -68,9 +70,7 @@ public class InvitationcardController extends BaseController {
 		PageData pd = new PageData();
 		pd = this.getPageData();
 
-		PageData user = (PageData) getSession().getAttribute(IConstant.USER_SESSION);
-
-		String WXOPEN_ID = user.getString("WXOPEN_ID");
+		String WXOPEN_ID = openId();
 		if (StringUtils.isEmpty(WXOPEN_ID)) {
 			WXOPEN_ID = "o_egB5bfyOQBmzWDydJxbKY8rjG8";
 		}
@@ -80,7 +80,7 @@ public class InvitationcardController extends BaseController {
 		File file = new File(fileConfig.getDirPoster() + File.separator + fileName);
 		if (!file.exists()) {
 
-			PageData market = (PageData) getSession().getAttribute(IConstant.MARKET_SESSION);
+			PageData market = marketSession();
 
 			String token = JSSDKUtil.AccessToken(market.getString("WXAPPID"), market.getString("WXAPPSECRET"));
 			InputStream inputStream = null;

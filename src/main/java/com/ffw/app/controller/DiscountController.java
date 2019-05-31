@@ -34,8 +34,7 @@ public class DiscountController extends BaseController {
 		pd = this.getPageData();
 
 		PageData pdm = new PageData();
-		List<PageData> typeData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"shop/listAllType", pdm,
+		List<PageData> typeData = rest.postForList(IConstant.FFW_SERVICE_KEY, "shop/listAllType", pdm,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("typeData", typeData);
@@ -66,8 +65,7 @@ public class DiscountController extends BaseController {
 			pd.put("ZSFLAG", IConstant.STRING_1);
 		}
 
-		Map<String, String> config = JSSDKUtil
-				.config("https://fanfan.skyable.cn/app/discount");
+		Map<String, String> config = JSSDKUtil.config("https://fanfan.skyable.cn/app/discount");
 		pd.put("config", config);
 
 		// mv.addObject("page", page);
@@ -85,23 +83,24 @@ public class DiscountController extends BaseController {
 		pd = this.getPageData();
 
 		PageData pd1 = new PageData();
+
+		pd1.put("MARKET_ID", marketId());
+		pd1.put("WXFLAG", IConstant.STRING_1);
+
 		if (null != location) {
 			pd1.put("LATITUDE", location.getString("LATITUDE"));
 			pd1.put("LONGITUDE", location.getString("LONGITUDE"));
 		}
 		pd1.put("SHOPSTATE_ID", IConstant.STRING_2);
 		pd1.put("SHOPTYPE_ID", pd.getString("SHOPTYPE_ID"));
-		pd1.put("SQLCONDITION",
-				sql(pd.getString("DISTANCE"), pd.getString("SXORDER"),
-						pd.getString("SXSELECT")));
+		pd1.put("SQLCONDITION", sql(pd.getString("DISTANCE"), pd.getString("SXORDER"), pd.getString("SXSELECT")));
 		pd1.put("page_currentPage", pd.getString("page_currentPage"));
 		// List<PageData> shopData = rest.postForList(IConstant.FFW_SERVICE_KEY,
 		// "shop/listAll", pd1,
 		// new ParameterizedTypeReference<List<PageData>>() {
 		// });
 
-		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "shop/listPage", pd1,
-				Page.class);
+		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "shop/listPage", pd1, Page.class);
 
 		pd.put("page", page);
 		return pd;

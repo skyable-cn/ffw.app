@@ -27,8 +27,8 @@ public class HomeController extends BaseController {
 
 		PageData pd1 = new PageData();
 		pd1.put("MEMBER_ID", memberId());
-		List<PageData> ordersData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"orders/listAll", pd1,
+		pd1.put("CLASS", IConstant.STRING_CLASS_WX);
+		List<PageData> ordersData = rest.postForList(IConstant.FFW_SERVICE_KEY, "orders/listAll", pd1,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("ordersNum", ordersData.size());
@@ -36,16 +36,15 @@ public class HomeController extends BaseController {
 		PageData pd2 = new PageData();
 		pd2.put("MEMBER_ID", memberId());
 		pd2.put("STATE", IConstant.STRING_0);
-		List<PageData> cardsData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"cards/listAll", pd2,
+		List<PageData> cardsData = rest.postForList(IConstant.FFW_SERVICE_KEY, "cards/listAll", pd2,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("cardsNum", cardsData.size());
 
 		PageData pd3 = new PageData();
 		pd3.put("STATE", IConstant.STRING_1);
-		List<PageData> standData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"stand/listAll", pd3,
+		pd3.put("MARKET_ID", marketId());
+		List<PageData> standData = rest.postForList(IConstant.FFW_SERVICE_KEY, "stand/listAll", pd3,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		if (standData.size() > 3) {
@@ -67,18 +66,20 @@ public class HomeController extends BaseController {
 		pd = this.getPageData();
 
 		PageData pd1 = new PageData();
+		pd1.put("MARKET_ID", marketId());
+		pd1.put("WXFLAG", IConstant.STRING_1);
 		pd1.put("STATE", IConstant.STRING_1);
 		pd1.put("SEARCHTYPE", IConstant.STRING_1);
 		pd1.put("page_currentPage", pd.getString("page_currentPage"));
-		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "goods/listPage", pd1,
-				Page.class);
+		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "goods/listPage", pd1, Page.class);
 
 		PageData pd2 = new PageData();
+		pd2.put("MARKET_ID", marketId());
+		pd2.put("WXFLAG", IConstant.STRING_1);
 		pd2.put("STATE", IConstant.STRING_1);
 		pd2.put("SEARCHTYPE", IConstant.STRING_2);
 		pd2.put("page_currentPage", pd.getString("page_currentPage"));
-		Page page1 = rest.post(IConstant.FFW_SERVICE_KEY, "goods/listPage",
-				pd2, Page.class);
+		Page page1 = rest.post(IConstant.FFW_SERVICE_KEY, "goods/listPage", pd2, Page.class);
 
 		pd.put("page", page);
 		pd.put("page1", page1);

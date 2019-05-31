@@ -34,6 +34,8 @@ public class SearchController extends BaseController {
 		pd = this.getPageData();
 
 		PageData pd1 = new PageData();
+		pd1.put("MARKET_ID", marketId());
+		pd1.put("WXFLAG", IConstant.STRING_1);
 		pd1.put("STATE", IConstant.STRING_1);
 		pd1.put("SEARCHTYPE", IConstant.STRING_1);
 		pd1.put("page_currentPage", pd.getString("page_currentPage"));
@@ -41,10 +43,11 @@ public class SearchController extends BaseController {
 		pd1.put("LATITUDE", pd.getString("LATITUDE"));
 		pd1.put("LONGITUDE", pd.getString("LONGITUDE"));
 		pd1.put("DISTANCE", pd.getString("DISTANCE"));
-		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "goods/listPage", pd1,
-				Page.class);
+		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "goods/listPage", pd1, Page.class);
 
 		PageData pd2 = new PageData();
+		pd2.put("MARKET_ID", marketId());
+		pd2.put("WXFLAG", IConstant.STRING_1);
 		pd2.put("STATE", IConstant.STRING_1);
 		pd2.put("SEARCHTYPE", IConstant.STRING_2);
 		pd2.put("page_currentPage", pd.getString("page_currentPage"));
@@ -52,8 +55,7 @@ public class SearchController extends BaseController {
 		pd2.put("LATITUDE", pd.getString("LATITUDE"));
 		pd2.put("LONGITUDE", pd.getString("LONGITUDE"));
 		pd2.put("DISTANCE", pd.getString("DISTANCE"));
-		Page page1 = rest.post(IConstant.FFW_SERVICE_KEY, "goods/listPage",
-				pd2, Page.class);
+		Page page1 = rest.post(IConstant.FFW_SERVICE_KEY, "goods/listPage", pd2, Page.class);
 
 		pd.put("page", page);
 		pd.put("page1", page1);

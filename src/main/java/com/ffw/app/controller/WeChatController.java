@@ -91,11 +91,8 @@ public class WeChatController extends BaseController {
 		logger.info("获取群组信息");
 		PageData pd = new PageData();
 		pd = this.getPageData();
-
-		PageData market = (PageData) getSession().getAttribute(IConstant.MARKET_SESSION);
-
 		PageData pd1 = new PageData();
-		pd1.put("MARKET_ID", market.getString("MARKET_ID"));
+		pd1.put("MARKET_ID", marketId());
 		List<PageData> data = rest.postForList(IConstant.FFW_SERVICE_KEY, "groups/listAll", pd1,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});

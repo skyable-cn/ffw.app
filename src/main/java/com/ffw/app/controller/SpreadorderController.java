@@ -28,8 +28,8 @@ public class SpreadorderController extends BaseController {
 		pd.put("FROMWXOPEN_ID", userSession().getString("WXOPEN_ID"));
 		pd.put("SQLCONDITION", " and os.GIVEMONEY is not null ");
 
-		List<PageData> orderData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"orders/listAll", pd,
+		pd.put("CLASS", IConstant.STRING_CLASS_WX);
+		List<PageData> orderData = rest.postForList(IConstant.FFW_SERVICE_KEY, "orders/listAll", pd,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("orderData", orderData);

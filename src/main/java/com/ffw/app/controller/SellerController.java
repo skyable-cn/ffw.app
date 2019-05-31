@@ -30,8 +30,7 @@ public class SellerController extends BaseController {
 		ModelAndView mv = new ModelAndView();
 
 		PageData pdm = new PageData();
-		List<PageData> typeData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"shop/listAllType", pdm,
+		List<PageData> typeData = rest.postForList(IConstant.FFW_SERVICE_KEY, "shop/listAllType", pdm,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("typeData", typeData);
@@ -49,8 +48,7 @@ public class SellerController extends BaseController {
 		mv.addObject("pd", pd);
 
 		PageData pdm = new PageData();
-		List<PageData> typeData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"shop/listAllType", pdm,
+		List<PageData> typeData = rest.postForList(IConstant.FFW_SERVICE_KEY, "shop/listAllType", pdm,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("typeData", typeData);
@@ -76,11 +74,9 @@ public class SellerController extends BaseController {
 		pd.put("ALREADYACCOUNT", IConstant.STRING_0);
 
 		ReturnModel rm = new ReturnModel();
-		pd = rest.post(IConstant.FFW_SERVICE_KEY, "shop/save", pd,
-				PageData.class);
+		pd = rest.post(IConstant.FFW_SERVICE_KEY, "shop/save", pd, PageData.class);
 		rm.setFlag(true);
-		rm.setMessage(getMessage("MSG_CODE_ADD_SUCCESS", new Object[] { "商户" },
-				""));
+		rm.setMessage(getMessage("MSG_CODE_ADD_SUCCESS", new Object[] { "商户" }, ""));
 		return rm;
 	}
 
@@ -93,8 +89,8 @@ public class SellerController extends BaseController {
 
 		PageData pdm = new PageData();
 		pdm.put("MEMBER_ID", memberId());
-		List<PageData> shopData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"shop/listAll", pdm,
+		pdm.put("WXFLAG", IConstant.STRING_1);
+		List<PageData> shopData = rest.postForList(IConstant.FFW_SERVICE_KEY, "shop/listAll", pdm,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("shopData", shopData);
@@ -112,21 +108,18 @@ public class SellerController extends BaseController {
 
 		PageData shop = new PageData();
 		shop.put("SHOP_ID", pd.getString("SHOP_ID"));
-		shop = rest.post(IConstant.FFW_SERVICE_KEY, "shop/find", shop,
-				PageData.class);
+		shop = rest.post(IConstant.FFW_SERVICE_KEY, "shop/find", shop, PageData.class);
 		mv.addObject("shop", shop);
 
 		PageData pd1 = new PageData();
 		pd1.put("SHOP_ID", pd.getString("SHOP_ID"));
-		List<PageData> standData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"stand/listAll", pd1,
+		List<PageData> standData = rest.postForList(IConstant.FFW_SERVICE_KEY, "stand/listAll", pd1,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("standData", standData);
 
 		Map<String, String> config = JSSDKUtil
-				.config("https://fanfan.skyable.cn/app/seller/manage?SHOP_ID="
-						+ pd.getString("SHOP_ID"));
+				.config("https://fanfan.skyable.cn/app/seller/manage?SHOP_ID=" + pd.getString("SHOP_ID"));
 		mv.addObject("config", config);
 
 		mv.setViewName("seller/manage");
@@ -141,12 +134,12 @@ public class SellerController extends BaseController {
 		pd = this.getPageData();
 
 		PageData pd1 = new PageData();
+		pd1.put("CLASS", IConstant.STRING_CLASS_WX);
 		pd1.put("page_currentPage", pd.getString("page_currentPage"));
 		pd1.put("SHOP_ID", pd.getString("SHOP_ID"));
 		pd1.put("SQLCONDITION", " AND os.STATE IN ( '2' , '3' ) ");
 		pd1.put("keywords", pd.getString("keywords"));
-		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "orders/listPage",
-				pd1, Page.class);
+		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "orders/listPage", pd1, Page.class);
 		pd.put("page", page);
 		return pd;
 	}

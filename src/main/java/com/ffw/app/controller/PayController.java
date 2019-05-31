@@ -103,7 +103,7 @@ public class PayController extends BaseController {
 		// 获取客户端的ip地址
 		String spbill_create_ip = getIpAddr(getRequest());
 
-		PageData market = (PageData) getSession().getAttribute(IConstant.MARKET_SESSION);
+		PageData market = marketSession();
 		WXPayConfigImpl config = new WXPayConfigImpl(market.getString("WXAPPID"), market.getString("WXAPPSECRET"),
 				market.getString("WXMCHID"), market.getString("WXMCHKEY"),
 				fileConfig.getDirCert() + File.separator + market.getString("FILEPATH2"));

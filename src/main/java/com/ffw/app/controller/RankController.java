@@ -26,15 +26,17 @@ public class RankController extends BaseController {
 		pd = this.getPageData();
 
 		PageData pd1 = new PageData();
-		List<PageData> chargesData = rest.postForList(
-				IConstant.FFW_SERVICE_KEY, "member/listCharges", pd1,
+		pd1.put("MARKET_ID", marketId());
+		pd1.put("CLASS", IConstant.STRING_CLASS_WX);
+		List<PageData> chargesData = rest.postForList(IConstant.FFW_SERVICE_KEY, "member/listCharges", pd1,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("chargesData", chargesData);
 
 		PageData pd2 = new PageData();
-		List<PageData> numberData = rest.postForList(IConstant.FFW_SERVICE_KEY,
-				"member/listNumber", pd2,
+		pd2.put("MARKET_ID", marketId());
+		pd2.put("CLASS", IConstant.STRING_CLASS_WX);
+		List<PageData> numberData = rest.postForList(IConstant.FFW_SERVICE_KEY, "member/listNumber", pd2,
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("numberData", numberData);

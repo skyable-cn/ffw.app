@@ -34,7 +34,7 @@ public class MessageController extends BaseController {
 
 		String openid = pd.getString("openid");
 
-		PageData market = (PageData) getSession().getAttribute(IConstant.MARKET_SESSION);
+		PageData market = marketSession();
 
 		pd = rest.post(IConstant.FFW_SERVICE_KEY, "groups/find", pd, PageData.class);
 

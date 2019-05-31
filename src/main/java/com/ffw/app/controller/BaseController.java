@@ -39,8 +39,7 @@ public class BaseController {
 	private MessageSource messageSource;
 
 	@ModelAttribute
-	public void setReqAndRes(HttpServletRequest request,
-			HttpServletResponse response) {
+	public void setReqAndRes(HttpServletRequest request, HttpServletResponse response) {
 
 		this.request = request;
 
@@ -138,10 +137,8 @@ public class BaseController {
 		return messageSource.getMessage(key, objects, Locale.CHINESE);
 	}
 
-	public String getMessageUrl(String code, Object[] args,
-			String defaultMessage) {
-		String msg = messageSource.getMessage(code, args, defaultMessage,
-				Locale.CHINESE);
+	public String getMessageUrl(String code, Object[] args, String defaultMessage) {
+		String msg = messageSource.getMessage(code, args, defaultMessage, Locale.CHINESE);
 		try {
 			msg = URLEncoder.encode(msg, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
@@ -164,6 +161,14 @@ public class BaseController {
 
 	public PageData location() {
 		return (PageData) getSession().getAttribute(IConstant.LOCATION_SESSION);
+	}
+
+	public PageData marketSession() {
+		return (PageData) getSession().getAttribute(IConstant.MARKET_SESSION);
+	}
+
+	public String marketId() {
+		return marketSession().getString("MARKET_ID");
 	}
 
 }

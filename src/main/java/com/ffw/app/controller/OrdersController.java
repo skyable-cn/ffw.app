@@ -89,6 +89,9 @@ public class OrdersController extends BaseController {
 		logger.info("提交订单保存");
 		PageData pd = new PageData();
 		pd = this.getPageData();
+
+		pd.put("CLASS", IConstant.STRING_CLASS_WX);
+
 		String CARD_ID = pd.getString("CARD_ID");
 		String GOODS_ID = pd.getString("GOODS_ID");
 		String NUMBER = pd.getString("NUMBER");
@@ -337,7 +340,7 @@ public class OrdersController extends BaseController {
 		PageData pdo = new PageData();
 		pdo = rest.post(IConstant.FFW_SERVICE_KEY, "orders/find", pd, PageData.class);
 
-		PageData market = (PageData) getSession().getAttribute(IConstant.MARKET_SESSION);
+		PageData market = marketSession();
 		WXPayConfigImpl config = new WXPayConfigImpl(market.getString("WXAPPID"), market.getString("WXAPPSECRET"),
 				market.getString("WXMCHID"), market.getString("WXMCHKEY"),
 				fileConfig.getDirCert() + File.separator + market.getString("FILEPATH2"));
