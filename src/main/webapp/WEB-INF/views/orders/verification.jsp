@@ -117,6 +117,17 @@
           </div>
         </div>
       </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon icon-form-name"></i></div>
+          <div class="item-inner">
+            <div class="item-title label">有效期</div>
+            <div class="item-input">
+              <input id="SHOPNAME" name="USETIME" type="text" placeholder="" value="${order.USESTARTTIME}~${order.USEENDTIME}" disabled="disabled">
+            </div>
+          </div>
+        </div>
+      </li>
       <c:if test="${order.STATE eq 3}">
       <li>
         <div class="item-content">
@@ -154,7 +165,7 @@
   }
   function save(){
 	  if("${useTimeFlag}"=="false"){
-		  $.alert("核销规则","该订单已过期,现已无法核销"); 
+		  $.alert("该订单已过期,现已无法核销"); 
 		  return;
 	  }
 	  $.ajax({
