@@ -104,6 +104,11 @@
 		      </div>
 		      <div id="tab2" class="tab">
 		      <div class="row">
+		      <div class="col-100">
+		      	<div style="font-size:1.0rem;text-align: center;background:#FFCC01;border-radius:5px;"><p style="padding:20px auto;color:#FFFFFF;">已核销待结算${shop.WAITACCOUNT}元</p></div>
+		      </div>
+		      </div>
+		      <div class="row">
 		      	<div class="col-100">
 				    <div class="search-input"  style="width:calc(100% - 40px);float:left;margin-top:2px;hei">
 				      <label class="icon icon-search" for="search"></label>
