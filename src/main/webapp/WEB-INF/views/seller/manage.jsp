@@ -105,7 +105,7 @@
 		      <div id="tab2" class="tab">
 		      <div class="row">
 		      <div class="col-100">
-		      	<div style="font-size:1.0rem;text-align: center;background:#FFCC01;border-radius:5px;color:#FFFFFF;padding:20px auto;">已核销待结算${shop.WAITACCOUNT}元</div>
+		      	<div style="font-size:1.0rem;text-align: center;background:#FFCC01;border-radius:5px;color:#FFFFFF;padding:20px 0;">已核销待结算${shop.WAITACCOUNT}元</div>
 		      </div>
 		      </div>
 		      <div class="row">
