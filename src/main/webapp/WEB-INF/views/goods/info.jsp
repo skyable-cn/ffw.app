@@ -54,12 +54,11 @@
 			</div>
 			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
         	<div class="row" style="padding:5px;">
-				<div class="col-100">
 					<c:if test="${fn:length(peopleDataList) eq 0}">
-						<span><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
+						<div class="col-20"><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></div>
 					</c:if>
 					<c:forEach var="var" items="${peopleDataList}">
-						<img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="${var.PHOTO}"/>
+						<div class="col-20"><img align="middle" style="width:90%;border-radius:50%;" src="${var.PHOTO}"/></div>
 					</c:forEach>
 				</div>
 			</div>
