@@ -213,11 +213,9 @@
 				}
 			},
 			error:function(){
-				
 			}
 		});
   	}
-  	
   	function goPay(data){
  		 wx.miniProgram.navigateTo({
             url: '/pages/pay/pay?type=goods&id='+data.ORDER_ID+'&sn='+data.ORDERSN+'&original='+data.ORIGINAL+'&derate='+data.DERATE+'&money='+data.MONEY
@@ -240,7 +238,6 @@
   			$("#SF").html("0.00");
   			$("#SFC").html("0.00");
   		}
-  		
   	})
   </script>
 </html>

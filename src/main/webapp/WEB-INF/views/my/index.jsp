@@ -21,9 +21,9 @@
 					<img align="middle" style="margin:10px; width:80px;border-radius:50%;" src="${USER_SESSION.PHOTO}"/>
 				</div>
 				<div class="col-60" style="padding-top:30px;">
-					<div style="font-size:0.85rem;padding-bottom:5px;">${USER_SESSION.NICKNAME}</div>
-					<div style="padding-bottom:2px;">个人资料</div>
-					<div style="padding-bottom:2px;">
+					<div style="font-size:0.75rem;padding-bottom:5px;font-weight: bold">${USER_SESSION.NICKNAME}</div>
+					<div style="padding-bottom:2px;font-size:0.5rem">个人资料</div>
+					<div style="padding-bottom:2px;font-size:0.5rem">
 					${USER_SESSION.MEMBERTYPENAME}
 					<c:if test="${vipinfo ne null}"><br/>会员卡号:${vipinfo.VIPSN}</c:if>
 					</div>

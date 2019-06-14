@@ -20,29 +20,36 @@
 			<div class="content">
 			<div class="row" style="padding:5px;">
 				<div class="col-100">
-				<div class="card demo-card-header-pic" style="position:relative;">
+				<div class="card demo-card-header-pic proBox" style="position:relative;">
 				    <div valign="bottom" class="card-header color-white no-border no-padding">
 				      <img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=${pd.FILEPATH}';">
 				      <div id="goods_time_id_${pd.GOODS_ID}_tj_left" class="suspend left">抢购中</div>
-				      <div id="goods_time_id_${pd.GOODS_ID}_tj_right" class="suspend right">活动倒计时<div id="goods_time_id_${pd.GOODS_ID}_tj"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
+				      <div id="goods_time_id_${pd.GOODS_ID}_tj_right" class="suspend right">活动倒计时<div id="goods_time_id_${pd.GOODS_ID}_tj" class="timeBox"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
 				      <div class="suspend center" onclick="shareGoods()"><img style="margin-top:0px;margin-left:15px;margin-right:15px;" width="30" src="<%=request.getContextPath()%>/static/icon/share.png"/></div>
 				    </div>
 				    <div class="card-content">
-				      <div class="card-content-inner">
-				        <p><span style="color:#fff;background-color:#F40A0B;padding:3px;border-radius:5px;">爆</span>${pd.GOODSDESC}</p>
+				      <div class="card-content-inner proText">
+						  <p class="proBoxText"><span class="proBangIcon">爆</span ><span class="proInfo">${pd.GOODSDESC}</span></p>
 				      </div>
 				    </div>
-				    <div class="card-footer">
-				      <span>体验价: <font style="color:#F40A0B;">${pd.SELLMONEY}</font></span>
-				      <span class="delete">¥ ${pd.ORIGINALMONEY}</span>
-				      <span class="return">返 
-				      <c:choose>
-				      	<c:when test="${USER_SESSION.MEMBERTYPE_ID eq 1}">${pd.MEMBERBACKMONEY}</c:when>
-				      	<c:when test="${USER_SESSION.MEMBERTYPE_ID eq 2}">${pd.VIPBACKMONEY}</c:when>
-				      	<c:otherwise>${pd.BACKMONEY0}</c:otherwise>
-				      </c:choose>
-				      </span>
-				      <span>已抢: ${pd.BUYNUMBER}</span>
+				    <div class="card-footer proBoxText">
+						<div class="proBoxTextLeft">
+						  <span class="priceTitle flexClumnBox"><font style="color:#F40A0B;">${pd.SELLMONEY}</font></span>
+						  <span>元</span>
+						  <span class="delete costPrice flexClumnBox">¥ ${pd.ORIGINALMONEY}</span>
+						  <span class="flexClumnBox yjBox">佣金</span>
+						  <span class="yjText">
+							  <c:choose>
+								<c:when test="${USER_SESSION.MEMBERTYPE_ID eq 1}">${pd.MEMBERBACKMONEY}</c:when>
+								<c:when test="${USER_SESSION.MEMBERTYPE_ID eq 2}">${pd.VIPBACKMONEY}</c:when>
+								<c:otherwise>${pd.BACKMONEY0}</c:otherwise>
+							  </c:choose>
+							  元
+						  </span>
+						</div>
+						<div class="proBoxTextRight">
+						  <span class="yqText">已抢: ${pd.BUYNUMBER}</span>
+						</div>
 				    </div>
 				  </div>
 				  <script type="text/javascript">TimeDown("goods_time_id_${pd.GOODS_ID}_tj","${pd.ENDTIME}")</script>
@@ -50,16 +57,18 @@
 			</div>
 			<div style="width:100%;height:5px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
-				<div class="col-100" style="font-size:0.85rem;">已抢购用户</div>
+				<div class="col-100" style="font-size:0.75rem;font-weight: bold">已抢购用户</div>
 			</div>
 			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
         	<div class="row" style="padding:5px;">
+				<div class="col-100">
 					<c:if test="${fn:length(peopleDataList) eq 0}">
-						<div class="col-20"><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></div>
+						<span><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
 					</c:if>
 					<c:forEach var="var" items="${peopleDataList}">
-						<div class="col-20"><img align="middle" style="width:90%;border-radius:50%;margin-bottom:5px;" src="${var.PHOTO}"/></div>
+						<img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="${var.PHOTO}"/>
 					</c:forEach>
+				</div>
 			</div>
 			<div style="width:100%;height:5px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
@@ -122,7 +131,7 @@
         </div>
         <nav class="bar bar-tab">
   <div class="row">
-  	<a class="tab-item external" href="<%=request.getContextPath()%>/home" style="border-right:1px #aaaaaa solid;">
+  	<a class="tab-item external" href="<%=request.getContextPath()%>/home" style="border-right:1px #aaaaaa solid">
      <span class="icon"><img src="<%=request.getContextPath()%>/static/icon/index.png"/></span>
      <span class="tab-label">首页</span>
     </a>

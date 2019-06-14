@@ -1,0 +1,131 @@
+/*商品列表*/
+.proBox{
+    -o-box-shadow: 1px 1px 3px #CCCCCC;
+    box-shadow: 1px 1px 3px #CCCCCC;
+    -moz-box-shadow: 1px 1px 3px #CCCCCC;
+    -webkit-box-shadow:1px 1px 3px #CCCCCC;
+}
+.proBox .proText{
+    padding: 0.75rem 0.75rem 0 0.75rem;
+}
+.proBox .proBoxText{
+    display: flex;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -o-flex;
+}
+.proBox .proBoxText .proInfo{
+    font-weight: 600;
+    padding-left: 5px;
+}
+.proBox .proBoxText .proBangIcon{
+    color:#fff;
+    background-color:#F40A0B;
+    padding:0 5px;
+    border-radius:5px;
+    height: 1.25rem;
+    line-height: 1.25rem;
+}
+.proBoxTextLeft{
+    display: flex;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -o-flex;
+    justify-content: space-around;
+    height: 1rem;
+}
+.proBoxTextLeft .priceTitle{
+    font-weight: bold;
+}
+.proBoxTextLeft .priceTitle .price{
+    color:#F40A0B;
+    font-size: 1rem;
+}
+.proBoxTextLeft .yjBox{
+    color: #FFFFFF;
+    background: #000000;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+.proBoxTextLeft .costPrice{
+    padding: 0 10px;
+}
+.proBoxTextLeft .yjText{
+    padding: 0 5px;
+}
+.flexClumnBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+}
+.proBoxTextRight{
+    text-align: right;
+}
+.proBoxTextRight .yqText{
+    font-size: 10px;
+    font-weight: 600;
+}
+.suspend.right{
+    padding: 10px 15px;
+}
+.timeBox{
+    padding-top: 5px;
+}
+/*优惠活动*/
+.TitleBox{
+    padding: 0.5rem 5px;
+}
+.Title{
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.moreText {
+    color:#FFCC01;
+    font-size:14px;
+    /*line-height:45px;*/
+}
+.shadowBox {
+    -o-box-shadow: 3px 3px 3px #888888;
+    box-shadow: 3px 3px 3px #888888;
+    -moz-box-shadow: 3px 3px 3px #888888;
+    -webkit-box-shadow: 3px 3px 3px #888888;
+}
+/*订单商品*/
+.ordersBox{
+    font-weight: bold;
+}
+.ordersBox .smallTitle{
+    font-size: 12px;
+    padding-top: 0.5rem;
+}
+.ordersBox .myButtons{
+    height: 1.6rem;
+    font-size: 12px;
+    border-radius: 0.8rem;
+    line-height: 1.6rem;
+    padding: 0 1rem;
+}
+/*订单详情*/
+.ordersDetailsBox{
+
+}
+.ordersDetailsBox .titleText{
+    font-size: 14px;
+    font-weight: bold;
+}
+/*灰色的分割条*/
+.colorRow{
+    height: 0.5rem;
+    background: #F6F6F7;
+    width: 100%;
+}
+/*地区名字*/
+.addrBox{
+    font-size: 0.75rem;
+}
+/*大标题*/
+.bigTitle{
+    font-size: 16px;
+    font-weight: bold;
+}

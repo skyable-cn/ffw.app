@@ -2,3 +2,4 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/static/msui/sm/0.6.2/css/sm.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/static/msui/sm/0.6.2/css/sm-extend.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/static/plugin/swiper/swiper.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/static/css/public/public.css">

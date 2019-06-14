@@ -16,7 +16,7 @@
   <body>
     <div class="page-group">
         <div class="page page-current" style="background:#FFFFFF;">
-			<div class="content">
+			<div class="content ordersDetailsBox">
 				<div class="row" style="padding:5px;">
 					<div class="col-100" style="text-align:right;">
 					<c:choose>
@@ -58,7 +58,7 @@
 					</div>
 				</div>
 				<div class="content-block" style="margin-left:15%;margin-right:15%;margin-top:15px;margin-bottom:15px;">
-				    <a href="javascript:;" onclick="goGive('${order.ORDER_ID}','${order.STATE}');" class="button button-round button-big button-fill" style="background:#FFCC01;color:#000000;">转赠好友</a>
+				    <a href="javascript:;" onclick="goGive('${order.ORDER_ID}','${order.STATE}');" class="button button-round button-big button-fill titleText" style="background:#FFCC01;color:#000000;">转赠好友</a>
 				</div>
 				<div class="row" style="padding:5px;padding-top:0px;">
 					<div class="col-100">
@@ -67,7 +67,7 @@
 				</div>
 				<div class="row" style="padding:5px;padding-top:30px;">
 					<div class="col-100">
-						<div style="text-align:center;font-size:0.85rem;">使用方法</div>
+						<div style="text-align:center;" class="titleText">使用方法</div>
 					</div>
 				</div>
 				<div class="row" style="padding:5px;margin-bottom:20px;">
@@ -86,7 +86,7 @@
 			            </div>
 			            <div class="item-inner">
 			              <div class="item-title-row">
-			                <div class="item-title">${order.GOODSDESC}</div>
+			                <div class="item-title titleText">${order.GOODSDESC}</div>
 			              </div>
 			              <div class="item-subtitle">总价:${order.MONEY}<span style="float:right;">数量:${order.NUMBER}</span></div>
 			            </div>
@@ -98,12 +98,12 @@
 			  <div style="width:100%;height:7px;background:#dddddd;">&nbsp;</div>
 			  <div class="row" style="padding:5px;margin-top:20px;">
 					<div class="col-100">
-						<div style="text-align:left;padding-left:5px;border-left:8px #FFCC01 solid;font-size:0.85rem;">核销记录</div>
+						<div style="text-align:left;padding-left:5px;border-left:8px #FFCC01 solid;" class="titleText">核销记录</div>
 					</div>
 				</div>
 				<c:if test="${fn:length(useData) eq 0}">
 				<div class="content-block" style="margin-left:2%;margin-right:2%;margin-top:15px;margin-bottom:15px;">
-				    <a href="#" class="button button-big button-fill" style="background:#FFCC01;color:#000000;">暂无核销记录</a>
+				    <a href="#" class="button button-big button-fill titleText" style="background:#FFCC01;color:#000000;">暂无核销记录</a>
 				</div>
 				</c:if>
 				<c:if test="${fn:length(useData) ne 0}">
@@ -120,7 +120,7 @@
 				</c:if>
 				<div class="row" style="padding:5px;margin-top:20px;">
 					<div class="col-100">
-						<div style="text-align:left;padding-left:5px;border-left:8px #FFCC01 solid;font-size:0.85rem;">注意事项</div>
+						<div style="text-align:left;padding-left:5px;border-left:8px #FFCC01 solid;" class="titleText">注意事项</div>
 					</div>
 				</div>
 				<div style="padding:5px;margin:10px;border:1px #CCCCCC solid;min-height:250px;word-wrap: break-word;word-break: break-all;overflow: hidden;">${order.BUYNOTICE}
@@ -128,7 +128,7 @@
 				<div style="width:100%;height:7px;background:#dddddd;margin-top:20px;margin-bottom: 20px;">&nbsp;</div>
 				<div class="row" style="padding:5px;margin-top:20px;">
 					<div class="col-100">
-						<div style="text-align:left;padding-left:5px;border-left:8px #FFCC01 solid;font-size:0.85rem;">商家信息</div>
+						<div style="text-align:left;padding-left:5px;border-left:8px #FFCC01 solid;" class="titleText">商家信息</div>
 					</div>
 				</div>
 				<div class="row" style="padding:5px;">
@@ -160,7 +160,7 @@
 				
 				<div class="row" style="padding:5px;margin-top:20px;">
 					<div class="col-100">
-						<div style="text-align:left;padding-left:5px;border-left:8px #FFCC01 solid;font-size:0.85rem;">订单信息</div>
+						<div style="text-align:left;padding-left:5px;border-left:8px #FFCC01 solid;" class="titleText">订单信息</div>
 					</div>
 				</div>
 				<div class="row" style="padding:5px;">
@@ -206,7 +206,7 @@
 				
 				<div class="row" style="padding:5px;margin-top:20px;">
 					<div class="col-100">
-						<div style="text-align:left;padding-left:5px;border-left:8px #FFCC01 solid;font-size:0.85rem;">用户信息</div>
+						<div style="text-align:left;padding-left:5px;border-left:8px #FFCC01 solid;" class="titleText">用户信息</div>
 					</div>
 				</div>
 				<div class="row" style="padding:5px;">

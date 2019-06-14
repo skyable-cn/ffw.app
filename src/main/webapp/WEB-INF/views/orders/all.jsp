@@ -29,8 +29,8 @@
 		    <div class="tabs">
 		      <div id="tab1" class="tab active">
 		      			<c:forEach var="var" items="${ordersData}">
-			<div class="card">
-			    <div class="card-header">下单时间:${var.CDT}<span style="float:right;border:1px #444444 solid;border-radius: 5px;padding:2px;">
+			<div class="card ordersBox">
+			    <div class="card-header smallTitle">下单时间:${var.CDT}<span style="float:right;border:1px #444444 solid;border-radius: 5px;padding:2px;">
 			    <c:choose>
 			    	<c:when test="${var.STATE eq 0}">待付款</c:when>
 			    	<c:when test="${var.STATE eq 1}">已支付</c:when>
@@ -51,7 +51,7 @@
 			              <div class="item-title-row">
 			                <div class="item-title">${var.GOODSDESC}</div>
 			              </div>
-			              <div class="item-subtitle">总价:${var.MONEY}<span style="float:right;">数量:${var.NUMBER}</span></div>
+			              <div class="item-subtitle smallTitle">总价:${var.MONEY}<span style="float:right;">数量:${var.NUMBER}</span></div>
 			            </div>
 			          </li>
 			        </ul>
@@ -62,13 +62,13 @@
 			      <span>
 			      <c:choose>
 			      	<c:when test="${var.STATE eq 0 }">
-			      	<button onclick="goPay('${var.ORDER_ID}','${var.ORDERSN}','${var.ORIGINAL}','${var.DERATE}','${var.MONEY}');;" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;">立即支付</button>
+			      	<button onclick="goPay('${var.ORDER_ID}','${var.ORDERSN}','${var.ORIGINAL}','${var.DERATE}','${var.MONEY}');;" class="button button-fill button-warning myButtons"  style="background:#FFCC01;color:#000000;">立即支付</button>
 			      	</c:when>
 			      	<c:when test="${var.STATE eq 1 }">
-			      	<button onclick="goUseInfo('${var.ORDER_ID}');" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;">确认信息</button>
+			      	<button onclick="goUseInfo('${var.ORDER_ID}');" class="button button-fill button-warning myButtons" style="background:#FFCC01;color:#000000;">确认信息</button>
 			      	</c:when>
 			      	<c:otherwise>
-			      	<button onclick="goInfo('${var.ORDER_ID}');" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;">查看详情</button>
+			      	<button onclick="goInfo('${var.ORDER_ID}');" class="button button-fill button-warning myButtons" style="background:#FFCC01;color:#000000;">查看详情</button>
 			      	</c:otherwise>
 			      </c:choose>
 			      </span>
@@ -79,8 +79,8 @@
 		      <div id="tab2" class="tab">
 				<c:forEach var="var" items="${ordersData}">
 				<c:if test="${var.STATE eq 0}">
-				<div class="card">
-			    <div class="card-header">下单时间:${var.CDT}</div>
+				<div class="card ordersBox">
+			    <div class="card-header smallTitle">下单时间:${var.CDT}</div>
 			    <div class="card-content">
 			      <div class="list-block media-list">
 			        <ul>
@@ -92,7 +92,7 @@
 			              <div class="item-title-row">
 			                <div class="item-title">${var.GOODSDESC}</div>
 			              </div>
-			              <div class="item-subtitle">总价:${var.MONEY}<span style="float:right;">数量:${var.NUMBER}</span></div>
+			              <div class="item-subtitle smallTitle">总价:${var.MONEY}<span style="float:right;">数量:${var.NUMBER}</span></div>
 			            </div>
 			          </li>
 			        </ul>
@@ -101,7 +101,7 @@
 			    <div class="card-footer">
 			      <span></span>
 			      <span>
-			      <button onclick="goPay('${var.ORDER_ID}','${var.ORDERSN}','${var.ORIGINAL}','${var.DERATE}','${var.MONEY}');;" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;">立即支付</button>
+			      <button onclick="goPay('${var.ORDER_ID}','${var.ORDERSN}','${var.ORIGINAL}','${var.DERATE}','${var.MONEY}');;" class="button button-fill button-warning myButtons" style="background:#FFCC01;color:#000000;">立即支付</button>
 			      </span>
 			    </div>
 			  </div>
@@ -111,8 +111,8 @@
 		      <div id="tab3" class="tab">
 				<c:forEach var="var" items="${ordersData}">
 				<c:if test="${var.STATE eq 1 or var.STATE eq 2 }">
-				<div class="card">
-			    <div class="card-header">下单时间:${var.CDT}</div>
+				<div class="card ordersBox">
+			    <div class="card-header smallTitle">下单时间:${var.CDT}</div>
 			    <div class="card-content">
 			      <div class="list-block media-list">
 			        <ul>
@@ -124,7 +124,7 @@
 			              <div class="item-title-row">
 			                <div class="item-title">${var.GOODSDESC}</div>
 			              </div>
-			              <div class="item-subtitle">总价:${var.MONEY}<span style="float:right;">数量:${var.NUMBER}</span></div>
+			              <div class="item-subtitle smallTitle">总价:${var.MONEY}<span style="float:right;">数量:${var.NUMBER}</span></div>
 			            </div>
 			          </li>
 			        </ul>
@@ -133,7 +133,7 @@
 			    <div class="card-footer">
 			      <span></span>
 			      <span>
-			      <button onclick="goInfo('${var.ORDER_ID}');" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;">查看详情</button>
+			      <button onclick="goInfo('${var.ORDER_ID}');" class="button button-fill button-warning myButtons" style="background:#FFCC01;color:#000000;">查看详情</button>
 			      </span>
 			    </div>
 			  </div>
@@ -143,8 +143,8 @@
 		      <div id="tab4" class="tab">
 				<c:forEach var="var" items="${ordersData}">
 				<c:if test="${var.STATE eq 3}">
-				<div class="card">
-			    <div class="card-header">下单时间:${var.CDT}</div>
+				<div class="card ordersBox">
+			    <div class="card-header smallTitle">下单时间:${var.CDT}</div>
 			    <div class="card-content">
 			      <div class="list-block media-list">
 			        <ul>
@@ -156,7 +156,7 @@
 			              <div class="item-title-row">
 			                <div class="item-title">${var.GOODSDESC}</div>
 			              </div>
-			              <div class="item-subtitle">总价:${var.MONEY}<span style="float:right;">数量:${var.NUMBER}</span></div>
+			              <div class="item-subtitle smallTitle">总价:${var.MONEY}<span style="float:right;">数量:${var.NUMBER}</span></div>
 			            </div>
 			          </li>
 			        </ul>
@@ -165,7 +165,7 @@
 			    <div class="card-footer">
 			      <span></span>
 			      <span>
-			      <button onclick="goInfo('${var.ORDER_ID}');" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;">查看详情</button>
+			      <button onclick="goInfo('${var.ORDER_ID}');" class="button button-fill button-warning myButtons" style="background:#FFCC01;color:#000000;">查看详情</button>
 			      </span>
 			    </div>
 			  </div>

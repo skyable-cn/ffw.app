@@ -27,6 +27,4 @@ public interface IConstant {
 	String MARKET_SESSION = "MARKET_SESSION";
 
 	String STRING_CLASS_WX = "wx";
-
-	String STRING_SHOW_FLAG = "STRING_SHOW_FLAG";
 }

@@ -49,9 +49,9 @@
 		        <!-- <div class="col-25"><a class="external" href="<%=request.getContextPath()%>/seller"><img src="<%=request.getContextPath()%>/static/icon/home/rz.png"/><p>商家入驻</p></a></div> -->
 			</div>
 			<div style="width:100%;height:10px;background:#dddddd;">&nbsp;</div>
-			<div class="row" style="padding:5px;">
-				<div class="col-50" style="font-size:1.0rem;font-weight:bold;">优惠活动</div>
-				<div class="col-50 more_activity"><a class="external" href="<%=request.getContextPath()%>/stand" style="color:#FFCC01;font-size:0.85rem;line-height:45px;">查看更多</a></div>
+			<div class="row TitleBox">
+				<div class="col-50 Title yhhd">优惠活动</div>
+				<div class="col-50 more_activity"><a class="external moreText" href="<%=request.getContextPath()%>/stand">查看更多</a></div>
 			</div>
 			<div class="row" style="padding:5px;padding-top:0px;">
 				<div class="col-100">
@@ -66,7 +66,7 @@
 				</div>
 			</div>
 			<div class="row" style="padding:5px;">
-				<div class="col-50"><div style="font-size:1.0rem;font-weight:bold;">今日热卖</div><div>好店爆款,人手一份</div></div>
+				<div class="col-50"><div class="Title">今日热卖</div><div style="font-size: 12px">好店爆款,人手一份</div></div>
 				<div class="col-50">
 				<div class="content-block" style="margin:0px;margin-top:10px;">
 				    <div class="buttons-row">
@@ -143,22 +143,28 @@
     						backmoney = value.BACKMONEY0;
     					}
     					html += `
-    					<div class="card demo-card-header-pic" style="position:relative;">
+    					<div class="card demo-card-header-pic proBox" style="position:relative;">
     				    <div valign="bottom" class="card-header color-white no-border no-padding">
     				      <a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=`+value.GOODS_ID+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
     				      <div id="goods_time_id_`+value.GOODS_ID+`_tj_left" class="suspend left">抢购中</div>
-    				      <div id="goods_time_id_`+value.GOODS_ID+`_tj_right" class="suspend right">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_tj"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
+    				      <div id="goods_time_id_`+value.GOODS_ID+`_tj_right" class="suspend right">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_tj" class="timeBox"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
     				    </div>
     				    <div class="card-content">
-    				      <div class="card-content-inner">
-    				        <p><span style="color:#fff;background-color:#F40A0B;padding:3px;border-radius:5px;">爆</span>`+value.GOODSDESC+`</p>
+    				      <div class="card-content-inner proText">
+    				        <p class="proBoxText"><span class="proBangIcon">爆</span><span class="proInfo">`+value.GOODSDESC+`</span></p>
     				      </div>
     				    </div>
-    				    <div class="card-footer">
-    				      <span>体验价: <font style="color:#F40A0B;">`+value.SELLMONEY+`</font></span>
-    				      <span class="delete">¥ `+value.ORIGINALMONEY+`</span>
-    				      <span class="return">返 `+backmoney+`</span>
-    				      <span>已抢:`+value.BUYNUMBER+`</span>
+    				    <div class="card-footer proBoxText">
+							<div class="proBoxTextLeft">
+							  <span class="priceTitle flexClumnBox"><font class="price">`+value.SELLMONEY+`</font></span>
+							  <span>元</span>
+							  <span class="delete costPrice flexClumnBox">¥ `+value.ORIGINALMONEY+`</span>
+							  <span class="flexClumnBox yjBox">佣金</span>
+							  <span class="yjText">`+backmoney+`元</span>
+						  	</div>
+							<div class="proBoxTextRight">
+    				      		<span class="yqText">已抢:`+value.BUYNUMBER+`</span>
+							</div>
     				    </div>
     				  </div>
     					`;
@@ -182,22 +188,28 @@
     						backmoney = value.BACKMONEY0;
     					}
     					html += `
-    					<div class="card demo-card-header-pic" style="position:relative;">
+    					<div class="card demo-card-header-pic proBox" style="position:relative;">
     				    <div valign="bottom" class="card-header color-white no-border no-padding">
     				      <a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=`+value.GOODS_ID+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
     				      <div id="goods_time_id_`+value.GOODS_ID+`_zr_left" class="suspend left">抢购中</div>
-    				      <div id="goods_time_id_`+value.GOODS_ID+`_zr_right" class="suspend right">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_zr"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
+    				      <div id="goods_time_id_`+value.GOODS_ID+`_zr_right" class="suspend right">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_zr" class="timeBox"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
     				    </div>
     				    <div class="card-content">
-    				      <div class="card-content-inner">
-    				        <p><span style="color:#fff;background-color:#F40A0B;padding:3px;border-radius:5px;">爆</span>`+value.GOODSDESC+`</p>
+    				      <div class="card-content-inner proText">
+    				        <p class="proBoxText"><span class="proBangIcon">爆</span><span class="proInfo">`+value.GOODSDESC+`</span></p>
     				      </div>
     				    </div>
-    				    <div class="card-footer">
-    				      <span>体验价: <font style="color:#F40A0B;">`+value.SELLMONEY+`</font></span>
-    				      <span class="delete">¥ `+value.ORIGINALMONEY+`</span>
-    				      <span class="return">返 `+backmoney+`</span>
-    				      <span>已抢:`+value.BUYNUMBER+`</span>
+    				    <div class="card-footer proBoxText">
+							<div class="proBoxTextLeft">
+							  <span class="priceTitle flexClumnBox"><font class="price">`+value.SELLMONEY+`</font></span>
+							  <span>元</span>
+							  <span class="delete costPrice flexClumnBox">¥ `+value.ORIGINALMONEY+`</span>
+							  <span class="flexClumnBox yjBox">佣金</span>
+							  <span class="yjText">`+backmoney+`元</span>
+						  	</div>
+						  	<div class="proBoxTextRight">
+    				      		<span class="yqText">已抢:`+value.BUYNUMBER+`</span>
+    				      	</div>
     				    </div>
     				  </div>
     					`;
@@ -209,7 +221,7 @@
     					$("#goods2").append(html);
     				}
     				
-    				setTimeout(function(){$.hidePreloader();if(flag && '${showNotice}' == 'yes'){searchUnRead();}},1000);
+    				setTimeout(function(){$.hidePreloader();},1000);
     				
     	             loading = false;
     			},
@@ -257,76 +269,6 @@
 		wx.miniProgram.navigateTo({
           url: '/pages/customer/customer'
      })
-	}
-	
-	function searchUnRead(){
-	  	$.ajax({
-			type: "POST",
-			url: '<%=request.getContextPath()%>/notice/listAllUnRead',
-	    	data:{
-					
-	    	},
-	    	async: false,
-			dataType:'json',
-			cache: false,
-			beforeSend:function(){
-	
-			},
-			success: function(data){
-				 showUnRead(data,0);
-			},
-			error:function(){
-				
-			}
-		});
-	}
-	
-	function showUnRead(data,index){
-		if(index >= data.length){
-			return;
-		}
-		var notice = data[index];
-		
-		$.modal({
-	      title:  '系统消息通知',
-	      text: notice.NOTICECONTENT,
-	      buttons: [
-	        {
-	          text: '确定',
-	          onClick: function() {
-	        	saveNoticeRecord(notice.NOTICE_ID);setTimeout(function(){showUnRead(data,(index+1))},3000);
-	          }
-	        },
-	        {
-	          text: '取消',
-	          onClick: function() {
-	        	setTimeout(function(){showUnRead(data,(index+1))},3000);
-	          }
-	        }
-	      ]
-	    });
-	}
-	
-	function saveNoticeRecord(id){
-		$.ajax({
-			type: "POST",
-			url: '<%=request.getContextPath()%>/notice/saveRecord',
-	    	data:{
-				"NOTICE_ID":id	
-	    	},
-	    	async: false,
-			dataType:'json',
-			cache: false,
-			beforeSend:function(){
-	
-			},
-			success: function(data){
-				 
-			},
-			error:function(){
-				
-			}
-		});
 	}
   </script>
 </html>

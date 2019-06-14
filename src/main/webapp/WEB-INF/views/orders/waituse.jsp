@@ -17,8 +17,8 @@
         <div class="page page-current">
 			<div class="content">
 			<c:forEach var="var" items="${ordersData}">
-			<div class="card">
-			    <div class="card-header">下单时间:${var.CDT}</div>
+			<div class="card ordersBox">
+			    <div class="card-header smallTitle">下单时间:${var.CDT}</div>
 			    <div class="card-content">
 			      <div class="list-block media-list">
 			        <ul>
@@ -30,7 +30,7 @@
 			              <div class="item-title-row">
 			                <div class="item-title">${var.GOODSDESC}</div>
 			              </div>
-			              <div class="item-subtitle">总价:${var.MONEY}<span style="float:right;">数量:${var.NUMBER}</span></div>
+			              <div class="item-subtitle smallTitle">总价:${var.MONEY}<span style="float:right;">数量:${var.NUMBER}</span></div>
 			            </div>
 			          </li>
 			        </ul>
@@ -38,7 +38,7 @@
 			    </div>
 			    <div class="card-footer">
 			      <span></span>
-			      <span><button onclick="goInfo('${var.ORDER_ID}');" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;">查看详情</button></span>
+			      <span><button onclick="goInfo('${var.ORDER_ID}');" class="button button-fill button-warning myButtons" style="background:#FFCC01;color:#000000;">查看详情</button></span>
 			    </div>
 			  </div>
 			</c:forEach>

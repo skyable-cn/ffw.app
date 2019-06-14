@@ -47,32 +47,40 @@
 			 -->
 			<div style="width:100%;height:10px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
-				<div class="col-100" style="font-size:0.85rem;">所有菜单</div>
+				<div class="col-100 bigTitle">所有菜单</div>
 			</div>
 			<c:forEach var="var" items="${goodsData}">
 			<div class="row" style="padding:5px;">
 				<div class="col-100">
-		          <div class="card demo-card-header-pic" style="position:relative;">
+		          <div class="card demo-card-header-pic proBox" style="position:relative;">
 				    <div valign="bottom" class="card-header color-white no-border no-padding">
 				      <a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=${var.GOODS_ID}"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}';"></a>
 				      <div id="goods_time_id_${var.GOODS_ID}_left" class="suspend left">抢购中</div>
-				      <div id="goods_time_id_${var.GOODS_ID}_right" class="suspend right">活动倒计时<div id="goods_time_id_${var.GOODS_ID}"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
+				      <div id="goods_time_id_${var.GOODS_ID}_right" class="suspend right">活动倒计时<div id="goods_time_id_${var.GOODS_ID}" class="timeBox"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
 				    </div>
 				    <div class="card-content">
-				      <div class="card-content-inner">
-				        <p><span style="color:#fff;background-color:#F40A0B;padding:3px;border-radius:5px;">爆</span>${var.GOODSDESC}</p>
+				      <div class="card-content-inner proText">
+						  <p class="proBoxText"><span class="proBangIcon">爆</span><span class="proInfo">${var.GOODSDESC}</span></p>
 				      </div>
 				    </div>
-				    <div class="card-footer">
-				      <span>体验价: <font style="color:#F40A0B;">${var.SELLMONEY}</font></span>
-				      <span class="delete">¥ ${var.ORIGINALMONEY}</span>
-				      <span class="return">返 <c:choose>
-				      	<c:when test="${USER_SESSION.MEMBERTYPE_ID eq 1}">${var.MEMBERBACKMONEY}</c:when>
-				      	<c:when test="${USER_SESSION.MEMBERTYPE_ID eq 2}">${var.VIPBACKMONEY}</c:when>
-				      	<c:otherwise>${var.BACKMONEY0}</c:otherwise>
-				      </c:choose>
-				      </span>
-				      <span>已抢: ${var.BUYNUMBER}</span>
+				    <div class="card-footer proBoxText">
+						<div class="proBoxTextLeft">
+						  <span class="priceTitle flexClumnBox"><font style="color:#F40A0B;">${var.SELLMONEY}</font></span>
+						  <span>元</span>
+						  <span class="delete costPrice flexClumnBox">¥ ${var.ORIGINALMONEY}</span>
+						  <span class="flexClumnBox yjBox">佣金 </span>
+						  <span class="yjText">
+						  <c:choose>
+							<c:when test="${USER_SESSION.MEMBERTYPE_ID eq 1}">${var.MEMBERBACKMONEY}</c:when>
+							<c:when test="${USER_SESSION.MEMBERTYPE_ID eq 2}">${var.VIPBACKMONEY}</c:when>
+							<c:otherwise>${var.BACKMONEY0}</c:otherwise>
+						  </c:choose>
+							  元
+						  </span>
+						</div>
+						<div class="proBoxTextRight">
+				      		<span>已抢: ${var.BUYNUMBER}</span>
+						</div>
 				    </div>
 				  </div>
 				  </div>

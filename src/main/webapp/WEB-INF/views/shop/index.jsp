@@ -143,22 +143,28 @@
     						backmoney = value.BACKMONEY0;
     					}
     					html += `
-    					<div class="card demo-card-header-pic" style="position:relative;">
+    					<div class="card demo-card-header-pic proBox" style="position:relative;">
     				    <div valign="bottom" class="card-header color-white no-border no-padding">
     				      <a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=`+value.GOODS_ID+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
     				      <div id="goods_time_id_`+value.GOODS_ID+`_tj_left" class="suspend left">抢购中</div>
-    				      <div id="goods_time_id_`+value.GOODS_ID+`_tj_right" class="suspend right">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_tj"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
+    				      <div id="goods_time_id_`+value.GOODS_ID+`_tj_right" class="suspend right">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_tj" class="timeBox"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
     				    </div>
     				    <div class="card-content">
-    				      <div class="card-content-inner">
-    				        <p><span style="color:#fff;background-color:#F40A0B;padding:3px;border-radius:5px;">爆</span>`+value.GOODSDESC+`</p>
+    				      <div class="card-content-inner proText">
+    				        <p class="proBoxText"><span class="proBangIcon">爆</span><span class="proInfo">`+value.GOODSDESC+`</span></p>
     				      </div>
     				    </div>
-    				    <div class="card-footer">
-    				      <span>体验价: <font style="color:#F40A0B;">`+value.SELLMONEY+`</font></span>
-    				      <span class="delete">¥ `+value.ORIGINALMONEY+`</span>
-    				      <span class="return">返 `+backmoney+`</span>
-    				      <span>已抢:`+value.BUYNUMBER+`</span>
+    				    <div class="card-footer proBoxText">
+							<div class="proBoxTextLeft">
+							  <span class="priceTitle flexClumnBox"><font class="price">`+value.SELLMONEY+`</font></span>
+							  <span>元</span>
+							  <span class="delete costPrice flexClumnBox">¥ `+value.ORIGINALMONEY+`</span>
+							  <span class="flexClumnBox yjBox">佣金</span>
+							  <span class="yjText">`+backmoney+`元</span>
+						    </div>
+						    <div class="proBoxTextRight">
+								<span class="yqText">已抢:`+value.BUYNUMBER+`</span>
+    				      	</div>
     				    </div>
     				  </div>
     					`;
@@ -182,22 +188,28 @@
     						backmoney = value.BACKMONEY0;
     					}
     					html += `
-    					<div class="card demo-card-header-pic" style="position:relative;">
+    					<div class="card demo-card-header-pic proBox" style="position:relative;">
     				    <div valign="bottom" class="card-header color-white no-border no-padding">
     				      <a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=`+value.GOODS_ID+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
     				      <div id="goods_time_id_`+value.GOODS_ID+`_zr_left" class="suspend left">抢购中</div>
-    				      <div id="goods_time_id_`+value.GOODS_ID+`_zr_right" class="suspend right">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_zr"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
+    				      <div id="goods_time_id_`+value.GOODS_ID+`_zr_right" class="suspend right">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_zr" class="timeBox"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
     				    </div>
     				    <div class="card-content">
-    				      <div class="card-content-inner">
-    				        <p><span style="color:#fff;background-color:#F40A0B;padding:3px;border-radius:5px;">爆</span>`+value.GOODSDESC+`</p>
+    				      <div class="card-content-inner proText">
+    				        <p class="proBoxText"><span class="proBangIcon">爆</span><span class="proInfo">`+value.GOODSDESC+`</span></p>
     				      </div>
     				    </div>
     				    <div class="card-footer">
-    				      <span>体验价: <font style="color:#F40A0B;">`+value.SELLMONEY+`</font></span>
-    				      <span class="delete">¥ `+value.ORIGINALMONEY+`</span>
-    				      <span class="return">返 `+backmoney+`</span>
-    				      <span>已抢:`+value.BUYNUMBER+`</span>
+    				      <div class="proBoxTextLeft">
+							  <span class="priceTitle flexClumnBox"><font class="price">`+value.SELLMONEY+`</font></span>
+							  <span>元</span>
+							  <span class="delete costPrice flexClumnBox">¥ `+value.ORIGINALMONEY+`</span>
+							  <span class="flexClumnBox yjBox">佣金</span>
+							  <span class="yjText">`+backmoney+`元</span>
+						    </div>
+						    <div class="proBoxTextRight">
+								<span class="yqText">已抢:`+value.BUYNUMBER+`</span>
+    				      	</div>
     				    </div>
     				  </div>
     					`;
