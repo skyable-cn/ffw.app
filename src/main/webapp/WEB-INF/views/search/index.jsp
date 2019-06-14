@@ -29,9 +29,9 @@
 				</div>
 			</div>
 			<div class="row" style="padding-left:5px;padding-right:5px;">
-				<div class="col-100" style="font-size:0.8rem;font-weight:bold; border-bottom: solid 3px #F6F6F7">人气商圈</div>
+				<div class="col-100" style="font-size:0.8rem;font-weight:bold; border-bottom: solid 1px #CCCCCC">人气商圈</div>
 			</div>
-			<div class="row" style="padding:5px;">
+			<div class="row" style="padding:10px 5px 5px 5px;">
 				<div class="col-50">
 					<div class="selectdiv shadowBox" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2000" latitude="34.277050" longitude="108.962660">
 						<div class="addrBox">西安火车站<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
@@ -121,7 +121,7 @@
 	   	search(true);
 		     
     	var page_currentPage = 1;
-    	
+
     	function search(flag){
     		$.ajax({
     			type: "POST",

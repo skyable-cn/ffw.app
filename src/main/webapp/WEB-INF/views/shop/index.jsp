@@ -19,34 +19,34 @@
 			<div class="content infinite-scroll" data-distance="30">
 			<div class="row" style="padding:5px;">
 				<div class="col-50">
-					<div class="selectdiv" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2000" latitude="34.277050" longitude="108.962660">
-						<div>西安火车站<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
+					<div class="selectdiv shadowBox" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2000" latitude="34.277050" longitude="108.962660">
+						<div class="addrBox">西安火车站<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
 						<div>2.0km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
 					</div>
 				</div>
 				<div class="col-50">
-					<div class="selectdiv" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2000" latitude="34.250660" longitude="108.947029">
-						<div>西安城墙南门<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
+					<div class="selectdiv shadowBox" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2000" latitude="34.250660" longitude="108.947029">
+						<div class="addrBox">西安城墙南门<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
 						<div>2.0km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
 					</div>
 				</div>
 			</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-33">
-					<div class="selectdiv" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2500" latitude="34.259430" longitude="108.947040">
-						<div>钟楼<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
+					<div class="selectdiv shadowBox" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2500" latitude="34.259430" longitude="108.947040">
+						<div class="addrBox">钟楼<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
 						<div>2.5km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
 					</div>
 				</div>
 				<div class="col-33">
-					<div class="selectdiv" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2500" latitude="34.222819" longitude="108.946696">
-						<div>小寨<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
+					<div class="selectdiv shadowBox" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2500" latitude="34.222819" longitude="108.946696">
+						<div class="addrBox">小寨<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
 						<div>2.5km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
 					</div>
 				</div>
 				<div class="col-33">
-					<div class="selectdiv" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2500" latitude="34.162457" longitude="108.903866">
-						<div>大学城<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
+					<div class="selectdiv shadowBox" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2500" latitude="34.162457" longitude="108.903866">
+						<div class="addrBox">大学城<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
 						<div>2.5km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
 					</div>
 				</div>
