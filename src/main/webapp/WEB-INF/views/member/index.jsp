@@ -51,18 +51,18 @@
 						 		</div>
 						 		<div class="col-50" style="padding-top:5px;">
 					 		<c:if test="${fn:length(friendData) eq 0}">
-					 		<span onclick="goShare()"><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
-					 		<span onclick="goShare()"><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
+					 		<span onclick="goShare()" style="width: 50%"><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
+					 		<span onclick="goShare()" style="width: 50%"><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
 					 		</c:if>
 					 		<c:if test="${fn:length(friendData) eq 1}">
 					 		<c:forEach var="var" items="${friendData}">
-					 		<span><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="${var.PHOTO}"/></span>
+					 		<span style="width: 50%"> <img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="${var.PHOTO}"/></span>
 					 		</c:forEach>
-					 		<span onclick="goShare()"><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
+					 		<span onclick="goShare() style="width: 50%""><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
 					 		</c:if>
 					 		<c:if test="${fn:length(friendData) eq 2}">
 					 		<c:forEach var="var" items="${friendData}" varStatus="status">
-					 		<span <c:if test="${status.index ne 0 }"></c:if>><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="${var.PHOTO}"/></span>
+					 		<span style="width: 50%" <c:if test="${status.index ne 0 }"></c:if>><img style="width:35px;border-radius:50%;border:1px #AAAAAA solid;" src="${var.PHOTO}"/></span>
 					 		</c:forEach>
 					 		</c:if>
 					 		</div>

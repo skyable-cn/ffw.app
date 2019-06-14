@@ -110,7 +110,6 @@
     });	
   </script>
     <script type="text/javascript">
-
 	   	search(true);
 		     
     	var page_currentPage = 1;
@@ -222,7 +221,7 @@
     				}
     				
     				setTimeout(function(){$.hidePreloader();},1000);
-    				
+
     	             loading = false;
     			},
     			error:function(){
