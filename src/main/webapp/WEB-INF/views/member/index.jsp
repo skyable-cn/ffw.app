@@ -68,7 +68,7 @@
 					 		</div>
 							</div>
 					 		</div>
-					 		<div class="col-50" style="color:#888888;padding:8px;word-wrap: break-word;word-break: break-all;overflow: hidden;font-size:12px;">成功邀请两名好友开通会员送你一个月会员</div>
+					 		<div class="col-50" style=" color:#888888;padding:8px;word-wrap: break-word;word-break: break-all;overflow: hidden;font-size:12px;">成功邀请两名好友开通会员送你一个月会员</div>
 					 	</div>
 					 	<div class="row"style="margin-top:10px;">
 					 		<div class="col-50">
@@ -120,13 +120,13 @@
 					<div class="card" style="background:#efeff4;" onclick="selectProduct(this)" MONEY="${var.PRODUCTMONEY}" PRODUCT_ID="${var.PRODUCT_ID}">
 				    <div class="card-content">
 				      <div class="card-content-inner" style="border-top-left-radius:10px;border-top-right-radius:10px;height:70px;background:#FFCC01;font-weight:normal;">
-				      <div class="row">
-				      	<div class="col-60">
-				      	<div style="font-size:1.0rem;font-weight:bold;">${var.PRODUCTDESC}</div>
-				      	<div style="font-size:0.85rem;">¥ ${var.PRODUCTMONEY} 元</div>
-				      	</div>
-				      	<div class="col-40" style="text-align:right;"><img width="20" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/payok.png"/></div>
-				      </div>
+                          <div class="row">
+                            <div class="col-60">
+                            <div style="font-size:1.0rem;font-weight:bold;">${var.PRODUCTDESC}</div>
+                            <div style="font-size:0.85rem;">¥ ${var.PRODUCTMONEY} 元</div>
+                            </div>
+                            <div class="col-40" style="text-align:right;"><img width="20" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/payok.png"/></div>
+                          </div>
 				      </div>
 				    </div>
 				    <div class="card-footer" style="border-bottom-left-radius:10px;border-bottom-right-radius:10px;text-align:right;background:#FFCC01;font-weight:normal;color:#3d414;">
@@ -211,13 +211,13 @@
   		$(".div_height1").attr("height",parseInt($(".div_height1").attr("height"))-100)
   		$(".div_height2").css("height",(parseInt($(".div_height2").css("height"))-100)+'px')
   	}
-  	
+
   	function goShare(){
  		 wx.miniProgram.navigateTo({
             url: '/pages/share/share?type=vipinfo&fromopenid=${USER_SESSION.WXOPEN_ID}&image=vip.jpg&datakey=&title=邀请加入会员'
        })
  	}
-  	
+
   	function goVipBuy(title,image){
   		var typeMsg = "开通";
   		if("${vipinfo}" != null){
@@ -230,7 +230,7 @@
   	      extraClass:'customerModal'
   	    })
   	}
-  	
+
   	function closeModal(){
   		$.closeModal(momal);
   	}

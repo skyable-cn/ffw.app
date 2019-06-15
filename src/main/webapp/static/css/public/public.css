@@ -1,9 +1,10 @@
 /*商品列表*/
 .proBox{
-    -o-box-shadow: 1px 1px 3px #CCCCCC;
-    box-shadow: 1px 1px 3px #CCCCCC;
-    -moz-box-shadow: 1px 1px 3px #CCCCCC;
-    -webkit-box-shadow:1px 1px 3px #CCCCCC;
+    /*-o-box-shadow: 1px 1px 5px #F2F2F2;*/
+    /*box-shadow: 1px 1px 5px #F2F2F2;*/
+    /*-moz-box-shadow: 1px 1px 5px #F2F2F2;*/
+    /*-webkit-box-shadow:1px 1px 5px #F2F2F2;*/
+    border-bottom: solid 1px #F2F2F2;
 }
 .proBox .proText{
     padding: 0.75rem 0.75rem 0 0.75rem;
@@ -86,10 +87,10 @@
     /*line-height:45px;*/
 }
 .shadowBox {
-    -o-box-shadow: 3px 3px 3px #888888;
-    box-shadow: 3px 3px 3px #888888;
-    -moz-box-shadow: 3px 3px 3px #888888;
-    -webkit-box-shadow: 3px 3px 3px #888888;
+    -o-box-shadow: 3px 3px 3px #F2F2F2;
+    box-shadow: 3px 3px 3px #F2F2F2;
+    -moz-box-shadow: 3px 3px 3px #F2F2F2;
+    -webkit-box-shadow: 3px 3px 3px #F2F2F2;
 }
 /*订单商品*/
 .ordersBox{

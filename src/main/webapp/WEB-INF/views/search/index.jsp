@@ -29,7 +29,7 @@
 				</div>
 			</div>
 			<div class="row" style="padding-left:5px;padding-right:5px;">
-				<div class="col-100" style="font-size:0.8rem;font-weight:bold; border-bottom: solid 1px #CCCCCC">人气商圈</div>
+				<div class="col-100" style="font-size:0.8rem;font-weight:bold;">人气商圈</div>
 			</div>
 			<div class="row" style="padding:10px 5px 5px 5px;">
 				<div class="col-50">
