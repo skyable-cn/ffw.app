@@ -29,7 +29,7 @@
 			<div class="row" style="overflow: unset">
 				<div class="col-100" style="position:relative;">
 				 <div style="margin-bottom: 2rem"><img class='card-cover div_height1' height="230" width="100%" src="<%=request.getContextPath()%>/static/icon/me.png" alt=""></div>
-				 <div class="div_height2" style="background:#ffffff;height:200px;position:absolute;top:60px;z-index:999;left:3%;right:3%;-webkit-box-shadow: 3px 3px 12px #666;-moz-box-shadow: 3px 3px 12px #666;box-shadow: 3px 3px 12px #666; -moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;">
+				 <div class="div_height2" style="background:#ffffff;height:200px;position:absolute;top:60px;z-index:999;left:3%;right:3%;-webkit-box-shadow: 3px 3px 12px #CCCCCC;-moz-box-shadow: 3px 3px 12px #CCCCCC;box-shadow: 3px 3px 12px #CCCCCC; -moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;">
 					 <div class="row">
 					 	<div class="col-60">
 					 		<div class="row">
@@ -77,7 +77,7 @@
 							 		<button class="button button-fill button-warning" style="background:#FFCC01;color:#000000;margin-left:5px;">邀请赚钱</button>
 							 		</div>
 							 		<div class="col-50">
-							 		<button onclick="goShare()" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;margin-left:5px;padding: 0 25px">分享</button>
+							 		<button onclick="goShare()" class="button button-fill button-warning" style="background:#FFCC01;color:#000000;margin-left:5px;padding: 0 20px">分享</button>
 							 		</div>
 						 		</div>
 					 		</div>

@@ -17,40 +17,40 @@
     <div class="page-group">
         <div class="page page-current">
 			<div class="content infinite-scroll" data-distance="30">
-			<div class="row" style="padding:5px;">
-				<div class="col-50">
-					<div class="selectdiv shadowBox" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2000" latitude="34.277050" longitude="108.962660">
-						<div class="addrBox">西安火车站<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
-						<div>2.0km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
+				<div class="row" style="padding:10px 10px 5px 10px;">
+					<div class="col-50">
+						<div class="selectdiv shadowBox" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2000" latitude="34.277050" longitude="108.962660">
+							<div class="smTitle" style="padding-bottom:10px">西安火车站<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
+							<div class="smallText">2.0km<span style="float:right;"><img width="30" style="margin-top: -10px" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
+						</div>
+					</div>
+					<div class="col-50">
+						<div class="selectdiv shadowBox" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2000" latitude="34.250660" longitude="108.947029">
+							<div class="smTitle" style="padding-bottom:10px">西安城墙南门<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
+							<div class="smallText">2.0km<span style="float:right;"><img width="30" style="margin-top: -10px" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
+						</div>
 					</div>
 				</div>
-				<div class="col-50">
-					<div class="selectdiv shadowBox" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2000" latitude="34.250660" longitude="108.947029">
-						<div class="addrBox">西安城墙南门<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
-						<div>2.0km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
+				<div class="row" style="padding:5px 10px 5px 10px;">
+					<div class="col-33">
+						<div class="selectdiv shadowBox" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2500" latitude="34.259430" longitude="108.947040">
+							<div class="smTitle" style="padding-bottom:10px">钟楼<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
+							<div class="smallText">2.5km<span style="float:right;"><img width="30" style="margin-top: -10px" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
+						</div>
+					</div>
+					<div class="col-33">
+						<div class="selectdiv shadowBox" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2500" latitude="34.222819" longitude="108.946696">
+							<div class="smTitle" style="padding-bottom:10px">小寨<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
+							<div class="smallText">2.5km<span style="float:right;"><img width="30" style="margin-top: -10px" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
+						</div>
+					</div>
+					<div class="col-33">
+						<div class="selectdiv shadowBox" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2500" latitude="34.162457" longitude="108.903866">
+							<div class="smTitle" style="padding-bottom:10px">大学城<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
+							<div class="smallText">2.5km<span style="float:right;"><img width="30" style="margin-top: -10px" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row" style="padding:5px;">
-				<div class="col-33">
-					<div class="selectdiv shadowBox" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2500" latitude="34.259430" longitude="108.947040">
-						<div class="addrBox">钟楼<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
-						<div>2.5km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
-					</div>
-				</div>
-				<div class="col-33">
-					<div class="selectdiv shadowBox" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2500" latitude="34.222819" longitude="108.946696">
-						<div class="addrBox">小寨<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
-						<div>2.5km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
-					</div>
-				</div>
-				<div class="col-33">
-					<div class="selectdiv shadowBox" style="height:70px;background-color:#FFCC01;padding:10px;border-radius:5px;" distance="2500" latitude="34.162457" longitude="108.903866">
-						<div class="addrBox">大学城<span style="float:right;"><img width="15" class="selectpng" style="border-radius:50%;display:none;" src="<%=request.getContextPath()%>/static/image/select.png"/></span></div>
-						<div>2.5km<span style="float:right;"><img width="30" src="<%=request.getContextPath()%>/static/icon/hot.png"/></span></div>
-					</div>
-				</div>
-			</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-100">
 				<div class="buttons-tab">
@@ -146,24 +146,24 @@
     					<div class="card demo-card-header-pic proBox" style="position:relative;">
     				    <div valign="bottom" class="card-header color-white no-border no-padding">
     				      <a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=`+value.GOODS_ID+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
-    				      <div id="goods_time_id_`+value.GOODS_ID+`_tj_left" class="suspend left">抢购中</div>
-    				      <div id="goods_time_id_`+value.GOODS_ID+`_tj_right" class="suspend right">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_tj" class="timeBox"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
+    				      <div id="goods_time_id_`+value.GOODS_ID+`_tj_left" class="suspend left"  style="font-size:11.5px">抢购中</div>
+    				      <div id="goods_time_id_`+value.GOODS_ID+`_tj_right" class="suspend right" style="font-size:10px">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_tj" class="timeBox"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
     				    </div>
     				    <div class="card-content">
     				      <div class="card-content-inner proText">
-    				        <p class="proBoxText"><span class="proBangIcon">爆</span><span class="proInfo">`+value.GOODSDESC+`</span></p>
+    				        <p class="proBoxText"><span class="proBangIcon">爆</span><span class="proInfo smTitle">`+value.GOODSDESC+`</span></p>
     				      </div>
     				    </div>
     				    <div class="card-footer proBoxText">
 							<div class="proBoxTextLeft">
 							  <span class="priceTitle flexClumnBox"><font class="price">`+value.SELLMONEY+`</font></span>
-							  <span>元</span>
-							  <span class="delete costPrice flexClumnBox">¥ `+value.ORIGINALMONEY+`</span>
-							  <span class="flexClumnBox yjBox">佣金</span>
-							  <span class="yjText">`+backmoney+`元</span>
+							  <span class="smText" style="padding-top:5px">元</span>
+							  <span class="delete costPrice flexClumnBox smallText">¥ `+value.ORIGINALMONEY+`</span>
+							  <span class="flexClumnBox yjBox smText">佣金</span>
+							  <span class="yjText smallText">`+backmoney+`元</span>
 						    </div>
 						    <div class="proBoxTextRight">
-								<span class="yqText">已抢:`+value.BUYNUMBER+`</span>
+								<span class="smallText">已抢:`+value.BUYNUMBER+`</span>
     				      	</div>
     				    </div>
     				  </div>
@@ -191,24 +191,24 @@
     					<div class="card demo-card-header-pic proBox" style="position:relative;">
     				    <div valign="bottom" class="card-header color-white no-border no-padding">
     				      <a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=`+value.GOODS_ID+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
-    				      <div id="goods_time_id_`+value.GOODS_ID+`_zr_left" class="suspend left">抢购中</div>
-    				      <div id="goods_time_id_`+value.GOODS_ID+`_zr_right" class="suspend right">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_zr" class="timeBox"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
+    				      <div id="goods_time_id_`+value.GOODS_ID+`_zr_left" class="suspend left" style="font-size:11.5px">抢购中</div>
+    				      <div id="goods_time_id_`+value.GOODS_ID+`_zr_right" class="suspend right" style="font-size:10px">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_zr" class="timeBox"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
     				    </div>
     				    <div class="card-content">
     				      <div class="card-content-inner proText">
-    				        <p class="proBoxText"><span class="proBangIcon">爆</span><span class="proInfo">`+value.GOODSDESC+`</span></p>
+    				        <p class="proBoxText"><span class="proBangIcon">爆</span><span class="proInfo smTitle">`+value.GOODSDESC+`</span></p>
     				      </div>
     				    </div>
-    				    <div class="card-footer">
+    				    <div class="card-footer proBoxText">
     				      <div class="proBoxTextLeft">
 							  <span class="priceTitle flexClumnBox"><font class="price">`+value.SELLMONEY+`</font></span>
-							  <span>元</span>
-							  <span class="delete costPrice flexClumnBox">¥ `+value.ORIGINALMONEY+`</span>
-							  <span class="flexClumnBox yjBox">佣金</span>
-							  <span class="yjText">`+backmoney+`元</span>
+							  <span class="smText" style="padding-top:5px">元</span>
+							  <span class="delete costPrice flexClumnBox smallText">¥ `+value.ORIGINALMONEY+`</span>
+							  <span class="flexClumnBox yjBox smText">佣金</span>
+							  <span class="yjText smallText">`+backmoney+`元</span>
 						    </div>
 						    <div class="proBoxTextRight">
-								<span class="yqText">已抢:`+value.BUYNUMBER+`</span>
+								<span class="smallText">已抢:`+value.BUYNUMBER+`</span>
     				      	</div>
     				    </div>
     				  </div>

@@ -25,15 +25,15 @@
 					<div class="col-60" style="padding:20px;">
 						<div class="row">
 							<div class="col-100" style="margin-top:10px;">
-							<span style="font-size:16.5px;">${USER_SESSION.NICKNAME}</span>
+							<span style="font-size:18px;">${USER_SESSION.NICKNAME}</span>
 							<c:if test="${USER_SESSION.MEMBERTYPE_ID eq 1 or USER_SESSION.MEMBERTYPE_ID eq 3}">
 							<span onclick="javascript:location.href='<%=request.getContextPath()%>/member';" style="margin-left:15px;background:#ffffff;padding-top:2px;padding-bottom:2px;padding-left:7px;padding-right:7px;border-top-left-radius:5px;border-top-right-radius:5px;border-bottom-left-radius:5px;border-bottom-right-radius:5px;">未加入会员</span>
 							</c:if>
 							</div>
 						</div>
 						<div class="row" style="margin-top:15px;">
-							<div class="col-50"><div style="font-size:10px;">${ordersNum}</div><div>订单</div></div>
-							<div class="col-50"><div style="font-size:10px;">${cardsNum}</div><div>卡券</div></div>
+							<div class="col-50 smallText"><div>${ordersNum}</div><div>订单</div></div>
+							<div class="col-50 smallText"><div>${cardsNum}</div><div>卡券</div></div>
 						</div>
 					</div>
 					<div class="col-40" style="padding:20px;">
@@ -43,15 +43,16 @@
 				</div>
 			</div>
 			<div class="row module2" style="margin-top:10px;">
-				<div class="col-33"><a class="external" href="<%=request.getContextPath()%>/discount"><img src="<%=request.getContextPath()%>/static/icon/home/wz.png"/><p class="iconTitle">周四五折</p></a></div>
-		        <div class="col-33"><a class="external" href="<%=request.getContextPath()%>/lottery"><img src="<%=request.getContextPath()%>/static/icon/home/cj.png"/><p class="iconTitle">免费抽奖</p></a></div>
-		        <div class="col-33"><a class="external" href="<%=request.getContextPath()%>/shop"><img src="<%=request.getContextPath()%>/static/icon/home/tj.png"/><p class="iconTitle">好店推荐</p></a></div>
+				<div class="col-33"><a class="external" href="<%=request.getContextPath()%>/discount"><img src="<%=request.getContextPath()%>/static/icon/home/wz.png"/><p class="mdText">周四五折</p></a></div>
+		        <div class="col-33"><a class="external" href="<%=request.getContextPath()%>/lottery"><img src="<%=request.getContextPath()%>/static/icon/home/cj.png"/><p class="mdText">免费抽奖</p></a></div>
+		        <div class="col-33"><a class="external" href="<%=request.getContextPath()%>/shop"><img src="<%=request.getContextPath()%>/static/icon/home/tj.png"/><p class="mdText">好店推荐</p></a></div>
 		        <!-- <div class="col-25"><a class="external" href="<%=request.getContextPath()%>/seller"><img src="<%=request.getContextPath()%>/static/icon/home/rz.png"/><p>商家入驻</p></a></div> -->
 			</div>
 			<div style="width:100%;height:10px;background:#F2F2F2;">&nbsp;</div>
 			<div class="row TitleBox">
 				<div class="col-50 Title yhhd">优惠活动</div>
-				<div class="col-50 more_activity"><a class="external moreText" href="<%=request.getContextPath()%>/stand">查看更多</a></div>
+				<div class="col-50 more_activity" style="padding-top:8px;"><a class="external moreText" href="<%=request.getContextPath()%>/stand">查看更多</a></div>
+
 			</div>
 			<div class="row" style="padding:5px;padding-top:0px;">
 				<div class="col-100">
@@ -68,7 +69,7 @@
 			<div class="row TitleBox">
 				<div class="col-50"><div class="Title">今日热卖</div><div style="font-size: 12px">好店爆款,人手一份</div></div>
 				<div class="col-50">
-				<div class="content-block" style="margin:0px;margin-top:10px;">
+				<div class="content-block" style="margin:0px;margin-top:10px;padding:0 0.1rem">
 				    <div class="buttons-row">
 				      <a href="#tab1" class="tab-link active button">推荐</a>
 				      <a href="#tab2" class="tab-link button">最热</a>
@@ -150,19 +151,19 @@
     				    </div>
     				    <div class="card-content">
     				      <div class="card-content-inner proText">
-    				        <p class="proBoxText"><span class="proBangIcon">爆</span><span class="proInfo">`+value.GOODSDESC+`</span></p>
+    				        <p class="proBoxText"><span class="proBangIcon">爆</span><span class="proInfo smTitle">`+value.GOODSDESC+`</span></p>
     				      </div>
     				    </div>
     				    <div class="card-footer proBoxText">
 							<div class="proBoxTextLeft">
 							  <span class="priceTitle flexClumnBox"><font class="price">`+value.SELLMONEY+`</font></span>
 							  <span class="smText" style="padding-top:5px">元</span>
-							  <span class="delete costPrice flexClumnBox">¥ `+value.ORIGINALMONEY+`</span>
-							  <span class="flexClumnBox yjBox">佣金</span>
-							  <span class="yjText">`+backmoney+`元</span>
+							  <span class="delete costPrice flexClumnBox smallText">¥ `+value.ORIGINALMONEY+`</span>
+							  <span class="flexClumnBox yjBox smText">佣金</span>
+							  <span class="yjText smallText">`+backmoney+`元</span>
 						  	</div>
 							<div class="proBoxTextRight">
-    				      		<span class="yqText">已抢:`+value.BUYNUMBER+`</span>
+    				      		<span class="smallText">已抢:`+value.BUYNUMBER+`</span>
 							</div>
     				    </div>
     				  </div>
@@ -195,19 +196,19 @@
     				    </div>
     				    <div class="card-content">
     				      <div class="card-content-inner proText">
-    				        <p class="proBoxText"><span class="proBangIcon">爆</span><span class="proInfo">`+value.GOODSDESC+`</span></p>
+    				        <p class="proBoxText"><span class="proBangIcon">爆</span><span class="proInfo smTitle">`+value.GOODSDESC+`</span></p>
     				      </div>
     				    </div>
     				    <div class="card-footer proBoxText">
 							<div class="proBoxTextLeft">
 							  <span class="priceTitle flexClumnBox"><font class="price">`+value.SELLMONEY+`</font></span>
-							  <span class="smText" style="padding-top:"5px">元</span>
-							  <span class="delete costPrice flexClumnBox">¥ `+value.ORIGINALMONEY+`</span>
-							  <span class="flexClumnBox yjBox">佣金</span>
-							  <span class="yjText">`+backmoney+`元</span>
+							  <span class="smText" style="padding-top:5px">元</span>
+							  <span class="delete costPrice flexClumnBox smallText">¥ `+value.ORIGINALMONEY+`</span>
+							  <span class="flexClumnBox yjBox smText">佣金</span>
+							  <span class="yjText smallText">`+backmoney+`元</span>
 						  	</div>
 						  	<div class="proBoxTextRight">
-    				      		<span class="yqText">已抢:`+value.BUYNUMBER+`</span>
+    				      		<span class="smallText">已抢:`+value.BUYNUMBER+`</span>
     				      	</div>
     				    </div>
     				  </div>

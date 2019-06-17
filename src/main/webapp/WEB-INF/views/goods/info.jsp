@@ -25,7 +25,7 @@
 				      <img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=${pd.FILEPATH}';">
 				      <div id="goods_time_id_${pd.GOODS_ID}_tj_left" class="suspend left">抢购中</div>
 				      <div id="goods_time_id_${pd.GOODS_ID}_tj_right" class="suspend right">活动倒计时<div id="goods_time_id_${pd.GOODS_ID}_tj" class="timeBox"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
-				      <div class="suspend center" onclick="shareGoods()"><img style="margin-top:0px;margin-left:15px;margin-right:15px;" width="30" src="<%=request.getContextPath()%>/static/icon/share.png"/></div>
+				      <div class="suspend center" onclick="shareGoods()"><img style="margin-top:-5px;margin-left:15px;margin-right:15px;" width="30" src="<%=request.getContextPath()%>/static/icon/share.png"/></div>
 				    </div>
 				    <div class="card-content">
 				      <div class="card-content-inner proText">
@@ -35,10 +35,10 @@
 				    <div class="card-footer proBoxText">
 						<div class="proBoxTextLeft">
 						  <span class="priceTitle flexClumnBox"><font style="color:#F40A0B;">${pd.SELLMONEY}</font></span>
-						  <span>元</span>
-						  <span class="delete costPrice flexClumnBox">¥ ${pd.ORIGINALMONEY}</span>
-						  <span class="flexClumnBox yjBox">佣金</span>
-						  <span class="yjText">
+						  <span class="smText" style="padding-top:5px">元</span>
+						  <span class="delete costPrice flexClumnBox smallText">¥ ${pd.ORIGINALMONEY}</span>
+						  <span class="flexClumnBox yjBox smText">佣金</span>
+						  <span class="yjText smallText">
 							  <c:choose>
 								<c:when test="${USER_SESSION.MEMBERTYPE_ID eq 1}">${pd.MEMBERBACKMONEY}</c:when>
 								<c:when test="${USER_SESSION.MEMBERTYPE_ID eq 2}">${pd.VIPBACKMONEY}</c:when>
@@ -48,18 +48,18 @@
 						  </span>
 						</div>
 						<div class="proBoxTextRight">
-						  <span class="yqText">已抢: ${pd.BUYNUMBER}</span>
+						  <span class="smallText">已抢: ${pd.BUYNUMBER}</span>
 						</div>
 				    </div>
 				  </div>
 				  <script type="text/javascript">TimeDown("goods_time_id_${pd.GOODS_ID}_tj","${pd.ENDTIME}")</script>
 				</div>
 			</div>
-			<div style="width:100%;height:5px;background:#dddddd;">&nbsp;</div>
+			<div style="width:100%;height:5px;background:#F2F2F2;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
-				<div class="col-100" style="font-size:0.75rem;font-weight: bold">已抢购用户</div>
+				<div class="col-100 smTitle">已抢购用户</div>
 			</div>
-			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
+			<div style="width:100%;height:1px;background:#F2F2F2;">&nbsp;</div>
         	<div class="row" style="padding:5px 0px 5px 25px;">
 				<div class="col-100 touxiangImage">
 					<c:if test="${fn:length(peopleDataList) eq 0}">
@@ -70,7 +70,7 @@
 					</c:forEach>
 				</div>
 			</div>
-			<div style="width:100%;height:5px;background:#dddddd;">&nbsp;</div>
+			<div style="width:100%;height:5px;background:#F2F2F2;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-100">
 				<div class="buttons-tab">
@@ -95,7 +95,7 @@
 
 
 		    <div>
-		      <div id="roll_top">
+		      <div id="roll_top" class="infoBox">
 		          <div class="row" style="padding:5px;margin-top:5px;margin-bottom:5px;">
 					<div class="col-60"><c:choose>
 	              	<c:when test="${shop.FILEPATH eq null}">
@@ -107,7 +107,7 @@
 	              </c:choose>${shop.SHOPNAME}</div>
 					<div class="col-40" style="line-height:60px;text-align:right;"><a class="external" href="<%=request.getContextPath()%>/shop/info?SHOP_ID=${shop.SHOP_ID}" style="text-decoration:underline;">进店逛逛</a></div>
 				</div>
-			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
+			<div style="width:100%;height:1px;background:#F2F2F2;">&nbsp;</div>
 			<div class="row" style="padding:10px;">
 				<div class="col-60">${shop.SHOPADDRESS}</div>
 		        <div class="col-40" style="text-align:right;"><img onclick="phone()" width="20" style="margin-right:15px;" src="<%=request.getContextPath()%>/static/icon/phone.png"/> | <img  onclick="position()" style="margin-left:15px;" width="20" src="<%=request.getContextPath()%>/static/icon/send.png"/></div>
@@ -121,16 +121,16 @@
 		        <div class="col-40"><button class="button button-fill button-warning pull-right" style="background:#FFCC01;color:#000000;font-weight:bold;">抢购</button></div>
 			</div>
 			 -->
-			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
+			<div style="width:100%;height:1px;background:#F2F2F2;">&nbsp;</div>
 		      </div>
-		      <div id="roll_top1">
+		      <div id="roll_top1" class="infoBox">
 				<div class="row" style="padding:5px;">
 					<div class="col-100">
-						<div style="min-height:180px;padding:10px;border:1px #dddddd solid;word-wrap: break-word;word-break: break-all;overflow: hidden;">${pd.BUYNOTICE}</div>
+						<div style="min-height:180px;padding:10px;word-wrap: break-word;word-break: break-all;overflow: hidden;">${pd.BUYNOTICE}</div>
 					</div>
 				</div>
 		      </div>
-		      <div id="roll_top2">
+		      <div id="roll_top2" class="infoBox">
 		        <c:forEach var="var" items="${fileDataList}" varStatus="index">
 		        <div style="text-align:center;padding:5px;">${index.index+1}产品图片</div>
 				<div class="row" style="padding:5px;">
@@ -142,12 +142,6 @@
 		    </div>
 				</div>
 			</div>
-
-
-
-
-
-
 			<h5>&nbsp;</h5>
         </div>
         </div>
@@ -161,7 +155,7 @@
      <span class="icon"><img src="<%=request.getContextPath()%>/static/icon/service.png"/></span>
      <span class="tab-label">客服</span>
     </a>
-    <a class="tab-item external" style="background:#FFCC01;color:#000000;" href="<%=request.getContextPath()%>/goBuy?GOODS_ID=${pd.GOODS_ID}&FROMWXOPEN_ID=${FROMWXOPEN_ID}">立即购买</a>
+    <a class="tab-item external smTitle" style="background:#FFCC01;color:#000000;" href="<%=request.getContextPath()%>/goBuy?GOODS_ID=${pd.GOODS_ID}&FROMWXOPEN_ID=${FROMWXOPEN_ID}">立即购买</a>
   </div>
 </nav>
         </div>

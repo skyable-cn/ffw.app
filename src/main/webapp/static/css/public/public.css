@@ -17,9 +17,8 @@
     padding: 0;
 }
 .proBox .proBoxText .proInfo{
-    font-size: 12.5px;
     padding-left: 5px;
-    color: #333333;
+    color: #000000;
 }
 .proBox .proBoxText .proBangIcon{
     color:#fff;
@@ -69,6 +68,9 @@
 .proBoxTextRight .yqText{
     font-size: 14px;
 }
+.proBoxTextRight .yjText{
+    padding: 0 5px;
+}
 .suspend.right{
     padding: 10px 15px;
 }
@@ -86,13 +88,12 @@
 .moreText {
     color:#FFCC01;
     font-size:13.5px;
-    /*line-height:45px;*/
 }
 .shadowBox {
-    -o-box-shadow: 3px 3px 3px #F2F2F2;
-    box-shadow: 3px 3px 3px #F2F2F2;
-    -moz-box-shadow: 3px 3px 3px #F2F2F2;
-    -webkit-box-shadow: 3px 3px 3px #F2F2F2;
+    -o-box-shadow: 3px 3px 5px #D0D0D0;
+    box-shadow: 3px 3px 5px #D0D0D0;
+    -moz-box-shadow: 3px 3px 5px #D0D0D0;
+    -webkit-box-shadow: 3px 3px 5px #D0D0D0;
 }
 /*订单商品*/
 .ordersBox{
@@ -120,16 +121,16 @@
 /*灰色的分割条*/
 .colorRow{
     height: 0.5rem;
-    background: #F6F6F7;
+    background: #F2F2F2;
     width: 100%;
-}
-/*地区名字*/
-.addrBox{
-    font-size: 0.75rem;
 }
 /*大标题*/
 .bigTitle{
     font-size: 22px;
+}
+/*小标题*/
+.smTitle{
+    font-size: 15px;
 }
 /*详情页已抢购用户的头像叠加效果*/
 .touxiangImage>img{
@@ -139,11 +140,25 @@
     /*position: absolute;*/
     margin-left: -20px;
 }
-/*首页图标下的字体大小*/
-.iconTitle{
-    font-size: 12px;
-}
-/*小字体*/
+/*超小字体*/
 .smText{
     font-size: 10px;
+}
+/*小字体*/
+.smallText{
+    font-size: 12px;
+}
+/*中号字体*/
+.mdText{
+    font-size: 14px;
+}
+/*搜索页页景点距离*/
+.range{
+    padding-top: 10px;
+}
+/*商品详情页的下方商品介绍*/
+.infoBox{
+    padding: 5px 0;
+    box-shadow: 1px 1px 3px #F2F2F2;
+    margin: 10px 0;
 }
