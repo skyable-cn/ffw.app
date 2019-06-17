@@ -14,10 +14,12 @@
     display: -moz-flex;
     display: -webkit-flex;
     display: -o-flex;
+    padding: 0;
 }
 .proBox .proBoxText .proInfo{
-    font-size: 14px;
+    font-size: 12.5px;
     padding-left: 5px;
+    color: #333333;
 }
 .proBox .proBoxText .proBangIcon{
     color:#fff;
@@ -41,7 +43,7 @@
 }
 .proBoxTextLeft .priceTitle .price{
     color:#F40A0B;
-    font-size: 16px;
+    font-size: 18px;
 }
 .proBoxTextLeft .yjBox{
     color: #FFFFFF;
@@ -140,4 +142,8 @@
 /*首页图标下的字体大小*/
 .iconTitle{
     font-size: 12px;
+}
+/*小字体*/
+.smText{
+    font-size: 10px;
 }

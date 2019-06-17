@@ -15,7 +15,7 @@
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
   </head>
   <body>
-    <div class="page-group">
+    <div class="page-group" id="bigbigBox" style="overflow: scroll">
         <div class="page page-current">
 			<div class="content">
 			<div class="row" style="padding:5px;">
@@ -73,8 +73,30 @@
 			<div style="width:100%;height:5px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-100">
-				<d
+				<div class="buttons-tab">
+
+					<button id="roll1">商家信息</button>
+					<button id="roll2">购买须知</button>
+					<button id="roll3">商品详情</button>
+<%--			    <a href="#tab1" class="tab-link active button">商家信息</a>--%>
+<%--			    <a href="#tab2" class="tab-link button">购买须知</a>--%>
+<%--			    <a href="#tab3" class="tab-link button">商品详情</a>--%>
 			</div>
+					<div id="myDiv"></div>
+				<div id="roll_top" style="height: 100px">
+					商家信息
+				</div>
+					<div id="roll_top1" style="height: 100px">
+						购买须知
+					</div>
+					<div id="roll_top2" style="height: 100px">
+						商品详情
+					</div>
+
+
+
+
+
 		    <div class="tabs">
 		      <div id="tab1" class="tab active">
 		          <div class="row" style="padding:5px;margin-top:5px;margin-bottom:5px;">
@@ -93,7 +115,7 @@
 				<div class="col-60">${shop.SHOPADDRESS}</div>
 		        <div class="col-40" style="text-align:right;"><img onclick="phone()" width="20" style="margin-right:15px;" src="<%=request.getContextPath()%>/static/icon/phone.png"/> | <img  onclick="position()" style="margin-left:15px;" width="20" src="<%=request.getContextPath()%>/static/icon/send.png"/></div>
 			</div>
-			<!-- 
+			<!--
 			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-60" style="padding:5px;">
@@ -105,11 +127,11 @@
 			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 		      </div>
 		      <div id="tab2" class="tab">
-		        <div class="row" style="padding:5px;">
-				<div class="col-100">
-					<div style="min-height:180px;padding:10px;border:1px #dddddd solid;word-wrap: break-word;word-break: break-all;overflow: hidden;">${pd.BUYNOTICE}</div>
+				<div class="row" style="padding:5px;">
+					<div class="col-100">
+						<div style="min-height:180px;padding:10px;border:1px #dddddd solid;word-wrap: break-word;word-break: break-all;overflow: hidden;">${pd.BUYNOTICE}</div>
+					</div>
 				</div>
-			</div>
 		      </div>
 		      <div id="tab3" class="tab">
 		        <c:forEach var="var" items="${fileDataList}" varStatus="index">
@@ -123,6 +145,12 @@
 		    </div>
 				</div>
 			</div>
+
+
+
+
+
+
 			<h5>&nbsp;</h5>
         </div>
         </div>
@@ -144,6 +172,31 @@
   </body>
   <%@ include file="../common/headjs.jsp"%>
   <script type="text/javascript">
+
+	  $(document).ready(function() {
+		  document.querySelector("#roll1").onclick = function(){
+			  document.querySelector("#roll_top").scrollIntoView(true);
+			  // document.querySelector("#roll_top1").scrollIntoView(false);
+			  // document.querySelector("#roll_top2").scrollIntoView(false);
+			  console.log($("roll1"));
+			 
+		  }
+		  document.querySelector("#roll2").onclick = function(){
+			  // document.querySelector("#roll_top").scrollIntoView(false);
+			  document.querySelector("#roll_top1").scrollIntoView(true);
+			  // document.querySelector("#roll_top2").scrollIntoView(false);
+		  }
+		  document.querySelector("#roll3").onclick = function(){
+			  // document.querySelector("#roll_top").scrollIntoView(false);
+			  // document.querySelector("#roll_top1").scrollIntoView(false);
+			  document.querySelector("#roll_top2").scrollIntoView(true);
+		  }
+	  });
+
+
+
+
+
   	function goCustomer(){
   		wx.miniProgram.navigateTo({
             url: '/pages/customer/customer'

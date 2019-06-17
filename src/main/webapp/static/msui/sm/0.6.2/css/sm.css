@@ -4780,6 +4780,7 @@ html:not(.watch-active-state) .theme-white label.label-radio:active,
 }
 .delete{
 	text-decoration:line-through;
+    color: #CCCCCC;
 }
 .return{
 	padding-left:20px;

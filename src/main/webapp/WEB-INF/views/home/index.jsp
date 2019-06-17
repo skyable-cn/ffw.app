@@ -145,8 +145,8 @@
     					<div class="card demo-card-header-pic proBox" style="position:relative;">
     				    <div valign="bottom" class="card-header color-white no-border no-padding">
     				      <a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=`+value.GOODS_ID+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
-    				      <div id="goods_time_id_`+value.GOODS_ID+`_tj_left" class="suspend left">抢购中</div>
-    				      <div id="goods_time_id_`+value.GOODS_ID+`_tj_right" class="suspend right">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_tj" class="timeBox"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
+    				      <div id="goods_time_id_`+value.GOODS_ID+`_tj_left" class="suspend left" style="font-size:11.5px">抢购中</div>
+    				      <div id="goods_time_id_`+value.GOODS_ID+`_tj_right" class="suspend right" style="font-size:10px">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_tj" class="timeBox"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
     				    </div>
     				    <div class="card-content">
     				      <div class="card-content-inner proText">
@@ -156,7 +156,7 @@
     				    <div class="card-footer proBoxText">
 							<div class="proBoxTextLeft">
 							  <span class="priceTitle flexClumnBox"><font class="price">`+value.SELLMONEY+`</font></span>
-							  <span>元</span>
+							  <span class="smText" style="padding-top:5px">元</span>
 							  <span class="delete costPrice flexClumnBox">¥ `+value.ORIGINALMONEY+`</span>
 							  <span class="flexClumnBox yjBox">佣金</span>
 							  <span class="yjText">`+backmoney+`元</span>
@@ -190,8 +190,8 @@
     					<div class="card demo-card-header-pic proBox" style="position:relative;">
     				    <div valign="bottom" class="card-header color-white no-border no-padding">
     				      <a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=`+value.GOODS_ID+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
-    				      <div id="goods_time_id_`+value.GOODS_ID+`_zr_left" class="suspend left">抢购中</div>
-    				      <div id="goods_time_id_`+value.GOODS_ID+`_zr_right" class="suspend right">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_zr" class="timeBox"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
+    				      <div id="goods_time_id_`+value.GOODS_ID+`_zr_left" class="suspend left" style="font-size:11.5px">抢购中</div>
+    				      <div id="goods_time_id_`+value.GOODS_ID+`_zr_right" class="suspend right" style="font-size:10px">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_zr" class="timeBox"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
     				    </div>
     				    <div class="card-content">
     				      <div class="card-content-inner proText">
@@ -201,7 +201,7 @@
     				    <div class="card-footer proBoxText">
 							<div class="proBoxTextLeft">
 							  <span class="priceTitle flexClumnBox"><font class="price">`+value.SELLMONEY+`</font></span>
-							  <span>元</span>
+							  <span class="smText" style="padding-top:"5px">元</span>
 							  <span class="delete costPrice flexClumnBox">¥ `+value.ORIGINALMONEY+`</span>
 							  <span class="flexClumnBox yjBox">佣金</span>
 							  <span class="yjText">`+backmoney+`元</span>
