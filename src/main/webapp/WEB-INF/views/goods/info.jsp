@@ -75,30 +75,27 @@
 				<div class="col-100">
 				<div class="buttons-tab">
 
-					<button id="roll1">商家信息</button>
+					<%--<button id="roll1">商家信息</button>
 					<button id="roll2">购买须知</button>
-					<button id="roll3">商品详情</button>
-<%--			    <a href="#tab1" class="tab-link active button">商家信息</a>--%>
-<%--			    <a href="#tab2" class="tab-link button">购买须知</a>--%>
-<%--			    <a href="#tab3" class="tab-link button">商品详情</a>--%>
+					<button id="roll3">商品详情</button>--%>
+			    <a href="" class=" tab-link active button" id="roll1">商家信息</a>
+			    <a href="" class=" button" id="roll2">购买须知</a>
+			    <a href="" class="button" id="roll3">商品详情</a>
 			</div>
 					<div id="myDiv"></div>
-				<div id="roll_top" style="height: 100px">
+			<%--	<div id="roll_top" style="height: 300px">
 					商家信息
 				</div>
-					<div id="roll_top1" style="height: 100px">
+					<div id="roll_top1" style="height: 300px">
 						购买须知
 					</div>
-					<div id="roll_top2" style="height: 100px">
+					<div id="roll_top2" style="height: 300px">
 						商品详情
-					</div>
+					</div>--%>
 
 
-
-
-
-		    <div class="tabs">
-		      <div id="tab1" class="tab active">
+		    <div>
+		      <div id="roll_top">
 		          <div class="row" style="padding:5px;margin-top:5px;margin-bottom:5px;">
 					<div class="col-60"><c:choose>
 	              	<c:when test="${shop.FILEPATH eq null}">
@@ -126,14 +123,14 @@
 			 -->
 			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
 		      </div>
-		      <div id="tab2" class="tab">
+		      <div id="roll_top1">
 				<div class="row" style="padding:5px;">
 					<div class="col-100">
 						<div style="min-height:180px;padding:10px;border:1px #dddddd solid;word-wrap: break-word;word-break: break-all;overflow: hidden;">${pd.BUYNOTICE}</div>
 					</div>
 				</div>
 		      </div>
-		      <div id="tab3" class="tab">
+		      <div id="roll_top2">
 		        <c:forEach var="var" items="${fileDataList}" varStatus="index">
 		        <div style="text-align:center;padding:5px;">${index.index+1}产品图片</div>
 				<div class="row" style="padding:5px;">
@@ -178,23 +175,31 @@
 			  document.querySelector("#roll_top").scrollIntoView(true);
 			  // document.querySelector("#roll_top1").scrollIntoView(false);
 			  // document.querySelector("#roll_top2").scrollIntoView(false);
+			  $("#roll3").removeClass("active");
+			  $("#roll2").removeClass("active");
+			  $("#roll1").addClass("tab-link active button");
 			  console.log($("roll1"));
 			 
 		  }
 		  document.querySelector("#roll2").onclick = function(){
 			  // document.querySelector("#roll_top").scrollIntoView(false);
+		/*	  $("#roll1").addClass("tab-link button");
+			  $("#roll3").addClass("tab-link  button");*/
+			  $("#roll3").removeClass("active");
+			  $("#roll1").removeClass("active");
+			  $("#roll2").addClass("tab-link active button");
 			  document.querySelector("#roll_top1").scrollIntoView(true);
 			  // document.querySelector("#roll_top2").scrollIntoView(false);
 		  }
 		  document.querySelector("#roll3").onclick = function(){
 			  // document.querySelector("#roll_top").scrollIntoView(false);
 			  // document.querySelector("#roll_top1").scrollIntoView(false);
+			  $("#roll1").removeClass("active");
+			  $("#roll2").removeClass("active");
+			  $("#roll3").addClass("tab-link active button");
 			  document.querySelector("#roll_top2").scrollIntoView(true);
 		  }
 	  });
-
-
-
 
 
   	function goCustomer(){
