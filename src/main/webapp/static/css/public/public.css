@@ -7,7 +7,7 @@
     border-bottom: solid 1px #F2F2F2;
 }
 .proBox .proText{
-    padding: 0.75rem 0.75rem 0 0.75rem;
+    padding: 14px 0;
 }
 .proBox .proBoxText{
     display: flex;
@@ -16,7 +16,7 @@
     display: -o-flex;
 }
 .proBox .proBoxText .proInfo{
-    font-weight: 600;
+    font-size: 14px;
     padding-left: 5px;
 }
 .proBox .proBoxText .proBangIcon{
@@ -36,11 +36,12 @@
     height: 1rem;
 }
 .proBoxTextLeft .priceTitle{
-    font-weight: bold;
+    /*font-weight: bold;*/
+    font-size: 16px;
 }
 .proBoxTextLeft .priceTitle .price{
     color:#F40A0B;
-    font-size: 1rem;
+    font-size: 16px;
 }
 .proBoxTextLeft .yjBox{
     color: #FFFFFF;
@@ -64,8 +65,7 @@
     text-align: right;
 }
 .proBoxTextRight .yqText{
-    font-size: 10px;
-    font-weight: 600;
+    font-size: 14px;
 }
 .suspend.right{
     padding: 10px 15px;
@@ -75,15 +75,15 @@
 }
 /*优惠活动*/
 .TitleBox{
-    padding: 0.5rem 5px;
+    padding: 0.5rem 10px;
 }
 .Title{
-    font-size: 0.8rem;
-    font-weight: bold;
+    font-size: 21.5px;
+    /*font-weight: bold;*/
 }
 .moreText {
     color:#FFCC01;
-    font-size:14px;
+    font-size:13.5px;
     /*line-height:45px;*/
 }
 .shadowBox {
@@ -127,6 +127,17 @@
 }
 /*大标题*/
 .bigTitle{
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 22px;
+}
+/*详情页已抢购用户的头像叠加效果*/
+.touxiangImage>img{
+    width:35px;
+    border-radius:50%;
+    /*border:1px #AAAAAA solid;*/
+    /*position: absolute;*/
+    margin-left: -20px;
+}
+/*首页图标下的字体大小*/
+.iconTitle{
+    font-size: 12px;
 }

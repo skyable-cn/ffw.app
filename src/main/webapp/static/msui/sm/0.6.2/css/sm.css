@@ -471,8 +471,8 @@ a:active {
   margin-left: 0;
 }
 .row .col-100 {
-  width: 96%;
-  margin-left: 4%;
+  width: 92%;
+  margin-left: 6%;
 }
 .row.no-gutter .col-100 {
   width: 100%;

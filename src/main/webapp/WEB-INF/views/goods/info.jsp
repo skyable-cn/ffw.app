@@ -60,23 +60,20 @@
 				<div class="col-100" style="font-size:0.75rem;font-weight: bold">已抢购用户</div>
 			</div>
 			<div style="width:100%;height:1px;background:#dddddd;">&nbsp;</div>
-        	<div class="row" style="padding:5px;">
-				<div class="col-100">
+        	<div class="row" style="padding:5px 0px 5px 25px;">
+				<div class="col-100 touxiangImage">
 					<c:if test="${fn:length(peopleDataList) eq 0}">
-						<span><img style="width:50px;border-radius:50%;border:1px #AAAAAA solid;" src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
+						<span><img src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
 					</c:if>
 					<c:forEach var="var" items="${peopleDataList}">
-						<img align="middle" style="margin:10px; width:50px;border-radius:50%;" src="${var.PHOTO}"/>
+						<img align="middle" src="${var.PHOTO}"/>
 					</c:forEach>
 				</div>
 			</div>
 			<div style="width:100%;height:5px;background:#dddddd;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-100">
-				<div class="buttons-tab">
-			    <a href="#tab1" class="tab-link active button">商家信息</a>
-			    <a href="#tab2" class="tab-link button">购买须知</a>
-			    <a href="#tab3" class="tab-link button">商品详情</a>
+				<d
 			</div>
 		    <div class="tabs">
 		      <div id="tab1" class="tab active">
