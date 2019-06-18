@@ -535,7 +535,7 @@ public class OrdersController extends BaseController {
 		Double allMoney = Integer.parseInt(pd.getString("NUMBER")) * Double.parseDouble(pd.getString("SELLMONEY"));
 		Double addMoney = Integer.parseInt(pd.getString("NUMBER")) * Double.parseDouble(pd.getString("BALANCEMONEY"));
 
-		pds.put("WAITACCOUNT", Double.parseDouble(shop.getString("WAITACCOUNT")) + addMoney);
+		pds.put("WAITACCOUNT", DoubleUtil.sum(Double.parseDouble(shop.getString("WAITACCOUNT")), addMoney));
 		rest.post(IConstant.FFW_SERVICE_KEY, "shop/edit", pds, PageData.class);
 
 		PageData pdst = new PageData();
@@ -560,8 +560,9 @@ public class OrdersController extends BaseController {
 		pdmarket.put("DM_ID", market.getString("MARKET_ID"));
 		pdmarket.put("DM_TYPE", "market");
 		pdmarket.put("INCOMEMONEY", allMoney);
-		pdmarket.put("PROFITMONEY", DoubleUtil.sub(allMoney , addMoney));
-		pdmarket.put("SERVICEMONEY", DoubleUtil.sub(allMoney , addMoney) * Double.parseDouble(market.getString("PERCENT")));
+		pdmarket.put("PROFITMONEY", DoubleUtil.sub(allMoney, addMoney));
+		pdmarket.put("SERVICEMONEY",
+				DoubleUtil.sub(allMoney, addMoney) * Double.parseDouble(market.getString("PERCENT")));
 		pdmarket.put("CLASS", IConstant.STRING_CLASS_WX);
 		pdmarket.put("CDT", DateUtil.getTime());
 		rest.post(IConstant.FFW_SERVICE_KEY, "deduct/save", pdmarket, PageData.class);
@@ -571,8 +572,10 @@ public class OrdersController extends BaseController {
 		pddomain.put("DM_ID", domain.getString("DOMAIN_ID"));
 		pddomain.put("DM_TYPE", "domain");
 		pddomain.put("INCOMEMONEY", allMoney);
-		pddomain.put("PROFITMONEY", DoubleUtil.sub(allMoney , addMoney) * Double.parseDouble(market.getString("PERCENT")));
-		pddomain.put("SERVICEMONEY", DoubleUtil.sub(allMoney , addMoney) * Double.parseDouble(domain.getString("PERCENT")));
+		pddomain.put("PROFITMONEY",
+				DoubleUtil.sub(allMoney, addMoney) * Double.parseDouble(market.getString("PERCENT")));
+		pddomain.put("SERVICEMONEY",
+				DoubleUtil.sub(allMoney, addMoney) * Double.parseDouble(domain.getString("PERCENT")));
 		pddomain.put("CLASS", IConstant.STRING_CLASS_WX);
 		pddomain.put("CDT", DateUtil.getTime());
 		rest.post(IConstant.FFW_SERVICE_KEY, "deduct/save", pddomain, PageData.class);
