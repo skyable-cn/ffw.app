@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.fastjson.JSONObject;
 import com.ffw.api.model.PageData;
 import com.ffw.api.util.DateUtil;
+import com.ffw.api.util.DoubleUtil;
 import com.ffw.app.config.FileConfig;
 import com.ffw.app.config.WXPayConfigImpl;
 import com.ffw.app.constant.IConstant;
@@ -549,7 +550,7 @@ public class OrdersController extends BaseController {
 		pdshop.put("DM_TYPE", "shop");
 		pdshop.put("INCOMEMONEY", allMoney);
 		pdshop.put("PROFITMONEY", addMoney);
-		pdshop.put("SERVICEMONEY", (allMoney - addMoney));
+		pdshop.put("SERVICEMONEY", DoubleUtil.sub(allMoney, addMoney));
 		pdshop.put("CLASS", IConstant.STRING_CLASS_WX);
 		pdshop.put("CDT", DateUtil.getTime());
 		rest.post(IConstant.FFW_SERVICE_KEY, "deduct/save", pdshop, PageData.class);
@@ -559,8 +560,8 @@ public class OrdersController extends BaseController {
 		pdmarket.put("DM_ID", market.getString("MARKET_ID"));
 		pdmarket.put("DM_TYPE", "market");
 		pdmarket.put("INCOMEMONEY", allMoney);
-		pdmarket.put("PROFITMONEY", (allMoney - addMoney));
-		pdmarket.put("SERVICEMONEY", (allMoney - addMoney) * Double.parseDouble(market.getString("PERCENT")));
+		pdmarket.put("PROFITMONEY", DoubleUtil.sub(allMoney , addMoney));
+		pdmarket.put("SERVICEMONEY", DoubleUtil.sub(allMoney , addMoney) * Double.parseDouble(market.getString("PERCENT")));
 		pdmarket.put("CLASS", IConstant.STRING_CLASS_WX);
 		pdmarket.put("CDT", DateUtil.getTime());
 		rest.post(IConstant.FFW_SERVICE_KEY, "deduct/save", pdmarket, PageData.class);
@@ -570,8 +571,8 @@ public class OrdersController extends BaseController {
 		pddomain.put("DM_ID", domain.getString("DOMAIN_ID"));
 		pddomain.put("DM_TYPE", "domain");
 		pddomain.put("INCOMEMONEY", allMoney);
-		pddomain.put("PROFITMONEY", (allMoney - addMoney) * Double.parseDouble(market.getString("PERCENT")));
-		pddomain.put("SERVICEMONEY", (allMoney - addMoney) * Double.parseDouble(domain.getString("PERCENT")));
+		pddomain.put("PROFITMONEY", DoubleUtil.sub(allMoney , addMoney) * Double.parseDouble(market.getString("PERCENT")));
+		pddomain.put("SERVICEMONEY", DoubleUtil.sub(allMoney , addMoney) * Double.parseDouble(domain.getString("PERCENT")));
 		pddomain.put("CLASS", IConstant.STRING_CLASS_WX);
 		pddomain.put("CDT", DateUtil.getTime());
 		rest.post(IConstant.FFW_SERVICE_KEY, "deduct/save", pddomain, PageData.class);
