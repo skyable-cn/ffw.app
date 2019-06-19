@@ -95,8 +95,8 @@ public class BaseScheduled {
 				String data = result.get("data");
 
 				if (null == data) {
-					LOGGER.info("更新微信账单数据异常 暂无更新到数据");
-					return;
+					LOGGER.info(pageData.getString("MARKETNAME") + " ===>> 更新微信账单数据异常 暂无更新到数据");
+					continue;
 				}
 
 				System.err.println(data);
