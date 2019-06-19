@@ -163,7 +163,7 @@
 							  <span class="yjText smallText">`+backmoney+`元</span>
 						    </div>
 						    <div class="proBoxTextRight">
-								<span class="smallText">已抢:`+value.BUYNUMBER+`</span>
+								<span class="smallText">已抢:`+value.VIRTUALSELLED+`</span>
     				      	</div>
     				    </div>
     				  </div>
@@ -208,7 +208,7 @@
 							  <span class="yjText smallText">`+backmoney+`元</span>
 						    </div>
 						    <div class="proBoxTextRight">
-								<span class="smallText">已抢:`+value.BUYNUMBER+`</span>
+								<span class="smallText">已抢:`+value.VIRTUALSELLED+`</span>
     				      	</div>
     				    </div>
     				  </div>

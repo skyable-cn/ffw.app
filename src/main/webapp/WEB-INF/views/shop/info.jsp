@@ -79,7 +79,7 @@
 						  </span>
 						</div>
 						<div class="proBoxTextRight">
-				      		<span>已抢: ${var.BUYNUMBER}</span>
+				      		<span>已抢: ${var.VIRTUALSELLED}</span>
 						</div>
 				    </div>
 				  </div>

@@ -48,7 +48,7 @@
 						  </span>
 						</div>
 						<div class="proBoxTextRight">
-						  <span class="smallText">已抢: ${pd.BUYNUMBER}</span>
+						  <span class="smallText">已抢: ${pd.VIRTUALSELLED}</span>
 						</div>
 				    </div>
 				  </div>
