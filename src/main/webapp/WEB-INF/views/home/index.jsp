@@ -244,11 +244,10 @@
 							<div valign="bottom" class="card-header color-white no-border no-padding">
 							<a class="external" href="#"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
 							<div id="goods_time_id_`+value.GOODS_ID+`_zw_left" class="suspend left" style="font-size:11.5px">暂停销售</div>
-							<div id="goods_time_id_`+value.GOODS_ID+`_zw_right" class="suspend right" style="font-size:10px">倒计时<div id="goods_time_id_`+value.GOODS_ID+`_zw" class="timeBox"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
 					</div>
 					<div class="card-content">
 							<div class="card-content-inner proText">
-							<p class="proBoxText"><span class="proBangIcon">爆</span><span class="proInfo smTitle">`+value.GOODSDESC+`</span></p>
+							<p class="proBoxText"><span class="proInfo smTitle">`+value.GOODSDESC+`</span></p>
 					</div>
 					</div>
 					<div class="card-footer proBoxText">
@@ -269,9 +268,9 @@
 				})
 				if(flag){
 					$("#goods3").html(htmls);
-				}else{
+				}/*else{
 					$("#goods3").append(htmls);
-				}
+				}*/
 
 				setTimeout(function(){$.hidePreloader();if(flag && '${showNotice}' == 'yes'){searchUnRead();}},1000);
 				loading = false;
