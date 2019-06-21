@@ -100,7 +100,7 @@
 				</div>
 			</div>
 			<h5>&nbsp;</h5>
-			<div style="width:60px;position:fixed;right:0;top:70%;z-index:999;" onclick="goCustomer();"><img width="55" src="<%=request.getContextPath()%>/static/icon/weixin.png"/></div>
+			<div style="width:60px;position:fixed;right:2%;top:70%;z-index:999;" onclick="goCustomer();"><img width="55" src="<%=request.getContextPath()%>/static/icon/weixin.png"/></div>
 		</div>
 		<%@ include file="../common/nav.jsp"%>
 	</div>
