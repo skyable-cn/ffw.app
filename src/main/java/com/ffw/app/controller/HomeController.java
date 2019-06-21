@@ -88,8 +88,18 @@ public class HomeController extends BaseController {
 		pd2.put("page_currentPage", pd.getString("page_currentPage"));
 		Page page1 = rest.post(IConstant.FFW_SERVICE_KEY, "goods/listPage", pd2, Page.class);
 
+
+		PageData pd3 = new PageData();
+		pd3.put("MARKET_ID", marketId());
+		pd3.put("WXFLAG", IConstant.STRING_1);
+		pd3.put("STATE", IConstant.STRING_2);
+		pd3.put("SEARCHTYPE", IConstant.STRING_2);
+		pd3.put("page_currentPage", pd.getString("page_currentPage"));
+		Page page2 = rest.post(IConstant.FFW_SERVICE_KEY, "goods/listPage", pd3, Page.class);
 		pd.put("page", page);
 		pd.put("page1", page1);
+		pd.put("page2", page2);
+
 		return pd;
 	}
 }
