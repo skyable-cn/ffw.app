@@ -212,7 +212,7 @@
 					}
 				}else{
 					$.alert(data.message,function(){
-						location.reload();
+						
 					})
 				}
 			},
