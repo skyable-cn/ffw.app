@@ -97,6 +97,17 @@ public class OrdersController extends BaseController {
 		String GOODS_ID = pd.getString("GOODS_ID");
 		String NUMBER = pd.getString("NUMBER");
 
+		PageData pdtest = new PageData();
+		pdtest.put("GOODS_ID", GOODS_ID);
+		pdtest = rest.post(IConstant.FFW_SERVICE_KEY, "goods/find", pdtest, PageData.class);
+
+		if (Integer.parseInt(pdtest.getString("STORE")) - Integer.parseInt(NUMBER) < 0) {
+			ReturnModel rmtest = new ReturnModel();
+			rmtest.setMessage("对不起,库存剩余" + pdtest.getString("STORE"));
+			rmtest.setFlag(false);
+			return rmtest;
+		}
+
 		String VIPMONEY = pd.getString("VIPMONEY");
 		if (!VIPMONEY.equals("0")) {
 			pd.put("VIPFLAG", IConstant.STRING_1);
@@ -158,6 +169,10 @@ public class OrdersController extends BaseController {
 			pdg = rest.post(IConstant.FFW_SERVICE_KEY, "goods/find", pdg, PageData.class);
 			pdg.put("BUYNUMBER", Integer.parseInt(pdg.getString("BUYNUMBER")) + Integer.parseInt(NUMBER));
 			pdg.put("VIRTUALSELLED", Integer.parseInt(pdg.getString("VIRTUALSELLED")) + Integer.parseInt(NUMBER));
+			pdg.put("STORE", Integer.parseInt(pdg.getString("STORE")) - Integer.parseInt(NUMBER));
+			if (Integer.parseInt(pdg.getString("STORE")) - Integer.parseInt(NUMBER) <= 0) {
+				pdg.put("STATE", IConstant.STRING_2);
+			}
 			rest.post(IConstant.FFW_SERVICE_KEY, "goods/edit", pdg, PageData.class);
 
 		}
