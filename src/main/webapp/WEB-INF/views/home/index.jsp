@@ -59,7 +59,8 @@
 					<div class="swiper-container">
 						<div class="swiper-wrapper">
 							<c:forEach var="var" items="${standData}">
-								<div class="swiper-slide"><a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=${var.GOODS_ID}"><img width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}';"/></a></div>
+								<div class="swiper-slide"><a class="external"
+								<c:if test="${var.GSTATE eq '2'}">href="javascript:$.alert('该产品已售空');"</c:if><c:if test="${var.GSTATE ne '2'}">href="<%=request.getContextPath()%>/goods/info?GOODS_ID=${var.GOODS_ID}"</c:if>><img width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}';"/></a></div>
 							</c:forEach>
 						</div>
 						<div class="swiper-pagination"></div>
