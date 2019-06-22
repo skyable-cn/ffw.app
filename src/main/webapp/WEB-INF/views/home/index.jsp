@@ -73,7 +73,6 @@
 						<div class="buttons-row">
 							<a href="#tab1" class="tab-link active button">推荐</a>
 							<a href="#tab2" class="tab-link button">最热</a>
-							<a href="#tab3" class="tab-link button">售罄</a>
 						</div>
 					</div>
 				</div>
@@ -88,11 +87,6 @@
 						</div>
 						<div id="tab2" class="tab">
 							<div id="goods2">
-
-							</div>
-						</div>
-						<div id="tab3" class="tab">
-							<div id="goods3">
 
 							</div>
 						</div>
@@ -227,50 +221,6 @@
 				}else{
 					$("#goods2").append(html);
 				}
-
-				var lists = data.page2.data;
-				var htmls = "";
-				$.each(lists,function(index,value){
-					var backmoney = 0;
-					if("${USER_SESSION.MEMBERTYPE_ID}"=="1"){
-						backmoney = value.MEMBERBACKMONEY;
-					}else if("${USER_SESSION.MEMBERTYPE_ID}"=="2"){
-						backmoney = value.VIPBACKMONEY;
-					}else{
-						backmoney = value.BACKMONEY0;
-					}
-					htmls += `
-					<div class="card demo-card-header-pic proBox" style="position:relative;">
-							<div valign="bottom" class="card-header color-white no-border no-padding">
-							<a class="external" href="#"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
-							<div id="goods_time_id_`+value.GOODS_ID+`_zw_left" class="suspend left" style="font-size:11.5px">暂停销售</div>
-					</div>
-					<div class="card-content">
-							<div class="card-content-inner proText">
-							<p class="proBoxText"><span class="proInfo smTitle">`+value.GOODSDESC+`</span></p>
-					</div>
-					</div>
-					<div class="card-footer proBoxText">
-							<div class="proBoxTextLeft">
-							<span class="priceTitle flexClumnBox"><font class="price">`+value.SELLMONEY+`</font></span>
-					<span class="smText" style="padding-top:5px">元</span>
-							<span class="delete costPrice flexClumnBox smallText">¥ `+value.ORIGINALMONEY+`</span>
-					<span class="flexClumnBox yjBox smText">佣金</span>
-							<span class="yjText smallText">`+backmoney+`元</span>
-					</div>
-					<div class="proBoxTextRight">
-							<span class="smallText">已抢:`+value.VIRTUALSELLED+`</span>
-					</div>
-					</div>
-					</div>
-    					`;
-					TimeDown("goods_time_id_"+value.GOODS_ID+"_zw",value.ENDTIME)
-				})
-				if(flag){
-					$("#goods3").html(htmls);
-				}/*else{
-					$("#goods3").append(htmls);
-				}*/
 
 				setTimeout(function(){$.hidePreloader();if(flag && '${showNotice}' == 'yes'){searchUnRead();}},1000);
 				loading = false;

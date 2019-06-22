@@ -95,6 +95,14 @@ public class SellerController extends BaseController {
 				});
 		mv.addObject("shopData", shopData);
 
+		PageData pdm1 = new PageData();
+		pdm1.put("MEMBER_ID", memberId());
+		pdm1.put("CLASS", IConstant.STRING_CLASS_WX);
+		List<PageData> shopData1 = rest.postForList(IConstant.FFW_SERVICE_KEY, "shopmember/listAll", pdm1,
+				new ParameterizedTypeReference<List<PageData>>() {
+				});
+		mv.addObject("shopData1", shopData1);
+
 		mv.setViewName("seller/list");
 		return mv;
 	}
