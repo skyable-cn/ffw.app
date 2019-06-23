@@ -143,10 +143,14 @@
 					}else{
 						backmoney = value.BACKMONEY0;
 					}
+					var hrefitem = "<%=request.getContextPath()%>/goods/info?GOODS_ID="+value.GOODS_ID;
+					if(value.STATE == '2'){
+						hrefitem = "javascript:$.alert('对不起,该产品已售空');";
+					}
 					html += `
 					<div class="card demo-card-header-pic proBox" style="position:relative;">
 							<div valign="bottom" class="card-header color-white no-border no-padding">
-							<a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=`+value.GOODS_ID+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
+							<a class="external" href="`+hrefitem+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
 							<div id="goods_time_id_`+value.GOODS_ID+`_tj_left" class="suspend left" style="font-size:11.5px">抢购中</div>
 							<div id="goods_time_id_`+value.GOODS_ID+`_tj_right" class="suspend right" style="font-size:10px">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_tj" class="timeBox"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
 					</div>
@@ -189,10 +193,14 @@
 					}else{
 						backmoney = value.BACKMONEY0;
 					}
+					var hrefitem = "<%=request.getContextPath()%>/goods/info?GOODS_ID="+value.GOODS_ID;
+					if(value.STATE == '2'){
+						hrefitem = "javascript:$.alert('对不起,该产品已售空');";
+					}
 					html += `
 					<div class="card demo-card-header-pic proBox" style="position:relative;">
 							<div valign="bottom" class="card-header color-white no-border no-padding">
-							<a class="external" href="<%=request.getContextPath()%>/goods/info?GOODS_ID=`+value.GOODS_ID+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
+							<a class="external" href="`+hrefitem+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
 							<div id="goods_time_id_`+value.GOODS_ID+`_zr_left" class="suspend left" style="font-size:11.5px">抢购中</div>
 							<div id="goods_time_id_`+value.GOODS_ID+`_zr_right" class="suspend right" style="font-size:10px">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_zr" class="timeBox"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
 					</div>

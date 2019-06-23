@@ -75,7 +75,8 @@ public class HomeController extends BaseController {
 		PageData pd1 = new PageData();
 		pd1.put("MARKET_ID", marketId());
 		pd1.put("WXFLAG", IConstant.STRING_1);
-		pd1.put("STATE", IConstant.STRING_1);
+		// pd1.put("STATE", IConstant.STRING_1);
+		pd1.put("SQLCONDITION", " AND g.STATE IN ('1','2') ");
 		pd1.put("SEARCHTYPE", IConstant.STRING_1);
 		pd1.put("page_currentPage", pd.getString("page_currentPage"));
 		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "goods/listPage", pd1, Page.class);
@@ -83,7 +84,8 @@ public class HomeController extends BaseController {
 		PageData pd2 = new PageData();
 		pd2.put("MARKET_ID", marketId());
 		pd2.put("WXFLAG", IConstant.STRING_1);
-		pd2.put("STATE", IConstant.STRING_1);
+		// pd2.put("STATE", IConstant.STRING_1);
+		pd2.put("SQLCONDITION", " AND g.STATE IN ('1','2') ");
 		pd2.put("SEARCHTYPE", IConstant.STRING_2);
 		pd2.put("page_currentPage", pd.getString("page_currentPage"));
 		Page page1 = rest.post(IConstant.FFW_SERVICE_KEY, "goods/listPage", pd2, Page.class);
