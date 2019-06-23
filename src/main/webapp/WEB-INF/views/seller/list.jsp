@@ -21,7 +21,7 @@
 			 <c:forEach var="var" items="${shopData}">
 		      <li class="item-content item-link" onclick="goShop('${var.SHOP_ID}','${var.SHOPSTATENAME}')">
 		        <div class="item-inner">
-		          <div class="item-title">${var.SHOPNAME}[店主]</div>
+		          <div class="item-title">${var.SHOPNAME}&nbsp;<strong>[店主]</strong></div>
 		          <div class="item-after">${var.SHOPSTATENAME}</div>
 		        </div>
 		      </li>
@@ -29,7 +29,7 @@
 		      <c:forEach var="var" items="${shopData1}">
 		      <li class="item-content item-link" onclick="goShop('${var.SHOP_ID}','${var.SHOPSTATENAME}')">
 		        <div class="item-inner">
-		          <div class="item-title">${var.SHOPNAME}[店员]</div>
+		          <div class="item-title">${var.SHOPNAME}&nbsp;<strong>[店员]</strong></div>
 		          <div class="item-after">${var.SHOPSTATENAME}</div>
 		        </div>
 		      </li>
