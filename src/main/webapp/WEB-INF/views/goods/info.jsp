@@ -63,7 +63,12 @@
         	<div class="row" style="padding:5px 0px 5px 25px;">
 				<div class="col-100 touxiangImage">
 					<c:if test="${fn:length(peopleDataList) eq 0}">
-						<span><img src="<%=request.getContextPath()%>/static/icon/add.jpg"/></span>
+						<img src="<%=request.getContextPath()%>/static/image/tx1.jpg"/>
+						<img src="<%=request.getContextPath()%>/static/image/tx2.jpg"/>
+						<img src="<%=request.getContextPath()%>/static/image/tx3.jpg"/>
+						<img src="<%=request.getContextPath()%>/static/image/tx4.jpg"/>
+						<img src="<%=request.getContextPath()%>/static/image/tx5.jpg"/>
+						<img src="<%=request.getContextPath()%>/static/image/tx6.jpg"/>
 					</c:if>
 					<c:forEach var="var" items="${peopleDataList}">
 						<img align="middle" src="${var.PHOTO}"/>
