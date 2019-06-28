@@ -78,7 +78,7 @@
 			<div style="width:100%;height:5px;background:#F2F2F2;">&nbsp;</div>
 			<div class="row" style="padding:5px;">
 				<div class="col-100">
-				<div class="buttons-tab">
+				<div class="buttons-tab" id="bignav" onscroll="myFunction()">
 
 					<%--<button id="roll1">商家信息</button>
 					<button id="roll2">购买须知</button>
@@ -136,14 +136,18 @@
 				</div>
 		      </div>
 		      <div id="roll_top2" class="infoBox">
-		        <c:forEach var="var" items="${fileDataList}" varStatus="index">
-		        <div style="text-align:center;padding:5px;">${index.index+1}产品图片</div>
+		        <%--<c:forEach var="var" items="${fileDataList}" varStatus="index">
+		        <div style="text-align:center;padding:5px;">${index.index+1}产品图片</div>--%>
 				<div class="row" style="padding:5px;">
 				<div class="col-100">
+<%--
 					<img style="border-top-left-radius:5px;border-top-right-radius:5px;border-bottom-left-radius:5px;border-bottom-right-radius:5px;" height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" alt="">
+--%>
+					<div style="min-height:180px;padding:10px;word-wrap: break-word;word-break: break-all;overflow: hidden;">${pd.GOODSDETIAL}</div>
+
 				</div>
 		      </div>
-		      </c:forEach>
+		      <%--</c:forEach>--%>
 		    </div>
 				</div>
 			</div>
@@ -168,6 +172,9 @@
   </body>
   <%@ include file="../common/headjs.jsp"%>
   <script type="text/javascript">
+
+
+
 
 	  var startx, starty;
 	  //获得角度
