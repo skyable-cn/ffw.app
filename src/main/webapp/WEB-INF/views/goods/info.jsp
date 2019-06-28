@@ -13,6 +13,14 @@
     <%@ include file="../common/headcss.jsp"%>
     <%@ include file="../common/utiljs.jsp"%>
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+	<style>
+		.positionBox{
+			position:fixed;
+			top: 0;
+			width: 93%;
+			border-bottom: solid 1px #F2F2F2;
+		}
+	</style>
   </head>
   <body>
     <div class="page-group" id="bigbigBox" style="overflow: scroll">
@@ -76,7 +84,7 @@
 				</div>
 			</div>
 			<div style="width:100%;height:5px;background:#F2F2F2;">&nbsp;</div>
-			<div class="row" style="padding:5px;">
+			<div class="row" style="padding:5px;" id="proInfoBox">
 				<div class="col-100">
 				<div class="buttons-tab" id="bignav" onscroll="myFunction()">
 
@@ -206,6 +214,14 @@
 
 		  return result;
 	  }
+	  $(".content").scroll(function (evt) {
+	  	var ss3=$("#proInfoBox").offset().top;
+		  if(ss3<=0){
+			  $("#bignav").addClass("positionBox");
+		  }else{
+			  $("#bignav").removeClass("positionBox");
+		  }
+	  });
 	  //手指接触屏幕
 	  document.addEventListener("touchstart", function(e) {
 		  startx = e.touches[0].pageX;
