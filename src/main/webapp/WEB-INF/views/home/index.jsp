@@ -154,7 +154,17 @@
 								<div valign="bottom" class="card-header color-white no-border no-padding">
 								<a class="external" href="`+hrefitem+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
 								<div id="goods_time_id_`+value.GOODS_ID+`_zr_left" class="suspend left" style="font-size:11.5px">`+flage+`</div>
-								<div id="goods_time_id_`+value.GOODS_ID+`_zr_right" class="suspend right" style="font-size:10px">活动倒计时<div id="goods_time_id_s`+value.GOODS_ID+`_zr" class="timeBox" name="timeName"><span>0</span>天<span>0</span><span>0</span><span>0</span></div></div>
+							`;
+							var today =getDate24Hours();
+							var endtimes=value.ENDTIME;
+							if(today<endtimes){
+								html += `
+							<div id="goods_time_id_`+value.GOODS_ID+`_zr_right" class="suspend right" style="font-size:10px">活动倒计时<div id="goods_time_id_s`+value.GOODS_ID+`_zr" class="timeBox" name="timeName"><span>0</span>天<span>0</span><span>0</span><span>0</span></div></div>
+							`;
+								TimeDown("goods_time_id_s"+value.GOODS_ID+"_zr",value.ENDTIME)
+							};
+
+					html += `
 						</div>
 					<div class="card-content">
 							<div class="card-content-inner proText">
@@ -175,11 +185,7 @@
 					</div>
 					</div>
     					`;
-					var today =getDate24Hours();
-					var endtimes=value.ENDTIME;
-					if(today<endtimes){
-						TimeDown("goods_time_id_s"+value.GOODS_ID+"_zr",value.ENDTIME)
-					}
+
 
 				})
 				if(flag){
@@ -211,7 +217,17 @@
 								<div valign="bottom" class="card-header color-white no-border no-padding">
 								<a class="external" href="`+hrefitem+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
 								<div id="goods_time_id_`+value.GOODS_ID+`_zr_left" class="suspend left" style="font-size:11.5px">`+flage+`</div>
+							`;
+						var today =getDate24Hours();
+						var endtimes=value.ENDTIME;
+						if(today<endtimes){
+							html += `
 								<div id="goods_time_id_`+value.GOODS_ID+`_zr_right" class="suspend right" style="font-size:10px">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_tj" class="timeBox"><span>0</span>天<span>0</span><span>0</span><span>0</span></div></div>
+							`;
+							TimeDown("goods_time_id_"+value.GOODS_ID+"_tj",value.ENDTIME)
+						}
+
+					html += `
 					</div>
 					<div class="card-content">
 							<div class="card-content-inner proText">
@@ -232,11 +248,7 @@
 					</div>
 					</div>
     					`;
-					var today =getDate24Hours();
-					var endtimes=value.ENDTIME;
-					if(today<endtimes){
-						TimeDown("goods_time_id_"+value.GOODS_ID+"_tj",value.ENDTIME)
-					}
+
 				})
 				if(flag){
 					$("#goods2").html(html);
