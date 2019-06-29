@@ -123,7 +123,7 @@ public class OrdersController extends BaseController {
 		pd.put("USEKEY", randomNumber(8));
 		if (Double.parseDouble(pd.getString("MONEY")) > 0) {
 			pd.put("STATE", IConstant.STRING_0);
-		} else {
+		 } else {
 			pd.put("STATE", IConstant.STRING_1);
 
 			if (!VIPMONEY.equals("0")) {

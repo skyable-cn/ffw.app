@@ -144,16 +144,18 @@
 						backmoney = value.BACKMONEY0;
 					}
 					var hrefitem = "<%=request.getContextPath()%>/goods/info?GOODS_ID="+value.GOODS_ID;
+					var flage ="抢购中";
 					if(value.STATE == '2'){
 						hrefitem = "javascript:$.alert('对不起,该产品已售空');";
+						var flage ="售罄";
 					}
-					html += `
-					<div class="card demo-card-header-pic proBox" style="position:relative;">
-							<div valign="bottom" class="card-header color-white no-border no-padding">
-							<a class="external" href="`+hrefitem+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
-							<div id="goods_time_id_`+value.GOODS_ID+`_tj_left" class="suspend left" style="font-size:11.5px">抢购中</div>
-							<div id="goods_time_id_`+value.GOODS_ID+`_tj_right" class="suspend right" style="font-size:10px">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_tj" class="timeBox"><span>0</span>天<span>0</span><span>0</span><span>0</span></div></div>
-					</div>
+						html += `
+						<div class="card demo-card-header-pic proBox" style="position:relative;">
+								<div valign="bottom" class="card-header color-white no-border no-padding">
+								<a class="external" href="`+hrefitem+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
+								<div id="goods_time_id_`+value.GOODS_ID+`_zr_left" class="suspend left" style="font-size:11.5px">`+flage+`</div>
+								<div id="goods_time_id_`+value.GOODS_ID+`_zr_right" class="suspend right" style="font-size:10px">活动倒计时<div id="goods_time_id_s`+value.GOODS_ID+`_zr" class="timeBox" name="timeName"><span>0</span>天<span>0</span><span>0</span><span>0</span></div></div>
+						</div>
 					<div class="card-content">
 							<div class="card-content-inner proText">
 							<p class="proBoxText"><span class="proBangIcon">爆</span><span class="proInfo smTitle">`+value.GOODSDESC+`</span></p>
@@ -173,7 +175,12 @@
 					</div>
 					</div>
     					`;
-					TimeDown("goods_time_id_"+value.GOODS_ID+"_tj",value.ENDTIME)
+					var today =getDate24Hours();
+					var endtimes=value.ENDTIME;
+					if(today<endtimes){
+						TimeDown("goods_time_id_s"+value.GOODS_ID+"_zr",value.ENDTIME)
+					}
+
 				})
 				if(flag){
 					$("#goods1").html(html);
@@ -194,15 +201,17 @@
 						backmoney = value.BACKMONEY0;
 					}
 					var hrefitem = "<%=request.getContextPath()%>/goods/info?GOODS_ID="+value.GOODS_ID;
+					var flage ="抢购中";
 					if(value.STATE == '2'){
 						hrefitem = "javascript:$.alert('对不起,该产品已售空');";
+						var flage ="售罄";
 					}
 					html += `
 					<div class="card demo-card-header-pic proBox" style="position:relative;">
-							<div valign="bottom" class="card-header color-white no-border no-padding">
-							<a class="external" href="`+hrefitem+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
-							<div id="goods_time_id_`+value.GOODS_ID+`_zr_left" class="suspend left" style="font-size:11.5px">抢购中</div>
-							<div id="goods_time_id_`+value.GOODS_ID+`_zr_right" class="suspend right" style="font-size:10px">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_zr" class="timeBox"><span>0</span>天<span>0</span><span>0</span><span>0</span></div></div>
+								<div valign="bottom" class="card-header color-white no-border no-padding">
+								<a class="external" href="`+hrefitem+`"><img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=`+value.FILEPATH+`';"></a>
+								<div id="goods_time_id_`+value.GOODS_ID+`_zr_left" class="suspend left" style="font-size:11.5px">`+flage+`</div>
+								<div id="goods_time_id_`+value.GOODS_ID+`_zr_right" class="suspend right" style="font-size:10px">活动倒计时<div id="goods_time_id_`+value.GOODS_ID+`_tj" class="timeBox"><span>0</span>天<span>0</span><span>0</span><span>0</span></div></div>
 					</div>
 					<div class="card-content">
 							<div class="card-content-inner proText">
@@ -223,7 +232,11 @@
 					</div>
 					</div>
     					`;
-					TimeDown("goods_time_id_"+value.GOODS_ID+"_zr",value.ENDTIME)
+					var today =getDate24Hours();
+					var endtimes=value.ENDTIME;
+					if(today<endtimes){
+						TimeDown("goods_time_id_"+value.GOODS_ID+"_tj",value.ENDTIME)
+					}
 				})
 				if(flag){
 					$("#goods2").html(html);
@@ -275,6 +288,8 @@
 			url: '/pages/customer/customer'
 		})
 	}
+
+
 	function searchUnRead(){
 		$.ajax({
 			type: "POST",
