@@ -20,6 +20,15 @@
 			width: 93%;
 			border-bottom: solid 1px #F2F2F2;
 		}
+		.fenxiangBox{
+			text-align: left;
+			padding: 10px 0px 0px 0px;
+		}
+		.fenxiangBox>span{
+			background: #FECB17;
+			padding: 5px 8px;
+			border-radius: 3px;
+		}
 	</style>
   </head>
   <body>
@@ -33,7 +42,6 @@
 				      <img class='card-cover' height="200" width="100%" src="<%=request.getContextPath()%>/file/image?FILENAME=${var.FILEPATH}" alt="" onerror="javascript:this.src='<%=request.getContextPath()%>/file/image?FILENAME=${pd.FILEPATH}';">
 				      <div id="goods_time_id_${pd.GOODS_ID}_tj_left" class="suspend left">抢购中</div>
 				      <div id="goods_time_id_${pd.GOODS_ID}_tj_right" class="suspend right">活动倒计时<div id="goods_time_id_${pd.GOODS_ID}_tj" class="timeBox"><span>0</span>天<span>0</span> <span>0</span> <span>0</span></div></div>
-				      <div class="suspend center" onclick="shareGoods()"><img style="margin-top:-5px;margin-left:15px;margin-right:15px;" width="30" src="<%=request.getContextPath()%>/static/icon/share.png"/></div>
 				    </div>
 				    <div class="card-content">
 				      <div class="card-content-inner proText">
@@ -68,19 +76,22 @@
 				<div class="col-100 smTitle">已抢购用户</div>
 			</div>
 			<div style="width:100%;height:1px;background:#F2F2F2;">&nbsp;</div>
-        	<div class="row" style="padding:5px 0px 5px 25px;">
-				<div class="col-100 touxiangImage">
+        	<div class="row" style="padding:5px 0px 5px 30px;">
+				<div class="col-80 touxiangImage">
+					<img src="<%=request.getContextPath()%>/static/image/tx1.jpg"/>
+					<img src="<%=request.getContextPath()%>/static/image/tx2.jpg"/>
+					<img src="<%=request.getContextPath()%>/static/image/tx3.jpg"/>
+					<img src="<%=request.getContextPath()%>/static/image/tx4.jpg"/>
+					<img src="<%=request.getContextPath()%>/static/image/tx5.jpg"/>
+					<img src="<%=request.getContextPath()%>/static/image/tx6.jpg"/>
 					<c:if test="${fn:length(peopleDataList) eq 0}">
-						<img src="<%=request.getContextPath()%>/static/image/tx1.jpg"/>
-						<img src="<%=request.getContextPath()%>/static/image/tx2.jpg"/>
-						<img src="<%=request.getContextPath()%>/static/image/tx3.jpg"/>
-						<img src="<%=request.getContextPath()%>/static/image/tx4.jpg"/>
-						<img src="<%=request.getContextPath()%>/static/image/tx5.jpg"/>
-						<img src="<%=request.getContextPath()%>/static/image/tx6.jpg"/>
 					</c:if>
 					<c:forEach var="var" items="${peopleDataList}">
-						<img align="middle" src="${var.PHOTO}"/>
+						<img src="${var.PHOTO}"/>
 					</c:forEach>
+				</div>
+				<div class="col-20 fenxiangBox" onclick="shareGoods()">
+					<span>分享</span>
 				</div>
 			</div>
 			<div style="width:100%;height:5px;background:#F2F2F2;">&nbsp;</div>
@@ -162,13 +173,13 @@
 			<h5>&nbsp;</h5>
         </div>
         </div>
-        <nav class="bar bar-tab">
+        <nav class="bar bar-tab" id="nav">
   <div class="row">
-  	<a class="tab-item external" href="<%=request.getContextPath()%>/home" style="border-right:1px #aaaaaa solid">
+  	<a class="tab-item external" href="<%=request.getContextPath()%>/home" style="border-right:1px #dddddd solid">
      <span class="icon"><img src="<%=request.getContextPath()%>/static/icon/index.png"/></span>
      <span class="tab-label">首页</span>
     </a>
-    <a class="tab-item external" href="javascript:;" onclick="goCustomer()" style="border-right:1px #aaaaaa solid;">
+    <a class="tab-item external" href="javascript:;" onclick="goCustomer()" style="border-right:1px #dddddd solid;">
      <span class="icon"><img src="<%=request.getContextPath()%>/static/icon/service.png"/></span>
      <span class="tab-label">客服</span>
     </a>
@@ -180,10 +191,13 @@
   </body>
   <%@ include file="../common/headjs.jsp"%>
   <script type="text/javascript">
-
-
-
-
+<%--	适配iphoneX--%>
+var navBox = document.getElementById("nav");
+if (/iphone/gi.test(navigator.userAgent) && (screen.height == 812 && screen.width == 375)) {
+	navBox.style.height="3.5rem";
+} else {
+	navBox.style.height="2.5rem";
+}
 	  var startx, starty;
 	  //获得角度
 	  function getAngle(angx, angy) {
@@ -216,7 +230,7 @@
 	  }
 	  $(".content").scroll(function (evt) {
 	  	var ss3=$("#proInfoBox").offset().top;
-		  if(ss3<=0){
+		  if(ss3<-1){
 			  $("#bignav").addClass("positionBox");
 		  }else{
 			  $("#bignav").removeClass("positionBox");

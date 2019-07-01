@@ -1,5 +1,5 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
-<nav class="bar bar-tab">
+<nav class="bar bar-tab" id="nav">
   <a class="tab-item external<c:if test="${nav eq 'home'}"> active</c:if>" href="<%=request.getContextPath()%>/home">
     <span class="icon"><img src="<%=request.getContextPath()%>/static/icon/index<c:if test="${nav eq 'home'}">_sel</c:if>.png"/></span>
     <span class="tab-label">首页</span>
@@ -17,3 +17,11 @@
     <span class="tab-label">我的</span>
   </a>
 </nav>
+<script type="text/javascript">
+  var navBox = document.getElementById("nav");
+  if (/iphone/gi.test(navigator.userAgent) && (screen.height == 812 && screen.width == 375)) {
+    navBox.style.height="3.5rem";
+  } else {
+    navBox.style.height="2.5rem";
+  }
+</script>
