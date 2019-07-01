@@ -1,5 +1,6 @@
 package com.ffw.app.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -119,6 +120,25 @@ public class SellerController extends BaseController {
 		shop = rest.post(IConstant.FFW_SERVICE_KEY, "shop/find", shop, PageData.class);
 		mv.addObject("shop", shop);
 
+		// 商家后台核销金额，数量
+		PageData shopmoney = new PageData();
+		shopmoney.put("CLASS", IConstant.STRING_CLASS_WX);
+		shopmoney.put("SHOP_ID", pd.getString("SHOP_ID"));
+		shopmoney.put("SQLCONDITION", " AND os.STATE IN ('3' ) ");
+		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "orders/listPage", shopmoney, Page.class);
+		if (page.getData().size()>0){
+			mv.addObject("shopsize", page.getData().size());
+		}else{
+			mv.addObject("shopsize", 0);
+		}
+		double a=0.0;
+		BigDecimal flage = new BigDecimal(String.valueOf(a));
+		for (int i=0;i<page.getData().size();i++){
+			BigDecimal b=new BigDecimal(String.valueOf(page.getData().get(i).getString("MONEY")));
+			flage = flage.add(b);
+		}
+		mv.addObject("shopmoney", String.valueOf(flage));
+
 		PageData pd1 = new PageData();
 		pd1.put("SHOP_ID", pd.getString("SHOP_ID"));
 		List<PageData> standData = rest.postForList(IConstant.FFW_SERVICE_KEY, "stand/listAll", pd1,
@@ -145,7 +165,7 @@ public class SellerController extends BaseController {
 		pd1.put("CLASS", IConstant.STRING_CLASS_WX);
 		pd1.put("page_currentPage", pd.getString("page_currentPage"));
 		pd1.put("SHOP_ID", pd.getString("SHOP_ID"));
-		pd1.put("SQLCONDITION", " AND os.STATE IN ( '2' , '3' ) ");
+		pd1.put("SQLCONDITION", " AND os.STATE IN ('3' ) ");
 		pd1.put("keywords", pd.getString("keywords"));
 		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "orders/listPage", pd1, Page.class);
 		pd.put("page", page);

@@ -105,7 +105,7 @@
 		      <div id="tab2" class="tab">
 		      <div class="row">
 		      <div class="col-100">
-		      	<div style="font-size:1.0rem;text-align: center;background:#FFCC01;border-radius:5px;color:#FFFFFF;padding:20px 0;">已核销待结算${shop.WAITACCOUNT}元</div>
+		      	<div style="text-align: center;background:#FFCC01;border-radius:5px;color:#FFFFFF;padding:20px 0;">已核销单数${shopsize}件&nbsp;&nbsp;|&nbsp;&nbsp;已核销结算${shopmoney}元</div>
 		      </div>
 		      </div>
 		      <div class="row">
@@ -247,7 +247,6 @@
   		search(true);
 		     
     	var page_currentPage = 1;
-    	
     	function search(flag){
     		$.ajax({
     			type: "POST",
@@ -265,7 +264,7 @@
     				//$("#shops").html('');
     			},
     			success: function(data){
-    				pageData = data.page;
+					pageData = data.page;
     				var list = data.page.data;
     				if(list.length == 0){
     					$("#orders").html('');
@@ -275,7 +274,7 @@
     					return;
     				}
     				var html = "";
-    				$.each(list,function(index,value){ 
+    				$.each(list,function(index,value){
     					var state = '';
     					if(value.STATE == '2'){
     						state = '待核销'
@@ -326,6 +325,7 @@
     				    	</div>
     					`;
     				})
+
     				if(flag){
     					$("#orders").html(html);
     				}else{

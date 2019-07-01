@@ -147,7 +147,7 @@
 					var flage ="抢购中";
 					if(value.STATE == '2'){
 						hrefitem = "javascript:$.alert('对不起,该产品已售空');";
-						var flage ="售罄";
+						 flage ="售罄";
 					}
 						html += `
 						<div class="card demo-card-header-pic proBox" style="position:relative;">
@@ -210,7 +210,7 @@
 					var flage ="抢购中";
 					if(value.STATE == '2'){
 						hrefitem = "javascript:$.alert('对不起,该产品已售空');";
-						var flage ="售罄";
+						 flage ="售罄";
 					}
 					html += `
 					<div class="card demo-card-header-pic proBox" style="position:relative;">
