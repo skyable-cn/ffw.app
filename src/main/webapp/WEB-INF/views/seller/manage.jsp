@@ -12,6 +12,17 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <%@ include file="../common/headcss.jsp"%>
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+    <style>
+        .hxBox{
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            background:#FFCC01;
+            border-radius:5px;
+            color:#FFFFFF;
+            padding:10px 0;
+        }
+    </style>
   </head>
   <body>
     <div class="page-group">
@@ -103,9 +114,11 @@
   </div>
 		      </div>
 		      <div id="tab2" class="tab">
-		      <div class="row">
-		      <div class="col-100">
-		      	<div style="text-align: center;background:#FFCC01;border-radius:5px;color:#FFFFFF;padding:20px 0;">已核销单数${shopsize}件&nbsp;&nbsp;|&nbsp;&nbsp;已核销结算${shopmoney}元</div>
+		      <div class="row" style="padding: 10px 0">
+		      <div class="col-100 hxBox">
+		      	<div style="width: 45%">已核销单数${shopsize}件</div>
+                  <div>|</div>
+                <div style="width: 45%">已核销结算${shopmoney}元</div>
 		      </div>
 		      </div>
 		      <div class="row">
