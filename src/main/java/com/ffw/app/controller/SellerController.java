@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,9 @@ public class SellerController extends BaseController {
 
 	@Autowired
 	RestTemplateUtil rest;
+
+	@Value("${server.hostname}")
+	private String HOSTNAME;
 
 	@RequestMapping(value = { "/seller" })
 	public ModelAndView index() {
@@ -126,15 +130,15 @@ public class SellerController extends BaseController {
 		shopmoney.put("SHOP_ID", pd.getString("SHOP_ID"));
 		shopmoney.put("SQLCONDITION", " AND os.STATE IN ('3' ) ");
 		Page page = rest.post(IConstant.FFW_SERVICE_KEY, "orders/listPage", shopmoney, Page.class);
-		if (page.getData().size()>0){
+		if (page.getData().size() > 0) {
 			mv.addObject("shopsize", page.getData().size());
-		}else{
+		} else {
 			mv.addObject("shopsize", 0);
 		}
-		double a=0.0;
+		double a = 0.0;
 		BigDecimal flage = new BigDecimal(String.valueOf(a));
-		for (int i=0;i<page.getData().size();i++){
-			BigDecimal b=new BigDecimal(String.valueOf(page.getData().get(i).getString("MONEY")));
+		for (int i = 0; i < page.getData().size(); i++) {
+			BigDecimal b = new BigDecimal(String.valueOf(page.getData().get(i).getString("MONEY")));
 			flage = flage.add(b);
 		}
 		mv.addObject("shopmoney", String.valueOf(flage));
@@ -147,7 +151,7 @@ public class SellerController extends BaseController {
 		mv.addObject("standData", standData);
 
 		Map<String, String> config = JSSDKUtil
-				.config("https://fanfan.skyable.cn/app/seller/manage?SHOP_ID=" + pd.getString("SHOP_ID"));
+				.config(HOSTNAME + "/app/seller/manage?SHOP_ID=" + pd.getString("SHOP_ID"));
 		mv.addObject("config", config);
 
 		mv.setViewName("seller/manage");

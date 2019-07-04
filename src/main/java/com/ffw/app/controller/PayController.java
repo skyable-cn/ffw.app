@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +39,9 @@ public class PayController extends BaseController {
 
 	@Autowired
 	RestTemplateUtil rest;
+
+	@Value("${server.hostname}")
+	private String HOSTNAME;
 
 	private String getIpAddr(HttpServletRequest request) {
 		String ip = request.getHeader("X-Forwarded-For");
@@ -118,7 +122,7 @@ public class PayController extends BaseController {
 		PageData market = marketSession();
 		WXPayConfigImpl config = new WXPayConfigImpl(market.getString("WXAPPID"), market.getString("WXAPPSECRET"),
 				market.getString("WXMCHID"), market.getString("WXMCHKEY"),
-				fileConfig.getDirCert() + File.separator + market.getString("FILEPATH2"));
+				fileConfig.getDirCert() + File.separator + market.getString("FILEPATH2"), HOSTNAME);
 
 		// 统一下单接口
 		HashMap<String, String> data = new HashMap<String, String>();

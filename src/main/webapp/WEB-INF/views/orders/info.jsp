@@ -32,7 +32,7 @@
 				<div style="width:100%;height:7px;background:#dddddd;">&nbsp;</div>
 			  	<div class="row" style="padding:5px;">
 					<div class="col-25">&nbsp;</div>
-					<div class="col-50"><img onclick="preview()" alt="" src="<%=request.getContextPath()%>/orders/barcode?USEID=${order.USEID}" width="100%"></div>
+					<div class="col-50"><img alt="" src="<%=request.getContextPath()%>/orders/barcode?USEID=${order.USEID}" width="100%"></div>
 					<div class="col-25">&nbsp;</div>
 				</div>
 				<div class="row" style="padding:5px;">
@@ -231,36 +231,6 @@
   </body>
   <%@ include file="../common/headjs.jsp"%>
     <script type="text/javascript">
-    
-    	wx.config({  
-    	    debug: false,
-    	    appId: "${config.appId}", 
-    	    timestamp: "${config.timestamp}",
-    	    nonceStr: "${config.noncestr}",
-    	    signature: "${config.signature}",  
-    	    jsApiList: [  
-    	        'previewImage'
-    	    ]  
-    	}); 
-    	
-    	wx.ready(
-    		function(){
-    			
-    		}
-    	);
-    	
-    	wx.error(
-    		function(res){
-    			console.log(res);
-    		}
-    	);
-    	
-    	function preview(){
-    		wx.previewImage({
-	   			current: 'https://fanfan.skyable.cn<%=request.getContextPath()%>/orders/barcode?ORDER_ID=${order.ORDER_ID}', // 当前显示图片的http链接
-	   			urls: ['https://fanfan.skyable.cn<%=request.getContextPath()%>/orders/barcode?ORDER_ID=${order.ORDER_ID}'] // 需要预览的图片http链接列表
-   			});
-    	}
 
     	function goRefund(id,sn,mn,state){
     		if(state == '0'){

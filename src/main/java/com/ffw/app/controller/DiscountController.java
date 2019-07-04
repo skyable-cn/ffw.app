@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,9 @@ public class DiscountController extends BaseController {
 
 	@Autowired
 	RestTemplateUtil rest;
+
+	@Value("${server.hostname}")
+	private String HOSTNAME;
 
 	@RequestMapping(value = { "/discount" })
 	public ModelAndView index() {
@@ -65,7 +69,7 @@ public class DiscountController extends BaseController {
 			pd.put("ZSFLAG", IConstant.STRING_1);
 		}
 
-		Map<String, String> config = JSSDKUtil.config("https://fanfan.skyable.cn/app/discount");
+		Map<String, String> config = JSSDKUtil.config(HOSTNAME + "/app/discount");
 		pd.put("config", config);
 
 		// mv.addObject("page", page);

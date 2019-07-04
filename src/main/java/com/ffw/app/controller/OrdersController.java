@@ -10,6 +10,7 @@ import java.util.Random;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,6 @@ import com.ffw.app.config.FileConfig;
 import com.ffw.app.config.WXPayConfigImpl;
 import com.ffw.app.constant.IConstant;
 import com.ffw.app.model.ReturnModel;
-import com.ffw.app.util.JSSDKUtil;
 import com.ffw.app.util.RestTemplateUtil;
 import com.github.wxpay.sdk.WXPay;
 import com.github.wxpay.sdk.WXPayConstants.SignType;
@@ -42,6 +42,9 @@ public class OrdersController extends BaseController {
 
 	@Autowired
 	RestTemplateUtil rest;
+
+	@Value("${server.hostname}")
+	private String HOSTNAME;
 
 	@RequestMapping(value = { "/goBuy" })
 	public ModelAndView index() {
@@ -123,7 +126,7 @@ public class OrdersController extends BaseController {
 		pd.put("USEKEY", randomNumber(8));
 		if (Double.parseDouble(pd.getString("MONEY")) > 0) {
 			pd.put("STATE", IConstant.STRING_0);
-		 } else {
+		} else {
 			pd.put("STATE", IConstant.STRING_1);
 
 			if (!VIPMONEY.equals("0")) {
@@ -360,7 +363,7 @@ public class OrdersController extends BaseController {
 		PageData market = marketSession();
 		WXPayConfigImpl config = new WXPayConfigImpl(market.getString("WXAPPID"), market.getString("WXAPPSECRET"),
 				market.getString("WXMCHID"), market.getString("WXMCHKEY"),
-				fileConfig.getDirCert() + File.separator + market.getString("FILEPATH2"));
+				fileConfig.getDirCert() + File.separator + market.getString("FILEPATH2"), HOSTNAME);
 
 		WXPay wxpay = new WXPay(config, SignType.MD5);
 
@@ -415,10 +418,6 @@ public class OrdersController extends BaseController {
 				new ParameterizedTypeReference<List<PageData>>() {
 				});
 		mv.addObject("useData", useData);
-
-		Map<String, String> config = JSSDKUtil
-				.config("https://fanfan.skyable.cn/app/orders/info?ORDER_ID=" + pd.getString("ORDER_ID"));
-		pd.put("config", config);
 
 		mv.addObject("order", order);
 

@@ -15,7 +15,7 @@ public class WXPayConfigImpl implements WXPayConfig {
 
 	private String appSecret;
 
-	private String noticeUrl = "https://fanfan.skyable.cn/app/wxNotify";
+	private String noticeUrl;
 
 	private String mchID;
 
@@ -23,9 +23,11 @@ public class WXPayConfigImpl implements WXPayConfig {
 
 	private byte[] certData;
 
-	public WXPayConfigImpl(String appID, String appSecret, String mchID, String mchKey, String certPath) {
+	public WXPayConfigImpl(String appID, String appSecret, String mchID, String mchKey, String certPath,
+			String hostName) {
 		this.appID = appID;
 		this.appSecret = appSecret;
+		this.noticeUrl = hostName + "/app/wxNotify";
 		this.mchID = mchID;
 		this.mchKey = mchKey;
 		try {

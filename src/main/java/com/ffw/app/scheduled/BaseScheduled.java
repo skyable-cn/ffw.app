@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -38,6 +39,9 @@ public class BaseScheduled {
 
 	@Autowired
 	RestTemplateUtil rest;
+
+	@Value("${server.hostname}")
+	private String HOSTNAME;
 
 	@Scheduled(cron = "0 0 5 * * ?")
 	public void executeTask1() {
@@ -75,7 +79,7 @@ public class BaseScheduled {
 				WXPayConfigImpl config = new WXPayConfigImpl(pageData.getString("WXAPPID"),
 						pageData.getString("WXAPPSECRET"), pageData.getString("WXMCHID"),
 						pageData.getString("WXMCHKEY"),
-						fileConfig.getDirCert() + File.separator + pageData.getString("FILEPATH2"));
+						fileConfig.getDirCert() + File.separator + pageData.getString("FILEPATH2"), HOSTNAME);
 
 				WXPay wxpay = new WXPay(config, SignType.MD5);
 				Map<String, String> parameters = new HashMap<String, String>();
